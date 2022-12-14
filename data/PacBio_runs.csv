@@ -1,0 +1,5 @@
+library,bg,run,ccs
+lib51,MERS,221209,/fh/fast/bloom_j/SR/ngs/pacbio/221209_Caelan_Tyler/r64272e_20221209_210327/3_C01/bc2016--bc2016/m64272e_221211_134523.hifi_reads.bc2016--bc2016.fastq.gz
+lib52,MERS,221209,/fh/fast/bloom_j/SR/ngs/pacbio/221209_Caelan_Tyler/r64272e_20221209_210327/3_C01/bc2017--bc2017/m64272e_221211_134523.hifi_reads.bc2017--bc2017.fastq.gz
+lib53,PDF2180,221209,/fh/fast/bloom_j/SR/ngs/pacbio/221209_Caelan_Tyler/r64272e_20221209_210327/3_C01/bc2018--bc2018/m64272e_221211_134523.hifi_reads.bc2018--bc2018.fastq.gz
+lib54,PDF2180,221209,/fh/fast/bloom_j/SR/ngs/pacbio/221209_Caelan_Tyler/r64272e_20221209_210327/4_D01/bc2019--bc2019/m64272e_221211_235718.hifi_reads.bc2019--bc2019.fastq.gz
