@@ -58,7 +58,6 @@ rule make_summary:
         collapse_scores='results/summary/collapse_scores.md',
         mut_phenos_file=config['final_variant_scores_mut_file'],
         epistatic_shifts='results/summary/epistatic_shifts.md',
-        epistasis_viz=os.path.join(config['visualization_dir'], "epistasis.html"),
         heatmap_viz=os.path.join(config['visualization_dir'], "heatmap.html")
     output:
         summary = os.path.join(config['summary_dir'], 'summary.md')
