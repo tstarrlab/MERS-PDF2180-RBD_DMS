@@ -1,6 +1,6 @@
 PDF2180:
-  query_clip5: 8
-  query_clip3: 8
+  query_clip5: 5
+  query_clip3: 5
   termini5:
     filter:
       clip5: 4

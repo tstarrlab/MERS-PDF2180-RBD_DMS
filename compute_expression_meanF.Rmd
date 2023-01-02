@@ -1,7 +1,7 @@
 ---
 title: "Compute per-barcode expression functional score"
 author: "Tyler Starr"
-date: "6/9/2022"
+date: "12/30/2022"
 output:
   github_document:
     html_preview: false
@@ -55,20 +55,21 @@ counts <- data.table(read.csv(file=config$variant_counts_file,stringsAsFactors=F
 counts <- subset(counts, sample %in% barcode_runs[barcode_runs$sample_type=="SortSeq","sample"])
 
 #read in barcode-variant lookup tables
-dt_Wh1 <- data.table(read.csv(file=config$codon_variant_table_file_Wuhan_Hu_1,stringsAsFactors=F))
-dt_BA1 <- data.table(read.csv(file=config$codon_variant_table_file_BA1,stringsAsFactors=F))
-dt_BA2 <- data.table(read.csv(file=config$codon_variant_table_file_BA2,stringsAsFactors=F))
+dt_MERS <- data.table(read.csv(file=config$codon_variant_table_file_MERS,stringsAsFactors=F))
+dt_PDF2180 <- data.table(read.csv(file=config$codon_variant_table_file_PDF2180,stringsAsFactors=F))
 
-#merge, eliminate barcodes duplicated within a library
-dt <- rbind(dt_Wh1,dt_BA1,dt_BA2); setkey(dt,barcode,library)
+#merge, eliminate barcodes duplicated within a library (this is already done)
+dt <- rbind(dt_MERS,dt_PDF2180); setkey(dt,barcode,library)
 duplicates <- dt[duplicated(dt,by=c("barcode","library")),.(library,barcode)] #the data.table duplciates function annoyingly only flags the first of each duplicate so doesn't intrinsically allow removal of both of the entries of the duplicate. So, flat what are duplciates, and then remove
 dt[,duplicate:=FALSE]
-for(i in 1:nrow(duplicates)){
-  dt[library==duplicates[i,library] & barcode==duplicates[i,barcode],duplicate:=TRUE]
+if(nrow(duplicates) > 0){
+  for(i in 1:nrow(duplicates)){
+    dt[library==duplicates[i,library] & barcode==duplicates[i,barcode],duplicate:=TRUE]
+  }
 }
 dt <- dt[duplicate==FALSE,]; dt[,duplicate:=NULL]
 
-dt <- merge(counts, dt, by=c("library","barcode")); rm(dt_Wh1);rm(dt_BA1);rm(dt_BA2);rm(counts); rm(duplicates)
+dt <- merge(counts, dt, by=c("library","barcode")); rm(dt_MERS);rm(dt_PDF2180);rm(counts); rm(duplicates)
 
 ```
  Convert from Illumina read counts to estimates of the number of cells that were sorted into a bin, and add some other useful information to our data frame.
@@ -122,15 +123,15 @@ calc.MLmean <- function(b1,b2,b3,b4,min.b1,min.b2,min.b3,min.b4,max.b4,min.count
 }
 
 #fit ML mean and sd fluorescence for each barcode, and calculate total cell count as the sum across the four bins. Multiply cell counts by a factor of 20 to minimize rounding errors since fitdistcens requires rounding to integer inputs
-invisible(dt[library=="pool1",c("expression","ML_sdF") := tryCatch(calc.MLmean(b1=SortSeq_bin1*20,b2=SortSeq_bin2*20,
+invisible(dt[library=="lib51_53",c("expression","ML_sdF") := tryCatch(calc.MLmean(b1=SortSeq_bin1*7,b2=SortSeq_bin2*20,
                                                                       b3=SortSeq_bin3*20,b4=SortSeq_bin4*20,
-                                                                      min.b1=log(20),min.b2=log(603.5),min.b3=log(4909.5),
-                                                                      min.b4=log(12576.5),max.b4=log(229000)),
+                                                                      min.b1=log(20),min.b2=log(650),min.b3=log(1133),
+                                                                      min.b4=log(2015),max.b4=log(229000)),
                                                           error=function(e){return(list(as.numeric(NA),as.numeric(NA)))}),by=c("library","barcode")])
-invisible(dt[library=="pool2",c("expression","ML_sdF") := tryCatch(calc.MLmean(b1=SortSeq_bin1*20,b2=SortSeq_bin2*20,
+invisible(dt[library=="lib52_54",c("expression","ML_sdF") := tryCatch(calc.MLmean(b1=SortSeq_bin1*20,b2=SortSeq_bin2*20,
                                                                       b3=SortSeq_bin3*20,b4=SortSeq_bin4*20,
-                                                                      min.b1=log(20),min.b2=log(603.5),min.b3=log(4909.5),
-                                                                      min.b4=log(12576.5),max.b4=log(229000)),
+                                                                      min.b1=log(20),min.b2=log(650),min.b3=log(1133),
+                                                                      min.b4=log(2015),max.b4=log(229000)),
                                                           error=function(e){return(list(as.numeric(NA),as.numeric(NA)))}),by=c("library","barcode")])
 
 #save temp data file for downstream troubleshooting since the ML meanF took >1hr to calculate -- don't use these for final anlaysis though for reproducibility!
@@ -151,27 +152,27 @@ Next let's look at the distributon of cell counts across the four bins for each 
 ```{r cell_count_coverage, echo=T, fig.width=10, fig.height=10, fig.align="center", dpi=300,dev="png"}
 #histograms
 par(mfrow=c(2,2))
-hist(log10(dt[library=="pool1",expr_count]+0.1),xlab="cell count (log10, plus 0.1 pseudocount)",main="pool1, all bc",col="gray50")
-hist(log10(dt[library=="pool2",expr_count]+0.1),xlab="cell count (log10, plus 0.1 pseudocount)",main="pool2, all bc",col="gray50")
-hist(log10(dt[library=="pool1" & !is.na(expression),expr_count]+0.1),xlab="cell count (log10, plus 0.1 pseudocount)",main="pool1, determined",col="gray50")
-hist(log10(dt[library=="pool2" & !is.na(expression),expr_count]+0.1),xlab="cell count (log10, plus 0.1 pseudocount)",main="pool2, determined",col="gray50")
+hist(log10(dt[library=="lib51_53",expr_count]+0.1),xlab="cell count (log10, plus 0.1 pseudocount)",main="lib51_53, all bc",col="gray50")
+hist(log10(dt[library=="lib52_54",expr_count]+0.1),xlab="cell count (log10, plus 0.1 pseudocount)",main="lib52_54, all bc",col="gray50")
+hist(log10(dt[library=="lib51_53" & !is.na(expression),expr_count]+0.1),xlab="cell count (log10, plus 0.1 pseudocount)",main="lib51_53, determined",col="gray50")
+hist(log10(dt[library=="lib52_54" & !is.na(expression),expr_count]+0.1),xlab="cell count (log10, plus 0.1 pseudocount)",main="lib52_54, determined",col="gray50")
 
 ```
 
-Filter out expression measurements determined from <10 estimated cells
+Filter out expression measurements determined from <5 estimated cells
 
 ```{r filter_min_cfu}
-min_count <- 10
+min_count <- 5
 dt[expr_count<min_count, c("expression","ML_sdF","expr_count") := NA]
 ```
 
 Do as violin plots, faceted by each target. In next notebook, we'll evaluate count depth and possibly apply further filtering to remove low-count expression estimates
 
-```{r expression_distribution_vioplot, echo=T, fig.width=6, fig.height=18, fig.align="center", dpi=300,dev="png"}
+```{r expression_distribution_vioplot, echo=T, fig.width=6, fig.height=9, fig.align="center", dpi=300,dev="png"}
 p1 <- ggplot(dt[!is.na(expression),],aes(x=variant_class,y=expression))+
   geom_violin(scale="width")+stat_summary(fun=median,geom="point",size=1)+
   ggtitle("expression")+xlab("variant class")+theme(axis.text.x=element_text(angle=-90,hjust=0))+
-  facet_wrap(~target,nrow=4)
+  facet_wrap(~target,nrow=2)
 
 grid.arrange(p1,ncol=1)
 

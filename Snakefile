@@ -51,8 +51,8 @@ rule make_summary:
         barcode_variant_table_PDF2180=config['codon_variant_table_file_PDF2180'],
         variant_counts_file=config['variant_counts_file'],
         count_variants=nb_markdown('count_variants.ipynb'),
-        fit_titrations='results/summary/compute_binding_Kd.md',
-        variant_Kds_file=config['Titeseq_Kds_file'],
+        fit_titrations_hDPP4='results/summary/compute_Kd_hDPP4.md',
+        hDPP4_Kds_file=config['Titeseq_Kds_file_hDPP4'],
         calculate_expression='results/summary/compute_expression_meanF.md',
         variant_expression_file=config['expression_sortseq_file'],
         collapse_scores='results/summary/collapse_scores.md',
@@ -82,20 +82,20 @@ rule make_summary:
             
             1. Process PacBio CCSs for each background: [MERS-CoV]({path(input.process_ccs_MERS)}) and [PDF2180]({path(input.process_ccs_PDF2180)}). Creates barcode-variant lookup tables for each background: [MERS-CoV]({path(input.barcode_variant_table_MERS)}) and [PDF2180]({path(input.barcode_variant_table_PDF2180)}).
             
-            3. [Count variants by barcode]({path(input.count_variants)}).
+            2. [Count variants by barcode]({path(input.count_variants)}).
                Creates a [variant counts file]({path(input.variant_counts_file)})
                giving counts of each barcoded variant in each condition.
 
-            4. [Fit titration curves]({path(input.fit_titrations)}) to calculate per-barcode K<sub>D</sub>, recorded in [this file]({path(input.variant_Kds_file)}).
+            3. Fit titration curves for RBD binding to [hDPP4]({path(input.fit_titrations_hDPP4)}) to calculate per-barcode K<sub>D</sub>, recorded in these files for [hDPP4]({path(input.hDPP4_Kds_file)}).
             
-            5. [Analyze Sort-seq]({path(input.calculate_expression)}) to calculate per-barcode RBD expression, recorded in [this file]({path(input.variant_expression_file)}).
+            4. [Analyze Sort-seq]({path(input.calculate_expression)}) to calculate per-barcode RBD expression, recorded in [this file]({path(input.variant_expression_file)}).
             
-            6. [Derive final genotype-level phenotypes from replicate barcoded sequences]({path(input.collapse_scores)}).
+            5. [Derive final genotype-level phenotypes from replicate barcoded sequences]({path(input.collapse_scores)}).
                Generates final phenotypes, recorded in [this file]({path(input.mut_phenos_file)}).
             
-            7. [Analyze patterns of epistasis in the DMS data and in SARS-CoV-2 genomic data]({path(input.epistatic_shifts)}).
+            6. [Analyze patterns of epistasis in the DMS data and in SARS-CoV-2 genomic data]({path(input.epistatic_shifts)}).
             
-            8. Make interactive data visualizations, available [here](https://jbloomlab.github.io/SARS-CoV-2-RBD_DMS_Omicron/)
+            7. Make interactive data visualizations, available [here](https://jbloomlab.github.io/SARS-CoV-2-RBD_DMS_Omicron/)
 
             """
             ).strip())
@@ -147,7 +147,7 @@ rule epistatic_shifts:
 
 rule collapse_scores:
     input:
-        config['Titeseq_Kds_file'],
+        config['Titeseq_Kds_file_hDPP4'],
         config['expression_sortseq_file'],
     output:
         config['final_variant_scores_mut_file'],
@@ -166,21 +166,21 @@ rule collapse_scores:
         mv {params.md_files} {output.md_files}
         """
 
-rule fit_titrations:
+rule fit_titrations_hDPP4:
     input:
         config['codon_variant_table_file_MERS'],
         config['codon_variant_table_file_PDF2180'],
         config['variant_counts_file']
     output:
-        config['Titeseq_Kds_file'],
-        md='results/summary/compute_binding_Kd.md',
-        md_files=directory('results/summary/compute_binding_Kd_files')
+        config['Titeseq_Kds_file_hDPP4'],
+        md='results/summary/compute_Kd_hDPP4.md',
+        md_files=directory('results/summary/compute_Kd_hDPP4_files')
     envmodules:
         'R/3.6.2-foss-2019b'
     params:
-        nb='compute_binding_Kd.Rmd',
-        md='compute_binding_Kd.md',
-        md_files='compute_binding_Kd_files'
+        nb='compute_Kd_hDPP4.Rmd',
+        md='compute_Kd_hDPP4.md',
+        md_files='compute_Kd_hDPP4_files'
     shell:
         """
         R -e \"rmarkdown::render(input=\'{params.nb}\')\";

@@ -36,6 +36,7 @@ from alignparse.constants import CBPALETTE
 import alignparse.minimap2
 import alignparse.targets
 import alignparse.consensus
+import alignparse.utils
 
 import dms_variants
 import dms_variants.codonvarianttable
@@ -125,18 +126,18 @@ display(HTML(pacbio_runs.to_html(index=False)))
   </thead>
   <tbody>
     <tr>
-      <td>lib51</td>
+      <td>lib51_53</td>
       <td>MERS</td>
       <td>221209</td>
-      <td>lib51_MERS_221209</td>
-      <td>results/ccs/lib51_MERS_221209_ccs.fastq.gz</td>
+      <td>lib51_53_MERS_221209</td>
+      <td>results/ccs/lib51_53_MERS_221209_ccs.fastq.gz</td>
     </tr>
     <tr>
-      <td>lib52</td>
+      <td>lib52_54</td>
       <td>MERS</td>
       <td>221209</td>
-      <td>lib52_MERS_221209</td>
-      <td>results/ccs/lib52_MERS_221209_ccs.fastq.gz</td>
+      <td>lib52_54_MERS_221209</td>
+      <td>results/ccs/lib52_54_MERS_221209_ccs.fastq.gz</td>
     </tr>
   </tbody>
 </table>
@@ -191,8 +192,8 @@ print(targets.feature_parse_specs('yaml'))
 ```
 
     MERS:
-      query_clip5: 8
-      query_clip3: 8
+      query_clip5: 5
+      query_clip3: 5
       termini5:
         filter:
           clip5: 4
@@ -476,7 +477,7 @@ display(HTML(aligned_df.head().to_html(index=False)))
   </thead>
   <tbody>
     <tr>
-      <td>lib51</td>
+      <td>lib51_53</td>
       <td>m64272e_221211_134523/0/ccs/fwd</td>
       <td>A370C T371A C372T</td>
       <td>0.999961</td>
@@ -485,7 +486,7 @@ display(HTML(aligned_df.head().to_html(index=False)))
       <td>MERS</td>
     </tr>
     <tr>
-      <td>lib51</td>
+      <td>lib51_53</td>
       <td>m64272e_221211_134523/0/ccs/rev</td>
       <td>C293G A294G ins413TT</td>
       <td>1.000000</td>
@@ -494,7 +495,7 @@ display(HTML(aligned_df.head().to_html(index=False)))
       <td>MERS</td>
     </tr>
     <tr>
-      <td>lib51</td>
+      <td>lib51_53</td>
       <td>m64272e_221211_134523/14/ccs/fwd</td>
       <td>C55G A56T A57T del70to70</td>
       <td>1.000000</td>
@@ -503,7 +504,7 @@ display(HTML(aligned_df.head().to_html(index=False)))
       <td>MERS</td>
     </tr>
     <tr>
-      <td>lib51</td>
+      <td>lib51_53</td>
       <td>m64272e_221211_134523/14/ccs/rev</td>
       <td>C445T C446G A447T</td>
       <td>1.000000</td>
@@ -512,7 +513,7 @@ display(HTML(aligned_df.head().to_html(index=False)))
       <td>MERS</td>
     </tr>
     <tr>
-      <td>lib51</td>
+      <td>lib51_53</td>
       <td>m64272e_221211_134523/17/ccs/fwd</td>
       <td>G643C C644A T645A</td>
       <td>1.000000</td>
@@ -568,7 +569,7 @@ print(f"Read {len(processed_ccs)} CCSs from {nlibs} libraries and {ntargets} tar
 display(HTML(processed_ccs.head().to_html(index=False)))
 ```
 
-    Read 2530140 CCSs from 2 libraries and 1 targets.
+    Read 2530004 CCSs from 2 libraries and 1 targets.
 
 
 
@@ -586,7 +587,7 @@ display(HTML(processed_ccs.head().to_html(index=False)))
   </thead>
   <tbody>
     <tr>
-      <td>lib51</td>
+      <td>lib51_53</td>
       <td>m64272e_221211_134523/0/ccs/fwd</td>
       <td>A370C T371A C372T</td>
       <td>0.999961</td>
@@ -595,7 +596,7 @@ display(HTML(processed_ccs.head().to_html(index=False)))
       <td>MERS</td>
     </tr>
     <tr>
-      <td>lib51</td>
+      <td>lib51_53</td>
       <td>m64272e_221211_134523/0/ccs/rev</td>
       <td>C293G A294G ins413TT</td>
       <td>1.000000</td>
@@ -604,7 +605,7 @@ display(HTML(processed_ccs.head().to_html(index=False)))
       <td>MERS</td>
     </tr>
     <tr>
-      <td>lib51</td>
+      <td>lib51_53</td>
       <td>m64272e_221211_134523/14/ccs/fwd</td>
       <td>C55G A56T A57T del70to70</td>
       <td>1.000000</td>
@@ -613,7 +614,7 @@ display(HTML(processed_ccs.head().to_html(index=False)))
       <td>MERS</td>
     </tr>
     <tr>
-      <td>lib51</td>
+      <td>lib51_53</td>
       <td>m64272e_221211_134523/14/ccs/rev</td>
       <td>C445T C446G A447T</td>
       <td>1.000000</td>
@@ -622,7 +623,7 @@ display(HTML(processed_ccs.head().to_html(index=False)))
       <td>MERS</td>
     </tr>
     <tr>
-      <td>lib51</td>
+      <td>lib51_53</td>
       <td>m64272e_221211_134523/17/ccs/fwd</td>
       <td>G643C C644A T645A</td>
       <td>1.000000</td>
@@ -633,6 +634,20 @@ display(HTML(processed_ccs.head().to_html(index=False)))
   </tbody>
 </table>
 
+
+Optional: discard reads that have a `fwd` or `rev` indicator suggestive of heteroduplexes (or we suspect in these runs, some form of pseudo-duplex).
+
+
+```python
+#start = len(processed_ccs)
+#processed_ccs = processed_ccs.loc[~processed_ccs['query_name'].str.contains('fwd')]
+#processed_ccs = processed_ccs.loc[~processed_ccs['query_name'].str.contains('rev')]
+#end = len(processed_ccs)
+
+#print(f"Went from {start} CCSs to {end} after discarded split/duplexed fwd and rev reads.")
+
+#display(HTML(processed_ccs.head().to_html(index=False)))
+```
 
 Overall statistics on number of total CCSs and number of unique barcodes:
 
@@ -670,15 +685,15 @@ display(HTML(
   <tbody>
     <tr>
       <th rowspan="2" valign="top">MERS</th>
-      <th>lib51</th>
-      <td>1428571</td>
-      <td>104348</td>
+      <th>lib51_53</th>
+      <td>1428486</td>
+      <td>104346</td>
       <td>13.69</td>
     </tr>
     <tr>
-      <th>lib52</th>
-      <td>1101569</td>
-      <td>135983</td>
+      <th>lib52_54</th>
+      <td>1101518</td>
+      <td>135982</td>
       <td>8.10</td>
     </tr>
   </tbody>
@@ -731,7 +746,7 @@ _ = (
 
 
     
-![png](process_ccs_MERS_files/process_ccs_MERS_59_0.png)
+![png](process_ccs_MERS_files/process_ccs_MERS_61_0.png)
     
 
 
@@ -771,7 +786,7 @@ _ = (
 
 
     
-![png](process_ccs_MERS_files/process_ccs_MERS_63_0.png)
+![png](process_ccs_MERS_files/process_ccs_MERS_65_0.png)
     
 
 
@@ -809,7 +824,7 @@ _ = p.draw()
 
 
     
-![png](process_ccs_MERS_files/process_ccs_MERS_65_0.png)
+![png](process_ccs_MERS_files/process_ccs_MERS_67_0.png)
     
 
 
@@ -829,18 +844,271 @@ We will do this four for sets of sequences:
     the rationale is that we only really care about substitutions, and will exclude sequences with indels anyway.
  4. Like (2) but excluding all CCSs with indels.
  
-First, we annotate the sequences with the number of indels and whether they have an indel to enable categorization into the aforementioned sets:
+First, we annotate the sequences with the number of indels and whether they have an indel to enable categorization into the aforementioned sets. We want to convert the way we call *only* in-frame deletions to be substitution style (that is, `del511to513` becomes `C511- C512- G513-`), if the deletion is a single-codon in-frame deletion. We do this using alignparse util InFrameDeletionsToSubs. Below, when we parse indels, these in-frame deletions will be treated as "substitutions" and not add to indel counts, so we can then parse on indel count which will be count of out-of-frame indels.:
+
+
+```python
+targets = alignparse.targets.Targets(seqsfile=config['amplicons_' + background],
+                                     feature_parse_specs=config['feature_parse_specs_' + background])
+geneseq = targets.get_target(background).get_feature('gene').seq
+
+print(f"Read gene of {len(geneseq)} nts for {background} from {config['amplicons_' + background]}")
+```
+
+    Read gene of 645 nts for MERS from data/PacBio_amplicon_MERS.gb
+
 
 
 ```python
 processed_ccs = processed_ccs.reset_index(drop=True)
 
+deltosubs = alignparse.utils.InFrameDeletionsToSubs(geneseq)
+
+processed_ccs['gene_mutations_with_del'] = processed_ccs.apply(lambda x: deltosubs.dels_to_subs(x['gene_mutations']), axis=1)
+
 processed_ccs = alignparse.consensus.add_mut_info_cols(processed_ccs,
-                                                       mutation_col='gene_mutations',
+                                                       mutation_col='gene_mutations_with_del',
                                                        n_indel_col='n_indels')
 
 processed_ccs = processed_ccs.assign(has_indel=lambda x: x['n_indels'] > 0)
+
+processed_ccs.head(n=12)
 ```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>library</th>
+      <th>query_name</th>
+      <th>gene_mutations</th>
+      <th>gene_accuracy</th>
+      <th>barcode</th>
+      <th>barcode_accuracy</th>
+      <th>target</th>
+      <th>barcode_error</th>
+      <th>gene_error</th>
+      <th>retained</th>
+      <th>gene_mutations_with_del</th>
+      <th>n_indels</th>
+      <th>has_indel</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>lib51_53</td>
+      <td>m64272e_221211_134523/0/ccs/fwd</td>
+      <td>A370C T371A C372T</td>
+      <td>0.999961</td>
+      <td>CTAAAATATACAATGA</td>
+      <td>1.000000</td>
+      <td>MERS</td>
+      <td>1.000000e-07</td>
+      <td>3.894448e-05</td>
+      <td>True</td>
+      <td>A370C T371A C372T</td>
+      <td>0</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>lib51_53</td>
+      <td>m64272e_221211_134523/0/ccs/rev</td>
+      <td>C293G A294G ins413TT</td>
+      <td>1.000000</td>
+      <td>CTAAAATATACAATGA</td>
+      <td>1.000000</td>
+      <td>MERS</td>
+      <td>1.000000e-07</td>
+      <td>1.000000e-07</td>
+      <td>True</td>
+      <td>C293G A294G ins413TT</td>
+      <td>1</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>lib51_53</td>
+      <td>m64272e_221211_134523/14/ccs/fwd</td>
+      <td>C55G A56T A57T del70to70</td>
+      <td>1.000000</td>
+      <td>TTTCAACTAAAATTAT</td>
+      <td>1.000000</td>
+      <td>MERS</td>
+      <td>1.000000e-07</td>
+      <td>1.000000e-07</td>
+      <td>True</td>
+      <td>C55G A56T A57T del70to70</td>
+      <td>1</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>lib51_53</td>
+      <td>m64272e_221211_134523/14/ccs/rev</td>
+      <td>C445T C446G A447T</td>
+      <td>1.000000</td>
+      <td>TTTCAACTAAAATTAT</td>
+      <td>1.000000</td>
+      <td>MERS</td>
+      <td>1.000000e-07</td>
+      <td>1.000000e-07</td>
+      <td>True</td>
+      <td>C445T C446G A447T</td>
+      <td>0</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>lib51_53</td>
+      <td>m64272e_221211_134523/17/ccs/fwd</td>
+      <td>G643C C644A T645A</td>
+      <td>1.000000</td>
+      <td>TTTCATTTCGAATATT</td>
+      <td>1.000000</td>
+      <td>MERS</td>
+      <td>1.000000e-07</td>
+      <td>1.000000e-07</td>
+      <td>True</td>
+      <td>G643C C644A T645A</td>
+      <td>0</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>lib51_53</td>
+      <td>m64272e_221211_134523/76/ccs</td>
+      <td>del304to304 C306A del325to325</td>
+      <td>0.999318</td>
+      <td>CGCCCTCTACTACCGC</td>
+      <td>1.000000</td>
+      <td>MERS</td>
+      <td>1.000000e-07</td>
+      <td>6.823845e-04</td>
+      <td>False</td>
+      <td>del304to304 C306A del325to325</td>
+      <td>2</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>lib51_53</td>
+      <td>m64272e_221211_134523/80/ccs/fwd</td>
+      <td>A118T G119A C120T</td>
+      <td>1.000000</td>
+      <td>TATGAATCCAAATACC</td>
+      <td>1.000000</td>
+      <td>MERS</td>
+      <td>1.000000e-07</td>
+      <td>1.522222e-07</td>
+      <td>True</td>
+      <td>A118T G119A C120T</td>
+      <td>0</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>lib51_53</td>
+      <td>m64272e_221211_134523/85/ccs</td>
+      <td>T24A del177to177</td>
+      <td>0.999609</td>
+      <td>GGCAAAGTCGTAAACA</td>
+      <td>1.000000</td>
+      <td>MERS</td>
+      <td>1.000000e-07</td>
+      <td>3.910309e-04</td>
+      <td>False</td>
+      <td>T24A del177to177</td>
+      <td>1</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>lib51_53</td>
+      <td>m64272e_221211_134523/89/ccs</td>
+      <td>del216to216</td>
+      <td>0.999479</td>
+      <td>CACGAATGCAACATAA</td>
+      <td>1.000000</td>
+      <td>MERS</td>
+      <td>1.000000e-07</td>
+      <td>5.206476e-04</td>
+      <td>False</td>
+      <td>del216to216</td>
+      <td>1</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>lib51_53</td>
+      <td>m64272e_221211_134523/109/ccs/rev</td>
+      <td>C199T T200G del586to586 ins640T</td>
+      <td>0.997258</td>
+      <td>GAAATTGCTAATAGGA</td>
+      <td>0.980196</td>
+      <td>MERS</td>
+      <td>1.980400e-02</td>
+      <td>2.742160e-03</td>
+      <td>False</td>
+      <td>C199T T200G del586to586 ins640T</td>
+      <td>2</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>lib51_53</td>
+      <td>m64272e_221211_134523/117/ccs/fwd</td>
+      <td>ins443C del511to513 ins627C</td>
+      <td>0.997416</td>
+      <td>CTAACGGTCATGTTTC</td>
+      <td>0.999999</td>
+      <td>MERS</td>
+      <td>8.112820e-07</td>
+      <td>2.583636e-03</td>
+      <td>False</td>
+      <td>ins443C C511- C512- G513- ins627C</td>
+      <td>2</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>lib51_53</td>
+      <td>m64272e_221211_134523/136/ccs/fwd</td>
+      <td>T116A A117T T532G</td>
+      <td>0.999994</td>
+      <td>GCCTGAGTAGGTATAT</td>
+      <td>0.999990</td>
+      <td>MERS</td>
+      <td>9.912271e-06</td>
+      <td>6.146009e-06</td>
+      <td>True</td>
+      <td>T116A A117T T532G</td>
+      <td>0</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 Plot how many sequences have indels:
 
@@ -863,7 +1131,7 @@ _ = (
 
 
     
-![png](process_ccs_MERS_files/process_ccs_MERS_69_0.png)
+![png](process_ccs_MERS_files/process_ccs_MERS_72_0.png)
     
 
 
@@ -931,59 +1199,59 @@ display(HTML(empirical_acc.to_html(index=False)))
   </thead>
   <tbody>
     <tr>
-      <td>lib51</td>
-      <td>0.368761</td>
+      <td>lib51_53</td>
+      <td>0.368758</td>
       <td>retained</td>
-      <td>806257</td>
+      <td>806234</td>
       <td>False</td>
     </tr>
     <tr>
-      <td>lib52</td>
-      <td>0.364780</td>
+      <td>lib52_54</td>
+      <td>0.364774</td>
       <td>retained</td>
-      <td>631480</td>
+      <td>631462</td>
       <td>False</td>
     </tr>
     <tr>
-      <td>lib51</td>
-      <td>0.460130</td>
+      <td>lib51_53</td>
+      <td>0.455418</td>
       <td>retained, no indel</td>
-      <td>616080</td>
+      <td>632940</td>
       <td>True</td>
     </tr>
     <tr>
-      <td>lib52</td>
-      <td>0.455133</td>
+      <td>lib52_54</td>
+      <td>0.450255</td>
       <td>retained, no indel</td>
-      <td>483124</td>
+      <td>496568</td>
       <td>True</td>
     </tr>
     <tr>
-      <td>lib51</td>
-      <td>0.383573</td>
+      <td>lib51_53</td>
+      <td>0.383570</td>
       <td>10X accuracy</td>
-      <td>596249</td>
+      <td>596232</td>
       <td>False</td>
     </tr>
     <tr>
-      <td>lib52</td>
-      <td>0.380595</td>
+      <td>lib52_54</td>
+      <td>0.380586</td>
       <td>10X accuracy</td>
-      <td>471449</td>
+      <td>471437</td>
       <td>False</td>
     </tr>
     <tr>
-      <td>lib51</td>
-      <td>0.457077</td>
+      <td>lib51_53</td>
+      <td>0.452351</td>
       <td>10X accuracy, no indel</td>
-      <td>478845</td>
+      <td>491969</td>
       <td>False</td>
     </tr>
     <tr>
-      <td>lib52</td>
-      <td>0.452590</td>
+      <td>lib52_54</td>
+      <td>0.447666</td>
       <td>10X accuracy, no indel</td>
-      <td>378981</td>
+      <td>389526</td>
       <td>False</td>
     </tr>
   </tbody>
@@ -1006,7 +1274,7 @@ p = (
           panel_grid_major_x=element_blank(),
           ) +
     xlab('') +
-    scale_y_continuous(name='empirical accuracy', limits=(0.3, 1.005)) +
+    scale_y_continuous(name='empirical accuracy', limits=(0.2, 1.005)) +
     scale_color_manual(values=CBPALETTE, guide=False)
     )
 
@@ -1020,7 +1288,7 @@ _ = p.draw()
 
 
     
-![png](process_ccs_MERS_files/process_ccs_MERS_75_1.png)
+![png](process_ccs_MERS_files/process_ccs_MERS_78_1.png)
     
 
 
@@ -1037,14 +1305,14 @@ The documentation for that function explains the method in detail, but basically
  1. When there is just one CCS per barcode, the consensus is just that sequence.
  2. When there are multiple CCSs per barcode, they are used to build a consensus--however, the entire barcode is discarded if there are many differences between CCSs with the barcode, or high-frequency non-consensus mutations. The reason that barcodes are discarded in such cases as many differences between CCSs or high-frequency non-consensus mutations suggest errors such as barcode collisions or strand exchange.
  
-First, call the consensus for each barcode including **all** retained sequences, even those with indels:
+First, call the consensus for each barcode including **all** retained sequences, even those with undesirable indels.
 
 
 ```python
 consensus, dropped = alignparse.consensus.simple_mutconsensus(
                         processed_ccs.query('retained'),
                         group_cols=('library', 'barcode', 'target'),
-                        mutation_col='gene_mutations',
+                        mutation_col='gene_mutations_with_del',
                         )
 ```
 
@@ -1063,41 +1331,41 @@ display(HTML(consensus.head().to_html(index=False)))
       <th>library</th>
       <th>barcode</th>
       <th>target</th>
-      <th>gene_mutations</th>
+      <th>gene_mutations_with_del</th>
       <th>variant_call_support</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>lib51</td>
+      <td>lib51_53</td>
       <td>AAAAAAAAACTCTTCA</td>
       <td>MERS</td>
       <td></td>
       <td>1</td>
     </tr>
     <tr>
-      <td>lib51</td>
+      <td>lib51_53</td>
       <td>AAAAAAAACTTTAGAA</td>
       <td>MERS</td>
       <td>A106G G108T C132T</td>
       <td>1</td>
     </tr>
     <tr>
-      <td>lib51</td>
+      <td>lib51_53</td>
       <td>AAAAAAAAGTTCATAT</td>
       <td>MERS</td>
-      <td>del463to465</td>
+      <td>C463- C464- G465-</td>
       <td>1</td>
     </tr>
     <tr>
-      <td>lib51</td>
+      <td>lib51_53</td>
       <td>AAAAAAAATGTCATGG</td>
       <td>MERS</td>
       <td>C574A A575T A576T</td>
       <td>1</td>
     </tr>
     <tr>
-      <td>lib51</td>
+      <td>lib51_53</td>
       <td>AAAAAAAATGTGTTAC</td>
       <td>MERS</td>
       <td>C574A A575T A576T</td>
@@ -1107,14 +1375,16 @@ display(HTML(consensus.head().to_html(index=False)))
 </table>
 
 
-Since we retain variants with substitutions but ignore those with indels, add information about substitution mutations and number of indels:
+Since we retain variants with substitutions and single-codon deletions, add information about substitution mutations, and for troubleshooting, number of indels:
 
 
 ```python
 consensus = alignparse.consensus.add_mut_info_cols(
                     consensus,
-                    mutation_col='gene_mutations',
+                    mutation_col='gene_mutations_with_del',
                     sub_str_col='substitutions',
+                    del_str_col='deletions',
+                    ins_str_col='insertions',
                     n_indel_col='number_of_indels',
                     overwrite_cols=True)
 
@@ -1128,56 +1398,68 @@ display(HTML(consensus.head().to_html(index=False)))
       <th>library</th>
       <th>barcode</th>
       <th>target</th>
-      <th>gene_mutations</th>
+      <th>gene_mutations_with_del</th>
       <th>variant_call_support</th>
       <th>substitutions</th>
+      <th>deletions</th>
+      <th>insertions</th>
       <th>number_of_indels</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>lib51</td>
+      <td>lib51_53</td>
       <td>AAAAAAAAACTCTTCA</td>
       <td>MERS</td>
       <td></td>
       <td>1</td>
       <td></td>
+      <td></td>
+      <td></td>
       <td>0</td>
     </tr>
     <tr>
-      <td>lib51</td>
+      <td>lib51_53</td>
       <td>AAAAAAAACTTTAGAA</td>
       <td>MERS</td>
       <td>A106G G108T C132T</td>
       <td>1</td>
       <td>A106G G108T C132T</td>
+      <td></td>
+      <td></td>
       <td>0</td>
     </tr>
     <tr>
-      <td>lib51</td>
+      <td>lib51_53</td>
       <td>AAAAAAAAGTTCATAT</td>
       <td>MERS</td>
-      <td>del463to465</td>
+      <td>C463- C464- G465-</td>
       <td>1</td>
+      <td>C463- C464- G465-</td>
       <td></td>
-      <td>1</td>
+      <td></td>
+      <td>0</td>
     </tr>
     <tr>
-      <td>lib51</td>
+      <td>lib51_53</td>
       <td>AAAAAAAATGTCATGG</td>
       <td>MERS</td>
       <td>C574A A575T A576T</td>
       <td>1</td>
       <td>C574A A575T A576T</td>
+      <td></td>
+      <td></td>
       <td>0</td>
     </tr>
     <tr>
-      <td>lib51</td>
+      <td>lib51_53</td>
       <td>AAAAAAAATGTGTTAC</td>
       <td>MERS</td>
       <td>C574A A575T A576T</td>
       <td>1</td>
       <td>C574A A575T A576T</td>
+      <td></td>
+      <td></td>
       <td>0</td>
     </tr>
   </tbody>
@@ -1210,7 +1492,7 @@ _ = (
 
 
     
-![png](process_ccs_MERS_files/process_ccs_MERS_84_0.png)
+![png](process_ccs_MERS_files/process_ccs_MERS_87_0.png)
     
 
 
@@ -1225,7 +1507,7 @@ Here are number of valid consensus sequence (no indels) for each library and tar
 
 
 ```python
-consensus = consensus.query('number_of_indels <= 1')
+consensus = consensus.query('number_of_indels < 1')
 
 lib_target_counts = (
     consensus
@@ -1260,14 +1542,14 @@ _ = p.draw()
   </thead>
   <tbody>
     <tr>
-      <td>lib51</td>
+      <td>lib51_53</td>
       <td>MERS</td>
-      <td>17422</td>
+      <td>14547</td>
     </tr>
     <tr>
-      <td>lib52</td>
+      <td>lib52_54</td>
       <td>MERS</td>
-      <td>26132</td>
+      <td>20419</td>
     </tr>
   </tbody>
 </table>
@@ -1275,7 +1557,7 @@ _ = p.draw()
 
 
     
-![png](process_ccs_MERS_files/process_ccs_MERS_86_1.png)
+![png](process_ccs_MERS_files/process_ccs_MERS_89_1.png)
     
 
 
@@ -1287,7 +1569,7 @@ Below we write the retained consensus sequences to a CSV file that links the nuc
 print(f"Writing nucleotide variants to {config['nt_variant_table_file' + '_' + background]}")
       
 (consensus
- [['target', 'library', 'barcode', 'gene_mutations', 'substitutions', 'variant_call_support']]
+ [['target', 'library', 'barcode', 'gene_mutations_with_del', 'substitutions', 'insertions','deletions', 'variant_call_support']]
  .to_csv(config['nt_variant_table_file' + '_' + background], index=False)
  )
       
@@ -1310,50 +1592,62 @@ display(HTML(
       <th>target</th>
       <th>library</th>
       <th>barcode</th>
-      <th>gene_mutations</th>
+      <th>gene_mutations_with_del</th>
       <th>substitutions</th>
+      <th>insertions</th>
+      <th>deletions</th>
       <th>variant_call_support</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>MERS</td>
-      <td>lib51</td>
+      <td>lib51_53</td>
       <td>AAAAAAAAACTCTTCA</td>
       <td></td>
       <td></td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>MERS</td>
-      <td>lib51</td>
-      <td>AAAAAAAACTTTAGAA</td>
-      <td>A106G G108T C132T</td>
-      <td>A106G G108T C132T</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>MERS</td>
-      <td>lib51</td>
-      <td>AAAAAAAAGTTCATAT</td>
-      <td>del463to465</td>
+      <td></td>
       <td></td>
       <td>1</td>
     </tr>
     <tr>
       <td>MERS</td>
-      <td>lib51</td>
-      <td>AAAAAAAATGTCATGG</td>
-      <td>C574A A575T A576T</td>
-      <td>C574A A575T A576T</td>
+      <td>lib51_53</td>
+      <td>AAAAAAAACTTTAGAA</td>
+      <td>A106G G108T C132T</td>
+      <td>A106G G108T C132T</td>
+      <td></td>
+      <td></td>
       <td>1</td>
     </tr>
     <tr>
       <td>MERS</td>
-      <td>lib51</td>
+      <td>lib51_53</td>
+      <td>AAAAAAAAGTTCATAT</td>
+      <td>C463- C464- G465-</td>
+      <td>C463- C464- G465-</td>
+      <td></td>
+      <td></td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>MERS</td>
+      <td>lib51_53</td>
+      <td>AAAAAAAATGTCATGG</td>
+      <td>C574A A575T A576T</td>
+      <td>C574A A575T A576T</td>
+      <td></td>
+      <td></td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>MERS</td>
+      <td>lib51_53</td>
       <td>AAAAAAAATGTGTTAC</td>
       <td>C574A A575T A576T</td>
       <td>C574A A575T A576T</td>
+      <td></td>
+      <td></td>
       <td>1</td>
     </tr>
   </tbody>
@@ -1381,35 +1675,35 @@ display(HTML(dropped.head().to_html(index=False)))
   </thead>
   <tbody>
     <tr>
-      <td>lib51</td>
+      <td>lib51_53</td>
       <td>AAAAAAAAAAAGGCCG</td>
       <td>MERS</td>
       <td>subs diff too large</td>
       <td>4</td>
     </tr>
     <tr>
-      <td>lib51</td>
+      <td>lib51_53</td>
       <td>AAAAAAAAACATTCGT</td>
       <td>MERS</td>
       <td>subs diff too large</td>
       <td>11</td>
     </tr>
     <tr>
-      <td>lib51</td>
+      <td>lib51_53</td>
       <td>AAAAAAAAACCAACGC</td>
       <td>MERS</td>
       <td>subs diff too large</td>
       <td>3</td>
     </tr>
     <tr>
-      <td>lib51</td>
+      <td>lib51_53</td>
       <td>AAAAAAAAAGACTTTC</td>
       <td>MERS</td>
       <td>subs diff too large</td>
       <td>12</td>
     </tr>
     <tr>
-      <td>lib51</td>
+      <td>lib51_53</td>
       <td>AAAAAAAAAGCGATAG</td>
       <td>MERS</td>
       <td>subs diff too large</td>
@@ -1446,7 +1740,7 @@ _ = (
 
 
     
-![png](process_ccs_MERS_files/process_ccs_MERS_92_0.png)
+![png](process_ccs_MERS_files/process_ccs_MERS_95_0.png)
     
 
 
@@ -1483,7 +1777,179 @@ variants = dms_variants.codonvarianttable.CodonVariantTable(
                 primary_target=background,
                 allowgaps=True,
                 )
+
+variants.barcode_variant_df.head(n=12)
 ```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>target</th>
+      <th>library</th>
+      <th>barcode</th>
+      <th>variant_call_support</th>
+      <th>codon_substitutions</th>
+      <th>aa_substitutions</th>
+      <th>n_codon_substitutions</th>
+      <th>n_aa_substitutions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>MERS</td>
+      <td>lib51_53</td>
+      <td>AAAAAAAAACTCTTCA</td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>MERS</td>
+      <td>lib51_53</td>
+      <td>AAAAAAAACTTTAGAA</td>
+      <td>1</td>
+      <td>ACG36GCT GTC44GTT</td>
+      <td>T36A</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>MERS</td>
+      <td>lib51_53</td>
+      <td>AAAAAAAAGTTCATAT</td>
+      <td>1</td>
+      <td>CCG155---</td>
+      <td>P155-</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>MERS</td>
+      <td>lib51_53</td>
+      <td>AAAAAAAATGTCATGG</td>
+      <td>1</td>
+      <td>CAA192ATT</td>
+      <td>Q192I</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>MERS</td>
+      <td>lib51_53</td>
+      <td>AAAAAAAATGTGTTAC</td>
+      <td>1</td>
+      <td>CAA192ATT</td>
+      <td>Q192I</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>MERS</td>
+      <td>lib51_53</td>
+      <td>AAAAAAACGACTTGGA</td>
+      <td>1</td>
+      <td>AGG135ATT</td>
+      <td>R135I</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>MERS</td>
+      <td>lib51_53</td>
+      <td>AAAAAAAGCCGCACTG</td>
+      <td>1</td>
+      <td>GGT182TTG</td>
+      <td>G182L</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>MERS</td>
+      <td>lib51_53</td>
+      <td>AAAAAAAGGTTATACT</td>
+      <td>1</td>
+      <td>CTT67TAT</td>
+      <td>L67Y</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>MERS</td>
+      <td>lib51_53</td>
+      <td>AAAAAAATAACTAATC</td>
+      <td>1</td>
+      <td>GTT27AGA</td>
+      <td>V27R</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>MERS</td>
+      <td>lib51_53</td>
+      <td>AAAAAAATATATCAAT</td>
+      <td>1</td>
+      <td>AAC92AAA</td>
+      <td>N92K</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>MERS</td>
+      <td>lib51_53</td>
+      <td>AAAAAACAATTCGTCT</td>
+      <td>1</td>
+      <td>TTT91AAA GGC194GTT</td>
+      <td>F91K G194V</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>MERS</td>
+      <td>lib51_53</td>
+      <td>AAAAAACACCAGTCTG</td>
+      <td>1</td>
+      <td>GCG2AGA</td>
+      <td>A2R</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 ### Basic stats on variants
 We now will analyze the variants.
@@ -1508,8 +1974,8 @@ display(HTML(
   <thead>
     <tr style="text-align: right;">
       <th>library</th>
-      <th>lib51</th>
-      <th>lib52</th>
+      <th>lib51_53</th>
+      <th>lib52_54</th>
       <th>all libraries</th>
     </tr>
     <tr>
@@ -1522,9 +1988,9 @@ display(HTML(
   <tbody>
     <tr>
       <th>MERS</th>
-      <td>17422</td>
-      <td>26132</td>
-      <td>43554</td>
+      <td>14547</td>
+      <td>20419</td>
+      <td>34966</td>
     </tr>
   </tbody>
 </table>
@@ -1545,7 +2011,7 @@ _ = p.draw()
 
 
     
-![png](process_ccs_MERS_files/process_ccs_MERS_100_0.png)
+![png](process_ccs_MERS_files/process_ccs_MERS_103_0.png)
     
 
 
@@ -1574,13 +2040,13 @@ for mut_type in ['aa', 'codon']:
 
 
     
-![png](process_ccs_MERS_files/process_ccs_MERS_102_1.png)
+![png](process_ccs_MERS_files/process_ccs_MERS_105_1.png)
     
 
 
 
     
-![png](process_ccs_MERS_files/process_ccs_MERS_102_2.png)
+![png](process_ccs_MERS_files/process_ccs_MERS_105_2.png)
     
 
 
@@ -1603,7 +2069,7 @@ p.save(plotfile)
 
 
     
-![png](process_ccs_MERS_files/process_ccs_MERS_104_1.png)
+![png](process_ccs_MERS_files/process_ccs_MERS_107_1.png)
     
 
 
@@ -1623,7 +2089,7 @@ _ = p.draw()
 
 
     
-![png](process_ccs_MERS_files/process_ccs_MERS_106_0.png)
+![png](process_ccs_MERS_files/process_ccs_MERS_109_0.png)
     
 
 
@@ -1649,13 +2115,13 @@ for variant_type in ['all', 'single']:
 
 
     
-![png](process_ccs_MERS_files/process_ccs_MERS_108_1.png)
+![png](process_ccs_MERS_files/process_ccs_MERS_111_1.png)
     
 
 
 
     
-![png](process_ccs_MERS_files/process_ccs_MERS_108_2.png)
+![png](process_ccs_MERS_files/process_ccs_MERS_111_2.png)
     
 
 
@@ -1707,66 +2173,66 @@ display(HTML(
     <tr>
       <th rowspan="18" valign="top">all</th>
       <th rowspan="9" valign="top">False</th>
-      <th rowspan="3" valign="top">lib51</th>
+      <th rowspan="3" valign="top">lib51_53</th>
       <th>0</th>
-      <td>438</td>
+      <td>327</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>510</td>
+      <td>683</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>3352</td>
+      <td>3290</td>
     </tr>
     <tr>
-      <th rowspan="3" valign="top">lib52</th>
+      <th rowspan="3" valign="top">lib52_54</th>
       <th>0</th>
-      <td>289</td>
+      <td>147</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>247</td>
+      <td>369</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>3764</td>
+      <td>3784</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">all libraries</th>
       <th>0</th>
-      <td>224</td>
+      <td>25</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>35</td>
+      <td>67</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>4041</td>
+      <td>4208</td>
     </tr>
     <tr>
       <th rowspan="9" valign="top">True</th>
-      <th rowspan="3" valign="top">lib51</th>
+      <th rowspan="3" valign="top">lib51_53</th>
       <th>0</th>
-      <td>561</td>
+      <td>464</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>538</td>
+      <td>716</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>3416</td>
+      <td>3335</td>
     </tr>
     <tr>
-      <th rowspan="3" valign="top">lib52</th>
+      <th rowspan="3" valign="top">lib52_54</th>
       <th>0</th>
-      <td>390</td>
+      <td>259</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>273</td>
+      <td>404</td>
     </tr>
     <tr>
       <th>&gt;1</th>
@@ -1775,96 +2241,96 @@ display(HTML(
     <tr>
       <th rowspan="3" valign="top">all libraries</th>
       <th>0</th>
-      <td>319</td>
+      <td>131</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>53</td>
+      <td>89</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>4143</td>
+      <td>4295</td>
     </tr>
     <tr>
       <th rowspan="18" valign="top">single</th>
       <th rowspan="9" valign="top">False</th>
-      <th rowspan="3" valign="top">lib51</th>
+      <th rowspan="3" valign="top">lib51_53</th>
       <th>0</th>
-      <td>583</td>
+      <td>500</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>671</td>
+      <td>875</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>3046</td>
+      <td>2925</td>
     </tr>
     <tr>
-      <th rowspan="3" valign="top">lib52</th>
+      <th rowspan="3" valign="top">lib52_54</th>
       <th>0</th>
-      <td>353</td>
+      <td>249</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>405</td>
+      <td>599</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>3542</td>
+      <td>3452</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">all libraries</th>
       <th>0</th>
-      <td>236</td>
+      <td>42</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>73</td>
+      <td>147</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>3991</td>
+      <td>4111</td>
     </tr>
     <tr>
       <th rowspan="9" valign="top">True</th>
-      <th rowspan="3" valign="top">lib51</th>
+      <th rowspan="3" valign="top">lib51_53</th>
       <th>0</th>
-      <td>727</td>
+      <td>665</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>704</td>
+      <td>897</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>3084</td>
+      <td>2953</td>
     </tr>
     <tr>
-      <th rowspan="3" valign="top">lib52</th>
+      <th rowspan="3" valign="top">lib52_54</th>
       <th>0</th>
-      <td>473</td>
+      <td>388</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>434</td>
+      <td>628</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>3608</td>
+      <td>3499</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">all libraries</th>
       <th>0</th>
-      <td>342</td>
+      <td>173</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>103</td>
+      <td>173</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>4070</td>
+      <td>4169</td>
     </tr>
   </tbody>
 </table>
@@ -1884,13 +2350,13 @@ for variant_type in ['all', 'single']:
 
 
     
-![png](process_ccs_MERS_files/process_ccs_MERS_112_0.png)
+![png](process_ccs_MERS_files/process_ccs_MERS_115_0.png)
     
 
 
 
     
-![png](process_ccs_MERS_files/process_ccs_MERS_112_1.png)
+![png](process_ccs_MERS_files/process_ccs_MERS_115_1.png)
     
 
 
@@ -1907,13 +2373,13 @@ for mut_type in ['aa', 'codon']:
 
 
     
-![png](process_ccs_MERS_files/process_ccs_MERS_114_0.png)
+![png](process_ccs_MERS_files/process_ccs_MERS_117_0.png)
     
 
 
 
     
-![png](process_ccs_MERS_files/process_ccs_MERS_114_1.png)
+![png](process_ccs_MERS_files/process_ccs_MERS_117_1.png)
     
 
 
@@ -1947,7 +2413,7 @@ display(HTML(
   <tbody>
     <tr>
       <td>MERS</td>
-      <td>lib51</td>
+      <td>lib51_53</td>
       <td>AAAAAAAAACTCTTCA</td>
       <td>1</td>
       <td></td>
@@ -1957,7 +2423,7 @@ display(HTML(
     </tr>
     <tr>
       <td>MERS</td>
-      <td>lib51</td>
+      <td>lib51_53</td>
       <td>AAAAAAAACTTTAGAA</td>
       <td>1</td>
       <td>ACG36GCT GTC44GTT</td>
@@ -1967,17 +2433,17 @@ display(HTML(
     </tr>
     <tr>
       <td>MERS</td>
-      <td>lib51</td>
+      <td>lib51_53</td>
       <td>AAAAAAAAGTTCATAT</td>
       <td>1</td>
-      <td></td>
-      <td></td>
-      <td>0</td>
-      <td>0</td>
+      <td>CCG155---</td>
+      <td>P155-</td>
+      <td>1</td>
+      <td>1</td>
     </tr>
     <tr>
       <td>MERS</td>
-      <td>lib51</td>
+      <td>lib51_53</td>
       <td>AAAAAAAATGTCATGG</td>
       <td>1</td>
       <td>CAA192ATT</td>
@@ -1987,7 +2453,7 @@ display(HTML(
     </tr>
     <tr>
       <td>MERS</td>
-      <td>lib51</td>
+      <td>lib51_53</td>
       <td>AAAAAAAATGTGTTAC</td>
       <td>1</td>
       <td>CAA192ATT</td>
