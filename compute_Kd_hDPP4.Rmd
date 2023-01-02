@@ -102,8 +102,10 @@ dt[,variant_class:=as.character(NA)]
 dt[n_codon_substitutions==0, variant_class := "wildtype"]
 dt[n_codon_substitutions > 0 & n_aa_substitutions==0, variant_class := "synonymous"]
 dt[n_aa_substitutions>0 & grepl("*",aa_substitutions,fixed=T), variant_class := "stop"]
-dt[n_aa_substitutions == 1 & !grepl("*",aa_substitutions,fixed=T), variant_class := "1 nonsynonymous"]
-dt[n_aa_substitutions > 1 & !grepl("*",aa_substitutions,fixed=T), variant_class := ">1 nonsynonymous"]
+dt[n_aa_substitutions>0 & grepl("-",aa_substitutions,fixed=T), variant_class := "deletion"]
+dt[n_aa_substitutions == 1 & !grepl("*",aa_substitutions,fixed=T) & !grepl("-",aa_substitutions,fixed=T), variant_class := "1 nonsynonymous"]
+dt[n_aa_substitutions > 1 & !grepl("*",aa_substitutions,fixed=T) & !grepl("-",aa_substitutions,fixed=T), variant_class := ">1 nonsynonymous"]
+
 
 #cast the data frame into wide format
 dt <- dcast(dt, library + barcode + target + variant_class + aa_substitutions + n_aa_substitutions ~ sample, value.var="count.norm")
@@ -350,7 +352,7 @@ Next, let's filter out poor fits using the value we previously computed, the *no
 Look at nMSR metric versus avgcoutn value, and layer on value of nMSR filtering based on 20x the global median (and percentage filtered from each background). Filter to NA fits with nMSR above this cutoff
 
 
-```{r nMSR_v_cell_count, fig.width=8, fig.height=8, fig.align="center",dpi=300,dev="png"}
+```{r nMSR_v_cell_count, fig.width=8, fig.height=4, fig.align="center",dpi=300,dev="png"}
 median.nMSR <- median(dt$nMSR_hDPP4,na.rm=T)
 threshold <- 15
 par(mfrow=c(2,2))

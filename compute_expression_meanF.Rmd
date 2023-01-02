@@ -94,8 +94,9 @@ dt[,variant_class:=as.character(NA)]
 dt[n_codon_substitutions==0, variant_class := "wildtype"]
 dt[n_codon_substitutions > 0 & n_aa_substitutions==0, variant_class := "synonymous"]
 dt[n_aa_substitutions>0 & grepl("*",aa_substitutions,fixed=T), variant_class := "stop"]
-dt[n_aa_substitutions == 1 & !grepl("*",aa_substitutions,fixed=T), variant_class := "1 nonsynonymous"]
-dt[n_aa_substitutions > 1 & !grepl("*",aa_substitutions,fixed=T), variant_class := ">1 nonsynonymous"]
+dt[n_aa_substitutions>0 & grepl("-",aa_substitutions,fixed=T), variant_class := "deletion"]
+dt[n_aa_substitutions == 1 & !grepl("*",aa_substitutions,fixed=T) & !grepl("-",aa_substitutions,fixed=T), variant_class := "1 nonsynonymous"]
+dt[n_aa_substitutions > 1 & !grepl("*",aa_substitutions,fixed=T) & !grepl("-",aa_substitutions,fixed=T), variant_class := ">1 nonsynonymous"]
 
 #cast the data frame into wide format
 dt <- dcast(dt, library + barcode + target + variant_class + aa_substitutions + n_aa_substitutions ~ sample, value.var="count.norm")
