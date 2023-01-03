@@ -1,17 +1,24 @@
----
-title: "Collapse barcodes to final per-RBD/mutant phenotype scores"
-author: "Tyler Starr"
-date: "01/02/2023"
-output:
-  github_document:
-    toc: true
-    html_preview: false
-editor_options: 
-  chunk_output_type: inline
----
-This notebook reads in the per-barcode titration Kds and expression measurements from the `compute_binding_Kd` and `compute_expression_meanF` scripts. It synthesizes these two sets of results and calculates the final 'mean' phenotypes for each variant, and generates some coverage and QC analyses.
+Collapse barcodes to final per-RBD/mutant phenotype scores
+================
+Tyler Starr
+01/02/2023
 
-```{r setup, message=FALSE, warning=FALSE, error=FALSE}
+- <a href="#setup" id="toc-setup">Setup</a>
+- <a href="#calculate-per-variant-mean-scores-within-replicates"
+  id="toc-calculate-per-variant-mean-scores-within-replicates">Calculate
+  per-variant mean scores within replicates</a>
+- <a href="#calculate-per-mutant-score-across-libraries"
+  id="toc-calculate-per-mutant-score-across-libraries">Calculate
+  per-mutant score across libraries</a>
+- <a href="#heatmaps" id="toc-heatmaps">Heatmaps!</a>
+
+This notebook reads in the per-barcode titration Kds and expression
+measurements from the `compute_binding_Kd` and
+`compute_expression_meanF` scripts. It synthesizes these two sets of
+results and calculates the final ‘mean’ phenotypes for each variant, and
+generates some coverage and QC analyses.
+
+``` r
 require("knitr")
 knitr::opts_chunk$set(echo = T)
 knitr::opts_chunk$set(dev.args = list(png = list(type = "cairo")))
@@ -37,25 +44,68 @@ if(!file.exists(config$final_variant_scores_dir)){
   dir.create(file.path(config$final_variant_scores_dir))
 }
 ```
+
 Session info for reproducing environment:
-```{r print_sessionInfo}
+
+``` r
 sessionInfo()
 ```
 
+    ## R version 3.6.2 (2019-12-12)
+    ## Platform: x86_64-pc-linux-gnu (64-bit)
+    ## Running under: Ubuntu 18.04.6 LTS
+    ## 
+    ## Matrix products: default
+    ## BLAS/LAPACK: /app/software/OpenBLAS/0.3.7-GCC-8.3.0/lib/libopenblas_haswellp-r0.3.7.so
+    ## 
+    ## locale:
+    ##  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+    ##  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+    ##  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+    ##  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+    ##  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+    ## [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+    ## 
+    ## attached base packages:
+    ## [1] stats     graphics  grDevices utils     datasets  methods   base     
+    ## 
+    ## other attached packages:
+    ##  [1] gridExtra_2.3     forcats_0.4.0     stringr_1.4.0     dplyr_0.8.3      
+    ##  [5] purrr_0.3.3       readr_1.3.1       tidyr_1.0.0       tibble_3.0.2     
+    ##  [9] ggplot2_3.3.0     tidyverse_1.3.0   data.table_1.12.8 yaml_2.2.0       
+    ## [13] knitr_1.26       
+    ## 
+    ## loaded via a namespace (and not attached):
+    ##  [1] Rcpp_1.0.3       cellranger_1.1.0 pillar_1.4.5     compiler_3.6.2  
+    ##  [5] dbplyr_1.4.2     tools_3.6.2      digest_0.6.23    lubridate_1.7.4 
+    ##  [9] jsonlite_1.6     evaluate_0.14    lifecycle_0.2.0  gtable_0.3.0    
+    ## [13] pkgconfig_2.0.3  rlang_0.4.7      reprex_0.3.0     cli_2.0.0       
+    ## [17] rstudioapi_0.10  DBI_1.1.0        haven_2.2.0      xfun_0.11       
+    ## [21] withr_2.1.2      xml2_1.3.3       httr_1.4.1       fs_1.3.1        
+    ## [25] hms_0.5.2        generics_0.0.2   vctrs_0.3.1      grid_3.6.2      
+    ## [29] tidyselect_1.1.0 glue_1.3.1       R6_2.4.1         fansi_0.4.0     
+    ## [33] readxl_1.3.1     rmarkdown_2.0    modelr_0.1.5     magrittr_1.5    
+    ## [37] backports_1.1.5  scales_1.1.0     ellipsis_0.3.0   htmltools_0.4.0 
+    ## [41] rvest_0.3.5      assertthat_0.2.1 colorspace_1.4-1 stringi_1.4.3   
+    ## [45] munsell_0.5.0    broom_0.7.0      crayon_1.3.4
+
 ## Setup
 
-Read in tables of per-barcode expression and binding Kd measurements and combine.
+Read in tables of per-barcode expression and binding Kd measurements and
+combine.
 
-```{r input_data}
+``` r
 dt_bind <- data.table(read.csv(config$Titeseq_Kds_file_hDPP4),stringsAsFactors=F)
 dt_expr <- data.table(read.csv(config$expression_sortseq_file),stringsAsFactors=F)
 ```
 
 ## Calculate per-variant mean scores within replicates
 
-Calculate the mean binding and expression score collapsed by genotype. Also output the number of barcodes across which a variant score was determined in each library.
+Calculate the mean binding and expression score collapsed by genotype.
+Also output the number of barcodes across which a variant score was
+determined in each library.
 
-```{r calculate_mean_scores}
+``` r
 dt_bind[is.na(log10Ka_hDPP4),TiteSeq_hDPP4_avgcount:=NA]
 dt_bind[library=="lib51_53A",library:="lib51_53"]
 dt_expr[is.na(expression),expr_count:=NA]
@@ -75,23 +125,31 @@ dt_expr[,avg_count_expr:=mean(expr_count,na.rm=T),by=c("library","target","varia
 dt_expr <- unique(dt_expr[,.(library,target,variant_class,aa_substitutions,n_aa_substitutions,mean_expr,sd_expr,n_bc_expr,avg_count_expr)])
 ```
 
-Some QC plots. First, look at distribution of number barcodes for binding and expression measurements for single mutant detemrinations. These are 'left-justified' histograms, so the leftmost bar represents the number of genotypes for which no barcodes were collapsed to final measurement in a pool.
+Some QC plots. First, look at distribution of number barcodes for
+binding and expression measurements for single mutant detemrinations.
+These are ‘left-justified’ histograms, so the leftmost bar represents
+the number of genotypes for which no barcodes were collapsed to final
+measurement in a pool.
 
-```{r hist_n_bc_per_mutant, fig.width=6, fig.height=6, fig.align="center", dpi=300,dev="png"}
+``` r
 par(mfrow=c(2,2))
 hist(dt_bind[library=="lib51_53" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,n_bc_bind_hDPP4],main="lib51_53, bind",right=F,breaks=max(dt_bind[library=="lib51_53" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,n_bc_bind_hDPP4],na.rm=T),xlab="")
 #hist(dt_bind[library=="lib52_54" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,n_bc_bind_hDPP4],main="lib52_54, bind",right=F,breaks=max(dt_bind[library=="lib52_54" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,n_bc_bind_hDPP4],na.rm=T),xlab="")
 plot(0,type='n',axes=FALSE,ann=F)
 hist(dt_expr[library=="lib51_53" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,n_bc_expr],main="lib51_53, expr",right=F,breaks=max(dt_expr[library=="lib51_53" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,n_bc_expr],na.rm=T),xlab="number barcodes collapsed")
 hist(dt_expr[library=="lib52_54" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,n_bc_expr],main="lib52_54, expr",right=F,breaks=max(dt_expr[library=="lib52_54" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,n_bc_expr],na.rm=T),xlab="number barcodes collapsed")
-
-invisible(dev.print(pdf, paste(config$final_variant_scores_dir,"/histogram_n_bc_per_geno_sep-libs.pdf",sep=""),useDingbats=F))
-
 ```
 
-What about how SEM tracks with number of barcodes collapsed? This could help for choosing a minimum number of barcodes to use.
+<img src="collapse_scores_files/figure-gfm/hist_n_bc_per_mutant-1.png" style="display: block; margin: auto;" />
 
-```{r sem_v_n-bc, fig.width=9, fig.height=6, fig.align="center", dpi=300,dev="png"}
+``` r
+invisible(dev.print(pdf, paste(config$final_variant_scores_dir,"/histogram_n_bc_per_geno_sep-libs.pdf",sep=""),useDingbats=F))
+```
+
+What about how SEM tracks with number of barcodes collapsed? This could
+help for choosing a minimum number of barcodes to use.
+
+``` r
 par(mfrow=c(2,2))
 plot(dt_bind[library=="lib51_53" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,n_bc_bind_hDPP4],
      dt_bind[library=="lib51_53" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,sd_bind_hDPP4/sqrt(n_bc_bind_hDPP4)],
@@ -106,14 +164,19 @@ plot(dt_expr[library=="lib51_53" & variant_class %in% c("1 nonsynonymous","delet
 plot(dt_expr[library=="lib52_54" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,n_bc_expr],
      dt_expr[library=="lib52_54" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,sd_expr/sqrt(n_bc_expr)],
      pch=16,col="#00000005",main="lib52_54, expr",ylab="SEM",xlab="number barcodes collapsed")
+```
 
+<img src="collapse_scores_files/figure-gfm/sem_v_n-bc-1.png" style="display: block; margin: auto;" />
+
+``` r
 invisible(dev.print(pdf, paste(config$final_variant_scores_dir,"/sem_v_n-bc.pdf",sep=""),useDingbats=F))
 ```
 
+Format into a ‘mutation lookup table’, where we focus just on the single
+mutants (and wildtype), breakup the string of mutations, and fill in the
+table to also include any missing mutants.
 
-Format into a 'mutation lookup table', where we focus just on the single mutants (and wildtype), breakup the string of mutations, and fill in the table to also include any missing mutants.
-
-```{r format_mutant_tables}
+``` r
 dt_mutant_bind <- dt_bind[variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,]
 
 #split mutation string
@@ -201,12 +264,11 @@ for(bg in c("MERS","PDF2180")){
     dt_mutant_expr[library==lib & target==bg,delta_expr := mean_expr - ref_expr]
   }
 }
-
 ```
 
-We have duplicates for expr measurement. Let's look at correlations!
+We have duplicates for expr measurement. Let’s look at correlations!
 
-```{r plot_correlations, echo=T, fig.width=8, fig.height=4, fig.align="center", dpi=300,dev="png"}
+``` r
 par(mfrow=c(1,2))
 x <- dt_mutant_expr[library=="lib51_53" & wildtype!=mutant,mean_expr]; y <- dt_mutant_expr[library=="lib52_54" & wildtype!=mutant,mean_expr]; plot(x,y,pch=16,col="#00000020",xlab="replicate 1",ylab="replicate 2",main="expression");model <- lm(y~x);abline(a=0,b=1,lty=2,col="red");legend("topleft",legend=paste("R2: ",round(summary(model)$r.squared,3),sep=""),bty="n")
 
@@ -215,11 +277,18 @@ x <- dt_mutant_expr[library=="lib51_53" & wildtype!=mutant,mean_expr]; y <- dt_m
 invisible(dev.print(pdf, paste(config$final_variant_scores_dir,"/replicate_correlations.pdf",sep=""),useDingbats=F))
 ```
 
+<img src="collapse_scores_files/figure-gfm/plot_correlations-1.png" style="display: block; margin: auto;" />
+
 ## Calculate per-mutant score across libraries
 
-Collapse down to mean from both replicates, and total n barcodes between the two/three replicates. Also record the number of the replicates the variant was quantified within. Note, we are currently keeping a value even if it's determined from a single bc fit in a single pool. Later on, we may want to require some combination of minimum number of bcs within or between libraries for retention.
+Collapse down to mean from both replicates, and total n barcodes between
+the two/three replicates. Also record the number of the replicates the
+variant was quantified within. Note, we are currently keeping a value
+even if it’s determined from a single bc fit in a single pool. Later on,
+we may want to require some combination of minimum number of bcs within
+or between libraries for retention.
 
-```{r final_means}
+``` r
 dt_final_bind <- copy(dt_mutant_bind)
 
 dt_final_bind[ ,bind_hDPP4:=mean(mean_bind_hDPP4,na.rm=T),by=c("target","position","mutant")]
@@ -279,11 +348,12 @@ setnames(dt_final,"n_libs_expr_tot","n_libs_expr")
 setnames(dt_final,"position","RBD_index")
 setnames(dt_final,"site","position")
 setnames(dt_final,"site_MERS","position_MERS")
-
 ```
 
-Censor any measurements that are from <3 bc or only sampled in a single replicate? Don't do this for now.
-```{r censor_n_barcodes_libs, echo=T, fig.width=8, fig.height=4, fig.align="center", dpi=300,dev="png"}
+Censor any measurements that are from \<3 bc or only sampled in a single
+replicate? Don’t do this for now.
+
+``` r
 # min_bc <- 2
 # min_lib <- 2
 # 
@@ -291,10 +361,10 @@ Censor any measurements that are from <3 bc or only sampled in a single replicat
 # dt_final[n_bc_expr < min_bc & n_libs_expr < min_lib, c("expr","delta_expr","n_bc_expr","n_libs_expr") := list(NA,NA,NA,NA)]
 ```
 
+Coverage stats on n_barcodes for different measurements in the final
+pooled measurements
 
-Coverage stats on n_barcodes for different measurements in the final pooled measurements
-
-```{r n_barcode_plots, echo=T, fig.width=7, fig.height=5, fig.align="center", dpi=300,dev="png"}
+``` r
 par(mfrow=c(2,2))
 #MERS
 hist(dt_final[wildtype!=mutant & target %in% c("MERS"), n_bc_bind_hDPP4],col="gray50",main=paste("mutant bind_hDPP4 score,\nmedian ",median(dt_final[wildtype!=mutant & target %in% c("MERS"), n_bc_bind_hDPP4],na.rm=T),sep=""),right=F,breaks=max(dt_final[wildtype!=mutant & target %in% c("MERS","PDF2180"), n_bc_bind_hDPP4])/2,xlab="number barcodes", xlim=c(0,100))
@@ -303,15 +373,19 @@ hist(dt_final[wildtype!=mutant & target %in% c("MERS"), n_bc_expr],col="gray50",
 #PDF2180
 hist(dt_final[wildtype!=mutant & target %in% c("PDF2180"), n_bc_bind_hDPP4],col="gray50",main=paste("mutant bind_hDPP4 score,\nmedian ",median(dt_final[wildtype!=mutant & target %in% c("PDF2180"), n_bc_bind_hDPP4],na.rm=T),sep=""),right=F,breaks=max(dt_final[wildtype!=mutant & target %in% c("MERS","PDF2180"), n_bc_bind_hDPP4])/2,xlab="number barcodes", xlim=c(0,100))
 hist(dt_final[wildtype!=mutant & target %in% c("PDF2180"), n_bc_expr],col="gray50",main=paste("mutant expr score,\nmedian ",median(dt_final[wildtype!=mutant & target %in% c("PDF2180"), n_bc_expr],na.rm=T),sep=""),right=F,breaks=max(dt_final[wildtype!=mutant & target %in% c("MERS","PDF2180"), n_bc_expr])/2,xlab="", xlim=c(0,100))
-invisible(dev.print(pdf, paste(config$final_variant_scores_dir,"/histogram_n_bc_per_geno_pooled-libs.pdf",sep="")))
 ```
 
+<img src="collapse_scores_files/figure-gfm/n_barcode_plots-1.png" style="display: block; margin: auto;" />
+
+``` r
+invisible(dev.print(pdf, paste(config$final_variant_scores_dir,"/histogram_n_bc_per_geno_pooled-libs.pdf",sep="")))
+```
 
 ## Heatmaps!
 
 Order factor variables for plotting
 
-```{r order_plotting_factors}
+``` r
 #order targets in plotting order
 dt_final$target <- factor(dt_final$target,levels=c("MERS","PDF2180"))
 #order mutant as a factor for grouping by rough biochemical grouping
@@ -340,11 +414,12 @@ guide_train.guide_axis_trans <- function(x, ...) {
   trained$key$.label <- x$label_trans(trained$key$.label)
   trained
 }
-
 ```
-Make heatmaps faceted by target, showing raw affinity and delta-affinity of muts relative to respective
 
-```{r heatmap_DMS_log10Ka_hDPP4-by-target, fig.width=25,fig.height=10,fig.align="center", dpi=500,dev="png",echo=T}
+Make heatmaps faceted by target, showing raw affinity and delta-affinity
+of muts relative to respective
+
+``` r
 p1 <- ggplot(temp[measurement=="bind_hDPP4",],aes(position_MERS,mutant))+geom_tile(aes(fill=value),color="black",lwd=0.1)+
   scale_fill_gradientn(colours=c("#FFFFFF","#003366"),limits=c(5,11),na.value="yellow")+
   #scale_fill_gradientn(colours=c("#FFFFFF","#FFFFFF","#003366"),limits=c(5,12),values=c(0,1/7,7/7),na.value="yellow")+ #three notches in case I want to 'censor' closer to the 5 boundary condition
@@ -357,12 +432,17 @@ p1 <- ggplot(temp[measurement=="bind_hDPP4",],aes(position_MERS,mutant))+geom_ti
   theme(strip.text.x = element_text(size = 18))
 
 p1
+```
+
+<img src="collapse_scores_files/figure-gfm/heatmap_DMS_log10Ka_hDPP4-by-target-1.png" style="display: block; margin: auto;" />
+
+``` r
 invisible(dev.print(pdf, paste(config$final_variant_scores_dir,"/heatmap_SSM_log10Ka_hDPP4-by-target.pdf",sep="")))
 ```
 
 Second, illustrating delta_log10Ka grouped by SSM position.
 
-```{r heatmap_DMS_delta-log10Ka-by-target, fig.width=25,fig.height=10,fig.align="center", dpi=500,dev="png",echo=T}
+``` r
 p1 <- ggplot(temp[measurement=="delta_bind_hDPP4",],aes(position_MERS,mutant))+geom_tile(aes(fill=value),color="black",lwd=0.1)+
   scale_fill_gradientn(colours=c("#A94E35","#A94E35","#F48365","#FFFFFF","#7378B9","#383C6C"),limits=c(-3,3),values=c(0/6,1/6,2/6,3/6,4.5/6,6/6),na.value="yellow")+
   #scale_x_continuous(expand=c(0,0),breaks=c(377,seq(380,591,by=5)))+
@@ -374,12 +454,18 @@ p1 <- ggplot(temp[measurement=="delta_bind_hDPP4",],aes(position_MERS,mutant))+g
   theme(strip.text.x = element_text(size = 18))
 
 p1
+```
+
+<img src="collapse_scores_files/figure-gfm/heatmap_DMS_delta-log10Ka-by-target-1.png" style="display: block; margin: auto;" />
+
+``` r
 invisible(dev.print(pdf, paste(config$final_variant_scores_dir,"/heatmap_SSM_delta-log10Ka_hDPP4-by-target.pdf",sep="")))
 ```
 
-Make heatmaps faceted by target, showing raw expression and delta-expression of muts relative to respective wildtype
+Make heatmaps faceted by target, showing raw expression and
+delta-expression of muts relative to respective wildtype
 
-```{r heatmap_DMS_expression-by-target, fig.width=25,fig.height=10,fig.align="center", dpi=500,dev="png",echo=T}
+``` r
 p1 <- ggplot(temp[measurement=="expr",],aes(position_MERS,mutant))+geom_tile(aes(fill=value),color="black",lwd=0.1)+
   scale_fill_gradientn(colours=c("#FFFFFF","#003366"),limits=c(5,10),na.value="yellow")+
   #scale_fill_gradientn(colours=c("#FFFFFF","#FFFFFF","#003366"),limits=c(5,11.2),values=c(0,1/7,7/7),na.value="yellow")+ #three notches in case I want to 'censor' closer to the 5 boundary condition
@@ -392,12 +478,17 @@ p1 <- ggplot(temp[measurement=="expr",],aes(position_MERS,mutant))+geom_tile(aes
   theme(strip.text.x = element_text(size = 18))
 
 p1
+```
+
+<img src="collapse_scores_files/figure-gfm/heatmap_DMS_expression-by-target-1.png" style="display: block; margin: auto;" />
+
+``` r
 invisible(dev.print(pdf, paste(config$final_variant_scores_dir,"/heatmap_SSM_expression-by-target.pdf",sep="")))
 ```
 
 Second, illustrating delta_expression grouped by SSM position.
 
-```{r heatmap_DMS_delta-expression-by-target, fig.width=25,fig.height=10,fig.align="center", dpi=500,dev="png",echo=T}
+``` r
 p1 <- ggplot(temp[measurement=="delta_expr",],aes(position_MERS,mutant))+geom_tile(aes(fill=value),color="black",lwd=0.1)+
   scale_fill_gradientn(colours=c("#A94E35","#F48365","#FFFFFF","#7378B9","#383C6C"),limits=c(-3,3),values=c(0/6,1.5/6,3/6,4.5/6,6/6),na.value="yellow")+
   #scale_x_continuous(expand=c(0,0),breaks=c(377,seq(380,591,by=5)))+
@@ -409,19 +500,20 @@ p1 <- ggplot(temp[measurement=="delta_expr",],aes(position_MERS,mutant))+geom_ti
   theme(strip.text.x = element_text(size = 18))
 
 p1
+```
+
+<img src="collapse_scores_files/figure-gfm/heatmap_DMS_delta-expression-by-target-1.png" style="display: block; margin: auto;" />
+
+``` r
 invisible(dev.print(pdf, paste(config$final_variant_scores_dir,"/heatmap_SSM_delta-expression-by-target.pdf",sep="")))
 ```
+
 Save output files.
 
-```{r outputs}
+``` r
 dt_final[,.(target, wildtype, position, position_MERS, mutant, mutation, mutation_MERS,
             bind_hDPP4, delta_bind_hDPP4, n_bc_bind_hDPP4, n_libs_bind_hDPP4,hDPP4_bind_rep1,hDPP4_bind_rep2,
             expr,delta_expr,n_bc_expr,n_libs_expr,expr_rep1,expr_rep2)] %>%
   mutate_if(is.numeric, round, digits=5) %>%
   write.csv(file=config$final_variant_scores_mut_file, row.names=F,quote=F)
 ```
-
-
-
-
-

@@ -57,7 +57,6 @@ rule make_summary:
         variant_expression_file=config['expression_sortseq_file'],
         collapse_scores='results/summary/collapse_scores.md',
         mut_phenos_file=config['final_variant_scores_mut_file'],
-        epistatic_shifts='results/summary/epistatic_shifts.md',
         heatmap_viz=os.path.join(config['visualization_dir'], "heatmap.html")
     output:
         summary = os.path.join(config['summary_dir'], 'summary.md')
@@ -93,9 +92,8 @@ rule make_summary:
             5. [Derive final genotype-level phenotypes from replicate barcoded sequences]({path(input.collapse_scores)}).
                Generates final phenotypes, recorded in [this file]({path(input.mut_phenos_file)}).
             
-            6. [Analyze patterns of epistasis in the DMS data and in SARS-CoV-2 genomic data]({path(input.epistatic_shifts)}).
             
-            7. Make interactive data visualizations, available [here](https://jbloomlab.github.io/SARS-CoV-2-RBD_DMS_Omicron/)
+            6. Make interactive data visualizations, available [here](https://jbloomlab.github.io/SARS-CoV-2-RBD_DMS_Omicron/)
 
             """
             ).strip())
@@ -122,27 +120,6 @@ rule interactive_heatmap_plot:
         html=os.path.join(config['visualization_dir'], "heatmap.html")
     notebook: "RBD-Heatmaps-Interactive-Visualization.ipynb"
 
-
-rule epistatic_shifts:
-    input:
-        config['final_variant_scores_mut_file'],
-    output:
-        config['JSD_v_WH1_file'],
-        config['JSD_v_WH1_expr_file'],
-        md='results/summary/epistatic_shifts.md',
-        md_files=directory('results/summary/epistatic_shifts_files')
-    envmodules:
-        'R/3.6.2-foss-2019b'
-    params:
-        nb='epistatic_shifts.Rmd',
-        md='epistatic_shifts.md',
-        md_files='epistatic_shifts_files'
-    shell:
-        """
-        R -e \"rmarkdown::render(input=\'{params.nb}\')\";
-        mv {params.md} {output.md};
-        mv {params.md_files} {output.md_files}
-        """
 
 
 rule collapse_scores:
