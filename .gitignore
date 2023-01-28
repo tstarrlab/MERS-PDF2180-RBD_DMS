@@ -10,6 +10,8 @@
 src/
 env/
 
+results_archive/*
+
 results/*
 !results/summary
 

@@ -128,16 +128,16 @@ display(HTML(pacbio_runs.to_html(index=False)))
     <tr>
       <td>lib51_53</td>
       <td>MERS</td>
-      <td>221209</td>
-      <td>lib51_53_MERS_221209</td>
-      <td>results/ccs/lib51_53_MERS_221209_ccs.fastq.gz</td>
+      <td>230124</td>
+      <td>lib51_53_MERS_230124</td>
+      <td>results/ccs/lib51_53_MERS_230124_ccs.fastq.gz</td>
     </tr>
     <tr>
       <td>lib52_54</td>
       <td>MERS</td>
-      <td>221209</td>
-      <td>lib52_54_MERS_221209</td>
-      <td>results/ccs/lib52_54_MERS_221209_ccs.fastq.gz</td>
+      <td>230124</td>
+      <td>lib52_54_MERS_230124</td>
+      <td>results/ccs/lib52_54_MERS_230124_ccs.fastq.gz</td>
     </tr>
   </tbody>
 </table>
@@ -478,46 +478,46 @@ display(HTML(aligned_df.head().to_html(index=False)))
   <tbody>
     <tr>
       <td>lib51_53</td>
-      <td>m64272e_221211_134523/0/ccs/fwd</td>
-      <td>A370C T371A C372T</td>
-      <td>0.999961</td>
-      <td>CTAAAATATACAATGA</td>
+      <td>m64272e_230126_100200/51/ccs</td>
+      <td>C31A A33T</td>
+      <td>1.000000</td>
+      <td>TCAACTTTACCAGGTG</td>
       <td>1.0</td>
       <td>MERS</td>
     </tr>
     <tr>
       <td>lib51_53</td>
-      <td>m64272e_221211_134523/0/ccs/rev</td>
-      <td>C293G A294G ins413TT</td>
+      <td>m64272e_230126_100200/143/ccs</td>
+      <td>C571G T572A</td>
       <td>1.000000</td>
-      <td>CTAAAATATACAATGA</td>
+      <td>CTTATCCCTTAACAGT</td>
       <td>1.0</td>
       <td>MERS</td>
     </tr>
     <tr>
       <td>lib51_53</td>
-      <td>m64272e_221211_134523/14/ccs/fwd</td>
-      <td>C55G A56T A57T del70to70</td>
+      <td>m64272e_230126_100200/152/ccs</td>
+      <td>del134to136</td>
       <td>1.000000</td>
-      <td>TTTCAACTAAAATTAT</td>
+      <td>CCATATCCCGCTCTTG</td>
       <td>1.0</td>
       <td>MERS</td>
     </tr>
     <tr>
       <td>lib51_53</td>
-      <td>m64272e_221211_134523/14/ccs/rev</td>
-      <td>C445T C446G A447T</td>
+      <td>m64272e_230126_100200/184/ccs</td>
+      <td>C502A G504A</td>
       <td>1.000000</td>
-      <td>TTTCAACTAAAATTAT</td>
+      <td>AACGGAAAAAAACCTT</td>
       <td>1.0</td>
       <td>MERS</td>
     </tr>
     <tr>
       <td>lib51_53</td>
-      <td>m64272e_221211_134523/17/ccs/fwd</td>
-      <td>G643C C644A T645A</td>
-      <td>1.000000</td>
-      <td>TTTCATTTCGAATATT</td>
+      <td>m64272e_230126_100200/242/ccs</td>
+      <td>A118T C120T</td>
+      <td>0.999999</td>
+      <td>ATGTTCGTCCCAGATA</td>
       <td>1.0</td>
       <td>MERS</td>
     </tr>
@@ -569,7 +569,7 @@ print(f"Read {len(processed_ccs)} CCSs from {nlibs} libraries and {ntargets} tar
 display(HTML(processed_ccs.head().to_html(index=False)))
 ```
 
-    Read 2530004 CCSs from 2 libraries and 1 targets.
+    Read 353832 CCSs from 2 libraries and 1 targets.
 
 
 
@@ -588,46 +588,46 @@ display(HTML(processed_ccs.head().to_html(index=False)))
   <tbody>
     <tr>
       <td>lib51_53</td>
-      <td>m64272e_221211_134523/0/ccs/fwd</td>
-      <td>A370C T371A C372T</td>
-      <td>0.999961</td>
-      <td>CTAAAATATACAATGA</td>
+      <td>m64272e_230126_100200/51/ccs</td>
+      <td>C31A A33T</td>
+      <td>1.000000</td>
+      <td>TCAACTTTACCAGGTG</td>
       <td>1.0</td>
       <td>MERS</td>
     </tr>
     <tr>
       <td>lib51_53</td>
-      <td>m64272e_221211_134523/0/ccs/rev</td>
-      <td>C293G A294G ins413TT</td>
+      <td>m64272e_230126_100200/143/ccs</td>
+      <td>C571G T572A</td>
       <td>1.000000</td>
-      <td>CTAAAATATACAATGA</td>
+      <td>CTTATCCCTTAACAGT</td>
       <td>1.0</td>
       <td>MERS</td>
     </tr>
     <tr>
       <td>lib51_53</td>
-      <td>m64272e_221211_134523/14/ccs/fwd</td>
-      <td>C55G A56T A57T del70to70</td>
+      <td>m64272e_230126_100200/152/ccs</td>
+      <td>del134to136</td>
       <td>1.000000</td>
-      <td>TTTCAACTAAAATTAT</td>
+      <td>CCATATCCCGCTCTTG</td>
       <td>1.0</td>
       <td>MERS</td>
     </tr>
     <tr>
       <td>lib51_53</td>
-      <td>m64272e_221211_134523/14/ccs/rev</td>
-      <td>C445T C446G A447T</td>
+      <td>m64272e_230126_100200/184/ccs</td>
+      <td>C502A G504A</td>
       <td>1.000000</td>
-      <td>TTTCAACTAAAATTAT</td>
+      <td>AACGGAAAAAAACCTT</td>
       <td>1.0</td>
       <td>MERS</td>
     </tr>
     <tr>
       <td>lib51_53</td>
-      <td>m64272e_221211_134523/17/ccs/fwd</td>
-      <td>G643C C644A T645A</td>
-      <td>1.000000</td>
-      <td>TTTCATTTCGAATATT</td>
+      <td>m64272e_230126_100200/242/ccs</td>
+      <td>A118T C120T</td>
+      <td>0.999999</td>
+      <td>ATGTTCGTCCCAGATA</td>
       <td>1.0</td>
       <td>MERS</td>
     </tr>
@@ -686,15 +686,15 @@ display(HTML(
     <tr>
       <th rowspan="2" valign="top">MERS</th>
       <th>lib51_53</th>
-      <td>1428486</td>
-      <td>104346</td>
-      <td>13.69</td>
+      <td>170624</td>
+      <td>59682</td>
+      <td>2.86</td>
     </tr>
     <tr>
       <th>lib52_54</th>
-      <td>1101518</td>
-      <td>135982</td>
-      <td>8.10</td>
+      <td>183208</td>
+      <td>80134</td>
+      <td>2.29</td>
     </tr>
   </tbody>
 </table>
@@ -915,192 +915,192 @@ processed_ccs.head(n=12)
     <tr>
       <th>0</th>
       <td>lib51_53</td>
-      <td>m64272e_221211_134523/0/ccs/fwd</td>
-      <td>A370C T371A C372T</td>
-      <td>0.999961</td>
-      <td>CTAAAATATACAATGA</td>
+      <td>m64272e_230126_100200/51/ccs</td>
+      <td>C31A A33T</td>
       <td>1.000000</td>
+      <td>TCAACTTTACCAGGTG</td>
+      <td>1.0</td>
       <td>MERS</td>
       <td>1.000000e-07</td>
-      <td>3.894448e-05</td>
+      <td>1.000000e-07</td>
       <td>True</td>
-      <td>A370C T371A C372T</td>
+      <td>C31A A33T</td>
       <td>0</td>
       <td>False</td>
     </tr>
     <tr>
       <th>1</th>
       <td>lib51_53</td>
-      <td>m64272e_221211_134523/0/ccs/rev</td>
-      <td>C293G A294G ins413TT</td>
+      <td>m64272e_230126_100200/143/ccs</td>
+      <td>C571G T572A</td>
       <td>1.000000</td>
-      <td>CTAAAATATACAATGA</td>
-      <td>1.000000</td>
+      <td>CTTATCCCTTAACAGT</td>
+      <td>1.0</td>
       <td>MERS</td>
       <td>1.000000e-07</td>
       <td>1.000000e-07</td>
       <td>True</td>
-      <td>C293G A294G ins413TT</td>
-      <td>1</td>
-      <td>True</td>
+      <td>C571G T572A</td>
+      <td>0</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>2</th>
       <td>lib51_53</td>
-      <td>m64272e_221211_134523/14/ccs/fwd</td>
-      <td>C55G A56T A57T del70to70</td>
+      <td>m64272e_230126_100200/152/ccs</td>
+      <td>del134to136</td>
       <td>1.000000</td>
-      <td>TTTCAACTAAAATTAT</td>
-      <td>1.000000</td>
+      <td>CCATATCCCGCTCTTG</td>
+      <td>1.0</td>
       <td>MERS</td>
       <td>1.000000e-07</td>
       <td>1.000000e-07</td>
       <td>True</td>
-      <td>C55G A56T A57T del70to70</td>
-      <td>1</td>
-      <td>True</td>
+      <td>G136- A137- T138-</td>
+      <td>0</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>3</th>
       <td>lib51_53</td>
-      <td>m64272e_221211_134523/14/ccs/rev</td>
-      <td>C445T C446G A447T</td>
+      <td>m64272e_230126_100200/184/ccs</td>
+      <td>C502A G504A</td>
       <td>1.000000</td>
-      <td>TTTCAACTAAAATTAT</td>
-      <td>1.000000</td>
+      <td>AACGGAAAAAAACCTT</td>
+      <td>1.0</td>
       <td>MERS</td>
       <td>1.000000e-07</td>
       <td>1.000000e-07</td>
       <td>True</td>
-      <td>C445T C446G A447T</td>
+      <td>C502A G504A</td>
       <td>0</td>
       <td>False</td>
     </tr>
     <tr>
       <th>4</th>
       <td>lib51_53</td>
-      <td>m64272e_221211_134523/17/ccs/fwd</td>
-      <td>G643C C644A T645A</td>
-      <td>1.000000</td>
-      <td>TTTCATTTCGAATATT</td>
-      <td>1.000000</td>
+      <td>m64272e_230126_100200/242/ccs</td>
+      <td>A118T C120T</td>
+      <td>0.999999</td>
+      <td>ATGTTCGTCCCAGATA</td>
+      <td>1.0</td>
       <td>MERS</td>
       <td>1.000000e-07</td>
-      <td>1.000000e-07</td>
+      <td>5.087173e-07</td>
       <td>True</td>
-      <td>G643C C644A T645A</td>
+      <td>A118T C120T</td>
       <td>0</td>
       <td>False</td>
     </tr>
     <tr>
       <th>5</th>
       <td>lib51_53</td>
-      <td>m64272e_221211_134523/76/ccs</td>
-      <td>del304to304 C306A del325to325</td>
-      <td>0.999318</td>
-      <td>CGCCCTCTACTACCGC</td>
+      <td>m64272e_230126_100200/277/ccs</td>
+      <td>T82A T83C C84T</td>
       <td>1.000000</td>
+      <td>AAGCAACTAAAAAACG</td>
+      <td>1.0</td>
       <td>MERS</td>
       <td>1.000000e-07</td>
-      <td>6.823845e-04</td>
-      <td>False</td>
-      <td>del304to304 C306A del325to325</td>
-      <td>2</td>
+      <td>1.000000e-07</td>
       <td>True</td>
+      <td>T82A T83C C84T</td>
+      <td>0</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>6</th>
       <td>lib51_53</td>
-      <td>m64272e_221211_134523/80/ccs/fwd</td>
-      <td>A118T G119A C120T</td>
+      <td>m64272e_230126_100200/326/ccs</td>
+      <td>A109G</td>
       <td>1.000000</td>
-      <td>TATGAATCCAAATACC</td>
-      <td>1.000000</td>
+      <td>CCAGAGTTAAGACATT</td>
+      <td>1.0</td>
       <td>MERS</td>
       <td>1.000000e-07</td>
-      <td>1.522222e-07</td>
+      <td>1.000000e-07</td>
       <td>True</td>
-      <td>A118T G119A C120T</td>
+      <td>A109G</td>
       <td>0</td>
       <td>False</td>
     </tr>
     <tr>
       <th>7</th>
       <td>lib51_53</td>
-      <td>m64272e_221211_134523/85/ccs</td>
-      <td>T24A del177to177</td>
-      <td>0.999609</td>
-      <td>GGCAAAGTCGTAAACA</td>
+      <td>m64272e_230126_100200/335/ccs</td>
+      <td>T250C C251A</td>
       <td>1.000000</td>
+      <td>ATTTACTAATCAATAA</td>
+      <td>1.0</td>
       <td>MERS</td>
       <td>1.000000e-07</td>
-      <td>3.910309e-04</td>
-      <td>False</td>
-      <td>T24A del177to177</td>
-      <td>1</td>
+      <td>1.000000e-07</td>
       <td>True</td>
+      <td>T250C C251A</td>
+      <td>0</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>8</th>
       <td>lib51_53</td>
-      <td>m64272e_221211_134523/89/ccs</td>
-      <td>del216to216</td>
-      <td>0.999479</td>
-      <td>CACGAATGCAACATAA</td>
+      <td>m64272e_230126_100200/352/ccs</td>
+      <td>A190T G191T T192C</td>
       <td>1.000000</td>
+      <td>CAAAGGATTCATAGCC</td>
+      <td>1.0</td>
       <td>MERS</td>
       <td>1.000000e-07</td>
-      <td>5.206476e-04</td>
-      <td>False</td>
-      <td>del216to216</td>
-      <td>1</td>
+      <td>1.000000e-07</td>
       <td>True</td>
+      <td>A190T G191T T192C</td>
+      <td>0</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>9</th>
       <td>lib51_53</td>
-      <td>m64272e_221211_134523/109/ccs/rev</td>
-      <td>C199T T200G del586to586 ins640T</td>
-      <td>0.997258</td>
-      <td>GAAATTGCTAATAGGA</td>
-      <td>0.980196</td>
+      <td>m64272e_230126_100200/420/ccs</td>
+      <td>G235T A236T C237T</td>
+      <td>1.000000</td>
+      <td>ATGGAGGGCATTAGGC</td>
+      <td>1.0</td>
       <td>MERS</td>
-      <td>1.980400e-02</td>
-      <td>2.742160e-03</td>
-      <td>False</td>
-      <td>C199T T200G del586to586 ins640T</td>
-      <td>2</td>
+      <td>1.000000e-07</td>
+      <td>1.000000e-07</td>
       <td>True</td>
+      <td>G235T A236T C237T</td>
+      <td>0</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>10</th>
       <td>lib51_53</td>
-      <td>m64272e_221211_134523/117/ccs/fwd</td>
-      <td>ins443C del511to513 ins627C</td>
-      <td>0.997416</td>
-      <td>CTAACGGTCATGTTTC</td>
-      <td>0.999999</td>
+      <td>m64272e_230126_100200/465/ccs</td>
+      <td>A488C</td>
+      <td>1.000000</td>
+      <td>TCGCATGGGACTTAAG</td>
+      <td>1.0</td>
       <td>MERS</td>
-      <td>8.112820e-07</td>
-      <td>2.583636e-03</td>
-      <td>False</td>
-      <td>ins443C C511- C512- G513- ins627C</td>
-      <td>2</td>
+      <td>1.000000e-07</td>
+      <td>1.000000e-07</td>
       <td>True</td>
+      <td>A488C</td>
+      <td>0</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>11</th>
       <td>lib51_53</td>
-      <td>m64272e_221211_134523/136/ccs/fwd</td>
-      <td>T116A A117T T532G</td>
-      <td>0.999994</td>
-      <td>GCCTGAGTAGGTATAT</td>
-      <td>0.999990</td>
+      <td>m64272e_230126_100200/512/ccs</td>
+      <td>G43C G44A C45A</td>
+      <td>1.000000</td>
+      <td>ATAGATAAGAAATAAG</td>
+      <td>1.0</td>
       <td>MERS</td>
-      <td>9.912271e-06</td>
-      <td>6.146009e-06</td>
+      <td>1.000000e-07</td>
+      <td>1.000000e-07</td>
       <td>True</td>
-      <td>T116A A117T T532G</td>
+      <td>G43C G44A C45A</td>
       <td>0</td>
       <td>False</td>
     </tr>
@@ -1200,58 +1200,58 @@ display(HTML(empirical_acc.to_html(index=False)))
   <tbody>
     <tr>
       <td>lib51_53</td>
-      <td>0.368758</td>
+      <td>0.966829</td>
       <td>retained</td>
-      <td>806234</td>
+      <td>156851</td>
       <td>False</td>
     </tr>
     <tr>
       <td>lib52_54</td>
-      <td>0.364774</td>
+      <td>0.964572</td>
       <td>retained</td>
-      <td>631462</td>
+      <td>167806</td>
       <td>False</td>
     </tr>
     <tr>
       <td>lib51_53</td>
-      <td>0.455418</td>
+      <td>0.983186</td>
       <td>retained, no indel</td>
-      <td>632940</td>
+      <td>153394</td>
       <td>True</td>
     </tr>
     <tr>
       <td>lib52_54</td>
-      <td>0.450255</td>
+      <td>0.980309</td>
       <td>retained, no indel</td>
-      <td>496568</td>
+      <td>164350</td>
       <td>True</td>
     </tr>
     <tr>
       <td>lib51_53</td>
-      <td>0.383570</td>
+      <td>0.971903</td>
       <td>10X accuracy</td>
-      <td>596232</td>
+      <td>151185</td>
       <td>False</td>
     </tr>
     <tr>
       <td>lib52_54</td>
-      <td>0.380586</td>
+      <td>0.970190</td>
       <td>10X accuracy</td>
-      <td>471437</td>
+      <td>161412</td>
       <td>False</td>
     </tr>
     <tr>
       <td>lib51_53</td>
-      <td>0.452351</td>
+      <td>0.983160</td>
       <td>10X accuracy, no indel</td>
-      <td>491969</td>
+      <td>148648</td>
       <td>False</td>
     </tr>
     <tr>
       <td>lib52_54</td>
-      <td>0.447666</td>
+      <td>0.980717</td>
       <td>10X accuracy, no indel</td>
-      <td>389526</td>
+      <td>158953</td>
       <td>False</td>
     </tr>
   </tbody>
@@ -1338,38 +1338,38 @@ display(HTML(consensus.head().to_html(index=False)))
   <tbody>
     <tr>
       <td>lib51_53</td>
-      <td>AAAAAAAAACTCTTCA</td>
+      <td>AAAAAAAAACATTCGT</td>
       <td>MERS</td>
-      <td></td>
+      <td>A433T A434T C435G</td>
       <td>1</td>
     </tr>
     <tr>
       <td>lib51_53</td>
-      <td>AAAAAAAACTTTAGAA</td>
+      <td>AAAAAAAAAGACTTTC</td>
       <td>MERS</td>
-      <td>A106G G108T C132T</td>
+      <td>G472A T473A</td>
       <td>1</td>
     </tr>
     <tr>
       <td>lib51_53</td>
-      <td>AAAAAAAAGTTCATAT</td>
+      <td>AAAAAAAAAGCGATAG</td>
       <td>MERS</td>
-      <td>C463- C464- G465-</td>
-      <td>1</td>
+      <td>T382- C383- C384-</td>
+      <td>4</td>
     </tr>
     <tr>
       <td>lib51_53</td>
-      <td>AAAAAAAATGTCATGG</td>
+      <td>AAAAAAAAATTGAGGT</td>
       <td>MERS</td>
-      <td>C574A A575T A576T</td>
-      <td>1</td>
+      <td>C416A T417A</td>
+      <td>2</td>
     </tr>
     <tr>
       <td>lib51_53</td>
-      <td>AAAAAAAATGTGTTAC</td>
+      <td>AAAAAAAACAATCCCG</td>
       <td>MERS</td>
-      <td>C574A A575T A576T</td>
-      <td>1</td>
+      <td>A562T C563A A564T</td>
+      <td>4</td>
     </tr>
   </tbody>
 </table>
@@ -1409,55 +1409,55 @@ display(HTML(consensus.head().to_html(index=False)))
   <tbody>
     <tr>
       <td>lib51_53</td>
-      <td>AAAAAAAAACTCTTCA</td>
+      <td>AAAAAAAAACATTCGT</td>
       <td>MERS</td>
-      <td></td>
+      <td>A433T A434T C435G</td>
       <td>1</td>
-      <td></td>
+      <td>A433T A434T C435G</td>
       <td></td>
       <td></td>
       <td>0</td>
     </tr>
     <tr>
       <td>lib51_53</td>
-      <td>AAAAAAAACTTTAGAA</td>
+      <td>AAAAAAAAAGACTTTC</td>
       <td>MERS</td>
-      <td>A106G G108T C132T</td>
+      <td>G472A T473A</td>
       <td>1</td>
-      <td>A106G G108T C132T</td>
+      <td>G472A T473A</td>
       <td></td>
       <td></td>
       <td>0</td>
     </tr>
     <tr>
       <td>lib51_53</td>
-      <td>AAAAAAAAGTTCATAT</td>
+      <td>AAAAAAAAAGCGATAG</td>
       <td>MERS</td>
-      <td>C463- C464- G465-</td>
-      <td>1</td>
-      <td>C463- C464- G465-</td>
+      <td>T382- C383- C384-</td>
+      <td>4</td>
+      <td>T382- C383- C384-</td>
       <td></td>
       <td></td>
       <td>0</td>
     </tr>
     <tr>
       <td>lib51_53</td>
-      <td>AAAAAAAATGTCATGG</td>
+      <td>AAAAAAAAATTGAGGT</td>
       <td>MERS</td>
-      <td>C574A A575T A576T</td>
-      <td>1</td>
-      <td>C574A A575T A576T</td>
+      <td>C416A T417A</td>
+      <td>2</td>
+      <td>C416A T417A</td>
       <td></td>
       <td></td>
       <td>0</td>
     </tr>
     <tr>
       <td>lib51_53</td>
-      <td>AAAAAAAATGTGTTAC</td>
+      <td>AAAAAAAACAATCCCG</td>
       <td>MERS</td>
-      <td>C574A A575T A576T</td>
-      <td>1</td>
-      <td>C574A A575T A576T</td>
+      <td>A562T C563A A564T</td>
+      <td>4</td>
+      <td>A562T C563A A564T</td>
       <td></td>
       <td></td>
       <td>0</td>
@@ -1544,12 +1544,12 @@ _ = p.draw()
     <tr>
       <td>lib51_53</td>
       <td>MERS</td>
-      <td>14547</td>
+      <td>55135</td>
     </tr>
     <tr>
       <td>lib52_54</td>
       <td>MERS</td>
-      <td>20419</td>
+      <td>73735</td>
     </tr>
   </tbody>
 </table>
@@ -1603,19 +1603,9 @@ display(HTML(
     <tr>
       <td>MERS</td>
       <td>lib51_53</td>
-      <td>AAAAAAAAACTCTTCA</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>MERS</td>
-      <td>lib51_53</td>
-      <td>AAAAAAAACTTTAGAA</td>
-      <td>A106G G108T C132T</td>
-      <td>A106G G108T C132T</td>
+      <td>AAAAAAAAACATTCGT</td>
+      <td>A433T A434T C435G</td>
+      <td>A433T A434T C435G</td>
       <td></td>
       <td></td>
       <td>1</td>
@@ -1623,9 +1613,9 @@ display(HTML(
     <tr>
       <td>MERS</td>
       <td>lib51_53</td>
-      <td>AAAAAAAAGTTCATAT</td>
-      <td>C463- C464- G465-</td>
-      <td>C463- C464- G465-</td>
+      <td>AAAAAAAAAGACTTTC</td>
+      <td>G472A T473A</td>
+      <td>G472A T473A</td>
       <td></td>
       <td></td>
       <td>1</td>
@@ -1633,22 +1623,32 @@ display(HTML(
     <tr>
       <td>MERS</td>
       <td>lib51_53</td>
-      <td>AAAAAAAATGTCATGG</td>
-      <td>C574A A575T A576T</td>
-      <td>C574A A575T A576T</td>
+      <td>AAAAAAAAAGCGATAG</td>
+      <td>T382- C383- C384-</td>
+      <td>T382- C383- C384-</td>
       <td></td>
       <td></td>
-      <td>1</td>
+      <td>4</td>
     </tr>
     <tr>
       <td>MERS</td>
       <td>lib51_53</td>
-      <td>AAAAAAAATGTGTTAC</td>
-      <td>C574A A575T A576T</td>
-      <td>C574A A575T A576T</td>
+      <td>AAAAAAAAATTGAGGT</td>
+      <td>C416A T417A</td>
+      <td>C416A T417A</td>
       <td></td>
       <td></td>
-      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>MERS</td>
+      <td>lib51_53</td>
+      <td>AAAAAAAACAATCCCG</td>
+      <td>A562T C563A A564T</td>
+      <td>A562T C563A A564T</td>
+      <td></td>
+      <td></td>
+      <td>4</td>
     </tr>
   </tbody>
 </table>
@@ -1676,38 +1676,38 @@ display(HTML(dropped.head().to_html(index=False)))
   <tbody>
     <tr>
       <td>lib51_53</td>
-      <td>AAAAAAAAAAAGGCCG</td>
-      <td>MERS</td>
-      <td>subs diff too large</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <td>lib51_53</td>
-      <td>AAAAAAAAACATTCGT</td>
-      <td>MERS</td>
-      <td>subs diff too large</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <td>lib51_53</td>
-      <td>AAAAAAAAACCAACGC</td>
+      <td>AAAAAAACCCGATGAC</td>
       <td>MERS</td>
       <td>subs diff too large</td>
       <td>3</td>
     </tr>
     <tr>
       <td>lib51_53</td>
-      <td>AAAAAAAAAGACTTTC</td>
+      <td>AAAAAACTAGAAAGCA</td>
       <td>MERS</td>
       <td>subs diff too large</td>
-      <td>12</td>
+      <td>2</td>
     </tr>
     <tr>
       <td>lib51_53</td>
-      <td>AAAAAAAAAGCGATAG</td>
+      <td>AAAAACTAGCAGTAAT</td>
       <td>MERS</td>
       <td>subs diff too large</td>
-      <td>10</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>lib51_53</td>
+      <td>AAAAACTCTAAAATAT</td>
+      <td>MERS</td>
+      <td>subs diff too large</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>lib51_53</td>
+      <td>AAAAACTGGACGAAGA</td>
+      <td>MERS</td>
+      <td>subs diff too large</td>
+      <td>2</td>
     </tr>
   </tbody>
 </table>
@@ -1817,32 +1817,32 @@ variants.barcode_variant_df.head(n=12)
       <th>0</th>
       <td>MERS</td>
       <td>lib51_53</td>
-      <td>AAAAAAAAACTCTTCA</td>
+      <td>AAAAAAAAACATTCGT</td>
       <td>1</td>
-      <td></td>
-      <td></td>
-      <td>0</td>
-      <td>0</td>
+      <td>AAC145TTG</td>
+      <td>N145L</td>
+      <td>1</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>1</th>
       <td>MERS</td>
       <td>lib51_53</td>
-      <td>AAAAAAAACTTTAGAA</td>
+      <td>AAAAAAAAAGACTTTC</td>
       <td>1</td>
-      <td>ACG36GCT GTC44GTT</td>
-      <td>T36A</td>
-      <td>2</td>
+      <td>GTA158AAA</td>
+      <td>V158K</td>
+      <td>1</td>
       <td>1</td>
     </tr>
     <tr>
       <th>2</th>
       <td>MERS</td>
       <td>lib51_53</td>
-      <td>AAAAAAAAGTTCATAT</td>
-      <td>1</td>
-      <td>CCG155---</td>
-      <td>P155-</td>
+      <td>AAAAAAAAAGCGATAG</td>
+      <td>4</td>
+      <td>TCC128---</td>
+      <td>S128-</td>
       <td>1</td>
       <td>1</td>
     </tr>
@@ -1850,10 +1850,10 @@ variants.barcode_variant_df.head(n=12)
       <th>3</th>
       <td>MERS</td>
       <td>lib51_53</td>
-      <td>AAAAAAAATGTCATGG</td>
-      <td>1</td>
-      <td>CAA192ATT</td>
-      <td>Q192I</td>
+      <td>AAAAAAAAATTGAGGT</td>
+      <td>2</td>
+      <td>CCT139CAA</td>
+      <td>P139Q</td>
       <td>1</td>
       <td>1</td>
     </tr>
@@ -1861,10 +1861,10 @@ variants.barcode_variant_df.head(n=12)
       <th>4</th>
       <td>MERS</td>
       <td>lib51_53</td>
-      <td>AAAAAAAATGTGTTAC</td>
-      <td>1</td>
-      <td>CAA192ATT</td>
-      <td>Q192I</td>
+      <td>AAAAAAAACAATCCCG</td>
+      <td>4</td>
+      <td>ACA188TAT</td>
+      <td>T188Y</td>
       <td>1</td>
       <td>1</td>
     </tr>
@@ -1872,10 +1872,10 @@ variants.barcode_variant_df.head(n=12)
       <th>5</th>
       <td>MERS</td>
       <td>lib51_53</td>
-      <td>AAAAAAACGACTTGGA</td>
+      <td>AAAAAAAACCCATGGA</td>
       <td>1</td>
-      <td>AGG135ATT</td>
-      <td>R135I</td>
+      <td>CCC54TGG</td>
+      <td>P54W</td>
       <td>1</td>
       <td>1</td>
     </tr>
@@ -1883,10 +1883,10 @@ variants.barcode_variant_df.head(n=12)
       <th>6</th>
       <td>MERS</td>
       <td>lib51_53</td>
-      <td>AAAAAAAGCCGCACTG</td>
-      <td>1</td>
-      <td>GGT182TTG</td>
-      <td>G182L</td>
+      <td>AAAAAAAACTGTCAAT</td>
+      <td>5</td>
+      <td>GGG4GAA</td>
+      <td>G4E</td>
       <td>1</td>
       <td>1</td>
     </tr>
@@ -1894,10 +1894,10 @@ variants.barcode_variant_df.head(n=12)
       <th>7</th>
       <td>MERS</td>
       <td>lib51_53</td>
-      <td>AAAAAAAGGTTATACT</td>
+      <td>AAAAAAAACTTAAGAA</td>
       <td>1</td>
-      <td>CTT67TAT</td>
-      <td>L67Y</td>
+      <td>CTT191GTT</td>
+      <td>L191V</td>
       <td>1</td>
       <td>1</td>
     </tr>
@@ -1905,21 +1905,21 @@ variants.barcode_variant_df.head(n=12)
       <th>8</th>
       <td>MERS</td>
       <td>lib51_53</td>
-      <td>AAAAAAATAACTAATC</td>
-      <td>1</td>
-      <td>GTT27AGA</td>
-      <td>V27R</td>
-      <td>1</td>
-      <td>1</td>
+      <td>AAAAAAAAGCAATATA</td>
+      <td>2</td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>9</th>
       <td>MERS</td>
       <td>lib51_53</td>
-      <td>AAAAAAATATATCAAT</td>
-      <td>1</td>
-      <td>AAC92AAA</td>
-      <td>N92K</td>
+      <td>AAAAAAAAGTAAGGAA</td>
+      <td>2</td>
+      <td>ATG76GAA</td>
+      <td>M76E</td>
       <td>1</td>
       <td>1</td>
     </tr>
@@ -1927,21 +1927,21 @@ variants.barcode_variant_df.head(n=12)
       <th>10</th>
       <td>MERS</td>
       <td>lib51_53</td>
-      <td>AAAAAACAATTCGTCT</td>
+      <td>AAAAAAAAGTAGAATA</td>
       <td>1</td>
-      <td>TTT91AAA GGC194GTT</td>
-      <td>F91K G194V</td>
-      <td>2</td>
-      <td>2</td>
+      <td>GGG176ACT</td>
+      <td>G176T</td>
+      <td>1</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>11</th>
       <td>MERS</td>
       <td>lib51_53</td>
-      <td>AAAAAACACCAGTCTG</td>
-      <td>1</td>
-      <td>GCG2AGA</td>
-      <td>A2R</td>
+      <td>AAAAAAAAGTTCATAT</td>
+      <td>2</td>
+      <td>CCG155TGT</td>
+      <td>P155C</td>
       <td>1</td>
       <td>1</td>
     </tr>
@@ -1988,9 +1988,9 @@ display(HTML(
   <tbody>
     <tr>
       <th>MERS</th>
-      <td>14547</td>
-      <td>20419</td>
-      <td>34966</td>
+      <td>55135</td>
+      <td>73735</td>
+      <td>128870</td>
     </tr>
   </tbody>
 </table>
@@ -2175,162 +2175,162 @@ display(HTML(
       <th rowspan="9" valign="top">False</th>
       <th rowspan="3" valign="top">lib51_53</th>
       <th>0</th>
-      <td>327</td>
+      <td>7</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>683</td>
+      <td>5</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>3290</td>
+      <td>4288</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">lib52_54</th>
       <th>0</th>
-      <td>147</td>
+      <td>6</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>369</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>3784</td>
+      <td>4293</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">all libraries</th>
       <th>0</th>
-      <td>25</td>
+      <td>6</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>67</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>4208</td>
+      <td>4294</td>
     </tr>
     <tr>
       <th rowspan="9" valign="top">True</th>
       <th rowspan="3" valign="top">lib51_53</th>
       <th>0</th>
-      <td>464</td>
+      <td>156</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>716</td>
+      <td>13</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>3335</td>
+      <td>4346</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">lib52_54</th>
       <th>0</th>
-      <td>259</td>
+      <td>150</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>404</td>
+      <td>10</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>3852</td>
+      <td>4355</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">all libraries</th>
       <th>0</th>
-      <td>131</td>
+      <td>145</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>89</td>
+      <td>13</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>4295</td>
+      <td>4357</td>
     </tr>
     <tr>
       <th rowspan="18" valign="top">single</th>
       <th rowspan="9" valign="top">False</th>
       <th rowspan="3" valign="top">lib51_53</th>
       <th>0</th>
-      <td>500</td>
+      <td>7</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>875</td>
+      <td>8</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>2925</td>
+      <td>4285</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">lib52_54</th>
       <th>0</th>
-      <td>249</td>
+      <td>7</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>599</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>3452</td>
+      <td>4290</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">all libraries</th>
       <th>0</th>
-      <td>42</td>
+      <td>7</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>147</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>4111</td>
+      <td>4293</td>
     </tr>
     <tr>
       <th rowspan="9" valign="top">True</th>
       <th rowspan="3" valign="top">lib51_53</th>
       <th>0</th>
-      <td>665</td>
+      <td>181</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>897</td>
+      <td>12</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>2953</td>
+      <td>4322</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">lib52_54</th>
       <th>0</th>
-      <td>388</td>
+      <td>173</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>628</td>
+      <td>14</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>3499</td>
+      <td>4328</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">all libraries</th>
       <th>0</th>
-      <td>173</td>
+      <td>169</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>173</td>
+      <td>15</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>4169</td>
+      <td>4331</td>
     </tr>
   </tbody>
 </table>
@@ -2414,50 +2414,50 @@ display(HTML(
     <tr>
       <td>MERS</td>
       <td>lib51_53</td>
-      <td>AAAAAAAAACTCTTCA</td>
+      <td>AAAAAAAAACATTCGT</td>
       <td>1</td>
-      <td></td>
-      <td></td>
-      <td>0</td>
-      <td>0</td>
+      <td>AAC145TTG</td>
+      <td>N145L</td>
+      <td>1</td>
+      <td>1</td>
     </tr>
     <tr>
       <td>MERS</td>
       <td>lib51_53</td>
-      <td>AAAAAAAACTTTAGAA</td>
+      <td>AAAAAAAAAGACTTTC</td>
       <td>1</td>
-      <td>ACG36GCT GTC44GTT</td>
-      <td>T36A</td>
+      <td>GTA158AAA</td>
+      <td>V158K</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>MERS</td>
+      <td>lib51_53</td>
+      <td>AAAAAAAAAGCGATAG</td>
+      <td>4</td>
+      <td>TCC128---</td>
+      <td>S128-</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>MERS</td>
+      <td>lib51_53</td>
+      <td>AAAAAAAAATTGAGGT</td>
       <td>2</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>MERS</td>
-      <td>lib51_53</td>
-      <td>AAAAAAAAGTTCATAT</td>
-      <td>1</td>
-      <td>CCG155---</td>
-      <td>P155-</td>
+      <td>CCT139CAA</td>
+      <td>P139Q</td>
       <td>1</td>
       <td>1</td>
     </tr>
     <tr>
       <td>MERS</td>
       <td>lib51_53</td>
-      <td>AAAAAAAATGTCATGG</td>
-      <td>1</td>
-      <td>CAA192ATT</td>
-      <td>Q192I</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>MERS</td>
-      <td>lib51_53</td>
-      <td>AAAAAAAATGTGTTAC</td>
-      <td>1</td>
-      <td>CAA192ATT</td>
-      <td>Q192I</td>
+      <td>AAAAAAAACAATCCCG</td>
+      <td>4</td>
+      <td>ACA188TAT</td>
+      <td>T188Y</td>
       <td>1</td>
       <td>1</td>
     </tr>
