@@ -124,7 +124,7 @@ calc.MLmean <- function(b1,b2,b3,b4,min.b1,min.b2,min.b3,min.b4,max.b4,min.count
 }
 
 #fit ML mean and sd fluorescence for each barcode, and calculate total cell count as the sum across the four bins. Multiply cell counts by a factor of 20 to minimize rounding errors since fitdistcens requires rounding to integer inputs
-invisible(dt[library=="lib51_53",c("expression","ML_sdF") := tryCatch(calc.MLmean(b1=SortSeq_bin1*7,b2=SortSeq_bin2*20,
+invisible(dt[library=="lib51_53",c("expression","ML_sdF") := tryCatch(calc.MLmean(b1=SortSeq_bin1*20,b2=SortSeq_bin2*20,
                                                                       b3=SortSeq_bin3*20,b4=SortSeq_bin4*20,
                                                                       min.b1=log(20),min.b2=log(650),min.b3=log(1133),
                                                                       min.b4=log(2015),max.b4=log(229000)),

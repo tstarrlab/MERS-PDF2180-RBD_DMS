@@ -269,15 +269,21 @@ for(bg in c("MERS","PDF2180")){
 We have duplicates for expr measurement. Let’s look at correlations!
 
 ``` r
-par(mfrow=c(1,2))
+par(mfrow=c(1,3))
 x <- dt_mutant_expr[library=="lib51_53" & wildtype!=mutant,mean_expr]; y <- dt_mutant_expr[library=="lib52_54" & wildtype!=mutant,mean_expr]; plot(x,y,pch=16,col="#00000020",xlab="replicate 1",ylab="replicate 2",main="expression");model <- lm(y~x);abline(a=0,b=1,lty=2,col="red");legend("topleft",legend=paste("R2: ",round(summary(model)$r.squared,3),sep=""),bty="n")
 
+x <- dt_mutant_expr[library=="lib51_53" & wildtype!=mutant & target=="MERS",mean_expr]; y <- dt_mutant_expr[library=="lib52_54" & wildtype!=mutant & target=="MERS",mean_expr]; plot(x,y,pch=16,col="#00000020",xlab="replicate 1",ylab="replicate 2",main="expression, MERS");model <- lm(y~x);abline(a=0,b=1,lty=2,col="red");legend("topleft",legend=paste("R2: ",round(summary(model)$r.squared,3),sep=""),bty="n")
+
+x <- dt_mutant_expr[library=="lib51_53" & wildtype!=mutant & target=="PDF2180",mean_expr]; y <- dt_mutant_expr[library=="lib52_54" & wildtype!=mutant & target=="PDF2180",mean_expr]; plot(x,y,pch=16,col="#00000020",xlab="replicate 1",ylab="replicate 2",main="expression, PDF2180");model <- lm(y~x);abline(a=0,b=1,lty=2,col="red");legend("topleft",legend=paste("R2: ",round(summary(model)$r.squared,3),sep=""),bty="n")
+```
+
+<img src="collapse_scores_files/figure-gfm/plot_correlations-1.png" style="display: block; margin: auto;" />
+
+``` r
 # x <- dt_mutant_bind[library=="lib51_53" & wildtype!=mutant,mean_bind]; y <- dt_mutant_bind[library=="lib52_54" & wildtype!=mutant,mean_bind]; plot(x,y,pch=16,col="#00000020",xlab="replicate 1",ylab="replicate 2",main="binding affinity");model <- lm(y~x);abline(a=0,b=1,lty=2,col="red");legend("topleft",legend=paste("R2: ",round(summary(model)$r.squared,3),sep=""),bty="n")
 
 invisible(dev.print(pdf, paste(config$final_variant_scores_dir,"/replicate_correlations.pdf",sep=""),useDingbats=F))
 ```
-
-<img src="collapse_scores_files/figure-gfm/plot_correlations-1.png" style="display: block; margin: auto;" />
 
 ## Calculate per-mutant score across libraries
 
@@ -444,7 +450,7 @@ Second, illustrating delta_log10Ka grouped by SSM position.
 
 ``` r
 p1 <- ggplot(temp[measurement=="delta_bind_hDPP4",],aes(position_MERS,mutant))+geom_tile(aes(fill=value),color="black",lwd=0.1)+
-  scale_fill_gradientn(colours=c("#A94E35","#A94E35","#F48365","#FFFFFF","#7378B9","#383C6C"),limits=c(-3,3),values=c(0/6,1/6,2/6,3/6,4.5/6,6/6),na.value="yellow")+
+  scale_fill_gradientn(colours=c("#A94E35","#A94E35","#F48365","#FFFFFF","#7378B9","#383C6C"),limits=c(-4.5,2),values=c(0/6.5,1.5/6.5,3/6.5,4.5/6.5,5.5/6.5,6/6.5),na.value="yellow")+ #effectively -3 to +2 scale
   #scale_x_continuous(expand=c(0,0),breaks=c(377,seq(380,591,by=5)))+
   labs(x="",y="")+theme_classic(base_size=9)+
   coord_equal()+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.6,face="bold",size=10),axis.text.y=element_text(face="bold",size=10))+
@@ -467,7 +473,7 @@ delta-expression of muts relative to respective wildtype
 
 ``` r
 p1 <- ggplot(temp[measurement=="expr",],aes(position_MERS,mutant))+geom_tile(aes(fill=value),color="black",lwd=0.1)+
-  scale_fill_gradientn(colours=c("#FFFFFF","#003366"),limits=c(5,10),na.value="yellow")+
+  scale_fill_gradientn(colours=c("#FFFFFF","#003366"),limits=c(5.5,9),na.value="yellow")+
   #scale_fill_gradientn(colours=c("#FFFFFF","#FFFFFF","#003366"),limits=c(5,11.2),values=c(0,1/7,7/7),na.value="yellow")+ #three notches in case I want to 'censor' closer to the 5 boundary condition
   #scale_x_continuous(expand=c(0,0),breaks=c(377,seq(380,591,by=5)))+
   labs(x="",y="")+theme_classic(base_size=9)+
@@ -490,7 +496,7 @@ Second, illustrating delta_expression grouped by SSM position.
 
 ``` r
 p1 <- ggplot(temp[measurement=="delta_expr",],aes(position_MERS,mutant))+geom_tile(aes(fill=value),color="black",lwd=0.1)+
-  scale_fill_gradientn(colours=c("#A94E35","#F48365","#FFFFFF","#7378B9","#383C6C"),limits=c(-3,3),values=c(0/6,1.5/6,3/6,4.5/6,6/6),na.value="yellow")+
+  scale_fill_gradientn(colours=c("#A94E35","#F48365","#FFFFFF","#7378B9","#383C6C"),limits=c(-2,2),values=c(0/4,1/4,2/4,3/4,4/4),na.value="yellow")+ #effectively -2 to +2
   #scale_x_continuous(expand=c(0,0),breaks=c(377,seq(380,591,by=5)))+
   labs(x="",y="")+theme_classic(base_size=9)+
   coord_equal()+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.6,face="bold",size=10),axis.text.y=element_text(face="bold",size=10))+
