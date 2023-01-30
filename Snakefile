@@ -57,7 +57,8 @@ rule make_summary:
         variant_expression_file=config['expression_sortseq_file'],
         collapse_scores='results/summary/collapse_scores.md',
         mut_phenos_file=config['final_variant_scores_mut_file'],
-        heatmap_viz=os.path.join(config['visualization_dir'], "heatmap.html")
+        heatmap_viz_delta=os.path.join(config['visualization_dir'], "heatmaps_delta.html"),
+        heatmap_viz_absolute=os.path.join(config['visualization_dir'], "heatmaps_absolute.html"),
     output:
         summary = os.path.join(config['summary_dir'], 'summary.md')
     run:
@@ -93,7 +94,7 @@ rule make_summary:
                Generates final phenotypes, recorded in [this file]({path(input.mut_phenos_file)}).
             
             
-            6. Make interactive data visualizations, available [here](https://jbloomlab.github.io/SARS-CoV-2-RBD_DMS_Omicron/)
+            6. Make interactive data visualizations, available [here](https://jbloomlab.github.io/MERS-PDF2180-RBD_DMS/)
 
             """
             ).strip())
@@ -108,19 +109,27 @@ rule make_dag:
         "snakemake --forceall --dag | dot -Tsvg > {output}"
 
 
-
-rule interactive_heatmap_plot:
-    """ Make the interactive heatmap for expression and binding.
+rule interactive_heatmap_absolute:
+    """ Make the interactive heatmaps for absolute expression and binding phenotypes.
     """
     input: 
         scores=config['final_variant_scores_mut_file']
     params:
         annotations=config['RBD_sites']
     output:
-        html=os.path.join(config['visualization_dir'], "heatmap.html")
-    notebook: "RBD-Heatmaps-Interactive-Visualization.ipynb"
+        html=os.path.join(config['visualization_dir'], "heatmaps_absolute.html")
+    notebook: "RBD-Heatmaps-Interactive-Visualization_absolute.ipynb"
 
-
+rule interactive_heatmap_delta:
+    """ Make the interactive heatmaps for delta expression and binding phenotypes.
+    """
+    input: 
+        scores=config['final_variant_scores_mut_file']
+    params:
+        annotations=config['RBD_sites']
+    output:
+        html=os.path.join(config['visualization_dir'], "heatmaps_delta.html")
+    notebook: "RBD-Heatmaps-Interactive-Visualization_delta.ipynb"
 
 rule collapse_scores:
     input:

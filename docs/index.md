@@ -7,17 +7,19 @@ layout: default
 
 ## Overview 
 
-We performed deep mutational scans to measure the impact on DPP4 binding of all single amino-acid mutations in the MERS and PDF-2180 CoV RBDs, and compare mutational effects to those in the ancestral Wuhan-Hu-1 RBD background.
+We performed deep mutational scans to measure the impact on receptor-binding and RBD folding of all single amino-acid mutations in MERS-CoV and PDF-2180 RBD backgrounds. We measured binding affinity (log10Ka) for the DPP4 ortholog from human. We also determined mutational effects on RBD expression levels.
 
-Here, we link to an interactive visualization that enables exploration of the data from these deep mutational scans across SARS_CoV-2 variants.
+Here, we link to two interactive visualizations that enable exploration of the data from these deep mutational scans.
 
 
 ### Instructions 
 
 We have made two tools to help visualize the data from our deep mutational scans:
 
-1. A set of interactive heatmaps that you can use to explore the change in ACE2-binding affinity ($$\Delta$$log10 $$K_D$$) or the change in RBD expression (log10(MFI)) caused by mutations in each RBD variant. To use this tool, click [here]({{ site.baseurl }}{% link heatmaps.md %}).
+1. A set of interactive heatmaps that you can use to explore **change** in receptor binding (delta-log10Ka) and expression (delta-logMFI) for each RBD variant. To use this tool, click [here]({{ site.baseurl }}{% link heatmaps_delta.md %}).
+
+2. A set of interactive heatmaps that you can use to explore the **absolute**receptor binding affinity (log10Ka) and RBD expression (logMFI) of each RBD variant. To use this tool, click [here]({{ site.baseurl }}{% link heatmaps_absolute.md %}).
 
 ### Data
 
-If you are interested in the raw data from our study, you can find the DPP4-binding affinity (-log10 $$K_D$$) and RBD expression (log10(MFI)) measurements from each experiment [here](https://github.com/jbloomlab/MERS-PDF2180-RBD_DMS/tree/main/results/final_variant_scores). 
+If you are interested in the raw data from our study, you can find the mutant phenotypes from each experiment [here](https://github.com/jbloomlab/MERS-PDF2180-RBD_DMS_/tree/main/results/final_variant_scores).

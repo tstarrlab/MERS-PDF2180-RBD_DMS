@@ -25,4 +25,4 @@ workflow:
    Generates final phenotypes, recorded in [this file](../final_variant_scores/final_variant_scores.csv).
 
 
-6. Make interactive data visualizations, available [here](https://jbloomlab.github.io/SARS-CoV-2-RBD_DMS_Omicron/)
+6. Make interactive data visualizations, available [here](https://jbloomlab.github.io/MERS-PDF2180-RBD_DMS/)

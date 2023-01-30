@@ -1,15 +1,10 @@
-# Deep mutational scanning of the SARS-CoV-2 RBD in Omicron BA.1 and BA.2 variant backgrounds.
+# Deep mutational scanning of the MERS-CoV and PDF-2180 RBDs
 
-Analysis of deep mutational scanning of barcoded codon variants of SARS-CoV-2 RBD in Omicron BA.1 and BA.2 variant backgrounds.
+Analysis of deep mutational scanning of barcoded codon variants of MERS-CoV and PDF-2180 RBDs for DPP4 binding, ACE2 binding, and RBD expression
 
-The 3 backgrounds examined here are:
-  1. Wuhan-Hu-1 background
-  2. Omicron BA.1
-  3. Omicron BA.2
+Study and analysis by Tyler Starr, Ashley Taylor, and co-authors.
 
-Study and analysis by Tyler Starr, Allie Greaney, [Jesse Bloom](https://research.fhcrc.org/bloom/en.html), and co-authors.
-
-Interactive visualizations of the key deep mutational scanning data are available [here](https://jbloomlab.github.io/SARS-CoV-2-RBD_DMS_Omicron/).
+Interactive visualizations of the key deep mutational scanning data are available [here](https://jbloomlab.github.io/MERS-PDF2180-RBD_DMS_/).
 
 ## Summary of workflow and results
 For a summary of the workflow and links to key results files, [click here](results/summary/summary.md).

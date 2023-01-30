@@ -197,8 +197,14 @@ invisible(dt[library=="lib51_53",c("expression","ML_sdF") := tryCatch(calc.MLmea
                                                                       min.b1=log(20),min.b2=log(650),min.b3=log(1133),
                                                                       min.b4=log(2015),max.b4=log(229000)),
                                                           error=function(e){return(list(as.numeric(NA),as.numeric(NA)))}),by=c("library","barcode")])
-invisible(dt[library=="lib52_54",c("expression","ML_sdF") := tryCatch(calc.MLmean(b1=SortSeq_bin1*20,b2=SortSeq_bin2*20,
-                                                                      b3=SortSeq_bin3*20,b4=SortSeq_bin4*20,
+# invisible(dt[library=="lib52_54",c("expression","ML_sdF") := tryCatch(calc.MLmean(b1=SortSeq_bin1*20,b2=SortSeq_bin2*20,
+#                                                                       b3=SortSeq_bin3*20,b4=SortSeq_bin4*20,
+#                                                                       min.b1=log(20),min.b2=log(650),min.b3=log(1133),
+#                                                                       min.b4=log(2015),max.b4=log(229000)),
+#                                                           error=function(e){return(list(as.numeric(NA),as.numeric(NA)))}),by=c("library","barcode")])
+#for now do different weighting on rep2 to account for reduced sequencing reads
+invisible(dt[library=="lib52_54",c("expression","ML_sdF") := tryCatch(calc.MLmean(b1=SortSeq_bin1*30,b2=SortSeq_bin2*10,
+                                                                      b3=SortSeq_bin3*12.5,b4=SortSeq_bin4*10,
                                                                       min.b1=log(20),min.b2=log(650),min.b3=log(1133),
                                                                       min.b4=log(2015),max.b4=log(229000)),
                                                           error=function(e){return(list(as.numeric(NA),as.numeric(NA)))}),by=c("library","barcode")])

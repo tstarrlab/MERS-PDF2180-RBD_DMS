@@ -24,7 +24,7 @@ knitr::opts_chunk$set(echo = T)
 knitr::opts_chunk$set(dev.args = list(png = list(type = "cairo")))
 
 #list of packages to install/load
-packages = c("yaml","data.table","tidyverse","gridExtra")
+packages = c("yaml","data.table","tidyverse","gridExtra","plotly","withr","htmlwidgets")
 #install any packages not already installed
 installed_packages <- packages %in% rownames(installed.packages())
 if(any(installed_packages == F)){
@@ -70,24 +70,24 @@ sessionInfo()
     ## [1] stats     graphics  grDevices utils     datasets  methods   base     
     ## 
     ## other attached packages:
-    ##  [1] gridExtra_2.3     forcats_0.4.0     stringr_1.4.0     dplyr_0.8.3      
-    ##  [5] purrr_0.3.3       readr_1.3.1       tidyr_1.0.0       tibble_3.0.2     
-    ##  [9] ggplot2_3.3.0     tidyverse_1.3.0   data.table_1.12.8 yaml_2.2.0       
-    ## [13] knitr_1.26       
+    ##  [1] htmlwidgets_1.5.1 withr_2.1.2       plotly_4.9.1      gridExtra_2.3    
+    ##  [5] forcats_0.4.0     stringr_1.4.0     dplyr_0.8.3       purrr_0.3.3      
+    ##  [9] readr_1.3.1       tidyr_1.0.0       tibble_3.0.2      ggplot2_3.3.0    
+    ## [13] tidyverse_1.3.0   data.table_1.12.8 yaml_2.2.0        knitr_1.26       
     ## 
     ## loaded via a namespace (and not attached):
-    ##  [1] Rcpp_1.0.3       cellranger_1.1.0 pillar_1.4.5     compiler_3.6.2  
-    ##  [5] dbplyr_1.4.2     tools_3.6.2      digest_0.6.23    lubridate_1.7.4 
-    ##  [9] jsonlite_1.6     evaluate_0.14    lifecycle_0.2.0  gtable_0.3.0    
-    ## [13] pkgconfig_2.0.3  rlang_0.4.7      reprex_0.3.0     cli_2.0.0       
-    ## [17] rstudioapi_0.10  DBI_1.1.0        haven_2.2.0      xfun_0.11       
-    ## [21] withr_2.1.2      xml2_1.3.3       httr_1.4.1       fs_1.3.1        
-    ## [25] hms_0.5.2        generics_0.0.2   vctrs_0.3.1      grid_3.6.2      
-    ## [29] tidyselect_1.1.0 glue_1.3.1       R6_2.4.1         fansi_0.4.0     
-    ## [33] readxl_1.3.1     rmarkdown_2.0    modelr_0.1.5     magrittr_1.5    
-    ## [37] backports_1.1.5  scales_1.1.0     ellipsis_0.3.0   htmltools_0.4.0 
-    ## [41] rvest_0.3.5      assertthat_0.2.1 colorspace_1.4-1 stringi_1.4.3   
-    ## [45] munsell_0.5.0    broom_0.7.0      crayon_1.3.4
+    ##  [1] tidyselect_1.1.0  xfun_0.11         haven_2.2.0       colorspace_1.4-1 
+    ##  [5] vctrs_0.3.1       generics_0.0.2    viridisLite_0.3.0 htmltools_0.4.0  
+    ##  [9] rlang_0.4.7       pillar_1.4.5      glue_1.3.1        DBI_1.1.0        
+    ## [13] dbplyr_1.4.2      modelr_0.1.5      readxl_1.3.1      lifecycle_0.2.0  
+    ## [17] munsell_0.5.0     gtable_0.3.0      cellranger_1.1.0  rvest_0.3.5      
+    ## [21] evaluate_0.14     fansi_0.4.0       broom_0.7.0       Rcpp_1.0.3       
+    ## [25] scales_1.1.0      backports_1.1.5   jsonlite_1.6      fs_1.3.1         
+    ## [29] hms_0.5.2         digest_0.6.23     stringi_1.4.3     grid_3.6.2       
+    ## [33] cli_2.0.0         tools_3.6.2       magrittr_1.5      lazyeval_0.2.2   
+    ## [37] crayon_1.3.4      pkgconfig_2.0.3   ellipsis_0.3.0    xml2_1.3.3       
+    ## [41] reprex_0.3.0      lubridate_1.7.4   assertthat_0.2.1  rmarkdown_2.0    
+    ## [45] httr_1.4.1        rstudioapi_0.10   R6_2.4.1          compiler_3.6.2
 
 ## Setup
 
@@ -356,6 +356,57 @@ setnames(dt_final,"site","position")
 setnames(dt_final,"site_MERS","position_MERS")
 ```
 
+Relationship between mutaitonal effects on binding and expression. It
+looks like in contrast to other cases, perhaps because of lower parental
+expression, we are geting correlation also in the strong positive
+mutational effects direction (i.e., strongly expreession-enhancing
+mutations appear with higher Kd) which is problematic.
+
+``` r
+par(mfrow=c(1,3))
+x <- dt_final[wildtype!=mutant,delta_expr]; y <- dt_final[wildtype!=mutant,delta_bind_hDPP4]; plot(x,y,pch=16,col="#00000020",xlab="mutant change in expression",ylab="mutant change in hDPP4 binding",main="pooled");model <- lm(y~x);abline(h=0,lty=2,col="gray30");abline(v=0,lty=2,col="gray30");legend("topleft",legend=paste("R2: ",round(summary(model)$r.squared,3),sep=""),bty="n")
+
+x <- dt_final[target=="MERS" & wildtype!=mutant,delta_expr]; y <- dt_final[target=="MERS" & wildtype!=mutant,delta_bind_hDPP4]; plot(x,y,pch=16,col="#00000020",xlab="mutant change in expression",ylab="mutant change in hDPP4 binding",main="MERS");model <- lm(y~x);abline(h=0,lty=2,col="gray30");abline(v=0,lty=2,col="gray30");legend("topleft",legend=paste("R2: ",round(summary(model)$r.squared,3),sep=""),bty="n")
+
+x <- dt_final[target=="PDF2180" & wildtype!=mutant,delta_expr]; y <- dt_final[target=="PDF2180" & wildtype!=mutant,delta_bind_hDPP4]; plot(x,y,pch=16,col="#00000020",xlab="mutant change in expression",ylab="mutant change in hDPP4 binding",main="PDF2180");model <- lm(y~x);abline(h=0,lty=2,col="gray30");abline(v=0,lty=2,col="gray30");legend("topleft",legend=paste("R2: ",round(summary(model)$r.squared,3),sep=""),bty="n")
+```
+
+<img src="collapse_scores_files/figure-gfm/plot_correlations_bind-v-expr-1.png" style="display: block; margin: auto;" />
+
+``` r
+# x <- dt_mutant_bind[library=="lib51_53" & wildtype!=mutant,mean_bind]; y <- dt_mutant_bind[library=="lib52_54" & wildtype!=mutant,mean_bind]; plot(x,y,pch=16,col="#00000020",xlab="replicate 1",ylab="replicate 2",main="binding affinity");model <- lm(y~x);abline(a=0,b=1,lty=2,col="red");legend("topleft",legend=paste("R2: ",round(summary(model)$r.squared,3),sep=""),bty="n")
+
+invisible(dev.print(pdf, paste(config$final_variant_scores_dir,"/correlation_bind-v-expr.pdf",sep=""),useDingbats=F))
+```
+
+Interactive?
+
+``` r
+p1 <- ggplot(dt_final)+aes(delta_expr, delta_bind_hDPP4, label = mutation)+ #can do label = mutation_MERS to get the label in mers indexing
+  geom_point(shape=16,alpha=0.5,size=1.5)+
+  facet_wrap(~target,nrow=1)+
+  theme_bw()+
+  xlab('mutant change in expression')+
+  ylab('mutant change in hDPP4 binding')
+
+#ggplotly(p1) #if want to see it interactvie in rstudio
+
+#to save widget as html
+saveWidgetFix <- function (widget,file,...) {
+  ## A wrapper to saveWidget which compensates for arguable BUG in
+  ## saveWidget which requires `file` to be in current working
+  ## directory.
+  wd<-getwd()
+  on.exit(setwd(wd))
+  outDir<-dirname(file)
+  file<-basename(file)
+  setwd(outDir);
+  saveWidget(widget,file=file,...)
+}
+p1.g <- ggplotly(p1)
+saveWidgetFix(p1.g, file=paste(config$final_variant_scores_dir,"/correlation_bind-v-expr_interactive.html",sep=""))
+```
+
 Censor any measurements that are from \<3 bc or only sampled in a single
 replicate? Don’t do this for now.
 
@@ -496,7 +547,7 @@ Second, illustrating delta_expression grouped by SSM position.
 
 ``` r
 p1 <- ggplot(temp[measurement=="delta_expr",],aes(position_MERS,mutant))+geom_tile(aes(fill=value),color="black",lwd=0.1)+
-  scale_fill_gradientn(colours=c("#A94E35","#F48365","#FFFFFF","#7378B9","#383C6C"),limits=c(-2,2),values=c(0/4,1/4,2/4,3/4,4/4),na.value="yellow")+ #effectively -2 to +2
+  scale_fill_gradientn(colours=c("#A94E35","#F48365","#FFFFFF","#7378B9","#383C6C"),limits=c(-2,1.5),values=c(0/3.5,1/3.5,2/3.5,2.75/3.5,3.5/3.5),na.value="yellow")+ #effectively -2 to +2
   #scale_x_continuous(expand=c(0,0),breaks=c(377,seq(380,591,by=5)))+
   labs(x="",y="")+theme_classic(base_size=9)+
   coord_equal()+theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.6,face="bold",size=10),axis.text.y=element_text(face="bold",size=10))+
