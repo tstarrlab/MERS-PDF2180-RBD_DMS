@@ -24,4 +24,4 @@ The hDPP4 receptor-binding affinities and yeast surface expression levels of eve
 
 ### Data
 
-Raw data  can be found [here](https://github.com/jbloomlab/MERS-PDF2180-RBD_DMS_/blob/main/results/final_variant_scores/final_variant_scores.csv). The code used to make these plots can be found [here](https://github.com/jbloomlab/MERS-PDF2180-RBD_DMS_/blob/main/RBD-Heatmaps-Interactive-Visualization_absolute.ipynb).
+Raw data  can be found [here](https://github.com/tstarrlab/MERS-PDF2180-RBD_DMS/blob/main/results/final_variant_scores/final_variant_scores.csv). The code used to make these plots can be found [here](https://github.com/tstarrlab/MERS-PDF2180-RBD_DMS/blob/main/RBD-Heatmaps-Interactive-Visualization_absolute.ipynb).

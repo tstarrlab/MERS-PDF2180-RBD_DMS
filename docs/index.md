@@ -18,8 +18,8 @@ We have made two tools to help visualize the data from our deep mutational scans
 
 1. A set of interactive heatmaps that you can use to explore **change** in receptor binding (delta-log10Ka) and expression (delta-logMFI) for each RBD variant. To use this tool, click [here]({{ site.baseurl }}{% link heatmaps_delta.md %}).
 
-2. A set of interactive heatmaps that you can use to explore the **absolute**receptor binding affinity (log10Ka) and RBD expression (logMFI) of each RBD variant. To use this tool, click [here]({{ site.baseurl }}{% link heatmaps_absolute.md %}).
+2. A set of interactive heatmaps that you can use to explore the **absolute** receptor binding affinity (log10Ka) and RBD expression (logMFI) of each RBD variant. To use this tool, click [here]({{ site.baseurl }}{% link heatmaps_absolute.md %}).
 
 ### Data
 
-If you are interested in the raw data from our study, you can find the mutant phenotypes from each experiment [here](https://github.com/jbloomlab/MERS-PDF2180-RBD_DMS_/tree/main/results/final_variant_scores).
+If you are interested in the raw data from our study, you can find the mutant phenotypes from each experiment [here](https://github.com/tstarrlab/MERS-PDF2180-RBD_DMS/tree/main/results/final_variant_scores).

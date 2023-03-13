@@ -4,7 +4,7 @@ Analysis of deep mutational scanning of barcoded codon variants of MERS-CoV and 
 
 Study and analysis by Tyler Starr, Ashley Taylor, and co-authors.
 
-Interactive visualizations of the key deep mutational scanning data are available [here](https://jbloomlab.github.io/MERS-PDF2180-RBD_DMS_/).
+Interactive visualizations of the key deep mutational scanning data are available [here](https://tstarrlab.github.io/MERS-PDF2180-RBD_DMS_/).
 
 ## Summary of workflow and results
 For a summary of the workflow and links to key results files, [click here](results/summary/summary.md).

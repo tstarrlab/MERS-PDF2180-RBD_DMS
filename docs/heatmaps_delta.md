@@ -24,4 +24,4 @@ The impact on hDPP4 receptor-binding and expression level of every single amino-
 
 ### Data
 
-Raw data  can be found [here](https://github.com/jbloomlab/MERS-PDF2180-RBD_DMS_/blob/main/results/final_variant_scores/final_variant_scores.csv). The code used to make these plots can be found [here](https://github.com/jbloomlab/MERS-PDF2180-RBD_DMS_/blob/main/RBD-Heatmaps-Interactive-Visualization_delta.ipynb).
+Raw data  can be found [here](https://github.com/tstarrlab/MERS-PDF2180-RBD_DMS/blob/main/results/final_variant_scores/final_variant_scores.csv). The code used to make these plots can be found [here](https://github.com/tstarrlab/MERS-PDF2180-RBD_DMS/blob/main/RBD-Heatmaps-Interactive-Visualization_delta.ipynb).
