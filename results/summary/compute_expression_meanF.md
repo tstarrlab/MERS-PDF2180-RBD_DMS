@@ -140,9 +140,9 @@ for(i in 1:nrow(barcode_runs)){
     ## [1] "read:cell ratio for lib51_53 SortSeq_bin2 is 1.9817525419065"
     ## [1] "read:cell ratio for lib51_53 SortSeq_bin3 is 1.61394640848562"
     ## [1] "read:cell ratio for lib51_53 SortSeq_bin4 is 1.39168409260642"
-    ## [1] "reads < cells for lib52_54 SortSeq_bin1 , un-normalized (ratio 0.310924132832543 )"
+    ## [1] "read:cell ratio for lib52_54 SortSeq_bin1 is 4.06717007653953"
     ## [1] "read:cell ratio for lib52_54 SortSeq_bin2 is 1.30843458984951"
-    ## [1] "reads < cells for lib52_54 SortSeq_bin3 , un-normalized (ratio 0.805748482860693 )"
+    ## [1] "read:cell ratio for lib52_54 SortSeq_bin3 is 1.58901237335197"
     ## [1] "read:cell ratio for lib52_54 SortSeq_bin4 is 1.43500276583034"
 
 ``` r
@@ -192,22 +192,12 @@ calc.MLmean <- function(b1,b2,b3,b4,min.b1,min.b2,min.b3,min.b4,max.b4,min.count
 }
 
 #fit ML mean and sd fluorescence for each barcode, and calculate total cell count as the sum across the four bins. Multiply cell counts by a factor of 20 to minimize rounding errors since fitdistcens requires rounding to integer inputs
-invisible(dt[library=="lib51_53",c("expression","ML_sdF") := tryCatch(calc.MLmean(b1=SortSeq_bin1*20,b2=SortSeq_bin2*20,
+invisible(dt[,c("expression","ML_sdF") := tryCatch(calc.MLmean(b1=SortSeq_bin1*20,b2=SortSeq_bin2*20,
                                                                       b3=SortSeq_bin3*20,b4=SortSeq_bin4*20,
                                                                       min.b1=log(20),min.b2=log(650),min.b3=log(1133),
                                                                       min.b4=log(2015),max.b4=log(229000)),
                                                           error=function(e){return(list(as.numeric(NA),as.numeric(NA)))}),by=c("library","barcode")])
-# invisible(dt[library=="lib52_54",c("expression","ML_sdF") := tryCatch(calc.MLmean(b1=SortSeq_bin1*20,b2=SortSeq_bin2*20,
-#                                                                       b3=SortSeq_bin3*20,b4=SortSeq_bin4*20,
-#                                                                       min.b1=log(20),min.b2=log(650),min.b3=log(1133),
-#                                                                       min.b4=log(2015),max.b4=log(229000)),
-#                                                           error=function(e){return(list(as.numeric(NA),as.numeric(NA)))}),by=c("library","barcode")])
-#for now do different weighting on rep2 to account for reduced sequencing reads
-invisible(dt[library=="lib52_54",c("expression","ML_sdF") := tryCatch(calc.MLmean(b1=SortSeq_bin1*30,b2=SortSeq_bin2*10,
-                                                                      b3=SortSeq_bin3*12.5,b4=SortSeq_bin4*10,
-                                                                      min.b1=log(20),min.b2=log(650),min.b3=log(1133),
-                                                                      min.b4=log(2015),max.b4=log(229000)),
-                                                          error=function(e){return(list(as.numeric(NA),as.numeric(NA)))}),by=c("library","barcode")])
+
 
 #save temp data file for downstream troubleshooting since the ML meanF took >1hr to calculate -- don't use these for final anlaysis though for reproducibility!
 save(dt,file=paste(config$expression_sortseq_dir,"/dt.temp.Rda",sep=""))
@@ -269,7 +259,7 @@ grid.arrange(p1,ncol=1)
 invisible(dev.print(pdf, paste(config$expression_sortseq_dir,"/violin-plot_meanF-by-target.pdf",sep="")))
 ```
 
-We have generated expression measurements for 88.59% of the barcodes in
+We have generated expression measurements for 89.54% of the barcodes in
 our libraries.
 
 ## Data Output
