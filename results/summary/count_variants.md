@@ -719,7 +719,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>NaN</td>
       <td>221213</td>
       <td>7023038</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_lib52-54_bin1_1_S62_R1_001.fastq.gz, /shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_lib52-54_bin1_2_S63_R1_001.fastq.gz, /shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_lib52-54_bin1_3_S64_R1_001.fastq.gz]</td>
+      <td>[/shared/ngs/illumina/tstarr/230303_VH00699_273_AACKH3GM5/Unaligned/Project_tstarr/lib52_54_b1_1_S41_R1_001.fastq.gz, /shared/ngs/illumina/tstarr/230303_VH00699_273_AACKH3GM5/Unaligned/Project_tstarr/lib52_54_b1_2_S42_R1_001.fastq.gz, /shared/ngs/illumina/tstarr/230303_VH00699_273_AACKH3GM5/Unaligned/Project_tstarr/lib52_54_b1_3_S43_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib52_54</td>
@@ -741,7 +741,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>NaN</td>
       <td>221213</td>
       <td>3640404</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_lib52-54_bin3_1_S67_R1_001.fastq.gz, /shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_lib52-54_bin3_2_S68_R1_001.fastq.gz]</td>
+      <td>[/shared/ngs/illumina/tstarr/230303_VH00699_273_AACKH3GM5/Unaligned/Project_tstarr/lib52_54_b3_1_S44_R1_001.fastq.gz, /shared/ngs/illumina/tstarr/230303_VH00699_273_AACKH3GM5/Unaligned/Project_tstarr/lib52_54_b3_2_S45_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib52_54</td>
@@ -1426,10 +1426,10 @@ display(HTML(fates
       <th rowspan="4" valign="top">A</th>
       <th>SortSeq_bin1</th>
       <td>0</td>
-      <td>840727</td>
-      <td>499200</td>
-      <td>43222</td>
-      <td>2183632</td>
+      <td>10985679</td>
+      <td>7046891</td>
+      <td>527493</td>
+      <td>28563890</td>
     </tr>
     <tr>
       <th>SortSeq_bin2</th>
@@ -1442,10 +1442,10 @@ display(HTML(fates
     <tr>
       <th>SortSeq_bin3</th>
       <td>0</td>
-      <td>1088773</td>
-      <td>688194</td>
-      <td>53125</td>
-      <td>2933250</td>
+      <td>2153397</td>
+      <td>1415562</td>
+      <td>101423</td>
+      <td>5784647</td>
     </tr>
     <tr>
       <th>SortSeq_bin4</th>
