@@ -1,8 +1,5 @@
 # config for analysis
 
-# conda environment file
-environment: environment.yml
-
 # most CPUs to ever use at once
 max_cpus: 8
 
@@ -14,8 +11,8 @@ amplicons_PDF2180: data/PacBio_amplicon_PDF2180.gb
 feature_parse_specs_MERS: data/feature_parse_specs_MERS.yaml
 feature_parse_specs_PDF2180: data/feature_parse_specs_PDF2180.yaml
 
-# do we get the sequencing data from the 'HutchServer' or 'SRA'?
-seqdata_source: HutchServer
+# do we get the sequencing data from locally on our server versus SRA?
+seqdata_source: local
 
 # list of PacBio sequencing runs linking barcodes to variants
 pacbio_runs: data/PacBio_runs.csv

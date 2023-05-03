@@ -67,10 +67,12 @@ Versions of key software:
 ```python
 print(f"Using alignparse version {alignparse.__version__}")
 print(f"Using dms_variants version {dms_variants.__version__}")
+print(f"Using pandas version {pd.__version__}")
 ```
 
     Using alignparse version 0.6.0
     Using dms_variants version 1.4.2
+    Using pandas version 1.3.5
 
 
 Ignore warnings that clutter output:
