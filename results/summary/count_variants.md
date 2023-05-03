@@ -279,7 +279,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>1.0</td>
       <td>221213</td>
       <td>2979526</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s1_b1_S1_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s1_b1_S1_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -290,7 +290,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>1.0</td>
       <td>221213</td>
       <td>1403409</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s1_b2_S2_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s1_b2_S2_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -301,7 +301,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>1.0</td>
       <td>221213</td>
       <td>1288376</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s1_b3_S3_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s1_b3_S3_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -312,7 +312,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>1.0</td>
       <td>221213</td>
       <td>1262113</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s1_b4_S4_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s1_b4_S4_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -323,7 +323,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>2.0</td>
       <td>221213</td>
       <td>3407489</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s2_b1_S5_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s2_b1_S5_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -334,7 +334,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>2.0</td>
       <td>221213</td>
       <td>1526544</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s2_b2_S6_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s2_b2_S6_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -345,7 +345,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>2.0</td>
       <td>221213</td>
       <td>1153617</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s2_b3_S7_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s2_b3_S7_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -356,7 +356,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>2.0</td>
       <td>221213</td>
       <td>1004697</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s2_b4_S8_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s2_b4_S8_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -367,7 +367,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>3.0</td>
       <td>221213</td>
       <td>4374876</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s3_b1_S9_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s3_b1_S9_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -378,7 +378,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>3.0</td>
       <td>221213</td>
       <td>1178077</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s3_b2_S10_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s3_b2_S10_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -389,7 +389,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>3.0</td>
       <td>221213</td>
       <td>1107868</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s3_b3_S11_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s3_b3_S11_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -400,7 +400,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>3.0</td>
       <td>221213</td>
       <td>719585</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s3_b4_S12_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s3_b4_S12_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -411,7 +411,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>4.0</td>
       <td>221213</td>
       <td>4615914</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s4_b1_S13_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s4_b1_S13_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -422,7 +422,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>4.0</td>
       <td>221213</td>
       <td>1149682</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s4_b2_S14_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s4_b2_S14_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -433,7 +433,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>4.0</td>
       <td>221213</td>
       <td>710331</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s4_b3_S15_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s4_b3_S15_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -444,7 +444,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>4.0</td>
       <td>221213</td>
       <td>123303</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s4_b4_S16_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s4_b4_S16_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -455,7 +455,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>5.0</td>
       <td>221213</td>
       <td>5269498</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s5_b1_S17_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s5_b1_S17_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -466,7 +466,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>5.0</td>
       <td>221213</td>
       <td>875320</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s5_b2_S18_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s5_b2_S18_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -477,7 +477,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>5.0</td>
       <td>221213</td>
       <td>133991</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s5_b3_S19_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s5_b3_S19_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -488,7 +488,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>5.0</td>
       <td>221213</td>
       <td>4635</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s5_b4_S20_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s5_b4_S20_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -499,7 +499,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>6.0</td>
       <td>221213</td>
       <td>5868162</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s6_b1_S21_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s6_b1_S21_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -510,7 +510,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>6.0</td>
       <td>221213</td>
       <td>311628</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s6_b2_S22_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s6_b2_S22_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -521,7 +521,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>6.0</td>
       <td>221213</td>
       <td>5760</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s6_b3_S23_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s6_b3_S23_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -532,7 +532,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>6.0</td>
       <td>221213</td>
       <td>586</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s6_b4_S24_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s6_b4_S24_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -543,7 +543,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>7.0</td>
       <td>221213</td>
       <td>6185457</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s7_b1_S25_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s7_b1_S25_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -554,7 +554,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>7.0</td>
       <td>221213</td>
       <td>182421</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s7_b2_S26_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s7_b2_S26_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -565,7 +565,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>7.0</td>
       <td>221213</td>
       <td>5522</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s7_b3_S27_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s7_b3_S27_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -576,7 +576,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>7.0</td>
       <td>221213</td>
       <td>303</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s7_b4_S28_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s7_b4_S28_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -587,7 +587,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>8.0</td>
       <td>221213</td>
       <td>6432873</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s8_b1_S29_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s8_b1_S29_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -598,7 +598,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>8.0</td>
       <td>221213</td>
       <td>175979</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s8_b2_S30_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s8_b2_S30_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -609,7 +609,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>8.0</td>
       <td>221213</td>
       <td>2807</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s8_b3_S31_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s8_b3_S31_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -620,7 +620,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>8.0</td>
       <td>221213</td>
       <td>234</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s8_b4_S32_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s8_b4_S32_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -631,7 +631,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>9.0</td>
       <td>221213</td>
       <td>6131811</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s9_b1_S33_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s9_b1_S33_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -642,7 +642,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>9.0</td>
       <td>221213</td>
       <td>573092</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s9_b2_S34_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s9_b2_S34_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -653,7 +653,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>9.0</td>
       <td>221213</td>
       <td>814</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s9_b3_S35_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s9_b3_S35_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -664,7 +664,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>9.0</td>
       <td>221213</td>
       <td>119</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_s9_b4_S36_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s9_b4_S36_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -675,7 +675,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>NaN</td>
       <td>221213</td>
       <td>11620651</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_lib51-53_bin1_1_S53_R1_001.fastq.gz, /shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_lib51-53_bin1_2_S54_R1_001.fastq.gz, /shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_lib51-53_bin1_3_S55_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_lib51-53_bin1_1_S53_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_lib51-53_bin1_2_S54_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_lib51-53_bin1_3_S55_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -686,7 +686,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>NaN</td>
       <td>221213</td>
       <td>4448236</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_lib51-53_bin2_1_S56_R1_001.fastq.gz, /shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_lib51-53_bin2_2_S57_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_lib51-53_bin2_1_S56_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_lib51-53_bin2_2_S57_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -697,7 +697,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>NaN</td>
       <td>221213</td>
       <td>3402367</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_lib51-53_bin3_1_S58_R1_001.fastq.gz, /shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_lib51-53_bin3_2_S59_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_lib51-53_bin3_1_S58_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_lib51-53_bin3_2_S59_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib51_53</td>
@@ -708,7 +708,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>NaN</td>
       <td>221213</td>
       <td>2678000</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_lib51-53_bin4_1_S60_R1_001.fastq.gz, /shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_lib51-53_bin4_2_S61_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_lib51-53_bin4_1_S60_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_lib51-53_bin4_2_S61_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib52_54</td>
@@ -719,7 +719,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>NaN</td>
       <td>221213</td>
       <td>7023038</td>
-      <td>[/shared/ngs/illumina/tstarr/230303_VH00699_273_AACKH3GM5/Unaligned/Project_tstarr/lib52_54_b1_1_S41_R1_001.fastq.gz, /shared/ngs/illumina/tstarr/230303_VH00699_273_AACKH3GM5/Unaligned/Project_tstarr/lib52_54_b1_2_S42_R1_001.fastq.gz, /shared/ngs/illumina/tstarr/230303_VH00699_273_AACKH3GM5/Unaligned/Project_tstarr/lib52_54_b1_3_S43_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2023/230303_MERS-2180-expr-addl-reads/lib52_54_b1_1_S41_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2023/230303_MERS-2180-expr-addl-reads/lib52_54_b1_2_S42_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2023/230303_MERS-2180-expr-addl-reads/lib52_54_b1_3_S43_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib52_54</td>
@@ -730,7 +730,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>NaN</td>
       <td>221213</td>
       <td>3977028</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_lib52-54_bin2_1_S65_R1_001.fastq.gz, /shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_lib52-54_bin2_2_S66_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_lib52-54_bin2_1_S65_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_lib52-54_bin2_2_S66_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib52_54</td>
@@ -741,7 +741,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>NaN</td>
       <td>221213</td>
       <td>3640404</td>
-      <td>[/shared/ngs/illumina/tstarr/230303_VH00699_273_AACKH3GM5/Unaligned/Project_tstarr/lib52_54_b3_1_S44_R1_001.fastq.gz, /shared/ngs/illumina/tstarr/230303_VH00699_273_AACKH3GM5/Unaligned/Project_tstarr/lib52_54_b3_2_S45_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2023/230303_MERS-2180-expr-addl-reads/lib52_54_b3_1_S44_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2023/230303_MERS-2180-expr-addl-reads/lib52_54_b3_2_S45_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>lib52_54</td>
@@ -752,7 +752,7 @@ display(HTML(barcode_runs.to_html(index=False)))
       <td>NaN</td>
       <td>221213</td>
       <td>4523054</td>
-      <td>[/shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_lib52-54_bin4_1_S69_R1_001.fastq.gz, /shared/ngs/illumina/tstarr/221228_VH00699_241_AACH7KYM5/Unaligned/Project_tstarr/221213_lib52-54_bin4_2_S70_R1_001.fastq.gz]</td>
+      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_lib52-54_bin4_1_S69_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_lib52-54_bin4_2_S70_R1_001.fastq.gz]</td>
     </tr>
   </tbody>
 </table>
