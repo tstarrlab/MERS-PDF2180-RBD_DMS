@@ -1,5 +1,5 @@
 library,bg,run,ccs
-lib51_53,MERS,230124,/fh/fast/bloom_j/computational_notebooks/tstarr/2022/fastq/m64272e_230126_100200.hifi_reads.bc2024--bc2024.fastq
-lib52_54,MERS,230124,/fh/fast/bloom_j/computational_notebooks/tstarr/2022/fastq/m64272e_230126_100200.hifi_reads.bc2025--bc2025.fastq
-lib51_53,PDF2180,230124,/fh/fast/bloom_j/computational_notebooks/tstarr/2022/fastq/m64272e_230126_100200.hifi_reads.bc2026--bc2026.fastq
-lib52_54,PDF2180,230124,/fh/fast/bloom_j/computational_notebooks/tstarr/2022/fastq/m64272e_230126_100200.hifi_reads.bc2027--bc2027.fastq
+lib51_53,MERS,230124,/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2023/230124_MERS-PDF2180_pacbio/m64272e_230126_100200.hifi_reads.bc2024--bc2024.fastq
+lib52_54,MERS,230124,/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2023/230124_MERS-PDF2180_pacbio/m64272e_230126_100200.hifi_reads.bc2025--bc2025.fastq
+lib51_53,PDF2180,230124,/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2023/230124_MERS-PDF2180_pacbio/m64272e_230126_100200.hifi_reads.bc2026--bc2026.fastq
+lib52_54,PDF2180,230124,/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2023/230124_MERS-PDF2180_pacbio/m64272e_230126_100200.hifi_reads.bc2027--bc2027.fastq

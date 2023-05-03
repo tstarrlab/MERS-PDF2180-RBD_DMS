@@ -45,6 +45,7 @@ rule make_summary:
     """Create Markdown summary of analysis."""
     input:
         dag=os.path.join(config['summary_dir'], 'dag.svg'),
+        env='environment_pinned.yml',
         process_ccs_MERS=nb_markdown('process_ccs_MERS.ipynb'),
         process_ccs_PDF2180=nb_markdown('process_ccs_PDF2180.ipynb'),
         barcode_variant_table_MERS=config['codon_variant_table_file_MERS'],
@@ -108,6 +109,16 @@ rule make_dag:
     shell:
         "snakemake --forceall --dag | dot -Tsvg > {output}"
 
+rule save_pinned_env:
+    input:
+        dag=os.path.join(config['summary_dir'], 'dag.svg'),
+    log:
+    	"environment_pinned.yml"
+    shell:
+        """
+        conda env export > {log}
+        """
+
 
 rule interactive_heatmap_absolute:
     """ Make the interactive heatmaps for absolute expression and binding phenotypes.
@@ -140,7 +151,7 @@ rule collapse_scores:
         md='results/summary/collapse_scores.md',
         md_files=directory('results/summary/collapse_scores_files')
     envmodules:
-        'R/3.6.2-foss-2019b'
+        'R/4.1.3'
     params:
         nb='collapse_scores.Rmd',
         md='collapse_scores.md',
@@ -162,7 +173,7 @@ rule fit_titrations_hDPP4:
         md='results/summary/compute_Kd_hDPP4.md',
         md_files=directory('results/summary/compute_Kd_hDPP4_files')
     envmodules:
-        'R/3.6.2-foss-2019b'
+        'R/4.1.3'
     params:
         nb='compute_Kd_hDPP4.Rmd',
         md='compute_Kd_hDPP4.md',
@@ -184,7 +195,7 @@ rule calculate_expression:
         md='results/summary/compute_expression_meanF.md',
         md_files=directory('results/summary/compute_expression_meanF_files')
     envmodules:
-        'R/3.6.2-foss-2019b'
+        'R/4.1.3'
     params:
         nb='compute_expression_meanF.Rmd',
         md='compute_expression_meanF.md',
@@ -239,7 +250,7 @@ rule process_ccs_PDF2180:
     shell:
         "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
 
-if config['seqdata_source'] == 'HutchServer':
+if config['seqdata_source'] == 'local':
 
     rule get_ccs:
         """Symbolically link CCS files."""
