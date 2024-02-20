@@ -13,7 +13,7 @@ This notebook reads in the per-barcode titration Kds and expression measurements
 
 ```{r setup, message=FALSE, warning=FALSE, error=FALSE}
 #list of packages to install/load
-packages = c("yaml","data.table","tidyverse","gridExtra","plotly","withr","htmlwidgets")
+packages = c("yaml","data.table","tidyverse","gridExtra","plotly","withr","htmlwidgets","knitr")
 #install any packages not already installed
 installed_packages <- packages %in% rownames(installed.packages())
 if(any(installed_packages == F)){

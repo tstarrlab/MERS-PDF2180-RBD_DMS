@@ -70,7 +70,7 @@ print(f"Using dms_variants version {dms_variants.__version__}")
 ```
 
     Using alignparse version 0.6.0
-    Using dms_variants version 1.4.2
+    Using dms_variants version 1.4.3
 
 
 Ignore warnings that clutter output:
@@ -126,18 +126,18 @@ display(HTML(pacbio_runs.to_html(index=False)))
   </thead>
   <tbody>
     <tr>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>PDF2180</td>
       <td>230124</td>
-      <td>lib51_53_PDF2180_230124</td>
-      <td>results/ccs/lib51_53_PDF2180_230124_ccs.fastq.gz</td>
+      <td>lib53_PDF2180_230124</td>
+      <td>results/ccs/lib53_PDF2180_230124_ccs.fastq.gz</td>
     </tr>
     <tr>
-      <td>lib52_54</td>
+      <td>lib54</td>
       <td>PDF2180</td>
       <td>230124</td>
-      <td>lib52_54_PDF2180_230124</td>
-      <td>results/ccs/lib52_54_PDF2180_230124_ccs.fastq.gz</td>
+      <td>lib54_PDF2180_230124</td>
+      <td>results/ccs/lib54_PDF2180_230124_ccs.fastq.gz</td>
     </tr>
   </tbody>
 </table>
@@ -249,7 +249,7 @@ print(f"Using `minimap2` {mapper.version} with these options:\n" +
       ' '.join(mapper.options))
 ```
 
-    Using `minimap2` 2.18-r1015 with these options:
+    Using `minimap2` 2.26-r1175 with these options:
     -A2 -B4 -O12 -E2 --end-bonus=13 --secondary=no --cs
 
 
@@ -305,12 +305,6 @@ p = (
 _ = p.draw()
 ```
 
-
-    
-![png](process_ccs_PDF2180_files/process_ccs_PDF2180_32_0.png)
-    
-
-
 And the read stats by library (combining all targets and runs within a library):
 
 
@@ -333,12 +327,6 @@ p = (
 _ = p.draw()
 ```
 
-
-    
-![png](process_ccs_PDF2180_files/process_ccs_PDF2180_34_0.png)
-    
-
-
 And the number of reads by target (combining all libraries and runs for a target):
 
 
@@ -358,12 +346,6 @@ p = (
     )
 _ = p.draw()
 ```
-
-
-    
-![png](process_ccs_PDF2180_files/process_ccs_PDF2180_36_0.png)
-    
-
 
 And read stats by target (combining all libraries and runs for a target):
 
@@ -387,12 +369,6 @@ p = (
     )
 _ = p.draw()
 ```
-
-
-    
-![png](process_ccs_PDF2180_files/process_ccs_PDF2180_38_0.png)
-    
-
 
 Now let's see **why** we filtered the reads.
 First, we do some transformations on the `filtered` dict returned by `Targets.align_and_parse`.
@@ -438,12 +414,6 @@ p = (
 _ = p.draw()
 ```
 
-
-    
-![png](process_ccs_PDF2180_files/process_ccs_PDF2180_42_0.png)
-    
-
-
 Finally, we take the successfully parsed alignments and read them into a data frame, keeping track of the target that each CCS aligns to.
 We also drop the pieces of information we won't use going forward, and rename a few columns:
 
@@ -477,7 +447,7 @@ display(HTML(aligned_df.head().to_html(index=False)))
   </thead>
   <tbody>
     <tr>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>m64272e_230126_100200/22/ccs</td>
       <td>G337A G338T A339T</td>
       <td>1.0</td>
@@ -486,7 +456,7 @@ display(HTML(aligned_df.head().to_html(index=False)))
       <td>PDF2180</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>m64272e_230126_100200/126/ccs</td>
       <td>A394T A395G C396T</td>
       <td>1.0</td>
@@ -495,7 +465,7 @@ display(HTML(aligned_df.head().to_html(index=False)))
       <td>PDF2180</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>m64272e_230126_100200/168/ccs</td>
       <td>A28G C29A</td>
       <td>1.0</td>
@@ -504,7 +474,7 @@ display(HTML(aligned_df.head().to_html(index=False)))
       <td>PDF2180</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>m64272e_230126_100200/179/ccs</td>
       <td>A367G T368A T369A</td>
       <td>1.0</td>
@@ -513,7 +483,7 @@ display(HTML(aligned_df.head().to_html(index=False)))
       <td>PDF2180</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>m64272e_230126_100200/240/ccs</td>
       <td>C589A C590A</td>
       <td>1.0</td>
@@ -587,7 +557,7 @@ display(HTML(processed_ccs.head().to_html(index=False)))
   </thead>
   <tbody>
     <tr>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>m64272e_230126_100200/22/ccs</td>
       <td>G337A G338T A339T</td>
       <td>1.0</td>
@@ -596,7 +566,7 @@ display(HTML(processed_ccs.head().to_html(index=False)))
       <td>PDF2180</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>m64272e_230126_100200/126/ccs</td>
       <td>A394T A395G C396T</td>
       <td>1.0</td>
@@ -605,7 +575,7 @@ display(HTML(processed_ccs.head().to_html(index=False)))
       <td>PDF2180</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>m64272e_230126_100200/168/ccs</td>
       <td>A28G C29A</td>
       <td>1.0</td>
@@ -614,7 +584,7 @@ display(HTML(processed_ccs.head().to_html(index=False)))
       <td>PDF2180</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>m64272e_230126_100200/179/ccs</td>
       <td>A367G T368A T369A</td>
       <td>1.0</td>
@@ -623,7 +593,7 @@ display(HTML(processed_ccs.head().to_html(index=False)))
       <td>PDF2180</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>m64272e_230126_100200/240/ccs</td>
       <td>C589A C590A</td>
       <td>1.0</td>
@@ -685,13 +655,13 @@ display(HTML(
   <tbody>
     <tr>
       <th rowspan="2" valign="top">PDF2180</th>
-      <th>lib51_53</th>
+      <th>lib53</th>
       <td>212823</td>
       <td>61033</td>
       <td>3.49</td>
     </tr>
     <tr>
-      <th>lib52_54</th>
+      <th>lib54</th>
       <td>134506</td>
       <td>65576</td>
       <td>2.05</td>
@@ -744,12 +714,6 @@ _ = (
  ).draw()
 ```
 
-
-    
-![png](process_ccs_PDF2180_files/process_ccs_PDF2180_61_0.png)
-    
-
-
 Flag the CCSs to retain, and indicate how many we are retaining and purging due to the accuracy filter:
 
 
@@ -784,12 +748,6 @@ _ = (
  ).draw()
 ```
 
-
-    
-![png](process_ccs_PDF2180_files/process_ccs_PDF2180_65_0.png)
-    
-
-
 ### Sequences per barcode
 How many times is each barcode sequenced?
 This is useful to know for thinking about building the barcode consensus.
@@ -821,12 +779,6 @@ p = (
 
 _ = p.draw()
 ```
-
-
-    
-![png](process_ccs_PDF2180_files/process_ccs_PDF2180_67_0.png)
-    
-
 
 ### Empirical accuracy of CCSs
 We want to directly estimate the accuracy of the gene-barcode link rather than relying on the PacBio `ccs` accuracy, which doesn't include inaccuracies due to things like strand exchange or the same barcode on different sequences.
@@ -914,7 +866,7 @@ processed_ccs.head(n=12)
   <tbody>
     <tr>
       <th>0</th>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>m64272e_230126_100200/22/ccs</td>
       <td>G337A G338T A339T</td>
       <td>1.000000</td>
@@ -930,7 +882,7 @@ processed_ccs.head(n=12)
     </tr>
     <tr>
       <th>1</th>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>m64272e_230126_100200/126/ccs</td>
       <td>A394T A395G C396T</td>
       <td>1.000000</td>
@@ -946,7 +898,7 @@ processed_ccs.head(n=12)
     </tr>
     <tr>
       <th>2</th>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>m64272e_230126_100200/168/ccs</td>
       <td>A28G C29A</td>
       <td>1.000000</td>
@@ -962,7 +914,7 @@ processed_ccs.head(n=12)
     </tr>
     <tr>
       <th>3</th>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>m64272e_230126_100200/179/ccs</td>
       <td>A367G T368A T369A</td>
       <td>1.000000</td>
@@ -978,7 +930,7 @@ processed_ccs.head(n=12)
     </tr>
     <tr>
       <th>4</th>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>m64272e_230126_100200/240/ccs</td>
       <td>C589A C590A</td>
       <td>1.000000</td>
@@ -994,7 +946,7 @@ processed_ccs.head(n=12)
     </tr>
     <tr>
       <th>5</th>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>m64272e_230126_100200/305/ccs</td>
       <td>T439C G440A</td>
       <td>1.000000</td>
@@ -1010,7 +962,7 @@ processed_ccs.head(n=12)
     </tr>
     <tr>
       <th>6</th>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>m64272e_230126_100200/384/ccs</td>
       <td>C625A C626A C627A</td>
       <td>1.000000</td>
@@ -1026,7 +978,7 @@ processed_ccs.head(n=12)
     </tr>
     <tr>
       <th>7</th>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>m64272e_230126_100200/419/ccs</td>
       <td>G253T C254T</td>
       <td>1.000000</td>
@@ -1042,7 +994,7 @@ processed_ccs.head(n=12)
     </tr>
     <tr>
       <th>8</th>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>m64272e_230126_100200/430/ccs</td>
       <td>C48T C193A T194A G195A</td>
       <td>1.000000</td>
@@ -1058,7 +1010,7 @@ processed_ccs.head(n=12)
     </tr>
     <tr>
       <th>9</th>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>m64272e_230126_100200/436/ccs</td>
       <td>G451T C452T G453T</td>
       <td>1.000000</td>
@@ -1074,7 +1026,7 @@ processed_ccs.head(n=12)
     </tr>
     <tr>
       <th>10</th>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>m64272e_230126_100200/495/ccs</td>
       <td>T565A A566G C567A</td>
       <td>0.999992</td>
@@ -1090,7 +1042,7 @@ processed_ccs.head(n=12)
     </tr>
     <tr>
       <th>11</th>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>m64272e_230126_100200/552/ccs</td>
       <td>T37A T38A C39T del421to421 del428to428</td>
       <td>0.999998</td>
@@ -1128,12 +1080,6 @@ _ = (
  facet_wrap('~ library', nrow=1)
  ).draw()
 ```
-
-
-    
-![png](process_ccs_PDF2180_files/process_ccs_PDF2180_72_0.png)
-    
-
 
 Now get the empirical accuracy for each of the CCS groups mentioned above:
 
@@ -1199,56 +1145,56 @@ display(HTML(empirical_acc.to_html(index=False)))
   </thead>
   <tbody>
     <tr>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>0.969709</td>
       <td>retained</td>
       <td>197184</td>
       <td>False</td>
     </tr>
     <tr>
-      <td>lib52_54</td>
+      <td>lib54</td>
       <td>0.967280</td>
       <td>retained</td>
       <td>124389</td>
       <td>False</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>0.983551</td>
       <td>retained, no indel</td>
       <td>193516</td>
       <td>True</td>
     </tr>
     <tr>
-      <td>lib52_54</td>
+      <td>lib54</td>
       <td>0.980788</td>
       <td>retained, no indel</td>
       <td>122053</td>
       <td>True</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>0.974221</td>
       <td>10X accuracy</td>
       <td>190719</td>
       <td>False</td>
     </tr>
     <tr>
-      <td>lib52_54</td>
+      <td>lib54</td>
       <td>0.971965</td>
       <td>10X accuracy</td>
       <td>120279</td>
       <td>False</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>0.983627</td>
       <td>10X accuracy, no indel</td>
       <td>188039</td>
       <td>False</td>
     </tr>
     <tr>
-      <td>lib52_54</td>
+      <td>lib54</td>
       <td>0.981138</td>
       <td>10X accuracy, no indel</td>
       <td>118589</td>
@@ -1284,12 +1230,6 @@ _ = p.draw()
 ```
 
     Saving plot to results/figures/empirical_CCS_accuracy.pdf
-
-
-
-    
-![png](process_ccs_PDF2180_files/process_ccs_PDF2180_78_1.png)
-    
 
 
 The above analysis shows that if we exclude sequences with indels (which we plan to do among our consensus sequences), then the accuracy of each CCS is around 99%. 
@@ -1337,35 +1277,35 @@ display(HTML(consensus.head().to_html(index=False)))
   </thead>
   <tbody>
     <tr>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAAAAAAGCCTCC</td>
       <td>PDF2180</td>
       <td>G409T</td>
       <td>3</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAAAAAGTCAAAC</td>
       <td>PDF2180</td>
       <td>G350A C351A</td>
       <td>3</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAAAAAGTCACCG</td>
       <td>PDF2180</td>
       <td>C283T A284G G285T</td>
       <td>1</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAAAACGTCCTAG</td>
       <td>PDF2180</td>
       <td>C103G G105T</td>
       <td>1</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAAAACTACATGT</td>
       <td>PDF2180</td>
       <td>C428A C429T</td>
@@ -1408,7 +1348,7 @@ display(HTML(consensus.head().to_html(index=False)))
   </thead>
   <tbody>
     <tr>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAAAAAAGCCTCC</td>
       <td>PDF2180</td>
       <td>G409T</td>
@@ -1419,7 +1359,7 @@ display(HTML(consensus.head().to_html(index=False)))
       <td>0</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAAAAAGTCAAAC</td>
       <td>PDF2180</td>
       <td>G350A C351A</td>
@@ -1430,7 +1370,7 @@ display(HTML(consensus.head().to_html(index=False)))
       <td>0</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAAAAAGTCACCG</td>
       <td>PDF2180</td>
       <td>C283T A284G G285T</td>
@@ -1441,7 +1381,7 @@ display(HTML(consensus.head().to_html(index=False)))
       <td>0</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAAAACGTCCTAG</td>
       <td>PDF2180</td>
       <td>C103G G105T</td>
@@ -1452,7 +1392,7 @@ display(HTML(consensus.head().to_html(index=False)))
       <td>0</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAAAACTACATGT</td>
       <td>PDF2180</td>
       <td>C428A C429T</td>
@@ -1489,12 +1429,6 @@ _ = (
        ) 
  ).draw()
 ```
-
-
-    
-![png](process_ccs_PDF2180_files/process_ccs_PDF2180_87_0.png)
-    
-
 
 We see that most variant consensus sequences do **not** have indels, especially if we limit to the more "accurate" ones that have multiple CCSs supporting them.
 
@@ -1542,23 +1476,17 @@ _ = p.draw()
   </thead>
   <tbody>
     <tr>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>PDF2180</td>
       <td>56243</td>
     </tr>
     <tr>
-      <td>lib52_54</td>
+      <td>lib54</td>
       <td>PDF2180</td>
       <td>60647</td>
     </tr>
   </tbody>
 </table>
-
-
-
-    
-![png](process_ccs_PDF2180_files/process_ccs_PDF2180_89_1.png)
-    
 
 
 Below we write the retained consensus sequences to a CSV file that links the nucleotide mutations to the barcodes.
@@ -1602,7 +1530,7 @@ display(HTML(
   <tbody>
     <tr>
       <td>PDF2180</td>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAAAAAAGCCTCC</td>
       <td>G409T</td>
       <td>G409T</td>
@@ -1612,7 +1540,7 @@ display(HTML(
     </tr>
     <tr>
       <td>PDF2180</td>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAAAAAGTCAAAC</td>
       <td>G350A C351A</td>
       <td>G350A C351A</td>
@@ -1622,7 +1550,7 @@ display(HTML(
     </tr>
     <tr>
       <td>PDF2180</td>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAAAAAGTCACCG</td>
       <td>C283T A284G G285T</td>
       <td>C283T A284G G285T</td>
@@ -1632,7 +1560,7 @@ display(HTML(
     </tr>
     <tr>
       <td>PDF2180</td>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAAAACGTCCTAG</td>
       <td>C103G G105T</td>
       <td>C103G G105T</td>
@@ -1642,7 +1570,7 @@ display(HTML(
     </tr>
     <tr>
       <td>PDF2180</td>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAAAACTACATGT</td>
       <td>C428A C429T</td>
       <td>C428A C429T</td>
@@ -1675,35 +1603,35 @@ display(HTML(dropped.head().to_html(index=False)))
   </thead>
   <tbody>
     <tr>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAAACTCACAATA</td>
       <td>PDF2180</td>
       <td>subs diff too large</td>
       <td>2</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAACAAGACTCAA</td>
       <td>PDF2180</td>
       <td>subs diff too large</td>
       <td>2</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAACTAGCCGCAA</td>
       <td>PDF2180</td>
       <td>subs diff too large</td>
       <td>6</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAAGAAAGCATAG</td>
       <td>PDF2180</td>
       <td>subs diff too large</td>
       <td>5</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAATTACTGGAAG</td>
       <td>PDF2180</td>
       <td>subs diff too large</td>
@@ -1737,12 +1665,6 @@ _ = (
        )
  ).draw()
 ```
-
-
-    
-![png](process_ccs_PDF2180_files/process_ccs_PDF2180_95_0.png)
-    
-
 
 ## Create barcode-variant table
 We now create a [CodonVariantTable](https://jbloomlab.github.io/dms_variants/dms_variants.codonvarianttable.html#dms_variants.codonvarianttable.CodonVariantTable) that stores and processes all the information about the variant consensus sequences.
@@ -1816,7 +1738,7 @@ variants.barcode_variant_df.head(n=12)
     <tr>
       <th>0</th>
       <td>PDF2180</td>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAAAAAAGCCTCC</td>
       <td>3</td>
       <td>GTT137TTT</td>
@@ -1827,7 +1749,7 @@ variants.barcode_variant_df.head(n=12)
     <tr>
       <th>1</th>
       <td>PDF2180</td>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAAAAAGTCAAAC</td>
       <td>3</td>
       <td>AGC117AAA</td>
@@ -1838,7 +1760,7 @@ variants.barcode_variant_df.head(n=12)
     <tr>
       <th>2</th>
       <td>PDF2180</td>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAAAAAGTCACCG</td>
       <td>1</td>
       <td>CAG95TGT</td>
@@ -1849,7 +1771,7 @@ variants.barcode_variant_df.head(n=12)
     <tr>
       <th>3</th>
       <td>PDF2180</td>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAAAACGTCCTAG</td>
       <td>1</td>
       <td>CTG35GTT</td>
@@ -1860,7 +1782,7 @@ variants.barcode_variant_df.head(n=12)
     <tr>
       <th>4</th>
       <td>PDF2180</td>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAAAACTACATGT</td>
       <td>7</td>
       <td>GCC143GAT</td>
@@ -1871,7 +1793,7 @@ variants.barcode_variant_df.head(n=12)
     <tr>
       <th>5</th>
       <td>PDF2180</td>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAAAACTAGATTA</td>
       <td>9</td>
       <td>GCT58--- AGC111AGT</td>
@@ -1882,7 +1804,7 @@ variants.barcode_variant_df.head(n=12)
     <tr>
       <th>6</th>
       <td>PDF2180</td>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAAAACTCGCATT</td>
       <td>2</td>
       <td>TTC28GTT</td>
@@ -1893,7 +1815,7 @@ variants.barcode_variant_df.head(n=12)
     <tr>
       <th>7</th>
       <td>PDF2180</td>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAAAAGATAGGCA</td>
       <td>2</td>
       <td>TTT9CCA</td>
@@ -1904,7 +1826,7 @@ variants.barcode_variant_df.head(n=12)
     <tr>
       <th>8</th>
       <td>PDF2180</td>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAAAATGTATAAA</td>
       <td>2</td>
       <td>AAT164AAA</td>
@@ -1915,7 +1837,7 @@ variants.barcode_variant_df.head(n=12)
     <tr>
       <th>9</th>
       <td>PDF2180</td>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAAACAAGCATGC</td>
       <td>1</td>
       <td>CTG185GTT</td>
@@ -1926,7 +1848,7 @@ variants.barcode_variant_df.head(n=12)
     <tr>
       <th>10</th>
       <td>PDF2180</td>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAAACAAGTGGCA</td>
       <td>3</td>
       <td>ATT123ATG</td>
@@ -1937,7 +1859,7 @@ variants.barcode_variant_df.head(n=12)
     <tr>
       <th>11</th>
       <td>PDF2180</td>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAAACATAACCAG</td>
       <td>1</td>
       <td>TTT91AAA</td>
@@ -1974,8 +1896,8 @@ display(HTML(
   <thead>
     <tr style="text-align: right;">
       <th>library</th>
-      <th>lib51_53</th>
-      <th>lib52_54</th>
+      <th>lib53</th>
+      <th>lib54</th>
       <th>all libraries</th>
     </tr>
     <tr>
@@ -2009,12 +1931,6 @@ p = p + theme(panel_grid_major_x=element_blank())  # no vertical grid lines
 _ = p.draw()
 ```
 
-
-    
-![png](process_ccs_PDF2180_files/process_ccs_PDF2180_103_0.png)
-    
-
-
 ### Mutations per variant
 Plot the number of barcoded variants with each number of amino-acid and codon mutations.
 This is for the primary target only, and doesn't include the spiked-in secondary targets:
@@ -2038,18 +1954,6 @@ for mut_type in ['aa', 'codon']:
     Saving plot to results/figures/n_codon_muts_per_variant_PDF2180.pdf
 
 
-
-    
-![png](process_ccs_PDF2180_files/process_ccs_PDF2180_105_1.png)
-    
-
-
-
-    
-![png](process_ccs_PDF2180_files/process_ccs_PDF2180_105_2.png)
-    
-
-
 Plot the frequencies of different codon mutation types among **all** variants (any number of mutations), again only for primary target:
 
 
@@ -2067,12 +1971,6 @@ p.save(plotfile)
     Saving plot to results/figures/avg_muts_per_variant_PDF2180.pdf
 
 
-
-    
-![png](process_ccs_PDF2180_files/process_ccs_PDF2180_107_1.png)
-    
-
-
 Variants supported by multiple PacBio CCSs should have fewer spurious mutations since sequencing errors are very unlikely to occur on two CCSs.
 Below we plot the number of codon mutations per variant among variants with at least two CCSs supporting their call.
 The difference in mutation rates here and in the plot above (that does not apply the `min_support=2` filter) gives some estimate of the frequency of mutations in our variants our spurious.
@@ -2086,12 +1984,6 @@ p = variants.plotNumCodonMutsByType(variant_type='all', samples=None,
 p = p + theme(panel_grid_major_x=element_blank())  # no vertical grid lines
 _ = p.draw()
 ```
-
-
-    
-![png](process_ccs_PDF2180_files/process_ccs_PDF2180_109_0.png)
-    
-
 
 ### Completeness of mutation sampling
 We examine how completely amino-acid mutations are sampled by the variants for the primary target, looking at single-mutant variants only and all variants.
@@ -2111,18 +2003,6 @@ for variant_type in ['all', 'single']:
 
     Saving plot to results/figures/variant_cumul_all_mut_coverage_PDF2180.pdf
     Saving plot to results/figures/variant_cumul_single_mut_coverage_PDF2180.pdf
-
-
-
-    
-![png](process_ccs_PDF2180_files/process_ccs_PDF2180_111_1.png)
-    
-
-
-
-    
-![png](process_ccs_PDF2180_files/process_ccs_PDF2180_111_2.png)
-    
 
 
 To get more quantitative information like that plotted above, we determine how many mutations are found 0, 1, or >1 times both among single and all mutants for the primary target:
@@ -2173,7 +2053,7 @@ display(HTML(
     <tr>
       <th rowspan="18" valign="top">all</th>
       <th rowspan="9" valign="top">False</th>
-      <th rowspan="3" valign="top">lib51_53</th>
+      <th rowspan="3" valign="top">lib53</th>
       <th>0</th>
       <td>3</td>
     </tr>
@@ -2186,7 +2066,7 @@ display(HTML(
       <td>4176</td>
     </tr>
     <tr>
-      <th rowspan="3" valign="top">lib52_54</th>
+      <th rowspan="3" valign="top">lib54</th>
       <th>0</th>
       <td>4</td>
     </tr>
@@ -2213,7 +2093,7 @@ display(HTML(
     </tr>
     <tr>
       <th rowspan="9" valign="top">True</th>
-      <th rowspan="3" valign="top">lib51_53</th>
+      <th rowspan="3" valign="top">lib53</th>
       <th>0</th>
       <td>140</td>
     </tr>
@@ -2226,7 +2106,7 @@ display(HTML(
       <td>4238</td>
     </tr>
     <tr>
-      <th rowspan="3" valign="top">lib52_54</th>
+      <th rowspan="3" valign="top">lib54</th>
       <th>0</th>
       <td>134</td>
     </tr>
@@ -2254,7 +2134,7 @@ display(HTML(
     <tr>
       <th rowspan="18" valign="top">single</th>
       <th rowspan="9" valign="top">False</th>
-      <th rowspan="3" valign="top">lib51_53</th>
+      <th rowspan="3" valign="top">lib53</th>
       <th>0</th>
       <td>4</td>
     </tr>
@@ -2267,7 +2147,7 @@ display(HTML(
       <td>4174</td>
     </tr>
     <tr>
-      <th rowspan="3" valign="top">lib52_54</th>
+      <th rowspan="3" valign="top">lib54</th>
       <th>0</th>
       <td>4</td>
     </tr>
@@ -2294,7 +2174,7 @@ display(HTML(
     </tr>
     <tr>
       <th rowspan="9" valign="top">True</th>
-      <th rowspan="3" valign="top">lib51_53</th>
+      <th rowspan="3" valign="top">lib53</th>
       <th>0</th>
       <td>160</td>
     </tr>
@@ -2307,7 +2187,7 @@ display(HTML(
       <td>4219</td>
     </tr>
     <tr>
-      <th rowspan="3" valign="top">lib52_54</th>
+      <th rowspan="3" valign="top">lib54</th>
       <th>0</th>
       <td>160</td>
     </tr>
@@ -2348,18 +2228,6 @@ for variant_type in ['all', 'single']:
     p.draw()
 ```
 
-
-    
-![png](process_ccs_PDF2180_files/process_ccs_PDF2180_115_0.png)
-    
-
-
-
-    
-![png](process_ccs_PDF2180_files/process_ccs_PDF2180_115_1.png)
-    
-
-
 We can also use heat maps to examine the extent to which specific amino-acid or codon mutations are over-represented.
 These heat maps are large, so we make them just for all variants and the merge of all libraries:
 
@@ -2370,18 +2238,6 @@ for mut_type in ['aa', 'codon']:
                                 widthscale=2)
     p.draw()
 ```
-
-
-    
-![png](process_ccs_PDF2180_files/process_ccs_PDF2180_117_0.png)
-    
-
-
-
-    
-![png](process_ccs_PDF2180_files/process_ccs_PDF2180_117_1.png)
-    
-
 
 ### Write codon-variant table
 We write the codon variant table to a CSV file.
@@ -2413,7 +2269,7 @@ display(HTML(
   <tbody>
     <tr>
       <td>PDF2180</td>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAAAAAAGCCTCC</td>
       <td>3</td>
       <td>GTT137TTT</td>
@@ -2423,7 +2279,7 @@ display(HTML(
     </tr>
     <tr>
       <td>PDF2180</td>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAAAAAGTCAAAC</td>
       <td>3</td>
       <td>AGC117AAA</td>
@@ -2433,7 +2289,7 @@ display(HTML(
     </tr>
     <tr>
       <td>PDF2180</td>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAAAAAGTCACCG</td>
       <td>1</td>
       <td>CAG95TGT</td>
@@ -2443,7 +2299,7 @@ display(HTML(
     </tr>
     <tr>
       <td>PDF2180</td>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAAAACGTCCTAG</td>
       <td>1</td>
       <td>CTG35GTT</td>
@@ -2453,7 +2309,7 @@ display(HTML(
     </tr>
     <tr>
       <td>PDF2180</td>
-      <td>lib51_53</td>
+      <td>lib53</td>
       <td>AAAAAAAACTACATGT</td>
       <td>7</td>
       <td>GCC143GAT</td>

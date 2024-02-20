@@ -20,7 +20,8 @@ configfile: 'config.yaml'
 
 # run "quick" rules locally:
 localrules: make_dag,
-            make_summary
+            make_summary,
+            save_pinned_env
 
 # Functions -------------------------------------------------------------------
 def nb_markdown(nb):

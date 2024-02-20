@@ -71,7 +71,7 @@ print(f"Using pandas version {pd.__version__}")
 ```
 
     Using alignparse version 0.6.0
-    Using dms_variants version 1.4.2
+    Using dms_variants version 1.4.3
     Using pandas version 1.3.5
 
 
@@ -128,18 +128,18 @@ display(HTML(pacbio_runs.to_html(index=False)))
   </thead>
   <tbody>
     <tr>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>MERS</td>
       <td>230124</td>
-      <td>lib51_53_MERS_230124</td>
-      <td>results/ccs/lib51_53_MERS_230124_ccs.fastq.gz</td>
+      <td>lib51_MERS_230124</td>
+      <td>results/ccs/lib51_MERS_230124_ccs.fastq.gz</td>
     </tr>
     <tr>
-      <td>lib52_54</td>
+      <td>lib52</td>
       <td>MERS</td>
       <td>230124</td>
-      <td>lib52_54_MERS_230124</td>
-      <td>results/ccs/lib52_54_MERS_230124_ccs.fastq.gz</td>
+      <td>lib52_MERS_230124</td>
+      <td>results/ccs/lib52_MERS_230124_ccs.fastq.gz</td>
     </tr>
   </tbody>
 </table>
@@ -251,7 +251,7 @@ print(f"Using `minimap2` {mapper.version} with these options:\n" +
       ' '.join(mapper.options))
 ```
 
-    Using `minimap2` 2.18-r1015 with these options:
+    Using `minimap2` 2.26-r1175 with these options:
     -A2 -B4 -O12 -E2 --end-bonus=13 --secondary=no --cs
 
 
@@ -307,12 +307,6 @@ p = (
 _ = p.draw()
 ```
 
-
-    
-![png](process_ccs_MERS_files/process_ccs_MERS_32_0.png)
-    
-
-
 And the read stats by library (combining all targets and runs within a library):
 
 
@@ -335,12 +329,6 @@ p = (
 _ = p.draw()
 ```
 
-
-    
-![png](process_ccs_MERS_files/process_ccs_MERS_34_0.png)
-    
-
-
 And the number of reads by target (combining all libraries and runs for a target):
 
 
@@ -360,12 +348,6 @@ p = (
     )
 _ = p.draw()
 ```
-
-
-    
-![png](process_ccs_MERS_files/process_ccs_MERS_36_0.png)
-    
-
 
 And read stats by target (combining all libraries and runs for a target):
 
@@ -389,12 +371,6 @@ p = (
     )
 _ = p.draw()
 ```
-
-
-    
-![png](process_ccs_MERS_files/process_ccs_MERS_38_0.png)
-    
-
 
 Now let's see **why** we filtered the reads.
 First, we do some transformations on the `filtered` dict returned by `Targets.align_and_parse`.
@@ -440,12 +416,6 @@ p = (
 _ = p.draw()
 ```
 
-
-    
-![png](process_ccs_MERS_files/process_ccs_MERS_42_0.png)
-    
-
-
 Finally, we take the successfully parsed alignments and read them into a data frame, keeping track of the target that each CCS aligns to.
 We also drop the pieces of information we won't use going forward, and rename a few columns:
 
@@ -479,7 +449,7 @@ display(HTML(aligned_df.head().to_html(index=False)))
   </thead>
   <tbody>
     <tr>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>m64272e_230126_100200/51/ccs</td>
       <td>C31A A33T</td>
       <td>1.000000</td>
@@ -488,7 +458,7 @@ display(HTML(aligned_df.head().to_html(index=False)))
       <td>MERS</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>m64272e_230126_100200/143/ccs</td>
       <td>C571G T572A</td>
       <td>1.000000</td>
@@ -497,7 +467,7 @@ display(HTML(aligned_df.head().to_html(index=False)))
       <td>MERS</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>m64272e_230126_100200/152/ccs</td>
       <td>del134to136</td>
       <td>1.000000</td>
@@ -506,7 +476,7 @@ display(HTML(aligned_df.head().to_html(index=False)))
       <td>MERS</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>m64272e_230126_100200/184/ccs</td>
       <td>C502A G504A</td>
       <td>1.000000</td>
@@ -515,7 +485,7 @@ display(HTML(aligned_df.head().to_html(index=False)))
       <td>MERS</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>m64272e_230126_100200/242/ccs</td>
       <td>A118T C120T</td>
       <td>0.999999</td>
@@ -589,7 +559,7 @@ display(HTML(processed_ccs.head().to_html(index=False)))
   </thead>
   <tbody>
     <tr>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>m64272e_230126_100200/51/ccs</td>
       <td>C31A A33T</td>
       <td>1.000000</td>
@@ -598,7 +568,7 @@ display(HTML(processed_ccs.head().to_html(index=False)))
       <td>MERS</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>m64272e_230126_100200/143/ccs</td>
       <td>C571G T572A</td>
       <td>1.000000</td>
@@ -607,7 +577,7 @@ display(HTML(processed_ccs.head().to_html(index=False)))
       <td>MERS</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>m64272e_230126_100200/152/ccs</td>
       <td>del134to136</td>
       <td>1.000000</td>
@@ -616,7 +586,7 @@ display(HTML(processed_ccs.head().to_html(index=False)))
       <td>MERS</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>m64272e_230126_100200/184/ccs</td>
       <td>C502A G504A</td>
       <td>1.000000</td>
@@ -625,7 +595,7 @@ display(HTML(processed_ccs.head().to_html(index=False)))
       <td>MERS</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>m64272e_230126_100200/242/ccs</td>
       <td>A118T C120T</td>
       <td>0.999999</td>
@@ -687,13 +657,13 @@ display(HTML(
   <tbody>
     <tr>
       <th rowspan="2" valign="top">MERS</th>
-      <th>lib51_53</th>
+      <th>lib51</th>
       <td>170624</td>
       <td>59682</td>
       <td>2.86</td>
     </tr>
     <tr>
-      <th>lib52_54</th>
+      <th>lib52</th>
       <td>183208</td>
       <td>80134</td>
       <td>2.29</td>
@@ -746,12 +716,6 @@ _ = (
  ).draw()
 ```
 
-
-    
-![png](process_ccs_MERS_files/process_ccs_MERS_61_0.png)
-    
-
-
 Flag the CCSs to retain, and indicate how many we are retaining and purging due to the accuracy filter:
 
 
@@ -786,12 +750,6 @@ _ = (
  ).draw()
 ```
 
-
-    
-![png](process_ccs_MERS_files/process_ccs_MERS_65_0.png)
-    
-
-
 ### Sequences per barcode
 How many times is each barcode sequenced?
 This is useful to know for thinking about building the barcode consensus.
@@ -823,12 +781,6 @@ p = (
 
 _ = p.draw()
 ```
-
-
-    
-![png](process_ccs_MERS_files/process_ccs_MERS_67_0.png)
-    
-
 
 ### Empirical accuracy of CCSs
 We want to directly estimate the accuracy of the gene-barcode link rather than relying on the PacBio `ccs` accuracy, which doesn't include inaccuracies due to things like strand exchange or the same barcode on different sequences.
@@ -916,7 +868,7 @@ processed_ccs.head(n=12)
   <tbody>
     <tr>
       <th>0</th>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>m64272e_230126_100200/51/ccs</td>
       <td>C31A A33T</td>
       <td>1.000000</td>
@@ -932,7 +884,7 @@ processed_ccs.head(n=12)
     </tr>
     <tr>
       <th>1</th>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>m64272e_230126_100200/143/ccs</td>
       <td>C571G T572A</td>
       <td>1.000000</td>
@@ -948,7 +900,7 @@ processed_ccs.head(n=12)
     </tr>
     <tr>
       <th>2</th>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>m64272e_230126_100200/152/ccs</td>
       <td>del134to136</td>
       <td>1.000000</td>
@@ -964,7 +916,7 @@ processed_ccs.head(n=12)
     </tr>
     <tr>
       <th>3</th>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>m64272e_230126_100200/184/ccs</td>
       <td>C502A G504A</td>
       <td>1.000000</td>
@@ -980,7 +932,7 @@ processed_ccs.head(n=12)
     </tr>
     <tr>
       <th>4</th>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>m64272e_230126_100200/242/ccs</td>
       <td>A118T C120T</td>
       <td>0.999999</td>
@@ -996,7 +948,7 @@ processed_ccs.head(n=12)
     </tr>
     <tr>
       <th>5</th>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>m64272e_230126_100200/277/ccs</td>
       <td>T82A T83C C84T</td>
       <td>1.000000</td>
@@ -1012,7 +964,7 @@ processed_ccs.head(n=12)
     </tr>
     <tr>
       <th>6</th>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>m64272e_230126_100200/326/ccs</td>
       <td>A109G</td>
       <td>1.000000</td>
@@ -1028,7 +980,7 @@ processed_ccs.head(n=12)
     </tr>
     <tr>
       <th>7</th>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>m64272e_230126_100200/335/ccs</td>
       <td>T250C C251A</td>
       <td>1.000000</td>
@@ -1044,7 +996,7 @@ processed_ccs.head(n=12)
     </tr>
     <tr>
       <th>8</th>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>m64272e_230126_100200/352/ccs</td>
       <td>A190T G191T T192C</td>
       <td>1.000000</td>
@@ -1060,7 +1012,7 @@ processed_ccs.head(n=12)
     </tr>
     <tr>
       <th>9</th>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>m64272e_230126_100200/420/ccs</td>
       <td>G235T A236T C237T</td>
       <td>1.000000</td>
@@ -1076,7 +1028,7 @@ processed_ccs.head(n=12)
     </tr>
     <tr>
       <th>10</th>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>m64272e_230126_100200/465/ccs</td>
       <td>A488C</td>
       <td>1.000000</td>
@@ -1092,7 +1044,7 @@ processed_ccs.head(n=12)
     </tr>
     <tr>
       <th>11</th>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>m64272e_230126_100200/512/ccs</td>
       <td>G43C G44A C45A</td>
       <td>1.000000</td>
@@ -1130,12 +1082,6 @@ _ = (
  facet_wrap('~ library', nrow=1)
  ).draw()
 ```
-
-
-    
-![png](process_ccs_MERS_files/process_ccs_MERS_72_0.png)
-    
-
 
 Now get the empirical accuracy for each of the CCS groups mentioned above:
 
@@ -1201,56 +1147,56 @@ display(HTML(empirical_acc.to_html(index=False)))
   </thead>
   <tbody>
     <tr>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>0.966829</td>
       <td>retained</td>
       <td>156851</td>
       <td>False</td>
     </tr>
     <tr>
-      <td>lib52_54</td>
+      <td>lib52</td>
       <td>0.964572</td>
       <td>retained</td>
       <td>167806</td>
       <td>False</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>0.983186</td>
       <td>retained, no indel</td>
       <td>153394</td>
       <td>True</td>
     </tr>
     <tr>
-      <td>lib52_54</td>
+      <td>lib52</td>
       <td>0.980309</td>
       <td>retained, no indel</td>
       <td>164350</td>
       <td>True</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>0.971903</td>
       <td>10X accuracy</td>
       <td>151185</td>
       <td>False</td>
     </tr>
     <tr>
-      <td>lib52_54</td>
+      <td>lib52</td>
       <td>0.970190</td>
       <td>10X accuracy</td>
       <td>161412</td>
       <td>False</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>0.983160</td>
       <td>10X accuracy, no indel</td>
       <td>148648</td>
       <td>False</td>
     </tr>
     <tr>
-      <td>lib52_54</td>
+      <td>lib52</td>
       <td>0.980717</td>
       <td>10X accuracy, no indel</td>
       <td>158953</td>
@@ -1286,12 +1232,6 @@ _ = p.draw()
 ```
 
     Saving plot to results/figures/empirical_CCS_accuracy.pdf
-
-
-
-    
-![png](process_ccs_MERS_files/process_ccs_MERS_78_1.png)
-    
 
 
 The above analysis shows that if we exclude sequences with indels (which we plan to do among our consensus sequences), then the accuracy of each CCS is around 99%. 
@@ -1339,35 +1279,35 @@ display(HTML(consensus.head().to_html(index=False)))
   </thead>
   <tbody>
     <tr>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAAAAAACATTCGT</td>
       <td>MERS</td>
       <td>A433T A434T C435G</td>
       <td>1</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAAAAAAGACTTTC</td>
       <td>MERS</td>
       <td>G472A T473A</td>
       <td>1</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAAAAAAGCGATAG</td>
       <td>MERS</td>
       <td>T382- C383- C384-</td>
       <td>4</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAAAAAATTGAGGT</td>
       <td>MERS</td>
       <td>C416A T417A</td>
       <td>2</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAAAAACAATCCCG</td>
       <td>MERS</td>
       <td>A562T C563A A564T</td>
@@ -1410,7 +1350,7 @@ display(HTML(consensus.head().to_html(index=False)))
   </thead>
   <tbody>
     <tr>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAAAAAACATTCGT</td>
       <td>MERS</td>
       <td>A433T A434T C435G</td>
@@ -1421,7 +1361,7 @@ display(HTML(consensus.head().to_html(index=False)))
       <td>0</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAAAAAAGACTTTC</td>
       <td>MERS</td>
       <td>G472A T473A</td>
@@ -1432,7 +1372,7 @@ display(HTML(consensus.head().to_html(index=False)))
       <td>0</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAAAAAAGCGATAG</td>
       <td>MERS</td>
       <td>T382- C383- C384-</td>
@@ -1443,7 +1383,7 @@ display(HTML(consensus.head().to_html(index=False)))
       <td>0</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAAAAAATTGAGGT</td>
       <td>MERS</td>
       <td>C416A T417A</td>
@@ -1454,7 +1394,7 @@ display(HTML(consensus.head().to_html(index=False)))
       <td>0</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAAAAACAATCCCG</td>
       <td>MERS</td>
       <td>A562T C563A A564T</td>
@@ -1491,12 +1431,6 @@ _ = (
        ) 
  ).draw()
 ```
-
-
-    
-![png](process_ccs_MERS_files/process_ccs_MERS_87_0.png)
-    
-
 
 We see that most variant consensus sequences do **not** have indels, especially if we limit to the more "accurate" ones that have multiple CCSs supporting them.
 
@@ -1544,23 +1478,17 @@ _ = p.draw()
   </thead>
   <tbody>
     <tr>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>MERS</td>
       <td>55135</td>
     </tr>
     <tr>
-      <td>lib52_54</td>
+      <td>lib52</td>
       <td>MERS</td>
       <td>73735</td>
     </tr>
   </tbody>
 </table>
-
-
-
-    
-![png](process_ccs_MERS_files/process_ccs_MERS_89_1.png)
-    
 
 
 Below we write the retained consensus sequences to a CSV file that links the nucleotide mutations to the barcodes.
@@ -1604,7 +1532,7 @@ display(HTML(
   <tbody>
     <tr>
       <td>MERS</td>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAAAAAACATTCGT</td>
       <td>A433T A434T C435G</td>
       <td>A433T A434T C435G</td>
@@ -1614,7 +1542,7 @@ display(HTML(
     </tr>
     <tr>
       <td>MERS</td>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAAAAAAGACTTTC</td>
       <td>G472A T473A</td>
       <td>G472A T473A</td>
@@ -1624,7 +1552,7 @@ display(HTML(
     </tr>
     <tr>
       <td>MERS</td>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAAAAAAGCGATAG</td>
       <td>T382- C383- C384-</td>
       <td>T382- C383- C384-</td>
@@ -1634,7 +1562,7 @@ display(HTML(
     </tr>
     <tr>
       <td>MERS</td>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAAAAAATTGAGGT</td>
       <td>C416A T417A</td>
       <td>C416A T417A</td>
@@ -1644,7 +1572,7 @@ display(HTML(
     </tr>
     <tr>
       <td>MERS</td>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAAAAACAATCCCG</td>
       <td>A562T C563A A564T</td>
       <td>A562T C563A A564T</td>
@@ -1677,35 +1605,35 @@ display(HTML(dropped.head().to_html(index=False)))
   </thead>
   <tbody>
     <tr>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAAAACCCGATGAC</td>
       <td>MERS</td>
       <td>subs diff too large</td>
       <td>3</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAAACTAGAAAGCA</td>
       <td>MERS</td>
       <td>subs diff too large</td>
       <td>2</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAACTAGCAGTAAT</td>
       <td>MERS</td>
       <td>subs diff too large</td>
       <td>3</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAACTCTAAAATAT</td>
       <td>MERS</td>
       <td>subs diff too large</td>
       <td>4</td>
     </tr>
     <tr>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAACTGGACGAAGA</td>
       <td>MERS</td>
       <td>subs diff too large</td>
@@ -1739,12 +1667,6 @@ _ = (
        )
  ).draw()
 ```
-
-
-    
-![png](process_ccs_MERS_files/process_ccs_MERS_95_0.png)
-    
-
 
 ## Create barcode-variant table
 We now create a [CodonVariantTable](https://jbloomlab.github.io/dms_variants/dms_variants.codonvarianttable.html#dms_variants.codonvarianttable.CodonVariantTable) that stores and processes all the information about the variant consensus sequences.
@@ -1818,7 +1740,7 @@ variants.barcode_variant_df.head(n=12)
     <tr>
       <th>0</th>
       <td>MERS</td>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAAAAAACATTCGT</td>
       <td>1</td>
       <td>AAC145TTG</td>
@@ -1829,7 +1751,7 @@ variants.barcode_variant_df.head(n=12)
     <tr>
       <th>1</th>
       <td>MERS</td>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAAAAAAGACTTTC</td>
       <td>1</td>
       <td>GTA158AAA</td>
@@ -1840,7 +1762,7 @@ variants.barcode_variant_df.head(n=12)
     <tr>
       <th>2</th>
       <td>MERS</td>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAAAAAAGCGATAG</td>
       <td>4</td>
       <td>TCC128---</td>
@@ -1851,7 +1773,7 @@ variants.barcode_variant_df.head(n=12)
     <tr>
       <th>3</th>
       <td>MERS</td>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAAAAAATTGAGGT</td>
       <td>2</td>
       <td>CCT139CAA</td>
@@ -1862,7 +1784,7 @@ variants.barcode_variant_df.head(n=12)
     <tr>
       <th>4</th>
       <td>MERS</td>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAAAAACAATCCCG</td>
       <td>4</td>
       <td>ACA188TAT</td>
@@ -1873,7 +1795,7 @@ variants.barcode_variant_df.head(n=12)
     <tr>
       <th>5</th>
       <td>MERS</td>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAAAAACCCATGGA</td>
       <td>1</td>
       <td>CCC54TGG</td>
@@ -1884,7 +1806,7 @@ variants.barcode_variant_df.head(n=12)
     <tr>
       <th>6</th>
       <td>MERS</td>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAAAAACTGTCAAT</td>
       <td>5</td>
       <td>GGG4GAA</td>
@@ -1895,7 +1817,7 @@ variants.barcode_variant_df.head(n=12)
     <tr>
       <th>7</th>
       <td>MERS</td>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAAAAACTTAAGAA</td>
       <td>1</td>
       <td>CTT191GTT</td>
@@ -1906,7 +1828,7 @@ variants.barcode_variant_df.head(n=12)
     <tr>
       <th>8</th>
       <td>MERS</td>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAAAAAGCAATATA</td>
       <td>2</td>
       <td></td>
@@ -1917,7 +1839,7 @@ variants.barcode_variant_df.head(n=12)
     <tr>
       <th>9</th>
       <td>MERS</td>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAAAAAGTAAGGAA</td>
       <td>2</td>
       <td>ATG76GAA</td>
@@ -1928,7 +1850,7 @@ variants.barcode_variant_df.head(n=12)
     <tr>
       <th>10</th>
       <td>MERS</td>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAAAAAGTAGAATA</td>
       <td>1</td>
       <td>GGG176ACT</td>
@@ -1939,7 +1861,7 @@ variants.barcode_variant_df.head(n=12)
     <tr>
       <th>11</th>
       <td>MERS</td>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAAAAAGTTCATAT</td>
       <td>2</td>
       <td>CCG155TGT</td>
@@ -1976,8 +1898,8 @@ display(HTML(
   <thead>
     <tr style="text-align: right;">
       <th>library</th>
-      <th>lib51_53</th>
-      <th>lib52_54</th>
+      <th>lib51</th>
+      <th>lib52</th>
       <th>all libraries</th>
     </tr>
     <tr>
@@ -2011,12 +1933,6 @@ p = p + theme(panel_grid_major_x=element_blank())  # no vertical grid lines
 _ = p.draw()
 ```
 
-
-    
-![png](process_ccs_MERS_files/process_ccs_MERS_103_0.png)
-    
-
-
 ### Mutations per variant
 Plot the number of barcoded variants with each number of amino-acid and codon mutations.
 This is for the primary target only, and doesn't include the spiked-in secondary targets:
@@ -2040,18 +1956,6 @@ for mut_type in ['aa', 'codon']:
     Saving plot to results/figures/n_codon_muts_per_variant_MERS.pdf
 
 
-
-    
-![png](process_ccs_MERS_files/process_ccs_MERS_105_1.png)
-    
-
-
-
-    
-![png](process_ccs_MERS_files/process_ccs_MERS_105_2.png)
-    
-
-
 Plot the frequencies of different codon mutation types among **all** variants (any number of mutations), again only for primary target:
 
 
@@ -2069,12 +1973,6 @@ p.save(plotfile)
     Saving plot to results/figures/avg_muts_per_variant_MERS.pdf
 
 
-
-    
-![png](process_ccs_MERS_files/process_ccs_MERS_107_1.png)
-    
-
-
 Variants supported by multiple PacBio CCSs should have fewer spurious mutations since sequencing errors are very unlikely to occur on two CCSs.
 Below we plot the number of codon mutations per variant among variants with at least two CCSs supporting their call.
 The difference in mutation rates here and in the plot above (that does not apply the `min_support=2` filter) gives some estimate of the frequency of mutations in our variants our spurious.
@@ -2088,12 +1986,6 @@ p = variants.plotNumCodonMutsByType(variant_type='all', samples=None,
 p = p + theme(panel_grid_major_x=element_blank())  # no vertical grid lines
 _ = p.draw()
 ```
-
-
-    
-![png](process_ccs_MERS_files/process_ccs_MERS_109_0.png)
-    
-
 
 ### Completeness of mutation sampling
 We examine how completely amino-acid mutations are sampled by the variants for the primary target, looking at single-mutant variants only and all variants.
@@ -2113,18 +2005,6 @@ for variant_type in ['all', 'single']:
 
     Saving plot to results/figures/variant_cumul_all_mut_coverage_MERS.pdf
     Saving plot to results/figures/variant_cumul_single_mut_coverage_MERS.pdf
-
-
-
-    
-![png](process_ccs_MERS_files/process_ccs_MERS_111_1.png)
-    
-
-
-
-    
-![png](process_ccs_MERS_files/process_ccs_MERS_111_2.png)
-    
 
 
 To get more quantitative information like that plotted above, we determine how many mutations are found 0, 1, or >1 times both among single and all mutants for the primary target:
@@ -2175,7 +2055,7 @@ display(HTML(
     <tr>
       <th rowspan="18" valign="top">all</th>
       <th rowspan="9" valign="top">False</th>
-      <th rowspan="3" valign="top">lib51_53</th>
+      <th rowspan="3" valign="top">lib51</th>
       <th>0</th>
       <td>7</td>
     </tr>
@@ -2188,7 +2068,7 @@ display(HTML(
       <td>4288</td>
     </tr>
     <tr>
-      <th rowspan="3" valign="top">lib52_54</th>
+      <th rowspan="3" valign="top">lib52</th>
       <th>0</th>
       <td>6</td>
     </tr>
@@ -2215,7 +2095,7 @@ display(HTML(
     </tr>
     <tr>
       <th rowspan="9" valign="top">True</th>
-      <th rowspan="3" valign="top">lib51_53</th>
+      <th rowspan="3" valign="top">lib51</th>
       <th>0</th>
       <td>156</td>
     </tr>
@@ -2228,7 +2108,7 @@ display(HTML(
       <td>4346</td>
     </tr>
     <tr>
-      <th rowspan="3" valign="top">lib52_54</th>
+      <th rowspan="3" valign="top">lib52</th>
       <th>0</th>
       <td>150</td>
     </tr>
@@ -2256,7 +2136,7 @@ display(HTML(
     <tr>
       <th rowspan="18" valign="top">single</th>
       <th rowspan="9" valign="top">False</th>
-      <th rowspan="3" valign="top">lib51_53</th>
+      <th rowspan="3" valign="top">lib51</th>
       <th>0</th>
       <td>7</td>
     </tr>
@@ -2269,7 +2149,7 @@ display(HTML(
       <td>4285</td>
     </tr>
     <tr>
-      <th rowspan="3" valign="top">lib52_54</th>
+      <th rowspan="3" valign="top">lib52</th>
       <th>0</th>
       <td>7</td>
     </tr>
@@ -2296,7 +2176,7 @@ display(HTML(
     </tr>
     <tr>
       <th rowspan="9" valign="top">True</th>
-      <th rowspan="3" valign="top">lib51_53</th>
+      <th rowspan="3" valign="top">lib51</th>
       <th>0</th>
       <td>181</td>
     </tr>
@@ -2309,7 +2189,7 @@ display(HTML(
       <td>4322</td>
     </tr>
     <tr>
-      <th rowspan="3" valign="top">lib52_54</th>
+      <th rowspan="3" valign="top">lib52</th>
       <th>0</th>
       <td>173</td>
     </tr>
@@ -2350,18 +2230,6 @@ for variant_type in ['all', 'single']:
     p.draw()
 ```
 
-
-    
-![png](process_ccs_MERS_files/process_ccs_MERS_115_0.png)
-    
-
-
-
-    
-![png](process_ccs_MERS_files/process_ccs_MERS_115_1.png)
-    
-
-
 We can also use heat maps to examine the extent to which specific amino-acid or codon mutations are over-represented.
 These heat maps are large, so we make them just for all variants and the merge of all libraries:
 
@@ -2372,18 +2240,6 @@ for mut_type in ['aa', 'codon']:
                                 widthscale=2)
     p.draw()
 ```
-
-
-    
-![png](process_ccs_MERS_files/process_ccs_MERS_117_0.png)
-    
-
-
-
-    
-![png](process_ccs_MERS_files/process_ccs_MERS_117_1.png)
-    
-
 
 ### Write codon-variant table
 We write the codon variant table to a CSV file.
@@ -2415,7 +2271,7 @@ display(HTML(
   <tbody>
     <tr>
       <td>MERS</td>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAAAAAACATTCGT</td>
       <td>1</td>
       <td>AAC145TTG</td>
@@ -2425,7 +2281,7 @@ display(HTML(
     </tr>
     <tr>
       <td>MERS</td>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAAAAAAGACTTTC</td>
       <td>1</td>
       <td>GTA158AAA</td>
@@ -2435,7 +2291,7 @@ display(HTML(
     </tr>
     <tr>
       <td>MERS</td>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAAAAAAGCGATAG</td>
       <td>4</td>
       <td>TCC128---</td>
@@ -2445,7 +2301,7 @@ display(HTML(
     </tr>
     <tr>
       <td>MERS</td>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAAAAAATTGAGGT</td>
       <td>2</td>
       <td>CCT139CAA</td>
@@ -2455,7 +2311,7 @@ display(HTML(
     </tr>
     <tr>
       <td>MERS</td>
-      <td>lib51_53</td>
+      <td>lib51</td>
       <td>AAAAAAAACAATCCCG</td>
       <td>4</td>
       <td>ACA188TAT</td>
