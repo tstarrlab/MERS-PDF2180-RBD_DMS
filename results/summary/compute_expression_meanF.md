@@ -41,7 +41,7 @@ sessionInfo()
 
     ## R version 4.1.3 (2022-03-10)
     ## Platform: x86_64-pc-linux-gnu (64-bit)
-    ## Running under: Rocky Linux 8.5 (Green Obsidian)
+    ## Running under: Rocky Linux 8.8 (Green Obsidian)
     ## 
     ## Matrix products: default
     ## BLAS/LAPACK: /uufs/chpc.utah.edu/sys/spack/linux-rocky8-nehalem/gcc-8.5.0/intel-oneapi-mkl-2021.4.0-h43nkmwzvaltaa6ii5l7n6e7ruvjbmnv/mkl/2021.4.0/lib/intel64/libmkl_rt.so.1
@@ -73,12 +73,12 @@ sessionInfo()
     ## [17] modelr_0.1.8     readxl_1.3.1     lifecycle_1.0.3  munsell_0.5.0   
     ## [21] gtable_0.3.0     cellranger_1.1.0 rvest_1.0.2      evaluate_0.15   
     ## [25] tzdb_0.2.0       fastmap_1.1.0    fansi_1.0.2      broom_0.7.12    
-    ## [29] Rcpp_1.0.8       backports_1.4.1  scales_1.2.1     jsonlite_1.8.0  
+    ## [29] Rcpp_1.0.11      backports_1.4.1  scales_1.2.1     jsonlite_1.8.7  
     ## [33] fs_1.5.2         hms_1.1.1        digest_0.6.29    stringi_1.7.6   
     ## [37] grid_4.1.3       cli_3.6.0        tools_4.1.3      magrittr_2.0.2  
     ## [41] crayon_1.5.0     pkgconfig_2.0.3  Matrix_1.4-0     ellipsis_0.3.2  
     ## [45] xml2_1.3.3       reprex_2.0.1     lubridate_1.8.0  rstudioapi_0.13 
-    ## [49] assertthat_0.2.1 rmarkdown_2.13   httr_1.4.2       R6_2.5.1        
+    ## [49] assertthat_0.2.1 rmarkdown_2.13   httr_1.4.7       R6_2.5.1        
     ## [53] compiler_4.1.3
 
 ## Setup
@@ -101,21 +101,9 @@ counts <- data.table(read.csv(file=config$variant_counts_file,stringsAsFactors=F
 counts <- subset(counts, sample %in% barcode_runs[barcode_runs$sample_type=="SortSeq","sample"])
 
 #read in barcode-variant lookup tables
-dt_MERS <- data.table(read.csv(file=config$codon_variant_table_file_MERS,stringsAsFactors=F))
-dt_PDF2180 <- data.table(read.csv(file=config$codon_variant_table_file_PDF2180,stringsAsFactors=F))
+dt <- data.table(read.csv(file=config$codon_variant_table_file_pools,stringsAsFactors=F))
 
-#merge, eliminate barcodes duplicated within a library (this is already done)
-dt <- rbind(dt_MERS,dt_PDF2180); setkey(dt,barcode,library)
-duplicates <- dt[duplicated(dt,by=c("barcode","library")),.(library,barcode)] #the data.table duplciates function annoyingly only flags the first of each duplicate so doesn't intrinsically allow removal of both of the entries of the duplicate. So, flat what are duplciates, and then remove
-dt[,duplicate:=FALSE]
-if(nrow(duplicates) > 0){
-  for(i in 1:nrow(duplicates)){
-    dt[library==duplicates[i,library] & barcode==duplicates[i,barcode],duplicate:=TRUE]
-  }
-}
-dt <- dt[duplicate==FALSE,]; dt[,duplicate:=NULL]
-
-dt <- merge(counts, dt, by=c("library","barcode")); rm(dt_MERS);rm(dt_PDF2180);rm(counts); rm(duplicates)
+dt <- merge(counts, dt, by=c("library","barcode"));rm(counts)
 ```
 
 Convert from Illumina read counts to estimates of the number of cells
@@ -138,14 +126,14 @@ for(i in 1:nrow(barcode_runs)){
 }
 ```
 
-    ## [1] "read:cell ratio for lib51_53 SortSeq_bin1 is 6.7682487839967"
-    ## [1] "read:cell ratio for lib51_53 SortSeq_bin2 is 1.9817525419065"
-    ## [1] "read:cell ratio for lib51_53 SortSeq_bin3 is 1.61394640848562"
-    ## [1] "read:cell ratio for lib51_53 SortSeq_bin4 is 1.39168409260642"
-    ## [1] "read:cell ratio for lib52_54 SortSeq_bin1 is 4.06717007653953"
-    ## [1] "read:cell ratio for lib52_54 SortSeq_bin2 is 1.30843458984951"
-    ## [1] "read:cell ratio for lib52_54 SortSeq_bin3 is 1.58901237335197"
-    ## [1] "read:cell ratio for lib52_54 SortSeq_bin4 is 1.43500276583034"
+    ## [1] "read:cell ratio for pool1 SortSeq_bin1 is 6.7682487839967"
+    ## [1] "read:cell ratio for pool1 SortSeq_bin2 is 1.9817525419065"
+    ## [1] "read:cell ratio for pool1 SortSeq_bin3 is 1.61394640848562"
+    ## [1] "read:cell ratio for pool1 SortSeq_bin4 is 1.39168409260642"
+    ## [1] "read:cell ratio for pool2 SortSeq_bin1 is 4.06717007653953"
+    ## [1] "read:cell ratio for pool2 SortSeq_bin2 is 1.30843458984951"
+    ## [1] "read:cell ratio for pool2 SortSeq_bin3 is 1.58901237335197"
+    ## [1] "read:cell ratio for pool2 SortSeq_bin4 is 1.43500276583034"
 
 ``` r
 #annotate each barcode as to whether it's a homolog variant, SARS-CoV-2 wildtype, synonymous muts only, stop, nonsynonymous, >1 nonsynonymous mutations
@@ -226,10 +214,10 @@ bottom.
 ``` r
 #histograms
 par(mfrow=c(2,2))
-hist(log10(dt[library=="lib51_53",expr_count]+0.1),xlab="cell count (log10, plus 0.1 pseudocount)",main="lib51_53, all bc",col="gray50")
-hist(log10(dt[library=="lib52_54",expr_count]+0.1),xlab="cell count (log10, plus 0.1 pseudocount)",main="lib52_54, all bc",col="gray50")
-hist(log10(dt[library=="lib51_53" & !is.na(expression),expr_count]+0.1),xlab="cell count (log10, plus 0.1 pseudocount)",main="lib51_53, determined",col="gray50")
-hist(log10(dt[library=="lib52_54" & !is.na(expression),expr_count]+0.1),xlab="cell count (log10, plus 0.1 pseudocount)",main="lib52_54, determined",col="gray50")
+hist(log10(dt[library=="pool1",expr_count]+0.1),xlab="cell count (log10, plus 0.1 pseudocount)",main="pool1, all bc",col="gray50")
+hist(log10(dt[library=="pool2",expr_count]+0.1),xlab="cell count (log10, plus 0.1 pseudocount)",main="pool2, all bc",col="gray50")
+hist(log10(dt[library=="pool1" & !is.na(expression),expr_count]+0.1),xlab="cell count (log10, plus 0.1 pseudocount)",main="pool1, determined",col="gray50")
+hist(log10(dt[library=="pool2" & !is.na(expression),expr_count]+0.1),xlab="cell count (log10, plus 0.1 pseudocount)",main="pool2, determined",col="gray50")
 ```
 
 <img src="compute_expression_meanF_files/figure-gfm/cell_count_coverage-1.png" style="display: block; margin: auto;" />

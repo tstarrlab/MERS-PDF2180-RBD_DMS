@@ -1,0 +1,106 @@
+---
+title: "Merge barcode-variant tables for libraries combined into different experimental pools"
+author: "Tyler Starr"
+date: "02/20/2024"
+output:
+  github_document:
+    toc: true
+    html_preview: false
+editor_options: 
+  chunk_output_type: inline
+---
+This notebook takes different pools as defined in the config.yaml file and makes a merged barcode-variant lookup table that pools different libraries according to experimental specifications.
+
+```{r setup, message=FALSE, warning=FALSE, error=FALSE}
+#list of packages to install/load
+packages = c("yaml","data.table","tidyverse","gridExtra","plotly","withr","htmlwidgets","knitr")
+#install any packages not already installed
+installed_packages <- packages %in% rownames(installed.packages())
+if(any(installed_packages == F)){
+  install.packages(packages[!installed_packages],
+                   lib=c(paste("/uufs/chpc.utah.edu/common/home/",Sys.getenv("USER"),"/RLibs/",Sys.getenv("R_VERSION"),sep="")),
+                   repos=c("http://cran.us.r-project.org"))
+}
+#load packages
+invisible(lapply(packages, library, character.only=T))
+
+knitr::opts_chunk$set(echo = T)
+knitr::opts_chunk$set(dev.args = list(png = list(type = "cairo")))
+
+#read in config file
+config <- read_yaml("config.yaml")
+
+```
+Session info for reproducing environment:
+```{r print_sessionInfo}
+sessionInfo()
+```
+
+Read in tables of per-library barcode-variant lookups, and store the underlying "library" in a new column called "sublibrary"
+
+```{r input_data}
+#read in barcode-variant lookup tables
+dt_MERS <- data.table(read.csv(file=config$codon_variant_table_file_MERS,stringsAsFactors=F)); dt_MERS[,sublibrary:=library]
+dt_PDF2180 <- data.table(read.csv(file=config$codon_variant_table_file_PDF2180,stringsAsFactors=F)); dt_PDF2180[,sublibrary:=library]
+
+dt <- rbind(dt_MERS,dt_PDF2180)
+
+head(dt)
+```
+
+Make new tables for each pool (better to do 'by pool' than 'by library', since each pool is unique but any library can in theory be part of multiple pools). Note, this code must be manually updated when new pools are designated in the config.yaml file.
+
+```{r dt_by_pool}
+
+#pool1
+dt_pool1 <- dt[sublibrary %in% config$pool1]
+dt_pool1[,library:="pool1"]
+head(dt_pool1)
+
+#pool2
+dt_pool2 <- dt[sublibrary %in% config$pool2]
+dt_pool2[,library:="pool2"]
+head(dt_pool2)
+
+```
+
+Eliminate barcodes that are repeated between different variants within a single pool.
+
+```{r remove_dup_barcodes}
+
+#pool1
+duplicates_pool1 <- dt_pool1[duplicated(dt_pool1,by=c("barcode","library")),.(library,barcode)] #the data.table duplciates function annoyingly only flags the first of each duplicate so doesn't intrinsically allow removal of both of the entries of the duplicate. So, flag what are duplicates, and then remove
+dt_pool1[,duplicate:=FALSE]
+if(nrow(duplicates_pool1) > 0){
+  for(i in 1:nrow(duplicates_pool1)){
+    dt_pool1[library==duplicates_pool1[i,library] & barcode==duplicates_pool1[i,barcode],duplicate:=TRUE]
+  }
+}
+dt_pool1 <- dt_pool1[duplicate==FALSE,]; dt_pool1[,duplicate:=NULL]
+print(paste("Removed", nrow(duplicates_pool1), "repeated barcodes from pool1"))
+
+#pool2
+duplicates_pool2 <- dt_pool2[duplicated(dt_pool2,by=c("barcode","library")),.(library,barcode)] #the data.table duplciates function annoyingly only flags the first of each duplicate so doesn't intrinsically allow removal of both of the entries of the duplicate. So, flag what are duplicates, and then remove
+dt_pool2[,duplicate:=FALSE]
+if(nrow(duplicates_pool2) > 0){
+  for(i in 1:nrow(duplicates_pool2)){
+    dt_pool2[library==duplicates_pool2[i,library] & barcode==duplicates_pool2[i,barcode],duplicate:=TRUE]
+  }
+}
+dt_pool2 <- dt_pool2[duplicate==FALSE,]; dt_pool2[,duplicate:=NULL]
+print(paste("Removed", nrow(duplicates_pool2), "repeated barcodes from pool2"))
+
+```
+
+Merge the per-pool tables back into one aggregate data table and save.
+
+```{r aggregate_and_save}
+
+dt_final <- rbind(dt_pool1, dt_pool2)
+
+dt_final %>%
+  write.csv(file=config$codon_variant_table_file_pools, row.names=F)
+
+
+```
+

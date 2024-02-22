@@ -20,7 +20,7 @@ generates some coverage and QC analyses.
 
 ``` r
 #list of packages to install/load
-packages = c("yaml","data.table","tidyverse","gridExtra","plotly","withr","htmlwidgets")
+packages = c("yaml","data.table","tidyverse","gridExtra","plotly","withr","htmlwidgets","knitr")
 #install any packages not already installed
 installed_packages <- packages %in% rownames(installed.packages())
 if(any(installed_packages == F)){
@@ -54,7 +54,7 @@ sessionInfo()
 
     ## R version 4.1.3 (2022-03-10)
     ## Platform: x86_64-pc-linux-gnu (64-bit)
-    ## Running under: Rocky Linux 8.5 (Green Obsidian)
+    ## Running under: Rocky Linux 8.8 (Green Obsidian)
     ## 
     ## Matrix products: default
     ## BLAS/LAPACK: /uufs/chpc.utah.edu/sys/spack/linux-rocky8-nehalem/gcc-8.5.0/intel-oneapi-mkl-2021.4.0-h43nkmwzvaltaa6ii5l7n6e7ruvjbmnv/mkl/2021.4.0/lib/intel64/libmkl_rt.so.1
@@ -71,10 +71,10 @@ sessionInfo()
     ## [1] stats     graphics  grDevices utils     datasets  methods   base     
     ## 
     ## other attached packages:
-    ##  [1] htmlwidgets_1.5.4 withr_2.5.0       plotly_4.10.1     gridExtra_2.3    
-    ##  [5] forcats_0.5.1     stringr_1.4.0     dplyr_1.0.8       purrr_0.3.4      
-    ##  [9] readr_2.1.2       tidyr_1.2.0       tibble_3.1.6      ggplot2_3.4.1    
-    ## [13] tidyverse_1.3.1   data.table_1.14.2 yaml_2.3.5       
+    ##  [1] knitr_1.37        htmlwidgets_1.5.4 withr_2.5.0       plotly_4.10.1    
+    ##  [5] gridExtra_2.3     forcats_0.5.1     stringr_1.4.0     dplyr_1.0.8      
+    ##  [9] purrr_0.3.4       readr_2.1.2       tidyr_1.2.0       tibble_3.1.6     
+    ## [13] ggplot2_3.4.1     tidyverse_1.3.1   data.table_1.14.2 yaml_2.3.5       
     ## 
     ## loaded via a namespace (and not attached):
     ##  [1] tidyselect_1.1.2  xfun_0.30         haven_2.4.3       colorspace_2.0-3 
@@ -82,14 +82,14 @@ sessionInfo()
     ##  [9] utf8_1.2.2        rlang_1.0.6       pillar_1.7.0      glue_1.6.2       
     ## [13] DBI_1.1.2         dbplyr_2.1.1      modelr_0.1.8      readxl_1.3.1     
     ## [17] lifecycle_1.0.3   munsell_0.5.0     gtable_0.3.0      cellranger_1.1.0 
-    ## [21] rvest_1.0.2       evaluate_0.15     knitr_1.37        tzdb_0.2.0       
-    ## [25] fastmap_1.1.0     fansi_1.0.2       broom_0.7.12      Rcpp_1.0.8       
-    ## [29] backports_1.4.1   scales_1.2.1      jsonlite_1.8.0    fs_1.5.2         
-    ## [33] hms_1.1.1         digest_0.6.29     stringi_1.7.6     grid_4.1.3       
-    ## [37] cli_3.6.0         tools_4.1.3       magrittr_2.0.2    lazyeval_0.2.2   
-    ## [41] crayon_1.5.0      pkgconfig_2.0.3   ellipsis_0.3.2    xml2_1.3.3       
-    ## [45] reprex_2.0.1      lubridate_1.8.0   rstudioapi_0.13   assertthat_0.2.1 
-    ## [49] rmarkdown_2.13    httr_1.4.2        R6_2.5.1          compiler_4.1.3
+    ## [21] rvest_1.0.2       evaluate_0.15     tzdb_0.2.0        fastmap_1.1.0    
+    ## [25] fansi_1.0.2       broom_0.7.12      Rcpp_1.0.11       backports_1.4.1  
+    ## [29] scales_1.2.1      jsonlite_1.8.7    fs_1.5.2          hms_1.1.1        
+    ## [33] digest_0.6.29     stringi_1.7.6     grid_4.1.3        cli_3.6.0        
+    ## [37] tools_4.1.3       magrittr_2.0.2    lazyeval_0.2.2    crayon_1.5.0     
+    ## [41] pkgconfig_2.0.3   ellipsis_0.3.2    xml2_1.3.3        reprex_2.0.1     
+    ## [45] lubridate_1.8.0   rstudioapi_0.13   assertthat_0.2.1  rmarkdown_2.13   
+    ## [49] httr_1.4.7        R6_2.5.1          compiler_4.1.3
 
 ## Setup
 
@@ -109,7 +109,7 @@ determined in each library.
 
 ``` r
 dt_bind[is.na(log10Ka_hDPP4),TiteSeq_hDPP4_avgcount:=NA]
-dt_bind[library=="lib51_53A",library:="lib51_53"]
+dt_bind[library=="pool1A",library:="pool1"]
 dt_expr[is.na(expression),expr_count:=NA]
 
 dt_bind[,mean_bind_hDPP4:=mean(log10Ka_hDPP4,na.rm=T),by=c("library","target","variant_class","aa_substitutions")]
@@ -135,11 +135,11 @@ measurement in a pool.
 
 ``` r
 par(mfrow=c(2,2))
-hist(dt_bind[library=="lib51_53" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,n_bc_bind_hDPP4],main="lib51_53, bind",right=F,breaks=max(dt_bind[library=="lib51_53" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,n_bc_bind_hDPP4],na.rm=T),xlab="")
-#hist(dt_bind[library=="lib52_54" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,n_bc_bind_hDPP4],main="lib52_54, bind",right=F,breaks=max(dt_bind[library=="lib52_54" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,n_bc_bind_hDPP4],na.rm=T),xlab="")
+hist(dt_bind[library=="pool1" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,n_bc_bind_hDPP4],main="pool1, bind",right=F,breaks=max(dt_bind[library=="pool1" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,n_bc_bind_hDPP4],na.rm=T),xlab="")
+#hist(dt_bind[library=="pool2" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,n_bc_bind_hDPP4],main="pool2, bind",right=F,breaks=max(dt_bind[library=="pool2" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,n_bc_bind_hDPP4],na.rm=T),xlab="")
 plot(0,type='n',axes=FALSE,ann=F)
-hist(dt_expr[library=="lib51_53" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,n_bc_expr],main="lib51_53, expr",right=F,breaks=max(dt_expr[library=="lib51_53" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,n_bc_expr],na.rm=T),xlab="number barcodes collapsed")
-hist(dt_expr[library=="lib52_54" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,n_bc_expr],main="lib52_54, expr",right=F,breaks=max(dt_expr[library=="lib52_54" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,n_bc_expr],na.rm=T),xlab="number barcodes collapsed")
+hist(dt_expr[library=="pool1" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,n_bc_expr],main="pool1, expr",right=F,breaks=max(dt_expr[library=="pool1" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,n_bc_expr],na.rm=T),xlab="number barcodes collapsed")
+hist(dt_expr[library=="pool2" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,n_bc_expr],main="pool2, expr",right=F,breaks=max(dt_expr[library=="pool2" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,n_bc_expr],na.rm=T),xlab="number barcodes collapsed")
 ```
 
 <img src="collapse_scores_files/figure-gfm/hist_n_bc_per_mutant-1.png" style="display: block; margin: auto;" />
@@ -153,19 +153,19 @@ help for choosing a minimum number of barcodes to use.
 
 ``` r
 par(mfrow=c(2,2))
-plot(dt_bind[library=="lib51_53" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,n_bc_bind_hDPP4],
-     dt_bind[library=="lib51_53" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,sd_bind_hDPP4/sqrt(n_bc_bind_hDPP4)],
-     pch=16,col="#00000005",main="lib51_53, hDPP4 bind",ylab="SEM",xlab="number barcodes collapsed")
-# plot(dt_bind[library=="lib52_54" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,n_bc_bind],
-#      dt_bind[library=="lib52_54" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,sd_bind/sqrt(n_bc_bind)],
-#      pch=16,col="#00000005",main="lib52_54, bind",ylab="SEM",xlab="number barcodes collapsed")
+plot(dt_bind[library=="pool1" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,n_bc_bind_hDPP4],
+     dt_bind[library=="pool1" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,sd_bind_hDPP4/sqrt(n_bc_bind_hDPP4)],
+     pch=16,col="#00000005",main="pool1, hDPP4 bind",ylab="SEM",xlab="number barcodes collapsed")
+# plot(dt_bind[library=="pool2" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,n_bc_bind],
+#      dt_bind[library=="pool2" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,sd_bind/sqrt(n_bc_bind)],
+#      pch=16,col="#00000005",main="pool2, bind",ylab="SEM",xlab="number barcodes collapsed")
 plot(0,type='n',axes=FALSE,ann=F)
-plot(dt_expr[library=="lib51_53" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,n_bc_expr],
-     dt_expr[library=="lib51_53" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,sd_expr/sqrt(n_bc_expr)],
-     pch=16,col="#00000005",main="lib51_53, expr",ylab="SEM",xlab="number barcodes collapsed")
-plot(dt_expr[library=="lib52_54" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,n_bc_expr],
-     dt_expr[library=="lib52_54" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,sd_expr/sqrt(n_bc_expr)],
-     pch=16,col="#00000005",main="lib52_54, expr",ylab="SEM",xlab="number barcodes collapsed")
+plot(dt_expr[library=="pool1" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,n_bc_expr],
+     dt_expr[library=="pool1" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,sd_expr/sqrt(n_bc_expr)],
+     pch=16,col="#00000005",main="pool1, expr",ylab="SEM",xlab="number barcodes collapsed")
+plot(dt_expr[library=="pool2" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,n_bc_expr],
+     dt_expr[library=="pool2" & variant_class %in% c("1 nonsynonymous","deletion") & n_aa_substitutions==1,sd_expr/sqrt(n_bc_expr)],
+     pch=16,col="#00000005",main="pool2, expr",ylab="SEM",xlab="number barcodes collapsed")
 ```
 
 <img src="collapse_scores_files/figure-gfm/sem_v_n-bc-1.png" style="display: block; margin: auto;" />
@@ -193,8 +193,8 @@ dt_mutant_bind <- dt_mutant_bind[,.(library,target,wildtype,position,mutant,mean
 
 aas <- c("A","C","D","E","F","G","H","I","K","L","M","N","P","Q","R","S","T","V","W","Y","-")
 #fill out missing values in table with a hideous loop, so the table is complete for all mutaitons (including those that are missing). If you are somebody who is reading this code, I apologize.
-# for(lib in c("lib51_53","lib52_54")){
-for(lib in c("lib51_53")){
+# for(lib in c("pool1","pool2")){
+for(lib in c("pool1")){
   for(bg in as.character(unique(dt_mutant_bind$target))){
     for(pos in 1:max(dt_mutant_bind$position)){
       for(aa in aas){
@@ -209,16 +209,16 @@ setkey(dt_mutant_bind,library,target,position,mutant)
 
 #fill in wildtype values -- should vectorize in data table but being so stupid so just going to write for loop
 for(bg in c("MERS","PDF2180")){
-  # for(lib in c("lib51_53","lib52_54")){
-  for(lib in c("lib51_53")){
+  # for(lib in c("pool1","pool2")){
+  for(lib in c("pool1")){
     dt_mutant_bind[library==lib & target==bg & wildtype==mutant, c("mean_bind_hDPP4","sd_bind_hDPP4","n_bc_bind_hDPP4","avg_count_bind_hDPP4"):=dt_bind[library==lib & target==bg & variant_class=="wildtype",.(mean_bind_hDPP4,sd_bind_hDPP4,n_bc_bind_hDPP4,avg_count_bind_hDPP4)]]
   }
 }
 
 #add delta bind measures
 for(bg in c("MERS","PDF2180")){
-  # for(lib in c("lib51_53","lib52_54")){
-  for(lib in c("lib51_53")){  
+  # for(lib in c("pool1","pool2")){
+  for(lib in c("pool1")){  
     ref_bind <- dt_bind[library==lib & target==bg & variant_class=="wildtype",mean_bind_hDPP4]
     dt_mutant_bind[library==lib & target==bg,delta_bind_hDPP4 := mean_bind_hDPP4 - ref_bind]
   }
@@ -239,7 +239,7 @@ dt_mutant_expr <- dt_mutant_expr[,.(library,target,wildtype,position,mutant,mean
 
 aas <- c("A","C","D","E","F","G","H","I","K","L","M","N","P","Q","R","S","T","V","W","Y","-")
 #fill out missing values in table with a hideous loop, so the table is complete for all mutaitons (including those that are missing). If you are somebody who is reading this code, I apologize.
-for(lib in c("lib51_53","lib52_54")){
+for(lib in c("pool1","pool2")){
   for(bg in as.character(unique(dt_mutant_expr$target))){
     for(pos in 1:max(dt_mutant_expr$position)){
       for(aa in aas){
@@ -254,14 +254,14 @@ setkey(dt_mutant_expr,library,target,position,mutant)
 
 #fill in wildtype values -- should vectorize in data table but being so stupid so just going to write for loop
 for(bg in c("MERS","PDF2180")){
-  for(lib in c("lib51_53","lib52_54")){
+  for(lib in c("pool1","pool2")){
     dt_mutant_expr[library==lib & target==bg & wildtype==mutant, c("mean_expr","sd_expr","n_bc_expr","avg_count_expr"):=dt_expr[library==lib & target==bg & variant_class=="wildtype",.(mean_expr,sd_expr,n_bc_expr,avg_count_expr)]]
   }
 }
 
 #add delta expr measures
 for(bg in c("MERS","PDF2180")){
-  for(lib in c("lib51_53","lib52_54")){
+  for(lib in c("pool1","pool2")){
     ref_expr <- dt_expr[library==lib & target==bg & variant_class=="wildtype",mean_expr]
     dt_mutant_expr[library==lib & target==bg,delta_expr := mean_expr - ref_expr]
   }
@@ -272,17 +272,17 @@ We have duplicates for expr measurement. Let’s look at correlations!
 
 ``` r
 par(mfrow=c(1,3))
-x <- dt_mutant_expr[library=="lib51_53" & wildtype!=mutant,mean_expr]; y <- dt_mutant_expr[library=="lib52_54" & wildtype!=mutant,mean_expr]; plot(x,y,pch=16,col="#00000020",xlab="replicate 1",ylab="replicate 2",main="expression");model <- lm(y~x);abline(a=0,b=1,lty=2,col="red");legend("topleft",legend=paste("R2: ",round(summary(model)$r.squared,3),sep=""),bty="n")
+x <- dt_mutant_expr[library=="pool1" & wildtype!=mutant,mean_expr]; y <- dt_mutant_expr[library=="pool2" & wildtype!=mutant,mean_expr]; plot(x,y,pch=16,col="#00000020",xlab="replicate 1",ylab="replicate 2",main="expression");model <- lm(y~x);abline(a=0,b=1,lty=2,col="red");legend("topleft",legend=paste("R2: ",round(summary(model)$r.squared,3),sep=""),bty="n")
 
-x <- dt_mutant_expr[library=="lib51_53" & wildtype!=mutant & target=="MERS",mean_expr]; y <- dt_mutant_expr[library=="lib52_54" & wildtype!=mutant & target=="MERS",mean_expr]; plot(x,y,pch=16,col="#00000020",xlab="replicate 1",ylab="replicate 2",main="expression, MERS");model <- lm(y~x);abline(a=0,b=1,lty=2,col="red");legend("topleft",legend=paste("R2: ",round(summary(model)$r.squared,3),sep=""),bty="n")
+x <- dt_mutant_expr[library=="pool1" & wildtype!=mutant & target=="MERS",mean_expr]; y <- dt_mutant_expr[library=="pool2" & wildtype!=mutant & target=="MERS",mean_expr]; plot(x,y,pch=16,col="#00000020",xlab="replicate 1",ylab="replicate 2",main="expression, MERS");model <- lm(y~x);abline(a=0,b=1,lty=2,col="red");legend("topleft",legend=paste("R2: ",round(summary(model)$r.squared,3),sep=""),bty="n")
 
-x <- dt_mutant_expr[library=="lib51_53" & wildtype!=mutant & target=="PDF2180",mean_expr]; y <- dt_mutant_expr[library=="lib52_54" & wildtype!=mutant & target=="PDF2180",mean_expr]; plot(x,y,pch=16,col="#00000020",xlab="replicate 1",ylab="replicate 2",main="expression, PDF2180");model <- lm(y~x);abline(a=0,b=1,lty=2,col="red");legend("topleft",legend=paste("R2: ",round(summary(model)$r.squared,3),sep=""),bty="n")
+x <- dt_mutant_expr[library=="pool1" & wildtype!=mutant & target=="PDF2180",mean_expr]; y <- dt_mutant_expr[library=="pool2" & wildtype!=mutant & target=="PDF2180",mean_expr]; plot(x,y,pch=16,col="#00000020",xlab="replicate 1",ylab="replicate 2",main="expression, PDF2180");model <- lm(y~x);abline(a=0,b=1,lty=2,col="red");legend("topleft",legend=paste("R2: ",round(summary(model)$r.squared,3),sep=""),bty="n")
 ```
 
 <img src="collapse_scores_files/figure-gfm/plot_correlations-1.png" style="display: block; margin: auto;" />
 
 ``` r
-# x <- dt_mutant_bind[library=="lib51_53" & wildtype!=mutant,mean_bind]; y <- dt_mutant_bind[library=="lib52_54" & wildtype!=mutant,mean_bind]; plot(x,y,pch=16,col="#00000020",xlab="replicate 1",ylab="replicate 2",main="binding affinity");model <- lm(y~x);abline(a=0,b=1,lty=2,col="red");legend("topleft",legend=paste("R2: ",round(summary(model)$r.squared,3),sep=""),bty="n")
+# x <- dt_mutant_bind[library=="pool1" & wildtype!=mutant,mean_bind]; y <- dt_mutant_bind[library=="pool2" & wildtype!=mutant,mean_bind]; plot(x,y,pch=16,col="#00000020",xlab="replicate 1",ylab="replicate 2",main="binding affinity");model <- lm(y~x);abline(a=0,b=1,lty=2,col="red");legend("topleft",legend=paste("R2: ",round(summary(model)$r.squared,3),sep=""),bty="n")
 
 invisible(dev.print(pdf, paste(config$final_variant_scores_dir,"/replicate_correlations.pdf",sep=""),useDingbats=F))
 ```
@@ -321,10 +321,10 @@ dt_final <- merge(dt_final_bind, dt_final_expr)
 setkey(dt_final,target,position,mutant)
 
 #add the rep1 and rep2 bind and expr averages
-dt_final[,hDPP4_bind_rep1 := dt_mutant_bind[library=="lib51_53", mean_bind_hDPP4]]
-dt_final[,hDPP4_bind_rep2 := dt_mutant_bind[library=="lib52_54", mean_bind_hDPP4]]
-dt_final[,expr_rep1 := dt_mutant_expr[library=="lib51_53", mean_expr]]
-dt_final[,expr_rep2 := dt_mutant_expr[library=="lib52_54", mean_expr]]
+dt_final[,hDPP4_bind_rep1 := dt_mutant_bind[library=="pool1", mean_bind_hDPP4]]
+dt_final[,hDPP4_bind_rep2 := dt_mutant_bind[library=="pool2", mean_bind_hDPP4]]
+dt_final[,expr_rep1 := dt_mutant_expr[library=="pool1", mean_expr]]
+dt_final[,expr_rep2 := dt_mutant_expr[library=="pool2", mean_expr]]
 
 #reindex sites for each background according to alignment. I will keep two columns: one gives each mutation in the "MERS" spike indexing, one that gives that spike's indexing
 
@@ -376,7 +376,7 @@ x <- dt_final[target=="PDF2180" & wildtype!=mutant,delta_expr]; y <- dt_final[ta
 <img src="collapse_scores_files/figure-gfm/plot_correlations_bind-v-expr-1.png" style="display: block; margin: auto;" />
 
 ``` r
-# x <- dt_mutant_bind[library=="lib51_53" & wildtype!=mutant,mean_bind]; y <- dt_mutant_bind[library=="lib52_54" & wildtype!=mutant,mean_bind]; plot(x,y,pch=16,col="#00000020",xlab="replicate 1",ylab="replicate 2",main="binding affinity");model <- lm(y~x);abline(a=0,b=1,lty=2,col="red");legend("topleft",legend=paste("R2: ",round(summary(model)$r.squared,3),sep=""),bty="n")
+# x <- dt_mutant_bind[library=="pool1" & wildtype!=mutant,mean_bind]; y <- dt_mutant_bind[library=="pool2" & wildtype!=mutant,mean_bind]; plot(x,y,pch=16,col="#00000020",xlab="replicate 1",ylab="replicate 2",main="binding affinity");model <- lm(y~x);abline(a=0,b=1,lty=2,col="red");legend("topleft",legend=paste("R2: ",round(summary(model)$r.squared,3),sep=""),bty="n")
 
 invisible(dev.print(pdf, paste(config$final_variant_scores_dir,"/correlation_bind-v-expr.pdf",sep=""),useDingbats=F))
 ```

@@ -51,6 +51,8 @@ rule make_summary:
         process_ccs_PDF2180=nb_markdown('process_ccs_PDF2180.ipynb'),
         barcode_variant_table_MERS=config['codon_variant_table_file_MERS'],
         barcode_variant_table_PDF2180=config['codon_variant_table_file_PDF2180'],
+        barcode_variant_table_merged=config['codon_variant_table_file_pools'],
+        merge_tables='results/summary/merge_pools.md',
         variant_counts_file=config['variant_counts_file'],
         count_variants=nb_markdown('count_variants.ipynb'),
         fit_titrations_hDPP4='results/summary/compute_Kd_hDPP4.md',
@@ -83,20 +85,23 @@ rule make_summary:
             workflow:
             
             1. Process PacBio CCSs for each background: [MERS-CoV]({path(input.process_ccs_MERS)}) and [PDF2180]({path(input.process_ccs_PDF2180)}). Creates barcode-variant lookup tables for each background: [MERS-CoV]({path(input.barcode_variant_table_MERS)}) and [PDF2180]({path(input.barcode_variant_table_PDF2180)}).
+
+            2. Merge barcode-variant sublibraries into pooled libraries used for experiments, as done [here]({path(input.merge_tables)}).
             
-            2. [Count variants by barcode]({path(input.count_variants)}).
+
+            3. [Count variants by barcode]({path(input.count_variants)}).
                Creates a [variant counts file]({path(input.variant_counts_file)})
                giving counts of each barcoded variant in each condition.
 
-            3. Fit titration curves for RBD binding to [hDPP4]({path(input.fit_titrations_hDPP4)}) to calculate per-barcode K<sub>D</sub>, recorded in these files for [hDPP4]({path(input.hDPP4_Kds_file)}).
+            4. Fit titration curves for RBD binding to [hDPP4]({path(input.fit_titrations_hDPP4)}) to calculate per-barcode K<sub>D</sub>, recorded in these files for [hDPP4]({path(input.hDPP4_Kds_file)}).
             
-            4. [Analyze Sort-seq]({path(input.calculate_expression)}) to calculate per-barcode RBD expression, recorded in [this file]({path(input.variant_expression_file)}).
+            5. [Analyze Sort-seq]({path(input.calculate_expression)}) to calculate per-barcode RBD expression, recorded in [this file]({path(input.variant_expression_file)}).
             
-            5. [Derive final genotype-level phenotypes from replicate barcoded sequences]({path(input.collapse_scores)}).
+            6. [Derive final genotype-level phenotypes from replicate barcoded sequences]({path(input.collapse_scores)}).
                Generates final phenotypes, recorded in [this file]({path(input.mut_phenos_file)}).
             
             
-            6. Make interactive data visualizations, available [here](https://jbloomlab.github.io/MERS-PDF2180-RBD_DMS/)
+            7. Make interactive data visualizations, available [here](https://jbloomlab.github.io/MERS-PDF2180-RBD_DMS/)
 
             """
             ).strip())
@@ -166,8 +171,7 @@ rule collapse_scores:
 
 rule fit_titrations_hDPP4:
     input:
-        config['codon_variant_table_file_MERS'],
-        config['codon_variant_table_file_PDF2180'],
+        config['codon_variant_table_file_pools'],
         config['variant_counts_file']
     output:
         config['Titeseq_Kds_file_hDPP4'],
@@ -188,8 +192,7 @@ rule fit_titrations_hDPP4:
 
 rule calculate_expression:
     input:
-        config['codon_variant_table_file_MERS'],
-        config['codon_variant_table_file_PDF2180'],
+        config['codon_variant_table_file_pools'],
         config['variant_counts_file']
     output:
         config['expression_sortseq_file'],
@@ -211,8 +214,7 @@ rule calculate_expression:
 rule count_variants:
     """Count codon variants from Illumina barcode runs."""
     input:
-        config['codon_variant_table_file_MERS'],
-        config['codon_variant_table_file_PDF2180'],
+        config['codon_variant_table_file_pools'],
         config['barcode_runs']
     output:
         config['variant_counts_file'],
@@ -222,6 +224,24 @@ rule count_variants:
     shell:
         "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
 
+rule merge_libs_to_pools:
+    input:
+        config['codon_variant_table_file_MERS'],
+        config['codon_variant_table_file_PDF2180'],
+        'merge_pools.Rmd'
+    output:
+        config['codon_variant_table_file_pools'],
+        md='results/summary/merge_pools.md'
+    envmodules:
+        'R/4.1.3'
+    params:
+        nb='merge_pools.Rmd',
+        md='merge_pools.md'
+    shell:
+        """
+        R -e \"rmarkdown::render(input=\'{params.nb}\')\";
+        mv {params.md} {output.md};
+        """
         
 rule process_ccs_MERS:
     """Process the PacBio CCSs for MERS background and build variant table."""

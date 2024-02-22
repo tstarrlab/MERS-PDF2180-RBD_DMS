@@ -26,6 +26,14 @@ site_number_offset: 376  # add this to sequential sites to get MERS RBD numberin
 
 # pdbs for mapping, analysis
 
+# libraries as defined in PacBio_runs.csv that are merged into the pools defined in barcode_runs.csv
+pool1:
+ - lib51
+ - lib53
+pool2:
+ - lib52
+ - lib54
+
 
 
 # URLs from which we download binding & expression of mutants & variants and surveillance count data
@@ -34,15 +42,19 @@ site_number_offset: 376  # add this to sequential sites to get MERS RBD numberin
 # output directories / files
 summary_dir: results/summary
 figs_dir: results/figures
+
 ccs_dir: results/ccs
 process_ccs_dir: results/process_ccs
 processed_ccs_file_MERS: results/process_ccs/processed_ccs_MERS.csv
 processed_ccs_file_PDF2180: results/process_ccs/processed_ccs_PDF2180.csv
+
 variants_dir: results/variants
 nt_variant_table_file_MERS: results/variants/nucleotide_variant_table_MERS.csv
 nt_variant_table_file_PDF2180: results/variants/nucleotide_variant_table_PDF2180.csv
 codon_variant_table_file_MERS: results/variants/codon_variant_table_MERS.csv
 codon_variant_table_file_PDF2180: results/variants/codon_variant_table_PDF2180.csv
+codon_variant_table_file_pools: results/variants/codon_variant_table_pools.csv
+
 counts_dir: results/counts
 variant_counts_file: results/counts/variant_counts.csv
 

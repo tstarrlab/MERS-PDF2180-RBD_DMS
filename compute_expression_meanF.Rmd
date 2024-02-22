@@ -56,21 +56,9 @@ counts <- data.table(read.csv(file=config$variant_counts_file,stringsAsFactors=F
 counts <- subset(counts, sample %in% barcode_runs[barcode_runs$sample_type=="SortSeq","sample"])
 
 #read in barcode-variant lookup tables
-dt_MERS <- data.table(read.csv(file=config$codon_variant_table_file_MERS,stringsAsFactors=F))
-dt_PDF2180 <- data.table(read.csv(file=config$codon_variant_table_file_PDF2180,stringsAsFactors=F))
+dt <- data.table(read.csv(file=config$codon_variant_table_file_pools,stringsAsFactors=F))
 
-#merge, eliminate barcodes duplicated within a library (this is already done)
-dt <- rbind(dt_MERS,dt_PDF2180); setkey(dt,barcode,library)
-duplicates <- dt[duplicated(dt,by=c("barcode","library")),.(library,barcode)] #the data.table duplciates function annoyingly only flags the first of each duplicate so doesn't intrinsically allow removal of both of the entries of the duplicate. So, flat what are duplciates, and then remove
-dt[,duplicate:=FALSE]
-if(nrow(duplicates) > 0){
-  for(i in 1:nrow(duplicates)){
-    dt[library==duplicates[i,library] & barcode==duplicates[i,barcode],duplicate:=TRUE]
-  }
-}
-dt <- dt[duplicate==FALSE,]; dt[,duplicate:=NULL]
-
-dt <- merge(counts, dt, by=c("library","barcode")); rm(dt_MERS);rm(dt_PDF2180);rm(counts); rm(duplicates)
+dt <- merge(counts, dt, by=c("library","barcode"));rm(counts)
 
 ```
  Convert from Illumina read counts to estimates of the number of cells that were sorted into a bin, and add some other useful information to our data frame.
@@ -150,10 +138,10 @@ Next let's look at the distributon of cell counts across the four bins for each 
 ```{r cell_count_coverage, echo=T, fig.width=10, fig.height=10, fig.align="center", dpi=300,dev="png"}
 #histograms
 par(mfrow=c(2,2))
-hist(log10(dt[library=="lib51_53",expr_count]+0.1),xlab="cell count (log10, plus 0.1 pseudocount)",main="lib51_53, all bc",col="gray50")
-hist(log10(dt[library=="lib52_54",expr_count]+0.1),xlab="cell count (log10, plus 0.1 pseudocount)",main="lib52_54, all bc",col="gray50")
-hist(log10(dt[library=="lib51_53" & !is.na(expression),expr_count]+0.1),xlab="cell count (log10, plus 0.1 pseudocount)",main="lib51_53, determined",col="gray50")
-hist(log10(dt[library=="lib52_54" & !is.na(expression),expr_count]+0.1),xlab="cell count (log10, plus 0.1 pseudocount)",main="lib52_54, determined",col="gray50")
+hist(log10(dt[library=="pool1",expr_count]+0.1),xlab="cell count (log10, plus 0.1 pseudocount)",main="pool1, all bc",col="gray50")
+hist(log10(dt[library=="pool2",expr_count]+0.1),xlab="cell count (log10, plus 0.1 pseudocount)",main="pool2, all bc",col="gray50")
+hist(log10(dt[library=="pool1" & !is.na(expression),expr_count]+0.1),xlab="cell count (log10, plus 0.1 pseudocount)",main="pool1, determined",col="gray50")
+hist(log10(dt[library=="pool2" & !is.na(expression),expr_count]+0.1),xlab="cell count (log10, plus 0.1 pseudocount)",main="pool2, determined",col="gray50")
 
 ```
 

@@ -57,21 +57,9 @@ counts <- data.table(read.csv(file=config$variant_counts_file,stringsAsFactors=F
 counts <- subset(counts, sample %in% barcode_runs[barcode_runs$sample_type=="TiteSeq_hDPP4","sample"])
 
 #read in barcode-variant lookup tables
-dt_MERS <- data.table(read.csv(file=config$codon_variant_table_file_MERS,stringsAsFactors=F))
-dt_PDF2180 <- data.table(read.csv(file=config$codon_variant_table_file_PDF2180,stringsAsFactors=F))
+dt <- data.table(read.csv(file=config$codon_variant_table_file_pools,stringsAsFactors=F))
 
-#merge, eliminate barcodes duplicated within a library (this is already done)
-dt <- rbind(dt_MERS,dt_PDF2180); setkey(dt,barcode,library)
-duplicates <- dt[duplicated(dt,by=c("barcode","library")),.(library,barcode)] #the data.table duplciates function annoyingly only flags the first of each duplicate so doesn't intrinsically allow removal of both of the entries of the duplicate. So, flat what are duplciates, and then remove
-dt[,duplicate:=FALSE]
-if(nrow(duplicates) > 0){
-  for(i in 1:nrow(duplicates)){
-    dt[library==duplicates[i,library] & barcode==duplicates[i,barcode],duplicate:=TRUE]
-  }
-}
-dt <- dt[duplicate==FALSE,]; dt[,duplicate:=NULL]
-
-dt <- merge(counts, dt, by=c("library","barcode")); rm(dt_MERS);rm(dt_PDF2180);rm(counts); rm(duplicates)
+dt <- merge(counts, dt, by=c("library","barcode"));rm(counts)
 
 #append replicate identifier to the library name
 dt[,library:=paste(library,replicate,sep=""),by=c("library","replicate")];dt[,replicate:=NULL]
@@ -206,24 +194,24 @@ dt[,c("Kd_hDPP4","Kd_SE_hDPP4","response_hDPP4","baseline_hDPP4","nMSR_hDPP4") :
 ## QC and sanity checks
 We will do some QC to make sure we got good titration curves for most of our library barcodes. We will also spot check titration curves from across our measurement range, and spot check curves whose fit parameters hit the different boundary conditions of the fit variables.
 
-We successfully generated *K*<sub>D</sub> estimates for `r sum(!is.na(dt[library=="lib51_53A",Kd_hDPP4]))` of our lib51_53A barcodes (`r round(sum(!is.na(dt[library=="lib51_53A",Kd_hDPP4]))/nrow(dt[library=="lib51_53A",])*100,digits=2)`%), and `r sum(!is.na(dt[library=="lib52_54A",Kd_hDPP4]))` of our lib52_54A barcodes (`r round(sum(!is.na(dt[library=="lib52_54A",Kd_hDPP4]))/nrow(dt[library=="lib52_54A",])*100,digits=2)`%). 
+We successfully generated *K*<sub>D</sub> estimates for `r sum(!is.na(dt[library=="pool1A",Kd_hDPP4]))` of our pool1A barcodes (`r round(sum(!is.na(dt[library=="pool1A",Kd_hDPP4]))/nrow(dt[library=="pool1A",])*100,digits=2)`%), and `r sum(!is.na(dt[library=="pool2A",Kd_hDPP4]))` of our pool2A barcodes (`r round(sum(!is.na(dt[library=="pool2A",Kd_hDPP4]))/nrow(dt[library=="pool2A",])*100,digits=2)`%). 
 
 
 Why were estimates not returned for some barcodes? The histograms below show that many barcodes with unsuccessful titration fits have lower average cell counts and more concentrations with fewer than the minimum cutoff number of cells (cutoff=`r cutoff`) than those that were fit. Therefore, we can see the the majority of unfit barcodes come from our minimum read cutoffs, meaning there weren't too many curves that failed to be fit for issues such as nls convergence.
 
 ```{r avgcount, fig.width=8, fig.height=8, fig.align="center",dpi=300,dev="png"}
 par(mfrow=c(2,2))
-hist(log10(dt[library=="lib51_53A" & !is.na(Kd_hDPP4),TiteSeq_hDPP4_avgcount]+0.5),breaks=20,xlim=c(0,5),main="lib51_53A",col="gray50",xlab="average cell count across concentration samples")
-hist(log10(dt[library=="lib51_53A" & is.na(Kd_hDPP4),TiteSeq_hDPP4_avgcount]+0.5),breaks=20,add=T,col="red")
+hist(log10(dt[library=="pool1A" & !is.na(Kd_hDPP4),TiteSeq_hDPP4_avgcount]+0.5),breaks=20,xlim=c(0,5),main="pool1A",col="gray50",xlab="average cell count across concentration samples")
+hist(log10(dt[library=="pool1A" & is.na(Kd_hDPP4),TiteSeq_hDPP4_avgcount]+0.5),breaks=20,add=T,col="red")
 
-# hist(log10(dt[library=="lib52_54A" & !is.na(Kd_hDPP4),TiteSeq_hDPP4_avgcount]+0.5),breaks=20,xlim=c(0,5),main="lib52_54A",col="gray50",xlab="average cell count across concentration samples")
-# hist(log10(dt[library=="lib52_54A" & is.na(Kd_hDPP4),TiteSeq_hDPP4_avgcount]+0.5),breaks=20,add=T,col="red")
+# hist(log10(dt[library=="pool2A" & !is.na(Kd_hDPP4),TiteSeq_hDPP4_avgcount]+0.5),breaks=20,xlim=c(0,5),main="pool2A",col="gray50",xlab="average cell count across concentration samples")
+# hist(log10(dt[library=="pool2A" & is.na(Kd_hDPP4),TiteSeq_hDPP4_avgcount]+0.5),breaks=20,add=T,col="red")
 
-hist(dt[library=="lib51_53A" & !is.na(Kd_hDPP4),TiteSeq_hDPP4_min_cell_filtered],breaks=5,main="lib51_53A",col="gray50",xlab="number of sample concentrations below cutoff cell number",xlim=c(0,10))
-hist(dt[library=="lib51_53A" & is.na(Kd_hDPP4),TiteSeq_hDPP4_min_cell_filtered],breaks=16,add=T,col="red")
+hist(dt[library=="pool1A" & !is.na(Kd_hDPP4),TiteSeq_hDPP4_min_cell_filtered],breaks=5,main="pool1A",col="gray50",xlab="number of sample concentrations below cutoff cell number",xlim=c(0,10))
+hist(dt[library=="pool1A" & is.na(Kd_hDPP4),TiteSeq_hDPP4_min_cell_filtered],breaks=16,add=T,col="red")
 
-# hist(dt[library=="lib52_54A" & !is.na(Kd_hDPP4),TiteSeq_hDPP4_min_cell_filtered],breaks=5,main="lib52_54A",col="gray50",xlab="number of sample concentrations below cutoff cell number",xlim=c(0,10))
-# hist(dt[library=="lib52_54A" & is.na(Kd_hDPP4),TiteSeq_hDPP4_min_cell_filtered],breaks=16,add=T,col="red")
+# hist(dt[library=="pool2A" & !is.na(Kd_hDPP4),TiteSeq_hDPP4_min_cell_filtered],breaks=5,main="pool2A",col="gray50",xlab="number of sample concentrations below cutoff cell number",xlim=c(0,10))
+# hist(dt[library=="pool2A" & is.na(Kd_hDPP4),TiteSeq_hDPP4_min_cell_filtered],breaks=16,add=T,col="red")
 ```
 
 Let's checkout what the data looks like for some curves that didn't converge on a titration fit, different cutoffs, boudnary conditions, etc. I define a function that take a row from the data table and plots the meanbin estimates and the fit titration curve (if converged). This allows for quick and easy troubleshooting and spot-checking of curves.
@@ -289,60 +277,60 @@ First, curves with *K*<sub>D,app</sub> fixed at the 10<sup>-5</sup> maximum. We 
 
 ```{r 1e-5_Kd, fig.width=8, fig.height=8, fig.align="center",dpi=300, warning=FALSE, results=FALSE,dev="png"}
 par(mfrow=c(2,2))
-plot.titration(which(dt$library=="lib51_53A" & dt$Kd_hDPP4 > 9e-6)[1])
-plot.titration(which(dt$library=="lib51_53A" & dt$Kd_hDPP4 > 9e-6)[2])
-plot.titration(which(dt$library=="lib51_53A" & dt$Kd_hDPP4 > 9e-6)[3])
-plot.titration(which(dt$library=="lib51_53A" & dt$Kd_hDPP4 > 9e-6)[4])
+plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 9e-6)[1])
+plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 9e-6)[2])
+plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 9e-6)[3])
+plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 9e-6)[4])
 ```
 
 Next, with *K*<sub>D,app</sub> around 10<sup>-6</sup>
 
 ```{r 1e-6_Kd, fig.width=8, fig.height=8, fig.align="center",dpi=300, warning=FALSE, results=FALSE,dev="png"}
 par(mfrow=c(2,2))
-plot.titration(which(dt$library=="lib51_53A" & dt$Kd_hDPP4 > 1e-6 & dt$Kd_hDPP4 < 1.2e-6)[1])
-plot.titration(which(dt$library=="lib51_53A" & dt$Kd_hDPP4 > 1e-6 & dt$Kd_hDPP4 < 1.2e-6)[2])
-plot.titration(which(dt$library=="lib51_53A" & dt$Kd_hDPP4 > 1e-6 & dt$Kd_hDPP4 < 1.2e-6)[3])
-plot.titration(which(dt$library=="lib51_53A" & dt$Kd_hDPP4 > 1e-6 & dt$Kd_hDPP4 < 1.2e-6)[4])
+plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-6 & dt$Kd_hDPP4 < 1.2e-6)[1])
+plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-6 & dt$Kd_hDPP4 < 1.2e-6)[2])
+plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-6 & dt$Kd_hDPP4 < 1.2e-6)[3])
+plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-6 & dt$Kd_hDPP4 < 1.2e-6)[4])
 ```
 
 With *K*<sub>D,app</sub> around 10<sup>-7</sup>, we seem to be picking up more consistent binding signals, though there are some noisy curves.
 
 ```{r 1e-7_Kd, fig.width=8, fig.height=8, fig.align="center",dpi=300, warning=FALSE, results=FALSE,dev="png"}
 par(mfrow=c(2,2))
-plot.titration(which(dt$library=="lib51_53A" & dt$Kd_hDPP4 > 1e-7 & dt$Kd_hDPP4 < 1.2e-7)[1])
-plot.titration(which(dt$library=="lib51_53A" & dt$Kd_hDPP4 > 1e-7 & dt$Kd_hDPP4 < 1.2e-7)[2])
-plot.titration(which(dt$library=="lib51_53A" & dt$Kd_hDPP4 > 1e-7 & dt$Kd_hDPP4 < 1.2e-7)[3])
-plot.titration(which(dt$library=="lib51_53A" & dt$Kd_hDPP4 > 1e-7 & dt$Kd_hDPP4 < 1.2e-7)[4])
+plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-7 & dt$Kd_hDPP4 < 1.2e-7)[1])
+plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-7 & dt$Kd_hDPP4 < 1.2e-7)[2])
+plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-7 & dt$Kd_hDPP4 < 1.2e-7)[3])
+plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-7 & dt$Kd_hDPP4 < 1.2e-7)[4])
 ```
 
 At *K*<sub>D,app</sub> of 10<sup>-8</sup>, curves still sort of noisy 
 
 ```{r 1e-8_Kd, fig.width=8, fig.height=8, fig.align="center",dpi=300, warning=FALSE, results=FALSE,dev="png"}
 par(mfrow=c(2,2))
-plot.titration(which(dt$library=="lib51_53A" & dt$Kd_hDPP4 > 1e-8 & dt$Kd_hDPP4 < 1.2e-8)[1])
-plot.titration(which(dt$library=="lib51_53A" & dt$Kd_hDPP4 > 1e-8 & dt$Kd_hDPP4 < 1.2e-8)[2])
-plot.titration(which(dt$library=="lib51_53A" & dt$Kd_hDPP4 > 1e-8 & dt$Kd_hDPP4 < 1.2e-8)[3])
-plot.titration(which(dt$library=="lib51_53A" & dt$Kd_hDPP4 > 1e-8 & dt$Kd_hDPP4 < 1.2e-8)[4])
+plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-8 & dt$Kd_hDPP4 < 1.2e-8)[1])
+plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-8 & dt$Kd_hDPP4 < 1.2e-8)[2])
+plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-8 & dt$Kd_hDPP4 < 1.2e-8)[3])
+plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-8 & dt$Kd_hDPP4 < 1.2e-8)[4])
 ```
 
 At *K*<sub>D,app</sub> of 10<sup>-9</sup>, curves look okay
 
 ```{r 1e-9_Kd, fig.width=8, fig.height=8, fig.align="center",dpi=300, warning=FALSE, results=FALSE,dev="png"}
 par(mfrow=c(2,2))
-plot.titration(which(dt$library=="lib51_53A" & dt$Kd_hDPP4 > 1e-9 & dt$Kd_hDPP4 < 1.2e-9)[1])
-plot.titration(which(dt$library=="lib51_53A" & dt$Kd_hDPP4 > 1e-9 & dt$Kd_hDPP4 < 1.2e-9)[2])
-plot.titration(which(dt$library=="lib51_53A" & dt$Kd_hDPP4 > 1e-9 & dt$Kd_hDPP4 < 1.2e-9)[3])
-plot.titration(which(dt$library=="lib51_53A" & dt$Kd_hDPP4 > 1e-9 & dt$Kd_hDPP4 < 1.2e-9)[4])
+plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-9 & dt$Kd_hDPP4 < 1.2e-9)[1])
+plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-9 & dt$Kd_hDPP4 < 1.2e-9)[2])
+plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-9 & dt$Kd_hDPP4 < 1.2e-9)[3])
+plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-9 & dt$Kd_hDPP4 < 1.2e-9)[4])
 ```
 
 *K*<sub>D,app</sub> of 10<sup>-10</sup> also look good
 
 ```{r 1e-10_Kd, fig.width=8, fig.height=8, fig.align="center",dpi=300, warning=FALSE, results=FALSE,dev="png"}
 par(mfrow=c(2,2))
-plot.titration(which(dt$library=="lib51_53A" & dt$Kd_hDPP4 > 1e-10 & dt$Kd_hDPP4 < 1.2e-10)[1])
-plot.titration(which(dt$library=="lib51_53A" & dt$Kd_hDPP4 > 1e-10 & dt$Kd_hDPP4 < 1.2e-10)[2])
-plot.titration(which(dt$library=="lib51_53A" & dt$Kd_hDPP4 > 1e-10 & dt$Kd_hDPP4 < 1.2e-10)[3])
-plot.titration(which(dt$library=="lib51_53A" & dt$Kd_hDPP4 > 1e-10 & dt$Kd_hDPP4 < 1.2e-10)[4])
+plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-10 & dt$Kd_hDPP4 < 1.2e-10)[1])
+plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-10 & dt$Kd_hDPP4 < 1.2e-10)[2])
+plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-10 & dt$Kd_hDPP4 < 1.2e-10)[3])
+plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-10 & dt$Kd_hDPP4 < 1.2e-10)[4])
 ```
 
 
