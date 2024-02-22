@@ -2,7 +2,7 @@
 
 Analysis of deep mutational scanning of barcoded codon variants of MERS-CoV and PDF-2180 RBDs for DPP4 binding, ACE2 binding, and RBD expression
 
-Study and analysis by Tyler Starr, Ashley Taylor, and co-authors.
+Study and analysis by Caroline Craig, Ashley Taylor, Tyler Starr, and co-authors.
 
 Interactive visualizations of the key deep mutational scanning data are available [here](https://tstarrlab.github.io/MERS-PDF2180-RBD_DMS/).
 
