@@ -3,3 +3,5 @@ lib51,MERS,230124,/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/20
 lib52,MERS,230124,/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2023/230124_MERS-PDF2180_pacbio/m64272e_230126_100200.hifi_reads.bc2025--bc2025.fastq
 lib53,PDF2180,230124,/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2023/230124_MERS-PDF2180_pacbio/m64272e_230126_100200.hifi_reads.bc2026--bc2026.fastq
 lib54,PDF2180,230124,/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2023/230124_MERS-PDF2180_pacbio/m64272e_230126_100200.hifi_reads.bc2027--bc2027.fastq
+lib84,MERS_rpk,240206,/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/CJC/2024/20240206_mers_pan-merbeco_PacBio/lib84-merrpk-r1.r64296e185534C01.hifireads.fastq.gz
+lib85,MERS_rpk,240206,/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/CJC/2024/20240206_mers_pan-merbeco_PacBio/lib85-merrpk-r2.r64296e185534C01.hifireads.fastq.gz

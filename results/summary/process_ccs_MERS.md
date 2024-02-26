@@ -1204,58 +1204,58 @@ display(HTML(empirical_acc.to_html(index=False)))
   <tbody>
     <tr>
       <td>lib51</td>
-      <td>0.966829</td>
-      <td>retained</td>
-      <td>156851</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <td>lib52</td>
-      <td>0.964572</td>
-      <td>retained</td>
-      <td>167806</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <td>lib51</td>
-      <td>0.983186</td>
-      <td>retained, no indel</td>
-      <td>153394</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <td>lib52</td>
-      <td>0.980309</td>
-      <td>retained, no indel</td>
-      <td>164350</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <td>lib51</td>
       <td>0.971903</td>
-      <td>10X accuracy</td>
+      <td>retained</td>
       <td>151185</td>
       <td>False</td>
     </tr>
     <tr>
       <td>lib52</td>
       <td>0.970190</td>
-      <td>10X accuracy</td>
+      <td>retained</td>
       <td>161412</td>
       <td>False</td>
     </tr>
     <tr>
       <td>lib51</td>
       <td>0.983160</td>
-      <td>10X accuracy, no indel</td>
+      <td>retained, no indel</td>
       <td>148648</td>
-      <td>False</td>
+      <td>True</td>
     </tr>
     <tr>
       <td>lib52</td>
       <td>0.980717</td>
-      <td>10X accuracy, no indel</td>
+      <td>retained, no indel</td>
       <td>158953</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>lib51</td>
+      <td>0.974279</td>
+      <td>10X accuracy</td>
+      <td>146176</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>lib52</td>
+      <td>0.973061</td>
+      <td>10X accuracy</td>
+      <td>155683</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>lib51</td>
+      <td>0.983139</td>
+      <td>10X accuracy, no indel</td>
+      <td>144076</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>lib52</td>
+      <td>0.980899</td>
+      <td>10X accuracy, no indel</td>
+      <td>153728</td>
       <td>False</td>
     </tr>
   </tbody>
@@ -1548,12 +1548,12 @@ _ = p.draw()
     <tr>
       <td>lib51</td>
       <td>MERS</td>
-      <td>55135</td>
+      <td>54592</td>
     </tr>
     <tr>
       <td>lib52</td>
       <td>MERS</td>
-      <td>73735</td>
+      <td>72838</td>
     </tr>
   </tbody>
 </table>
@@ -1992,9 +1992,9 @@ display(HTML(
   <tbody>
     <tr>
       <th>MERS</th>
-      <td>55135</td>
-      <td>73735</td>
-      <td>128870</td>
+      <td>54592</td>
+      <td>72838</td>
+      <td>127430</td>
     </tr>
   </tbody>
 </table>
@@ -2183,11 +2183,11 @@ display(HTML(
     </tr>
     <tr>
       <th>1</th>
-      <td>5</td>
+      <td>6</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>4288</td>
+      <td>4287</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">lib52</th>
@@ -2223,11 +2223,11 @@ display(HTML(
     </tr>
     <tr>
       <th>1</th>
-      <td>13</td>
+      <td>15</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>4346</td>
+      <td>4344</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">lib52</th>
@@ -2236,11 +2236,11 @@ display(HTML(
     </tr>
     <tr>
       <th>1</th>
-      <td>10</td>
+      <td>11</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>4355</td>
+      <td>4354</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">all libraries</th>
@@ -2264,11 +2264,11 @@ display(HTML(
     </tr>
     <tr>
       <th>1</th>
-      <td>8</td>
+      <td>10</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>4285</td>
+      <td>4283</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">lib52</th>
@@ -2304,11 +2304,11 @@ display(HTML(
     </tr>
     <tr>
       <th>1</th>
-      <td>12</td>
+      <td>14</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>4322</td>
+      <td>4320</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">lib52</th>

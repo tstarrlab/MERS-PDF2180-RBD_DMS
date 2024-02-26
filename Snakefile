@@ -48,8 +48,10 @@ rule make_summary:
         dag=os.path.join(config['summary_dir'], 'dag.svg'),
         env='environment_pinned.yml',
         process_ccs_MERS=nb_markdown('process_ccs_MERS.ipynb'),
+        process_ccs_MERS_rpk=nb_markdown('process_ccs_MERS_rpk.ipynb'),
         process_ccs_PDF2180=nb_markdown('process_ccs_PDF2180.ipynb'),
         barcode_variant_table_MERS=config['codon_variant_table_file_MERS'],
+        barcode_variant_table_MERS_rpk=config['codon_variant_table_file_MERS_rpk'],
         barcode_variant_table_PDF2180=config['codon_variant_table_file_PDF2180'],
         barcode_variant_table_merged=config['codon_variant_table_file_pools'],
         merge_tables='results/summary/merge_pools.md',
@@ -84,7 +86,7 @@ rule make_summary:
             Here is the Markdown output of each Jupyter notebook in the
             workflow:
             
-            1. Process PacBio CCSs for each background: [MERS-CoV]({path(input.process_ccs_MERS)}) and [PDF2180]({path(input.process_ccs_PDF2180)}). Creates barcode-variant lookup tables for each background: [MERS-CoV]({path(input.barcode_variant_table_MERS)}) and [PDF2180]({path(input.barcode_variant_table_PDF2180)}).
+            1. Process PacBio CCSs for each background: [MERS-CoV]({path(input.process_ccs_MERS)}), [MERS-CoV rpk]({path(input.process_ccs_MERS_rpk)}) and [PDF2180]({path(input.process_ccs_PDF2180)}). Creates barcode-variant lookup tables for each background: [MERS-CoV]({path(input.barcode_variant_table_MERS)}), [MERS-CoV rpk]({path(input.barcode_variant_table_MERS_rpk)}) and [PDF2180]({path(input.barcode_variant_table_PDF2180)}).
 
             2. Merge barcode-variant sublibraries into pooled libraries used for experiments, as done [here]({path(input.merge_tables)}).
             
@@ -242,6 +244,19 @@ rule merge_libs_to_pools:
         R -e \"rmarkdown::render(input=\'{params.nb}\')\";
         mv {params.md} {output.md};
         """
+rule process_ccs_MERS_rpk:
+    """Process the PacBio CCSs for MERS_rpk background and build variant table."""
+    input:
+        expand(os.path.join(config['ccs_dir'], "{pacbioRun}_ccs.fastq.gz"),
+               pacbioRun=pacbio_runs['pacbioRun']),
+    output:
+        config['processed_ccs_file_MERS_rpk'],
+    	config['codon_variant_table_file_MERS_rpk'],
+        nb_markdown=nb_markdown('process_ccs_MERS_rpk.ipynb')
+    params:
+        nb='process_ccs_MERS_rpk.ipynb'
+    shell:
+        "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
         
 rule process_ccs_MERS:
     """Process the PacBio CCSs for MERS background and build variant table."""

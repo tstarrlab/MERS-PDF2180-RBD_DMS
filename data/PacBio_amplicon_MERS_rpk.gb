@@ -1,0 +1,62 @@
+LOCUS       MERS_rpk                    1121 bp ds-DNA     linear       22-FEB-2024
+DEFINITION  PacBio amplicon for deep mutational scanning of SARS-CoV-2 RBD
+ACCESSION   None
+SOURCE      Tyler Starr
+COMMENT     Imported using the Genbank importer. File name:
+            PacBio_amplicon_MERS-rpk.gb PacBio amplicon for SARS-CoV-2 RBD BA1
+            libraries. ApEinfo:methylated:1
+FEATURES             Location/Qualifiers
+     termini5        1..33
+                     /label="termini5"
+                     /ApEinfo_revcolor="#ffef86"
+                     /ApEinfo_fwdcolor="#ffef86"
+                     /locus_tag="termini5"
+                     /label="termini5"
+                     /ApEinfo_graphicformat="arrow_data {{0 1 2 0 0 -1} {} 0}width 5 offset 0"
+     gene            34..678
+                     /label="gene"
+                     /ApEinfo_revcolor="#84b0dc"
+                     /ApEinfo_fwdcolor="#84b0dc"
+                     /locus_tag="MERS RBD v2"
+     spacer          679..1099
+                     /label="spacer"
+                     /ApEinfo_revcolor="#ffef86"
+                     /ApEinfo_fwdcolor="#ffef86"
+                     /locus_tag="spacer"
+                     /label="spacer"
+                     /ApEinfo_graphicformat="arrow_data {{0 1 2 0 0 -1} {} 0}width 5 offset 0"
+     barcode         1100..1115
+                     /label="barcode"
+                     /ApEinfo_revcolor="#b1ff67"
+                     /ApEinfo_fwdcolor="#b1ff67"
+                     /locus_tag="barcode"
+                     /label="barcode"
+                     /ApEinfo_graphicformat="arrow_data {{0 1 2 0 0 -1} {} 0}width 5 offset 0"
+     termini3        1116..1121
+                     /label="termini3"
+                     /ApEinfo_revcolor="#ffef86"
+                     /ApEinfo_fwdcolor="#ffef86"
+                     /locus_tag="termini3"
+                     /label="termini3"
+                     /ApEinfo_graphicformat="arrow_data {{0 1 2 0 0 -1} {} 0}width 5 offset 0"
+ORIGIN
+        1 ggccgcggag gcggagggtc ggctagccat atgcaagcgg aaggggtcga gtgcgatttt
+       61 agtccactgt tatccggcac accgcctcaa gtctataatt ttaagagact ggttttcaca
+      121 aactgcaatt ataatctaac gaaattctta agcttattta gcgtcaatga tttcacctgc
+      181 tctcaaatct ctcccgccgc catagcaagc aactgttaca gcagtttgat tcttgattac
+      241 ttctcttacc cattatctat gaaatctgac ctgtctgtaa gctcagcagg gccgatctcc
+      301 caatttaact ataagcaatc cttttcaaat ccaacctgcc ttattctggc caccgtgcct
+      361 cacaatctaa ccacgataac gaagccctta aaatatagct acatcaataa atgctcccgt
+      421 cttctttctg acgacaggac cgaggtgcct cagttagtta atgccaacca gtattcccca
+      481 tgcgtatcca tcgttccgag tacggtatgg gaggatggtg attactatag aaagcagtta
+      541 agcccgttgg aaggcggcgg gtggttggtt gccagcggtt caacagttgc tatgacagag
+      601 cagcttcaaa tggttttcgg aattacagtc cagtatggca ctgataccaa ttctgtttgc
+      661 ccaaaacttg agttcgctct cgaggggggc ggttccgaac aaaagcttat ttctgaagag
+      721 gacttgtaat agagatctga taacaacagt gtagatgtaa caaaatcgac tttgttccca
+      781 ctgtactttt agctcgtaca aaatacaata tacttttcat ttctccgtaa acaacatgtt
+      841 ttcccatgta atatcctttt ctatttttcg ttccgttacc aactttacac atactttata
+      901 tagctattca cttctataca ctaaaaaact aagacaattt taattttgct gcctgccata
+      961 tttcaatttg ttataaattc ctataattta tcctattagt agctaaaaaa agatgaatgt
+     1021 gaatcgaatc ctaagagaat taatgatacg gcgaccaccg agatctacac tctttcccta
+     1081 cacgacgctc ttccgatctN NNNNNNNNNN NNNNNgcggc c
+//

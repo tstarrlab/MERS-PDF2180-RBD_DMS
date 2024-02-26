@@ -6,10 +6,12 @@ max_cpus: 8
 # amplicons sequenced by PacBio
 amplicons_MERS: data/PacBio_amplicon_MERS.gb
 amplicons_PDF2180: data/PacBio_amplicon_PDF2180.gb
+amplicons_MERS_rpk: data/PacBio_amplicon_MERS_rpk.gb
 
 # how to parse the amplicon
 feature_parse_specs_MERS: data/feature_parse_specs_MERS.yaml
 feature_parse_specs_PDF2180: data/feature_parse_specs_PDF2180.yaml
+feature_parse_specs_MERS_rpk: data/feature_parse_specs_MERS_rpk.yaml
 
 # do we get the sequencing data from locally on our server versus SRA?
 seqdata_source: local
@@ -46,13 +48,17 @@ figs_dir: results/figures
 ccs_dir: results/ccs
 process_ccs_dir: results/process_ccs
 processed_ccs_file_MERS: results/process_ccs/processed_ccs_MERS.csv
+processed_ccs_file_MERS_rpk: results/process_ccs/processed_ccs_MERS_rpk.csv
 processed_ccs_file_PDF2180: results/process_ccs/processed_ccs_PDF2180.csv
 
 variants_dir: results/variants
 nt_variant_table_file_MERS: results/variants/nucleotide_variant_table_MERS.csv
+nt_variant_table_file_MERS_rpk: results/variants/nucleotide_variant_table_MERS_rpk.csv
 nt_variant_table_file_PDF2180: results/variants/nucleotide_variant_table_PDF2180.csv
 codon_variant_table_file_MERS: results/variants/codon_variant_table_MERS.csv
+codon_variant_table_file_MERS_rpk: results/variants/codon_variant_table_MERS_rpk.csv
 codon_variant_table_file_PDF2180: results/variants/codon_variant_table_PDF2180.csv
+
 codon_variant_table_file_pools: results/variants/codon_variant_table_pools.csv
 
 counts_dir: results/counts
@@ -79,7 +85,7 @@ min_ccs_length: 50
 max_ccs_length: 5000
 
 # max error rate in gene / barcode CCSs retained for consensu building
-max_error_rate: 0.0001
+max_error_rate: 0.00001
 
 # Parameters for processing Illumina barcodes, assuming this structure:
 #  [R2 binds] - [upstream] - [barcode] - [downstream] - [R1 binds]
