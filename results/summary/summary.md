@@ -11,7 +11,7 @@ Here is the DAG of the computational workflow:
 Here is the Markdown output of each Jupyter notebook in the
 workflow:
 
-1. Process PacBio CCSs for each background: [MERS-CoV](process_ccs_MERS.md) and [PDF2180](process_ccs_PDF2180.md). Creates barcode-variant lookup tables for each background: [MERS-CoV](../variants/codon_variant_table_MERS.csv) and [PDF2180](../variants/codon_variant_table_PDF2180.csv).
+1. Process PacBio CCSs for each background: [MERS-CoV](process_ccs_MERS.md), [MERS-CoV rpk](process_ccs_MERS_rpk.md) and [PDF2180](process_ccs_PDF2180.md). Creates barcode-variant lookup tables for each background: [MERS-CoV](../variants/codon_variant_table_MERS.csv), [MERS-CoV rpk](../variants/codon_variant_table_MERS_rpk.csv) and [PDF2180](../variants/codon_variant_table_PDF2180.csv).
 
 2. Merge barcode-variant sublibraries into pooled libraries used for experiments, as done [here](merge_pools.md).
 

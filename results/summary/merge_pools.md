@@ -66,12 +66,12 @@ sessionInfo()
     ## [17] lifecycle_1.0.3   munsell_0.5.0     gtable_0.3.0      cellranger_1.1.0 
     ## [21] rvest_1.0.2       evaluate_0.15     tzdb_0.2.0        fastmap_1.1.0    
     ## [25] fansi_1.0.2       broom_0.7.12      Rcpp_1.0.11       backports_1.4.1  
-    ## [29] scales_1.2.1      jsonlite_1.8.7    fs_1.5.2          hms_1.1.1        
+    ## [29] scales_1.2.1      jsonlite_1.8.0    fs_1.5.2          hms_1.1.1        
     ## [33] digest_0.6.29     stringi_1.7.6     grid_4.1.3        cli_3.6.0        
     ## [37] tools_4.1.3       magrittr_2.0.2    lazyeval_0.2.2    crayon_1.5.0     
     ## [41] pkgconfig_2.0.3   ellipsis_0.3.2    xml2_1.3.3        reprex_2.0.1     
     ## [45] lubridate_1.8.0   rstudioapi_0.13   assertthat_0.2.1  rmarkdown_2.13   
-    ## [49] httr_1.4.7        R6_2.5.1          compiler_4.1.3
+    ## [49] httr_1.4.2        R6_2.5.1          compiler_4.1.3
 
 Read in tables of per-library barcode-variant lookups, and store the
 underlying “library” in a new column called “sublibrary”
@@ -140,15 +140,15 @@ head(dt_pool2)
     ## 2:   MERS   pool2 AAAAAAAAAACAAGTT                    2            ACG36ATT
     ## 3:   MERS   pool2 AAAAAAAAACATCGTA                    2   GAT8TAT ATT104TCT
     ## 4:   MERS   pool2 AAAAAAAAACTTATGT                    1                    
-    ## 5:   MERS   pool2 AAAAAAAAAGTATCTT                    1            GGC15GAA
-    ## 6:   MERS   pool2 AAAAAAAAAGTCTTAA                    1            GTA82ATT
+    ## 5:   MERS   pool2 AAAAAAAAAGTCTTAA                    1            GTA82ATT
+    ## 6:   MERS   pool2 AAAAAAAAATTCACGG                    1           CCT139GCT
     ##    aa_substitutions n_codon_substitutions n_aa_substitutions sublibrary
     ## 1:       P54D I153F                     2                  2      lib52
     ## 2:             T36I                     1                  1      lib52
     ## 3:        D8Y I104S                     2                  2      lib52
     ## 4:                                      0                  0      lib52
-    ## 5:             G15E                     1                  1      lib52
-    ## 6:             V82I                     1                  1      lib52
+    ## 5:             V82I                     1                  1      lib52
+    ## 6:            P139A                     1                  1      lib52
 
 Eliminate barcodes that are repeated between different variants within a
 single pool.
@@ -181,7 +181,7 @@ dt_pool2 <- dt_pool2[duplicate==FALSE,]; dt_pool2[,duplicate:=NULL]
 print(paste("Removed", nrow(duplicates_pool2), "repeated barcodes from pool2"))
 ```
 
-    ## [1] "Removed 2 repeated barcodes from pool2"
+    ## [1] "Removed 1 repeated barcodes from pool2"
 
 Merge the per-pool tables back into one aggregate data table and save.
 

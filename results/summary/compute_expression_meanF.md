@@ -73,12 +73,12 @@ sessionInfo()
     ## [17] modelr_0.1.8     readxl_1.3.1     lifecycle_1.0.3  munsell_0.5.0   
     ## [21] gtable_0.3.0     cellranger_1.1.0 rvest_1.0.2      evaluate_0.15   
     ## [25] tzdb_0.2.0       fastmap_1.1.0    fansi_1.0.2      broom_0.7.12    
-    ## [29] Rcpp_1.0.11      backports_1.4.1  scales_1.2.1     jsonlite_1.8.7  
+    ## [29] Rcpp_1.0.11      backports_1.4.1  scales_1.2.1     jsonlite_1.8.0  
     ## [33] fs_1.5.2         hms_1.1.1        digest_0.6.29    stringi_1.7.6   
     ## [37] grid_4.1.3       cli_3.6.0        tools_4.1.3      magrittr_2.0.2  
     ## [41] crayon_1.5.0     pkgconfig_2.0.3  Matrix_1.4-0     ellipsis_0.3.2  
     ## [45] xml2_1.3.3       reprex_2.0.1     lubridate_1.8.0  rstudioapi_0.13 
-    ## [49] assertthat_0.2.1 rmarkdown_2.13   httr_1.4.7       R6_2.5.1        
+    ## [49] assertthat_0.2.1 rmarkdown_2.13   httr_1.4.2       R6_2.5.1        
     ## [53] compiler_4.1.3
 
 ## Setup
@@ -126,14 +126,14 @@ for(i in 1:nrow(barcode_runs)){
 }
 ```
 
-    ## [1] "read:cell ratio for pool1 SortSeq_bin1 is 6.7682487839967"
-    ## [1] "read:cell ratio for pool1 SortSeq_bin2 is 1.9817525419065"
-    ## [1] "read:cell ratio for pool1 SortSeq_bin3 is 1.61394640848562"
-    ## [1] "read:cell ratio for pool1 SortSeq_bin4 is 1.39168409260642"
-    ## [1] "read:cell ratio for pool2 SortSeq_bin1 is 4.06717007653953"
-    ## [1] "read:cell ratio for pool2 SortSeq_bin2 is 1.30843458984951"
-    ## [1] "read:cell ratio for pool2 SortSeq_bin3 is 1.58901237335197"
-    ## [1] "read:cell ratio for pool2 SortSeq_bin4 is 1.43500276583034"
+    ## [1] "read:cell ratio for pool1 SortSeq_bin1 is 6.70700436662283"
+    ## [1] "read:cell ratio for pool1 SortSeq_bin2 is 1.96242982611534"
+    ## [1] "read:cell ratio for pool1 SortSeq_bin3 is 1.59652295005213"
+    ## [1] "read:cell ratio for pool1 SortSeq_bin4 is 1.37641598207618"
+    ## [1] "read:cell ratio for pool2 SortSeq_bin1 is 3.96527670788625"
+    ## [1] "read:cell ratio for pool2 SortSeq_bin2 is 1.275156222184"
+    ## [1] "read:cell ratio for pool2 SortSeq_bin3 is 1.5492349200803"
+    ## [1] "read:cell ratio for pool2 SortSeq_bin4 is 1.39937661588829"
 
 ``` r
 #annotate each barcode as to whether it's a homolog variant, SARS-CoV-2 wildtype, synonymous muts only, stop, nonsynonymous, >1 nonsynonymous mutations
@@ -249,7 +249,7 @@ grid.arrange(p1,ncol=1)
 invisible(dev.print(pdf, paste(config$expression_sortseq_dir,"/violin-plot_meanF-by-target.pdf",sep="")))
 ```
 
-We have generated expression measurements for 89.54% of the barcodes in
+We have generated expression measurements for 89.9% of the barcodes in
 our libraries.
 
 ## Data Output
