@@ -1,0 +1,67 @@
+LOCUS       KW2EF93Gha2010_r        1082 bp    DNA        linear       27-FEB-2024
+SOURCE      Tyler Starr
+  ORGANISM  .
+COMMENT     
+COMMENT     ApEinfo:methylated:1
+FEATURES             Location/Qualifiers
+     termini5        1..33
+                     /locus_tag="termini5"
+                     /label="termini5"
+                     /ApEinfo_label="termini5"
+                     /ApEinfo_fwdcolor="#00DF87"
+                     /ApEinfo_revcolor="#00DF87"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {0 .5 .1 .5 .1 -.5 0 -.5} 0} width 5 offset 0"
+     spacer          640..1060
+                     /locus_tag="spacer"
+                     /label="spacer"
+                     /ApEinfo_label="spacer"
+                     /ApEinfo_fwdcolor="#00D95A"
+                     /ApEinfo_revcolor="#00D95A"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {0 .5 .1 .5 .1 -.5 0 -.5} 0} width 5 offset 0"
+     barcode         1061..1076
+                     /locus_tag="barcode"
+                     /label="barcode"
+                     /ApEinfo_label="barcode"
+                     /ApEinfo_fwdcolor="#008065"
+                     /ApEinfo_revcolor="#008065"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {0 .5 .1 .5 .1 -.5 0 -.5} 0} width 5 offset 0"
+     termini3        1077..1082
+                     /locus_tag="termini3"
+                     /label="termini3"
+                     /ApEinfo_label="termini3"
+                     /ApEinfo_fwdcolor="#13AAFE"
+                     /ApEinfo_revcolor="#13AAFE"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {0 .5 .1 .5 .1 -.5 0 -.5} 0} width 5 offset 0"
+     gene            34..639
+                     /locus_tag="gene"
+                     /label="gene"
+                     /ApEinfo_label="gene"
+                     /ApEinfo_fwdcolor="#ff797d"
+                     /ApEinfo_revcolor="#ff102f"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {0 .5 .1 .5 .1 -.5 0 -.5} 0} width 5 offset 0"
+ORIGIN
+        1 ggccgcggag gcggagggtc ggctagccat atgGTTTCAG ATCTGGAAGA ATGCGATTTC
+       61 GATCAGTTCT TTAAGAACGT CTCAGGTATC GCTAAATATT CAAGGGCCAG TTTCTTGAAC
+      121 TGCAAGTACA ACATGACCAA GTTCTTGTCG CTTGTAGCCG TGGACGAGTT TAACTGTGAC
+      181 AGAGTCACAC CTCAAGCTCT AGCATCTACT TGTGCCTCTT CTCTTGTTGT TGATTGGTTT
+      241 TCTTTCCCGA TTTCGTTGAA AAGTTACTTA CAAGCTGGTA GCTCCAGCCC AATAGTCAAA
+      301 CTAAATTATA AGCAAGATTA TTCAAATCCA TCCTGTAGAG TAACAGGCCA AATTTCTCAA
+      361 ACCAATGTTG ATGCACAATA CTATGTTGCG TGGTGTGGCA TAAACGGGGA CGAACAAATC
+      421 ATTTCTCCCG GTGGAAGAAT CATTCCTCAG TGTTTAGATA TGGCTTCATG GGGTGGAGGA
+      481 GATGGTAATT TAAAGAGTGT GCAGATAAAT GGCAAAGAAT ATACGGCAAG GGGTTTAAAG
+      541 TATACTTCCT CCTTCAACAA TGGTACTGAC ATGGTATTTG TGATTACAGT TCGTTACAAT
+      601 GAGGGACCAC AAAATGTCTG CCCATTGATT GCTATACCTc tcgagggggg cggttccgaa
+      661 caaaagctta tttctgaaga ggacttgtaa tagagatctg ataacaacag tgtagatgta
+      721 acaaaatcga ctttgttccc actgtacttt tagctcgtac aaaatacaat atacttttca
+      781 tttctccgta aacaacatgt tttcccatgt aatatccttt tctatttttc gttccgttac
+      841 caactttaca catactttat atagctattc acttctatac actaaaaaac taagacaatt
+      901 ttaattttgc tgcctgccat atttcaattt gttataaatt cctataattt atcctattag
+      961 tagctaaaaa aagatgaatg tgaatcgaat cctaagagaa ttaatgatac ggcgaccacc
+     1021 gagatctaca ctctttccct acacgacgct cttccgatct NNNNNNNNNN NNNNNNgcgg
+     1081 cc     
+//

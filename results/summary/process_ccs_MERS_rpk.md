@@ -714,7 +714,7 @@ Because we want to plot on a log scale (which can't show error rates of zero), w
 
 
 ```python
-error_rate_floor = 1e-7  # error rates < this set to this
+error_rate_floor = 1e-9  # error rates < this set to this
 if error_rate_floor >= config['max_error_rate']:
     raise ValueError('error_rate_floor must be < max_error_rate')
 
@@ -925,8 +925,8 @@ processed_ccs.head(n=12)
       <td>CGTATAAGAAAGCATG</td>
       <td>1.000000</td>
       <td>MERS_rpk</td>
-      <td>1.000000e-07</td>
-      <td>1.000000e-07</td>
+      <td>1.000000e-09</td>
+      <td>1.000000e-09</td>
       <td>True</td>
       <td>T583A T584C C585T</td>
       <td>0</td>
@@ -941,8 +941,8 @@ processed_ccs.head(n=12)
       <td>ACTAATACCAGAAATG</td>
       <td>1.000000</td>
       <td>MERS_rpk</td>
-      <td>1.000000e-07</td>
-      <td>1.000000e-07</td>
+      <td>1.000000e-09</td>
+      <td>1.902396e-08</td>
       <td>True</td>
       <td>G643A</td>
       <td>0</td>
@@ -957,8 +957,8 @@ processed_ccs.head(n=12)
       <td>ACACAAAGGTAGCTAG</td>
       <td>1.000000</td>
       <td>MERS_rpk</td>
-      <td>1.000000e-07</td>
-      <td>1.000000e-07</td>
+      <td>1.000000e-09</td>
+      <td>1.000000e-09</td>
       <td>True</td>
       <td>T289A T290A T291A</td>
       <td>0</td>
@@ -973,9 +973,9 @@ processed_ccs.head(n=12)
       <td>ATCACAGGGCGCCATT</td>
       <td>1.000000</td>
       <td>MERS_rpk</td>
-      <td>1.000000e-07</td>
+      <td>1.000000e-09</td>
       <td>8.038898e-07</td>
-      <td>True</td>
+      <td>False</td>
       <td>T214A C216A</td>
       <td>0</td>
       <td>False</td>
@@ -989,8 +989,8 @@ processed_ccs.head(n=12)
       <td>TAGTCAAGTTCTTAAA</td>
       <td>1.000000</td>
       <td>MERS_rpk</td>
-      <td>1.000000e-07</td>
-      <td>1.000000e-07</td>
+      <td>1.000000e-09</td>
+      <td>1.000000e-09</td>
       <td>True</td>
       <td>G622A T624G</td>
       <td>0</td>
@@ -1021,9 +1021,9 @@ processed_ccs.head(n=12)
       <td>CTCCACAGAGCATTAT</td>
       <td>1.000000</td>
       <td>MERS_rpk</td>
-      <td>1.000000e-07</td>
+      <td>1.000000e-09</td>
       <td>8.838215e-06</td>
-      <td>True</td>
+      <td>False</td>
       <td>A196G T197C del461to461</td>
       <td>1</td>
       <td>True</td>
@@ -1037,9 +1037,9 @@ processed_ccs.head(n=12)
       <td>GAAAGCTTTTTGACAA</td>
       <td>1.000000</td>
       <td>MERS_rpk</td>
-      <td>1.000000e-07</td>
+      <td>1.000000e-09</td>
       <td>6.328875e-06</td>
-      <td>True</td>
+      <td>False</td>
       <td>A98C</td>
       <td>0</td>
       <td>False</td>
@@ -1053,8 +1053,8 @@ processed_ccs.head(n=12)
       <td>GATCACCCGAATACAG</td>
       <td>1.000000</td>
       <td>MERS_rpk</td>
-      <td>1.000000e-07</td>
-      <td>1.000000e-07</td>
+      <td>1.000000e-09</td>
+      <td>1.000000e-09</td>
       <td>True</td>
       <td>G4C C5A G6T</td>
       <td>0</td>
@@ -1069,8 +1069,8 @@ processed_ccs.head(n=12)
       <td>TAAACAGGATATTTCG</td>
       <td>1.000000</td>
       <td>MERS_rpk</td>
-      <td>1.000000e-07</td>
-      <td>1.000000e-07</td>
+      <td>1.000000e-09</td>
+      <td>1.000000e-09</td>
       <td>True</td>
       <td>A127C G128C C129A</td>
       <td>0</td>
@@ -1085,8 +1085,8 @@ processed_ccs.head(n=12)
       <td>AATCAGCCGCCCTGCG</td>
       <td>1.000000</td>
       <td>MERS_rpk</td>
-      <td>1.000000e-07</td>
-      <td>1.000000e-07</td>
+      <td>1.000000e-09</td>
+      <td>1.000000e-09</td>
       <td>True</td>
       <td>T232G C233T</td>
       <td>0</td>
@@ -1101,8 +1101,8 @@ processed_ccs.head(n=12)
       <td>AGATGTTGTTACTACA</td>
       <td>1.000000</td>
       <td>MERS_rpk</td>
-      <td>1.000000e-07</td>
-      <td>1.000000e-07</td>
+      <td>1.000000e-09</td>
+      <td>1.000000e-09</td>
       <td>True</td>
       <td>G580A</td>
       <td>0</td>
@@ -1204,58 +1204,58 @@ display(HTML(empirical_acc.to_html(index=False)))
   <tbody>
     <tr>
       <td>lib84</td>
-      <td>0.980078</td>
+      <td>0.985874</td>
       <td>retained</td>
-      <td>885209</td>
+      <td>778989</td>
       <td>False</td>
     </tr>
     <tr>
       <td>lib85</td>
-      <td>0.917323</td>
+      <td>0.947495</td>
       <td>retained</td>
-      <td>857099</td>
+      <td>732210</td>
       <td>False</td>
     </tr>
     <tr>
       <td>lib84</td>
-      <td>0.992610</td>
+      <td>0.992371</td>
       <td>retained, no indel</td>
-      <td>869396</td>
+      <td>769876</td>
       <td>True</td>
     </tr>
     <tr>
       <td>lib85</td>
-      <td>0.967139</td>
+      <td>0.975294</td>
       <td>retained, no indel</td>
-      <td>808166</td>
+      <td>707365</td>
       <td>True</td>
     </tr>
     <tr>
       <td>lib84</td>
-      <td>0.983819</td>
+      <td>0.987026</td>
       <td>10X accuracy</td>
-      <td>829446</td>
+      <td>729750</td>
       <td>False</td>
     </tr>
     <tr>
       <td>lib85</td>
-      <td>0.935006</td>
+      <td>0.956838</td>
       <td>10X accuracy</td>
-      <td>789785</td>
+      <td>679082</td>
       <td>False</td>
     </tr>
     <tr>
       <td>lib84</td>
-      <td>0.992514</td>
+      <td>0.992171</td>
       <td>10X accuracy, no indel</td>
-      <td>817910</td>
+      <td>722236</td>
       <td>False</td>
     </tr>
     <tr>
       <td>lib85</td>
-      <td>0.971717</td>
+      <td>0.977934</td>
       <td>10X accuracy, no indel</td>
-      <td>755678</td>
+      <td>660747</td>
       <td>False</td>
     </tr>
   </tbody>
@@ -1345,34 +1345,34 @@ display(HTML(consensus.head().to_html(index=False)))
       <td>AAAAAAAAAAAACCTG</td>
       <td>MERS_rpk</td>
       <td>G22A T24A</td>
-      <td>2</td>
+      <td>1</td>
     </tr>
     <tr>
       <td>lib84</td>
       <td>AAAAAAAAAAGAATTA</td>
       <td>MERS_rpk</td>
       <td>G316C T536G</td>
-      <td>2</td>
+      <td>1</td>
     </tr>
     <tr>
       <td>lib84</td>
       <td>AAAAAAAAAATGTGAA</td>
       <td>MERS_rpk</td>
       <td>A127T G128A C129T</td>
-      <td>9</td>
+      <td>5</td>
     </tr>
     <tr>
       <td>lib84</td>
       <td>AAAAAAAAACCCCTGA</td>
       <td>MERS_rpk</td>
       <td>T121C T122C</td>
-      <td>16</td>
+      <td>12</td>
     </tr>
     <tr>
       <td>lib84</td>
-      <td>AAAAAAAAACTATACA</td>
+      <td>AAAAAAAAACTCTAAA</td>
       <td>MERS_rpk</td>
-      <td>C93G</td>
+      <td>T145C G146A C147T</td>
       <td>1</td>
     </tr>
   </tbody>
@@ -1416,7 +1416,7 @@ display(HTML(consensus.head().to_html(index=False)))
       <td>AAAAAAAAAAAACCTG</td>
       <td>MERS_rpk</td>
       <td>G22A T24A</td>
-      <td>2</td>
+      <td>1</td>
       <td>G22A T24A</td>
       <td></td>
       <td></td>
@@ -1427,7 +1427,7 @@ display(HTML(consensus.head().to_html(index=False)))
       <td>AAAAAAAAAAGAATTA</td>
       <td>MERS_rpk</td>
       <td>G316C T536G</td>
-      <td>2</td>
+      <td>1</td>
       <td>G316C T536G</td>
       <td></td>
       <td></td>
@@ -1438,7 +1438,7 @@ display(HTML(consensus.head().to_html(index=False)))
       <td>AAAAAAAAAATGTGAA</td>
       <td>MERS_rpk</td>
       <td>A127T G128A C129T</td>
-      <td>9</td>
+      <td>5</td>
       <td>A127T G128A C129T</td>
       <td></td>
       <td></td>
@@ -1449,7 +1449,7 @@ display(HTML(consensus.head().to_html(index=False)))
       <td>AAAAAAAAACCCCTGA</td>
       <td>MERS_rpk</td>
       <td>T121C T122C</td>
-      <td>16</td>
+      <td>12</td>
       <td>T121C T122C</td>
       <td></td>
       <td></td>
@@ -1457,11 +1457,11 @@ display(HTML(consensus.head().to_html(index=False)))
     </tr>
     <tr>
       <td>lib84</td>
-      <td>AAAAAAAAACTATACA</td>
+      <td>AAAAAAAAACTCTAAA</td>
       <td>MERS_rpk</td>
-      <td>C93G</td>
+      <td>T145C G146A C147T</td>
       <td>1</td>
-      <td>C93G</td>
+      <td>T145C G146A C147T</td>
       <td></td>
       <td></td>
       <td>0</td>
@@ -1548,12 +1548,12 @@ _ = p.draw()
     <tr>
       <td>lib84</td>
       <td>MERS_rpk</td>
-      <td>116522</td>
+      <td>114943</td>
     </tr>
     <tr>
       <td>lib85</td>
       <td>MERS_rpk</td>
-      <td>110034</td>
+      <td>118219</td>
     </tr>
   </tbody>
 </table>
@@ -1612,7 +1612,7 @@ display(HTML(
       <td>G22A T24A</td>
       <td></td>
       <td></td>
-      <td>2</td>
+      <td>1</td>
     </tr>
     <tr>
       <td>MERS_rpk</td>
@@ -1622,7 +1622,7 @@ display(HTML(
       <td>G316C T536G</td>
       <td></td>
       <td></td>
-      <td>2</td>
+      <td>1</td>
     </tr>
     <tr>
       <td>MERS_rpk</td>
@@ -1632,7 +1632,7 @@ display(HTML(
       <td>A127T G128A C129T</td>
       <td></td>
       <td></td>
-      <td>9</td>
+      <td>5</td>
     </tr>
     <tr>
       <td>MERS_rpk</td>
@@ -1642,14 +1642,14 @@ display(HTML(
       <td>T121C T122C</td>
       <td></td>
       <td></td>
-      <td>16</td>
+      <td>12</td>
     </tr>
     <tr>
       <td>MERS_rpk</td>
       <td>lib84</td>
-      <td>AAAAAAAAACTATACA</td>
-      <td>C93G</td>
-      <td>C93G</td>
+      <td>AAAAAAAAACTCTAAA</td>
+      <td>T145C G146A C147T</td>
+      <td>T145C G146A C147T</td>
       <td></td>
       <td></td>
       <td>1</td>
@@ -1683,35 +1683,35 @@ display(HTML(dropped.head().to_html(index=False)))
       <td>AAAAAAAAGTGACATC</td>
       <td>MERS_rpk</td>
       <td>subs diff too large</td>
-      <td>11</td>
+      <td>10</td>
     </tr>
     <tr>
       <td>lib84</td>
       <td>AAAAAAAATTACAGAA</td>
       <td>MERS_rpk</td>
       <td>subs diff too large</td>
-      <td>8</td>
+      <td>6</td>
     </tr>
     <tr>
       <td>lib84</td>
       <td>AAAAAAAATTCGCCTT</td>
       <td>MERS_rpk</td>
       <td>subs diff too large</td>
-      <td>4</td>
+      <td>3</td>
     </tr>
     <tr>
       <td>lib84</td>
       <td>AAAAAACACAAAACCC</td>
       <td>MERS_rpk</td>
       <td>minor subs too frequent</td>
-      <td>32</td>
+      <td>31</td>
     </tr>
     <tr>
       <td>lib84</td>
-      <td>AAAAAACACGAGACCA</td>
+      <td>AAAAAACCAAACATAC</td>
       <td>MERS_rpk</td>
-      <td>subs diff too large</td>
-      <td>2</td>
+      <td>minor subs too frequent</td>
+      <td>13</td>
     </tr>
   </tbody>
 </table>
@@ -1822,7 +1822,7 @@ variants.barcode_variant_df.head(n=12)
       <td>MERS_rpk</td>
       <td>lib84</td>
       <td>AAAAAAAAAAAACCTG</td>
-      <td>2</td>
+      <td>1</td>
       <td>GAT8AAA</td>
       <td>D8K</td>
       <td>1</td>
@@ -1833,7 +1833,7 @@ variants.barcode_variant_df.head(n=12)
       <td>MERS_rpk</td>
       <td>lib84</td>
       <td>AAAAAAAAAAGAATTA</td>
-      <td>2</td>
+      <td>1</td>
       <td>GCC106CCC GTT179GGT</td>
       <td>A106P V179G</td>
       <td>2</td>
@@ -1844,7 +1844,7 @@ variants.barcode_variant_df.head(n=12)
       <td>MERS_rpk</td>
       <td>lib84</td>
       <td>AAAAAAAAAATGTGAA</td>
-      <td>9</td>
+      <td>5</td>
       <td>AGC43TAT</td>
       <td>S43Y</td>
       <td>1</td>
@@ -1855,7 +1855,7 @@ variants.barcode_variant_df.head(n=12)
       <td>MERS_rpk</td>
       <td>lib84</td>
       <td>AAAAAAAAACCCCTGA</td>
-      <td>16</td>
+      <td>12</td>
       <td>TTA41CCA</td>
       <td>L41P</td>
       <td>1</td>
@@ -1863,17 +1863,6 @@ variants.barcode_variant_df.head(n=12)
     </tr>
     <tr>
       <th>4</th>
-      <td>MERS_rpk</td>
-      <td>lib84</td>
-      <td>AAAAAAAAACTATACA</td>
-      <td>1</td>
-      <td>TGC31TGG</td>
-      <td>C31W</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>5</th>
       <td>MERS_rpk</td>
       <td>lib84</td>
       <td>AAAAAAAAACTCTAAA</td>
@@ -1884,18 +1873,18 @@ variants.barcode_variant_df.head(n=12)
       <td>1</td>
     </tr>
     <tr>
-      <th>6</th>
+      <th>5</th>
       <td>MERS_rpk</td>
       <td>lib84</td>
       <td>AAAAAAAAATACATAG</td>
-      <td>3</td>
+      <td>2</td>
       <td>CAA192ATG</td>
       <td>Q192M</td>
       <td>1</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>7</th>
+      <th>6</th>
       <td>MERS_rpk</td>
       <td>lib84</td>
       <td>AAAAAAAAATCAAGAT</td>
@@ -1906,18 +1895,18 @@ variants.barcode_variant_df.head(n=12)
       <td>1</td>
     </tr>
     <tr>
-      <th>8</th>
+      <th>7</th>
       <td>MERS_rpk</td>
       <td>lib84</td>
       <td>AAAAAAAAATCGACGT</td>
-      <td>6</td>
+      <td>5</td>
       <td>GCC106GGT</td>
       <td>A106G</td>
       <td>1</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>9</th>
+      <th>8</th>
       <td>MERS_rpk</td>
       <td>lib84</td>
       <td>AAAAAAAACAACGATA</td>
@@ -1928,7 +1917,7 @@ variants.barcode_variant_df.head(n=12)
       <td>2</td>
     </tr>
     <tr>
-      <th>10</th>
+      <th>9</th>
       <td>MERS_rpk</td>
       <td>lib84</td>
       <td>AAAAAAAACACAATAA</td>
@@ -1939,13 +1928,24 @@ variants.barcode_variant_df.head(n=12)
       <td>1</td>
     </tr>
     <tr>
-      <th>11</th>
+      <th>10</th>
       <td>MERS_rpk</td>
       <td>lib84</td>
       <td>AAAAAAAACATCTCTG</td>
       <td>1</td>
       <td>CTG26---</td>
       <td>L26-</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>MERS_rpk</td>
+      <td>lib84</td>
+      <td>AAAAAAAACTAGCTAT</td>
+      <td>10</td>
+      <td>GAT163TAT</td>
+      <td>D163Y</td>
       <td>1</td>
       <td>1</td>
     </tr>
@@ -1992,9 +1992,9 @@ display(HTML(
   <tbody>
     <tr>
       <th>MERS_rpk</th>
-      <td>116522</td>
-      <td>110034</td>
-      <td>226556</td>
+      <td>114943</td>
+      <td>118219</td>
+      <td>233162</td>
     </tr>
   </tbody>
 </table>
@@ -2192,11 +2192,11 @@ display(HTML(
     <tr>
       <th rowspan="3" valign="top">lib85</th>
       <th>0</th>
-      <td>5</td>
+      <td>6</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>3</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>&gt;1</th>
@@ -2205,11 +2205,11 @@ display(HTML(
     <tr>
       <th rowspan="3" valign="top">all libraries</th>
       <th>0</th>
-      <td>5</td>
+      <td>6</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>1</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>&gt;1</th>
@@ -2232,24 +2232,24 @@ display(HTML(
     <tr>
       <th rowspan="3" valign="top">lib85</th>
       <th>0</th>
-      <td>135</td>
+      <td>140</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>28</td>
+      <td>24</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>4352</td>
+      <td>4351</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">all libraries</th>
       <th>0</th>
-      <td>123</td>
+      <td>130</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>31</td>
+      <td>24</td>
     </tr>
     <tr>
       <th>&gt;1</th>
@@ -2277,11 +2277,11 @@ display(HTML(
     </tr>
     <tr>
       <th>1</th>
-      <td>1</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>4292</td>
+      <td>4291</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">all libraries</th>
@@ -2304,20 +2304,20 @@ display(HTML(
     </tr>
     <tr>
       <th>1</th>
-      <td>12</td>
+      <td>13</td>
     </tr>
     <tr>
       <th>&gt;1</th>
-      <td>4330</td>
+      <td>4329</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">lib85</th>
       <th>0</th>
-      <td>159</td>
+      <td>168</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>29</td>
+      <td>20</td>
     </tr>
     <tr>
       <th>&gt;1</th>
@@ -2326,11 +2326,11 @@ display(HTML(
     <tr>
       <th rowspan="3" valign="top">all libraries</th>
       <th>0</th>
-      <td>144</td>
+      <td>153</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>31</td>
+      <td>22</td>
     </tr>
     <tr>
       <th>&gt;1</th>
@@ -2419,7 +2419,7 @@ display(HTML(
       <td>MERS_rpk</td>
       <td>lib84</td>
       <td>AAAAAAAAAAAACCTG</td>
-      <td>2</td>
+      <td>1</td>
       <td>GAT8AAA</td>
       <td>D8K</td>
       <td>1</td>
@@ -2429,7 +2429,7 @@ display(HTML(
       <td>MERS_rpk</td>
       <td>lib84</td>
       <td>AAAAAAAAAAGAATTA</td>
-      <td>2</td>
+      <td>1</td>
       <td>GCC106CCC GTT179GGT</td>
       <td>A106P V179G</td>
       <td>2</td>
@@ -2439,7 +2439,7 @@ display(HTML(
       <td>MERS_rpk</td>
       <td>lib84</td>
       <td>AAAAAAAAAATGTGAA</td>
-      <td>9</td>
+      <td>5</td>
       <td>AGC43TAT</td>
       <td>S43Y</td>
       <td>1</td>
@@ -2449,7 +2449,7 @@ display(HTML(
       <td>MERS_rpk</td>
       <td>lib84</td>
       <td>AAAAAAAAACCCCTGA</td>
-      <td>16</td>
+      <td>12</td>
       <td>TTA41CCA</td>
       <td>L41P</td>
       <td>1</td>
@@ -2458,10 +2458,10 @@ display(HTML(
     <tr>
       <td>MERS_rpk</td>
       <td>lib84</td>
-      <td>AAAAAAAAACTATACA</td>
+      <td>AAAAAAAAACTCTAAA</td>
       <td>1</td>
-      <td>TGC31TGG</td>
-      <td>C31W</td>
+      <td>TGC49CAT</td>
+      <td>C49H</td>
       <td>1</td>
       <td>1</td>
     </tr>

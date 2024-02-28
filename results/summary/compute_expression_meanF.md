@@ -126,14 +126,14 @@ for(i in 1:nrow(barcode_runs)){
 }
 ```
 
-    ## [1] "read:cell ratio for pool1 SortSeq_bin1 is 6.7500320765162"
-    ## [1] "read:cell ratio for pool1 SortSeq_bin2 is 1.97553929242963"
-    ## [1] "read:cell ratio for pool1 SortSeq_bin3 is 1.60847198435677"
-    ## [1] "read:cell ratio for pool1 SortSeq_bin4 is 1.38734690067214"
-    ## [1] "read:cell ratio for pool2 SortSeq_bin1 is 4.03846355380677"
-    ## [1] "read:cell ratio for pool2 SortSeq_bin2 is 1.29898456837618"
-    ## [1] "read:cell ratio for pool2 SortSeq_bin3 is 1.57801139653731"
-    ## [1] "read:cell ratio for pool2 SortSeq_bin4 is 1.42482800338002"
+    ## [1] "read:cell ratio for pool1 SortSeq_bin1 is 6.70700436662283"
+    ## [1] "read:cell ratio for pool1 SortSeq_bin2 is 1.96242982611534"
+    ## [1] "read:cell ratio for pool1 SortSeq_bin3 is 1.59652295005213"
+    ## [1] "read:cell ratio for pool1 SortSeq_bin4 is 1.37641598207618"
+    ## [1] "read:cell ratio for pool2 SortSeq_bin1 is 3.96527670788625"
+    ## [1] "read:cell ratio for pool2 SortSeq_bin2 is 1.275156222184"
+    ## [1] "read:cell ratio for pool2 SortSeq_bin3 is 1.5492349200803"
+    ## [1] "read:cell ratio for pool2 SortSeq_bin4 is 1.39937661588829"
 
 ``` r
 #annotate each barcode as to whether it's a homolog variant, SARS-CoV-2 wildtype, synonymous muts only, stop, nonsynonymous, >1 nonsynonymous mutations
@@ -249,7 +249,7 @@ grid.arrange(p1,ncol=1)
 invisible(dev.print(pdf, paste(config$expression_sortseq_dir,"/violin-plot_meanF-by-target.pdf",sep="")))
 ```
 
-We have generated expression measurements for 89.67% of the barcodes in
+We have generated expression measurements for 89.9% of the barcodes in
 our libraries.
 
 ## Data Output

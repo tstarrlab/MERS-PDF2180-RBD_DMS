@@ -128,42 +128,42 @@ for(i in 1:nrow(barcode_runs)){
 }
 ```
 
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_01_bin1 is 4.09632303930222"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_01_bin2 is 2.42096067504199"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_01_bin3 is 2.42131101479692"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_01_bin4 is 5.1011494216445"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_02_bin1 is 3.54006219829323"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_02_bin2 is 3.28200366317643"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_02_bin3 is 2.96678273638478"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_02_bin4 is 2.85491247609976"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_03_bin1 is 3.77606428159335"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_03_bin2 is 2.43914701670604"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_03_bin3 is 3.00558821086989"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_03_bin4 is 1.85357810404608"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_04_bin1 is 3.13496091998248"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_04_bin2 is 1.82372516922071"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_04_bin3 is 2.72797329695593"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_04_bin4 is 10.4584559986375"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_05_bin1 is 3.46143427704119"
-    ## [1] "reads < cells for pool1A TiteSeq_hDPP4_05_bin2 , un-normalized (ratio 0.0132545811817393 )"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_05_bin3 is 10.443238724989"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_05_bin4 is 5.13570658036677"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_06_bin1 is 2.46791244004511"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_06_bin2 is 4.53459894489584"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_06_bin3 is 11.1956597222222"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_06_bin4 is 8.72696245733788"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_07_bin1 is 1.02376315929445"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_07_bin2 is 5.22352689657441"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_07_bin3 is 4.86146323795726"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_07_bin4 is 11.5775577557756"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_08_bin1 is 2.11774474639869"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_08_bin2 is 6.71203382221742"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_08_bin3 is 14.0456002850018"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_08_bin4 is 3.88888888888889"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_09_bin1 is 1.81488013899972"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_09_bin2 is 2.34370048787978"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_09_bin3 is 11.7248157248157"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_09_bin4 is 6.32773109243697"
+    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_01_bin1 is 4.0697446506592"
+    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_01_bin2 is 2.40510072259762"
+    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_01_bin3 is 2.40079526473638"
+    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_01_bin4 is 5.04934978088333"
+    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_02_bin1 is 3.51755031344195"
+    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_02_bin2 is 3.25943503757507"
+    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_02_bin3 is 2.93673203498215"
+    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_02_bin4 is 2.82521795128282"
+    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_03_bin1 is 3.75292236854256"
+    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_03_bin2 is 2.41926716165412"
+    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_03_bin3 is 2.97675264562204"
+    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_03_bin4 is 1.83418498162135"
+    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_04_bin1 is 3.11364639809147"
+    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_04_bin2 is 1.80659521502468"
+    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_04_bin3 is 2.69932608882338"
+    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_04_bin4 is 10.3690421157636"
+    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_05_bin1 is 3.43649736654232"
+    ## [1] "reads < cells for pool1A TiteSeq_hDPP4_05_bin2 , un-normalized (ratio 0.0131369099300827 )"
+    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_05_bin3 is 10.3545536640521"
+    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_05_bin4 is 5.0957928802589"
+    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_06_bin1 is 2.44982892428668"
+    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_06_bin2 is 4.49822544829091"
+    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_06_bin3 is 11.1730902777778"
+    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_06_bin4 is 8.63481228668942"
+    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_07_bin1 is 1.01595613711323"
+    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_07_bin2 is 5.18529116713536"
+    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_07_bin3 is 4.83212604128939"
+    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_07_bin4 is 11.5346534653465"
+    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_08_bin1 is 2.10182713073925"
+    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_08_bin2 is 6.66811949153024"
+    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_08_bin3 is 13.9533309583185"
+    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_08_bin4 is 3.91452991452991"
+    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_09_bin1 is 1.80050135269988"
+    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_09_bin2 is 2.32717085563923"
+    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_09_bin3 is 11.6117936117936"
+    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_09_bin4 is 6.29411764705882"
 
 ``` r
 #annotate each barcode as to whether it's a homolog variant, SARS-CoV-2 wildtype, synonymous muts only, stop, nonsynonymous, >1 nonsynonymous mutations
@@ -290,8 +290,8 @@ our library barcodes. We will also spot check titration curves from
 across our measurement range, and spot check curves whose fit parameters
 hit the different boundary conditions of the fit variables.
 
-We successfully generated *K*<sub>D</sub> estimates for 86775 of our
-pool1A barcodes (78.52%), and 0 of our pool2A barcodes (NaN%).
+We successfully generated *K*<sub>D</sub> estimates for 85811 of our
+pool1A barcodes (78.88%), and 0 of our pool2A barcodes (NaN%).
 
 Why were estimates not returned for some barcodes? The histograms below
 show that many barcodes with unsuccessful titration fits have lower
@@ -540,7 +540,7 @@ grid.arrange(p1,ncol=1)
 invisible(dev.print(pdf, paste(config$Titeseq_Kds_dir,"/violin-plot_log10Ka-by-target_hDPP4.pdf",sep="")))
 ```
 
-We have generated binding measurements for 77.29% of the barcodes in our
+We have generated binding measurements for 77.64% of the barcodes in our
 libraries.
 
 ## Data Output

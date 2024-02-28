@@ -140,15 +140,15 @@ head(dt_pool2)
     ## 2:   MERS   pool2 AAAAAAAAAACAAGTT                    2            ACG36ATT
     ## 3:   MERS   pool2 AAAAAAAAACATCGTA                    2   GAT8TAT ATT104TCT
     ## 4:   MERS   pool2 AAAAAAAAACTTATGT                    1                    
-    ## 5:   MERS   pool2 AAAAAAAAAGTATCTT                    1            GGC15GAA
-    ## 6:   MERS   pool2 AAAAAAAAAGTCTTAA                    1            GTA82ATT
+    ## 5:   MERS   pool2 AAAAAAAAAGTCTTAA                    1            GTA82ATT
+    ## 6:   MERS   pool2 AAAAAAAAATTCACGG                    1           CCT139GCT
     ##    aa_substitutions n_codon_substitutions n_aa_substitutions sublibrary
     ## 1:       P54D I153F                     2                  2      lib52
     ## 2:             T36I                     1                  1      lib52
     ## 3:        D8Y I104S                     2                  2      lib52
     ## 4:                                      0                  0      lib52
-    ## 5:             G15E                     1                  1      lib52
-    ## 6:             V82I                     1                  1      lib52
+    ## 5:             V82I                     1                  1      lib52
+    ## 6:            P139A                     1                  1      lib52
 
 Eliminate barcodes that are repeated between different variants within a
 single pool.
@@ -181,7 +181,7 @@ dt_pool2 <- dt_pool2[duplicate==FALSE,]; dt_pool2[,duplicate:=NULL]
 print(paste("Removed", nrow(duplicates_pool2), "repeated barcodes from pool2"))
 ```
 
-    ## [1] "Removed 2 repeated barcodes from pool2"
+    ## [1] "Removed 1 repeated barcodes from pool2"
 
 Merge the per-pool tables back into one aggregate data table and save.
 

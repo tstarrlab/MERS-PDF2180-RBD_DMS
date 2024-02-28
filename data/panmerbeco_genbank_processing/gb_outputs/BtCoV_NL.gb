@@ -1,0 +1,68 @@
+LOCUS       BtCoV_NL                1166 bp    DNA        linear       27-FEB-2024
+SOURCE      Tyler Starr
+  ORGANISM  .
+COMMENT     
+COMMENT     ApEinfo:methylated:1
+FEATURES             Location/Qualifiers
+     termini5        1..33
+                     /locus_tag="termini5"
+                     /label="termini5"
+                     /ApEinfo_label="termini5"
+                     /ApEinfo_fwdcolor="#00DF87"
+                     /ApEinfo_revcolor="#00DF87"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {0 .5 .1 .5 .1 -.5 0 -.5} 0} width 5 offset 0"
+     spacer          724..1144
+                     /locus_tag="spacer"
+                     /label="spacer"
+                     /ApEinfo_label="spacer"
+                     /ApEinfo_fwdcolor="#00D95A"
+                     /ApEinfo_revcolor="#00D95A"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {0 .5 .1 .5 .1 -.5 0 -.5} 0} width 5 offset 0"
+     barcode         1145..1160
+                     /locus_tag="barcode"
+                     /label="barcode"
+                     /ApEinfo_label="barcode"
+                     /ApEinfo_fwdcolor="#008065"
+                     /ApEinfo_revcolor="#008065"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {0 .5 .1 .5 .1 -.5 0 -.5} 0} width 5 offset 0"
+     termini3        1161..1166
+                     /locus_tag="termini3"
+                     /label="termini3"
+                     /ApEinfo_label="termini3"
+                     /ApEinfo_fwdcolor="#13AAFE"
+                     /ApEinfo_revcolor="#13AAFE"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {0 .5 .1 .5 .1 -.5 0 -.5} 0} width 5 offset 0"
+     gene            34..723
+                     /locus_tag="gene"
+                     /label="gene"
+                     /ApEinfo_label="gene"
+                     /ApEinfo_fwdcolor="#ff797d"
+                     /ApEinfo_revcolor="#ff102f"
+                     /ApEinfo_graphicformat="arrow_data {{0 0.5 0 1 2 0 0 -1 0
+                     -0.5} {0 .5 .1 .5 .1 -.5 0 -.5} 0} width 5 offset 0"
+ORIGIN
+        1 ggccgcggag gcggagggtc ggctagccat atgAGCGTAT ACGAGGGGAA TGAGTGCGAT
+       61 TTCACGAAAC TATTCAGGGG TCCGGTCCCA CAACCTTATG AGTTCGGGAG ACTAGTGTTT
+      121 ACAAACTGCA ATTATAATTT CACAAAGCTA CTAAGCTACT TCCAAGTAGA TGCGTTTGAG
+      181 TGCAAGAAAG TAACTCCCGA ATCAATTGCT ACCGGCTGCT ATTCTAGTTT GACTGTCGAT
+      241 TGGTTCGCTT ACAGGGTTGC CGACAAAAGC GACCTACTAC CTGGCTCTAG TTCTGATCTA
+      301 CAGAGGTTTA ACTATAAGCC GACATATGCC CATCCAACAT GCCTGATCTC TGCTTATACG
+      361 GATCTATCTG CTCTAGGTGG TAGTAACCCA ACGAATTATA CGTTATTAAC CAACTGCTAC
+      421 GGATGTGTCG GACAACCTCC AAAGAGGACG TGCCTAGAAG AATTTCCCTC ATTTGTTGAA
+      481 GCGGGATACA GGCCGAAACC ATCCTGCGCC AGAATAGGAA TGCAGGGTCA CGCGAGTGGG
+      541 AACGAAACAT ACACTGCAGT GGTGACAAAC AACGAATTAG ACAGTGTGGG AGATCCCATT
+      601 TGGAGGATGG GCGTGGCTCA AACCAAGGAA CCCAGTGTCA CAGATAAAGC TGAGTTAGCA
+      661 TTCTTTGTTA GCGTGCAGAT TGATAGTCAG TCCAGCTCTG TATGTCCTTT AGGCTCTCCG
+      721 AAActcgagg ggggcggttc cgaacaaaag cttatttctg aagaggactt gtaatagaga
+      781 tctgataaca acagtgtaga tgtaacaaaa tcgactttgt tcccactgta cttttagctc
+      841 gtacaaaata caatatactt ttcatttctc cgtaaacaac atgttttccc atgtaatatc
+      901 cttttctatt tttcgttccg ttaccaactt tacacatact ttatatagct attcacttct
+      961 atacactaaa aaactaagac aattttaatt ttgctgcctg ccatatttca atttgttata
+     1021 aattcctata atttatccta ttagtagcta aaaaaagatg aatgtgaatc gaatcctaag
+     1081 agaattaatg atacggcgac caccgagatc tacactcttt ccctacacga cgctcttccg
+     1141 atctNNNNNN NNNNNNNNNN gcggcc   
+//
