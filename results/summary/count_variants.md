@@ -803,12 +803,12 @@ display(HTML(
   </thead>
   <tbody>
     <tr>
-      <td>pool2</td>
-      <td>129149</td>
-    </tr>
-    <tr>
       <td>pool1</td>
       <td>108785</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>129149</td>
     </tr>
   </tbody>
 </table>

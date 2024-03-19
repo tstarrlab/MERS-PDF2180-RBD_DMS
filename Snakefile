@@ -50,6 +50,8 @@ rule make_summary:
         process_ccs_MERS=nb_markdown('process_ccs_MERS.ipynb'),
         process_ccs_MERS_rpk=nb_markdown('process_ccs_MERS_rpk.ipynb'),
         process_ccs_PDF2180=nb_markdown('process_ccs_PDF2180.ipynb'),
+        barcode_variant_table_panmerbeco=config['nt_variant_table_file_panmerbeco'],
+       	process_ccs_panmerbeco=nb_markdown('process_ccs_panmerbeco.ipynb'),
         barcode_variant_table_MERS=config['codon_variant_table_file_MERS'],
         barcode_variant_table_MERS_rpk=config['codon_variant_table_file_MERS_rpk'],
         barcode_variant_table_PDF2180=config['codon_variant_table_file_PDF2180'],
@@ -86,7 +88,7 @@ rule make_summary:
             Here is the Markdown output of each Jupyter notebook in the
             workflow:
             
-            1. Process PacBio CCSs for each background: [MERS-CoV]({path(input.process_ccs_MERS)}), [MERS-CoV rpk]({path(input.process_ccs_MERS_rpk)}) and [PDF2180]({path(input.process_ccs_PDF2180)}). Creates barcode-variant lookup tables for each background: [MERS-CoV]({path(input.barcode_variant_table_MERS)}), [MERS-CoV rpk]({path(input.barcode_variant_table_MERS_rpk)}) and [PDF2180]({path(input.barcode_variant_table_PDF2180)}).
+            1. Process PacBio CCSs for each background: [MERS-CoV]({path(input.process_ccs_MERS)}), [MERS-CoV rpk]({path(input.process_ccs_MERS_rpk)}), [PDF2180]({path(input.process_ccs_PDF2180)}), and [Pan-Merbeco]({path(input.process_ccs_panmerbeco)}). Creates barcode-variant lookup tables for each background: [MERS-CoV]({path(input.barcode_variant_table_MERS)}), [MERS-CoV rpk]({path(input.barcode_variant_table_MERS_rpk)}), [PDF2180]({path(input.barcode_variant_table_PDF2180)}),[Pan-Merbeco]({path(input.barcode_variant_table_panmerbeco)}) .
 
             2. Merge barcode-variant sublibraries into pooled libraries used for experiments, as done [here]({path(input.merge_tables)}).
             
@@ -269,6 +271,19 @@ rule process_ccs_MERS:
         nb_markdown=nb_markdown('process_ccs_MERS.ipynb')
     params:
         nb='process_ccs_MERS.ipynb'
+    shell:
+        "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
+
+rule process_ccs_panmerbeco:
+    """Process the PacBio CCSs for panmerbeco background and build variant table."""
+    input:
+        expand(os.path.join(config['ccs_dir'], "{pacbioRun}_ccs.fastq.gz"),
+               pacbioRun=pacbio_runs['pacbioRun']),
+    output:
+        config['nt_variant_table_file_panmerbeco'],
+        nb_markdown=nb_markdown('process_ccs_panmerbeco.ipynb')
+    params:
+        nb='process_ccs_panmerbeco.ipynb'
     shell:
         "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
 

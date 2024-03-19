@@ -62,7 +62,7 @@ nt_variant_table_file_panmerbeco: results/variants/nucleotide_variant_table_panm
 codon_variant_table_file_MERS: results/variants/codon_variant_table_MERS.csv
 codon_variant_table_file_MERS_rpk: results/variants/codon_variant_table_MERS_rpk.csv
 codon_variant_table_file_PDF2180: results/variants/codon_variant_table_PDF2180.csv
-codon_variant_table_file_panmerbeco: results/variants/codon_variant_table_panmerbeco.csv
+
 
 codon_variant_table_file_pools: results/variants/codon_variant_table_pools.csv
 
