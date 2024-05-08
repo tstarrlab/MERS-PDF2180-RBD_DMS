@@ -40,10 +40,25 @@ Read in tables of per-library barcode-variant lookups, and store the underlying 
 
 ```{r input_data}
 #read in barcode-variant lookup tables
-dt_MERS <- data.table(read.csv(file=config$codon_variant_table_file_MERS,stringsAsFactors=F)); dt_MERS[,sublibrary:=library]
+dt_MERS_rpk <- data.table(read.csv(file=config$codon_variant_table_file_MERS_rpk,stringsAsFactors=F)); dt_MERS_rpk[,sublibrary:=library]
 dt_PDF2180 <- data.table(read.csv(file=config$codon_variant_table_file_PDF2180,stringsAsFactors=F)); dt_PDF2180[,sublibrary:=library]
+dt_panmerbeco <- data.table(read.csv(file=config$nt_variant_table_file_panmerbeco,stringsAsFactors=F)); dt_panmerbeco[,sublibrary:=library]
+#remove panmerbeco wts with muts
+dt_panmerbeco <- dt_panmerbeco[has_substitutions=="False",]
 
-dt <- rbind(dt_MERS,dt_PDF2180)
+#for panmerbeco, need to add in the manually associated barcodes, and update column heads to match the codon variant tables
+dt_manual <- data.table(read.csv(file=config$spike_in_barcodes,stringsAsFactors=F)); dt_manual[,sublibrary:=library]
+dt_panmerbeco <- rbind(dt_panmerbeco,dt_manual)
+
+dt_panmerbeco[,codon_substitutions:=""]
+dt_panmerbeco[,aa_substitutions:=""]
+dt_panmerbeco[,n_codon_substitutions:=0]
+dt_panmerbeco[,n_aa_substitutions:=0]
+
+dt <- rbindlist(list(dt_MERS_rpk,
+                     dt_PDF2180,
+                     dt_panmerbeco[,.(target, library, barcode, variant_call_support, codon_substitutions, aa_substitutions, n_codon_substitutions, n_aa_substitutions, sublibrary)]),
+                use.names=T)
 
 head(dt)
 ```
@@ -61,6 +76,26 @@ head(dt_pool1)
 dt_pool2 <- dt[sublibrary %in% config$pool2]
 dt_pool2[,library:="pool2"]
 head(dt_pool2)
+
+#pool3
+dt_pool3 <- dt[sublibrary %in% config$pool3]
+dt_pool3[,library:="pool3"]
+head(dt_pool3)
+
+#pool4
+dt_pool4 <- dt[sublibrary %in% config$pool4]
+dt_pool4[,library:="pool4"]
+head(dt_pool4)
+
+#pool5
+dt_pool5 <- dt[sublibrary %in% config$pool5]
+dt_pool5[,library:="pool5"]
+head(dt_pool5)
+
+#pool6
+dt_pool6 <- dt[sublibrary %in% config$pool6]
+dt_pool6[,library:="pool6"]
+head(dt_pool6)
 
 ```
 
@@ -90,17 +125,64 @@ if(nrow(duplicates_pool2) > 0){
 dt_pool2 <- dt_pool2[duplicate==FALSE,]; dt_pool2[,duplicate:=NULL]
 print(paste("Removed", nrow(duplicates_pool2), "repeated barcodes from pool2"))
 
+#pool3
+duplicates_pool3 <- dt_pool3[duplicated(dt_pool3,by=c("barcode","library")),.(library,barcode)] #the data.table duplciates function annoyingly only flags the first of each duplicate so doesn't intrinsically allow removal of both of the entries of the duplicate. So, flag what are duplicates, and then remove
+dt_pool3[,duplicate:=FALSE]
+if(nrow(duplicates_pool3) > 0){
+  for(i in 1:nrow(duplicates_pool3)){
+    dt_pool3[library==duplicates_pool3[i,library] & barcode==duplicates_pool3[i,barcode],duplicate:=TRUE]
+  }
+}
+dt_pool3 <- dt_pool3[duplicate==FALSE,]; dt_pool3[,duplicate:=NULL]
+print(paste("Removed", nrow(duplicates_pool3), "repeated barcodes from pool3"))
+
+
+#pool4
+duplicates_pool4 <- dt_pool4[duplicated(dt_pool4,by=c("barcode","library")),.(library,barcode)] #the data.table duplciates function annoyingly only flags the first of each duplicate so doesn't intrinsically allow removal of both of the entries of the duplicate. So, flag what are duplicates, and then remove
+dt_pool4[,duplicate:=FALSE]
+if(nrow(duplicates_pool4) > 0){
+  for(i in 1:nrow(duplicates_pool4)){
+    dt_pool4[library==duplicates_pool4[i,library] & barcode==duplicates_pool4[i,barcode],duplicate:=TRUE]
+  }
+}
+dt_pool4 <- dt_pool4[duplicate==FALSE,]; dt_pool4[,duplicate:=NULL]
+print(paste("Removed", nrow(duplicates_pool4), "repeated barcodes from pool4"))
+
+#pool5
+duplicates_pool5 <- dt_pool5[duplicated(dt_pool5,by=c("barcode","library")),.(library,barcode)] #the data.table duplciates function annoyingly only flags the first of each duplicate so doesn't intrinsically allow removal of both of the entries of the duplicate. So, flag what are duplicates, and then remove
+dt_pool5[,duplicate:=FALSE]
+if(nrow(duplicates_pool5) > 0){
+  for(i in 1:nrow(duplicates_pool5)){
+    dt_pool5[library==duplicates_pool5[i,library] & barcode==duplicates_pool5[i,barcode],duplicate:=TRUE]
+  }
+}
+dt_pool5 <- dt_pool5[duplicate==FALSE,]; dt_pool5[,duplicate:=NULL]
+print(paste("Removed", nrow(duplicates_pool5), "repeated barcodes from pool5"))
+
+
+#pool6
+duplicates_pool6 <- dt_pool6[duplicated(dt_pool6,by=c("barcode","library")),.(library,barcode)] #the data.table duplciates function annoyingly only flags the first of each duplicate so doesn't intrinsically allow removal of both of the entries of the duplicate. So, flag what are duplicates, and then remove
+dt_pool6[,duplicate:=FALSE]
+if(nrow(duplicates_pool6) > 0){
+  for(i in 1:nrow(duplicates_pool6)){
+    dt_pool6[library==duplicates_pool6[i,library] & barcode==duplicates_pool6[i,barcode],duplicate:=TRUE]
+  }
+}
+dt_pool6 <- dt_pool6[duplicate==FALSE,]; dt_pool6[,duplicate:=NULL]
+print(paste("Removed", nrow(duplicates_pool6), "repeated barcodes from pool6"))
+
+
 ```
 
 Merge the per-pool tables back into one aggregate data table and save.
 
 ```{r aggregate_and_save}
 
-dt_final <- rbind(dt_pool1, dt_pool2)
+dt_final <- rbind(dt_pool1, dt_pool2, dt_pool3, dt_pool4, dt_pool5, dt_pool6)
 
 dt_final %>%
   write.csv(file=config$codon_variant_table_file_pools, row.names=F)
 
-
+head(dt_final)
 ```
 

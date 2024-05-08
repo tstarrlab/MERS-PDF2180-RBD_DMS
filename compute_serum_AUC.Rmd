@@ -1,0 +1,292 @@
+---
+title: "Compute per-barcode binding to MERS serum sample"
+author: "Tyler Starr"
+date: "4/25/2024"
+output:
+  github_document:
+    html_preview: false
+editor_options: 
+  chunk_output_type: inline
+---
+
+This notebook reads in per-barcode counts from `count_variants.ipynb` for sera-binding titration experiments, computes functional scores for RBD binding values via delta-AUC metrics, and does some basic QC on variant binding functional scores.
+
+```{r setup, message=FALSE, warning=FALSE, error=FALSE}
+require("knitr")
+knitr::opts_chunk$set(echo = T)
+knitr::opts_chunk$set(dev.args = list(png = list(type = "cairo")))
+
+#list of packages to install/load
+packages = c("yaml","data.table","tidyverse","gridExtra")
+#install any packages not already installed
+installed_packages <- packages %in% rownames(installed.packages())
+if(any(installed_packages == F)){
+  install.packages(packages[!installed_packages],
+                   lib=c(paste("/uufs/chpc.utah.edu/common/home/",Sys.getenv("USER"),"/RLibs/",Sys.getenv("R_VERSION"),sep="")),
+                   repos=c("http://cran.us.r-project.org"))
+}
+#load packages
+invisible(lapply(packages, library, character.only=T))
+
+#read in config file
+config <- read_yaml("config.yaml")
+
+#make output directory
+if(!file.exists(config$sera_delta_AUC_dir)){
+  dir.create(file.path(config$sera_delta_AUC_dir))
+}
+```
+Session info for reproducing environment:
+```{r print_sessionInfo}
+sessionInfo()
+```
+
+## Setup
+First, we will read in metadata on our sort samples, the table giving number of reads of each barcode in each of the sort bins, and the barcode-variant lookup tables, and merge these tables together.
+
+```{r input_data}
+#read dataframe with list of barcode runs
+barcode_runs <- read.csv(file=config$barcode_runs,stringsAsFactors=F); barcode_runs <- subset(barcode_runs, select=-c(R1))
+
+#eliminate rows from barcode_runs that are not from an tite-seq experiment
+barcode_runs <- barcode_runs[barcode_runs$sample_type == "serum",]
+
+#read file giving count of each barcode in each sort partition
+counts <- data.table(read.csv(file=config$variant_counts_file,stringsAsFactors=F))
+
+#eliminate rows from counts that are not part of an titration bin sample
+counts <- subset(counts, sample %in% barcode_runs[barcode_runs$sample_type=="serum","sample"])
+
+#read in barcode-variant lookup tables
+dt <- data.table(read.csv(file=config$codon_variant_table_file_pools,stringsAsFactors=F))
+
+dt <- merge(counts, dt, by=c("library","barcode"));rm(counts)
+
+#make tables giving names of Titeseq samples and the corresponding serum incubation concentrations
+
+samples_serum <- data.frame(sample=sort(unique(paste(rep("serum",5),formatC(barcode_runs[barcode_runs$sample_type=="serum","concentration"], width=2,flag="0"),sep="_"))),conc=c(1/100,1/1000,1/10000,1/100000,0))
+```
+
+ Convert from Illumina read counts to estimates of the number of cells that were sorted into a bin, and add some other useful information to our data frame.
+ 
+```{r downweight_counts_by_cells}
+#for each bin, normalize the read counts to the observed ratio of cell recovery among bins
+for(i in 1:nrow(barcode_runs)){
+  lib <- as.character(barcode_runs$library[i])
+  bin <- as.character(barcode_runs$sample[i])
+  ratio <- sum(dt[library==lib & sample==bin,"count"])/barcode_runs$number_cells[i]
+  if(ratio<1){ #if there are fewer reads from a FACS bin than cells sorted
+    dt[library==lib & sample==bin, count.norm := as.numeric(count)] #don't normalize cell counts, make count.norm the same as count
+    print(paste("reads < cells for",lib,bin,", un-normalized (ratio",ratio,")")) #print to console to inform of undersampled bins
+  }else{
+    dt[library==lib & sample==bin, count.norm := as.numeric(count/ratio)] #normalize read counts by the average read:cell ratio, report in new "count.norm" column
+    print(paste("read:cell ratio for",lib,bin,"is",ratio))
+  }
+}
+
+#annotate each barcode in MERS library as to whether it's a homolog variant, wildtype, synonymous muts only, stop, nonsynonymous, >1 nonsynonymous mutations, or just the name of the target for the pan-merbeco library
+dt[,variant_class:=as.character(NA)]
+dt[sublibrary %in% c("lib84", "lib85") & n_codon_substitutions==0, variant_class := "wildtype"]
+dt[sublibrary %in% c("lib84", "lib85") & n_codon_substitutions > 0 & n_aa_substitutions==0, variant_class := "synonymous"]
+dt[sublibrary %in% c("lib84", "lib85") & n_aa_substitutions>0 & grepl("*",aa_substitutions,fixed=T), variant_class := "stop"]
+dt[sublibrary %in% c("lib84", "lib85") & n_aa_substitutions == 1 & !grepl("*",aa_substitutions,fixed=T), variant_class := "1 nonsynonymous"]
+dt[sublibrary %in% c("lib84", "lib85") & n_aa_substitutions > 1 & !grepl("*",aa_substitutions,fixed=T), variant_class := ">1 nonsynonymous"]
+
+dt[sublibrary %in% c("lib82", "lib83"), variant_class := target]
+
+#cast the data frame into wide format
+dt <- dcast(dt, library + sublibrary + barcode + target + variant_class + aa_substitutions + n_aa_substitutions ~ sample, value.var="count.norm")
+
+```
+
+## Calculating mean bin for each barcode at each sample concentration
+Next, for each barcode at each of the sera concentrations, calculate the "mean bin" response variable. This is calculated as a simple mean, where the value of each bin is the integer value of the bin (bin1=unbound, bin4=highly bound) -- because of how bins are defined, the mean fluorescence of cells in each bin are equally spaced on a log-normal scale, so mean bin correlates with simple mean fluorescence.
+
+We do not use the fluorescence boundaries of the FACS bins in our calculations here, but we provide them for posterity's sake below.
+
+``
+
+```{r calculate_mean_bin}
+#function that returns mean bin and sum of counts for four bins cell counts. Includes cutoffs for bimodal sample splits to filter out
+calc.meanbin <- function(vec, split13filter=0.4, split24filter=0.4, split14filter=0.2){
+  total <- sum(vec)
+  if(is.na(total) | (vec[1] > split13filter*total & vec[3] > split13filter*total) | (vec[2] > split24filter*total & vec[4] > split24filter*total) | (vec[1] > split14filter*total & vec[4] > split14filter*total)){
+    return(list(as.numeric(NA),as.numeric(NA)))
+  }else{
+    return( list(as.numeric((vec[1]*1+vec[2]*2+vec[3]*3+vec[4]*4)/(vec[1]+vec[2]+vec[3]+vec[4])), as.numeric(total)) )
+  }
+}
+  
+
+#iterate through titration samples, compute mean_bin and total_count for each barcode variant
+#serum
+for(i in 1:nrow(samples_serum)){ #iterate through titeseq sample (concentration)
+  meanbin_out <- paste(samples_serum[i,"sample"],"_meanbin",sep="") #define the header name for the meanbin output for the given concentration sample
+  totalcount_out <- paste(samples_serum[i,"sample"],"_totalcount",sep="") #define the header name for the total cell count output for the given concentration sample
+  bin1_in <- paste(samples_serum[i,"sample"],"_bin1",sep="") #define the header names for the input cell counts for bins1-4 of the given concnetration sample
+  bin2_in <- paste(samples_serum[i,"sample"],"_bin2",sep="")
+  bin3_in <- paste(samples_serum[i,"sample"],"_bin3",sep="")
+  bin4_in <- paste(samples_serum[i,"sample"],"_bin4",sep="")
+  dt[,c(meanbin_out,totalcount_out) := calc.meanbin(c(get(bin1_in),get(bin2_in),get(bin3_in),get(bin4_in))),by=c("barcode","library")]
+}
+
+```
+
+## Calculate per-bc AUC metrics
+We will calculate a simple AUC metric across each barcode's titration series. We will also include a minimum cell count that is required for a meanbin estimate to be used in the titration fit, and a minimum number of concentrations with determined meanbin that is required for a titration to be reported. 
+
+```{r fit_titrations}
+#For QC and filtering, output columns giving the average number of cells that were sampled for a barcode across the 9 sample concentrations, and a value for the number of meanbin estimates that were removed for being below the # of cells cutoff
+cutoff <- 2
+
+#serum
+dt[,`serum_avgcount` := mean(c(`serum_01_totalcount`,`serum_02_totalcount`,`serum_03_totalcount`,
+                             `serum_04_totalcount`,`serum_05_totalcount`),na.rm=T),by=c("library","barcode")]
+
+#number of concentrations at which meanbin is calculated from < cutoff cells or is missing b/c filtered for bimodality
+dt[,`serum_min_cell_filtered` := sum(c(c(`serum_01_totalcount`,`serum_02_totalcount`,`serum_03_totalcount`,
+                                       `serum_04_totalcount`,`serum_05_totalcount`)<cutoff,
+                                     is.na(c(`serum_01_totalcount`,`serum_02_totalcount`,`serum_03_totalcount`,
+                                       `serum_04_totalcount`,`serum_05_totalcount`))),na.rm=T),by=c("library","barcode")]
+
+#function that calculates an AUC metric across four log-spaced points and a zero-point for substraction, including an option to filter below certain thresholds for average cells across all samples, and number of samples below a cutoff of cells
+fit.auc <- function(x.vals,y.vals,zero.val,count.vals,zero.count.val,min.cfu=cutoff){
+  if(sum(!is.na(y.vals))==4 & !is.na(zero.val)){
+    if(sum(count.vals > min.cfu) == length(count.vals) & zero.count.val > min.cfu){
+      y.bg <- y.vals - zero.val
+      y.bg[y.bg<0] <- 0
+      auc <- sum(diff(rev(x.vals)) * (head(rev(y.bg),-1)+tail(rev(y.bg),-1)))/2 #reverse order, I supply high to low but I want low to high
+      return(auc)
+    }else{
+      return(as.numeric(NA))
+    }
+  }else{
+    return(as.numeric(NA))
+  }
+}
+
+#fit auc to serum serum sera data for each barcode
+dt[,c("serum_AUC") := fit.auc(x.vals=log10(samples_serum$conc[1:4]),
+                              y.vals=c(`serum_01_meanbin`,`serum_02_meanbin`,`serum_03_meanbin`,`serum_04_meanbin`),
+                      zero.val=`serum_05_meanbin`,
+                      count.vals=c(`serum_01_totalcount`,`serum_02_totalcount`,`serum_03_totalcount`,`serum_04_totalcount`),
+                      zero.count.val=`serum_05_totalcount`),
+   by=c("library","barcode")]
+
+```
+## QC and sanity checks
+We will do some QC to make sure we got good titration curves for most of our library barcodes.
+
+Let's visualize the AUC binding measurements as violin plots for the different wildtype targets, for each serum metric. This is pretty worthless!
+
+```{r binding_distribution_vioplot_serum, echo=T, fig.width=30, fig.height=18, fig.align="center", dpi=300,dev="png"}
+p1 <- ggplot(dt[!is.na(`serum_AUC`),],aes(x=variant_class,y=`serum_AUC`))+
+  geom_violin(scale="width")+stat_summary(fun=median,geom="point",size=1)+
+  ggtitle("serum sera AUC")+xlab("variant class")+theme(axis.text.x=element_text(angle=-90,hjust=0))+
+  facet_wrap(~target,nrow=1)
+
+grid.arrange(p1,ncol=1)
+
+#save pdf
+invisible(dev.print(pdf, paste(config$sera_delta_AUC_dir,"/violin-plot_AUC-by-target_serum.pdf",sep="")))
+```
+
+## Save barcode-level metrics
+
+Before we collapse bcs down to final mutant/variant-level phenotypes, integrate things like expression effects of variants, and visualize final phenotypes, save file of per-barcode measurements.
+
+```{r output_data_barcode-level}
+dt[,.(library,sublibrary,barcode,target,variant_class,aa_substitutions,n_aa_substitutions,
+     `serum_avgcount`,`serum_AUC`)] %>%
+  mutate_if(is.numeric, round, digits=6) %>%
+  write.csv(file=config$sera_delta_AUC_file, row.names=F)
+
+```
+
+## Plot representative binding curves
+
+Want to illustrate representative binding curves from which AUCs were measured. Will do, for e.g. wildtype MERS versus some other representatives
+* haven't updated this code *
+
+
+```{r binding_curves_serum, echo=T, fig.width=16.5, fig.height=2.75, fig.align="center", dpi=300,dev="png"}
+# par(mfrow=c(1,6))
+# 
+# #SARS-CoV-2_WH1
+# #set empty plot window
+# plot(NULL,NULL,xlim=c(10^-6,10^-2),ylim=c(1,4),log="x",main="mouse1.4, SARS-CoV-2_WH1",ylab="serum binding (mean FACS bin)",xlab="serum dilution")
+# #put in faint points per-replicate
+# y <- dt[target=="SARS-CoV-2_WH1" & sublibrary=="lib47_SARSr-wts" & `mouse1-4_05_totalcount` > cutoff,`mouse1-4_05_meanbin`]
+# points(rep(10^-6,length(y)),y,pch=16,col="#7f7f7f02")
+# y <- dt[target=="SARS-CoV-2_WH1" & sublibrary=="lib47_SARSr-wts" & `mouse1-4_04_totalcount` > cutoff,`mouse1-4_04_meanbin`]
+# points(rep(10^-5,length(y)),y,pch=16,col="#7f7f7f02")
+# y <- dt[target=="SARS-CoV-2_WH1" & sublibrary=="lib47_SARSr-wts" & `mouse1-4_03_totalcount` > cutoff,`mouse1-4_03_meanbin`]
+# points(rep(10^-4,length(y)),y,pch=16,col="#7f7f7f02")
+# y <- dt[target=="SARS-CoV-2_WH1" & sublibrary=="lib47_SARSr-wts" & `mouse1-4_02_totalcount` > cutoff,`mouse1-4_02_meanbin`]
+# points(rep(10^-3,length(y)),y,pch=16,col="#7f7f7f02")
+# y <- dt[target=="SARS-CoV-2_WH1" & sublibrary=="lib47_SARSr-wts" & `mouse1-4_01_totalcount` > cutoff,`mouse1-4_01_meanbin`]
+# points(rep(10^-2,length(y)),y,pch=16,col="#7f7f7f02")
+# #put in black line for the average
+# y1 <- mean(dt[target=="SARS-CoV-2_WH1" & sublibrary=="lib47_SARSr-wts" & `mouse1-4_05_totalcount` > cutoff,`mouse1-4_05_meanbin`],na.rm=T)
+# points(10^-6,y1,pch=16,col="black")
+# y2 <- mean(dt[target=="SARS-CoV-2_WH1" & sublibrary=="lib47_SARSr-wts" & `mouse1-4_04_totalcount` > cutoff,`mouse1-4_04_meanbin`],na.rm=T)
+# points(10^-5,y2,pch=16,col="black")
+# y3 <- mean(dt[target=="SARS-CoV-2_WH1" & sublibrary=="lib47_SARSr-wts" & `mouse1-4_03_totalcount` > cutoff,`mouse1-4_03_meanbin`],na.rm=T)
+# points(10^-4,y3,pch=16,col="black")
+# y4 <- mean(dt[target=="SARS-CoV-2_WH1" & sublibrary=="lib47_SARSr-wts" & `mouse1-4_02_totalcount` > cutoff,`mouse1-4_02_meanbin`],na.rm=T)
+# points(10^-3,y4,pch=16,col="black")
+# y5 <- mean(dt[target=="SARS-CoV-2_WH1" & sublibrary=="lib47_SARSr-wts" & `mouse1-4_01_totalcount` > cutoff,`mouse1-4_01_meanbin`],na.rm=T)
+# points(10^-2,y5,pch=16,col="black")
+# #connect average points with lines
+# lines(c(10^-5, 10^-4),c(y2, y3),lwd=1.5,col="black",lty=2)
+# lines(c(10^-4, 10^-3),c(y3, y4),lwd=1.5,col="black",lty=2)
+# lines(c(10^-3, 10^-2),c(y4, y5),lwd=1.5,col="black",lty=2)
+# abline(h=y1,lty=2,col="gray50")
+# legend("topleft",bty="n",cex=1,legend=paste("mean AUC: "))
+# 
+# #save pdf
+# invisible(dev.print(pdf, paste(config$sera_delta_AUC_dir,"/representative-plots_serum.pdf",sep="")))
+```
+
+## Plot all curves
+
+```{r binding_curves_all, echo=T, fig.width=16.5, fig.height=2.75, fig.align="center", dpi=300,dev="png"}
+par(mfrow=c(1,6))
+
+# for(bg in c(unique(dt$target)){
+#   #mouse1-4
+#   #set empty plot window
+#   plot(NULL,NULL,xlim=c(10^-6,10^-2),ylim=c(1,4),log="x",main=paste(bg,", mouse1-4"),ylab="serum binding (mean FACS bin)",xlab="serum dilution (10^-6 = 0)")
+#   #put in faint points per-barcode
+#   y <- dt[target==bg & variant_class=="wildtype" & `mouse1-4_05_totalcount` > cutoff,`mouse1-4_05_meanbin`]
+#   points(rep(10^-6,length(y)),y,pch=16,col="#7f7f7f02")
+#   y <- dt[target==bg & variant_class=="wildtype" & `mouse1-4_04_totalcount` > cutoff,`mouse1-4_04_meanbin`]
+#   points(rep(10^-5,length(y)),y,pch=16,col="#7f7f7f02")
+#   y <- dt[target==bg & variant_class=="wildtype" & `mouse1-4_03_totalcount` > cutoff,`mouse1-4_03_meanbin`]
+#   points(rep(10^-4,length(y)),y,pch=16,col="#7f7f7f02")
+#   y <- dt[target==bg & variant_class=="wildtype" & `mouse1-4_02_totalcount` > cutoff,`mouse1-4_02_meanbin`]
+#   points(rep(10^-3,length(y)),y,pch=16,col="#7f7f7f02")
+#   y <- dt[target==bg & variant_class=="wildtype" & `mouse1-4_01_totalcount` > cutoff,`mouse1-4_01_meanbin`]
+#   points(rep(10^-2,length(y)),y,pch=16,col="#7f7f7f02")
+#   #put in black line for the average
+#   y1 <- mean(dt[target==bg & variant_class=="wildtype" & `mouse1-4_05_totalcount` > cutoff,`mouse1-4_05_meanbin`],na.rm=T)
+#   points(10^-6,y1,pch=16,col="black")
+#   y2 <- mean(dt[target==bg & variant_class=="wildtype" & `mouse1-4_05_totalcount` > cutoff,`mouse1-4_04_meanbin`],na.rm=T)
+#   points(10^-5,y2,pch=16,col="black")
+#   y3 <- mean(dt[target==bg & variant_class=="wildtype" & `mouse1-4_05_totalcount` > cutoff,`mouse1-4_03_meanbin`],na.rm=T)
+#   points(10^-4,y3,pch=16,col="black")
+#   y4 <- mean(dt[target==bg & variant_class=="wildtype" & `mouse1-4_05_totalcount` > cutoff,`mouse1-4_02_meanbin`],na.rm=T)
+#   points(10^-3,y4,pch=16,col="black")
+#   y5 <- mean(dt[target==bg & variant_class=="wildtype" & `mouse1-4_05_totalcount` > cutoff,`mouse1-4_01_meanbin`],na.rm=T)
+#   points(10^-2,y5,pch=16,col="black")
+#   #connect average points with lines
+#   lines(c(10^-5, 10^-4),c(y2, y3),lwd=1.5,col="black",lty=2)
+#   lines(c(10^-4, 10^-3),c(y3, y4),lwd=1.5,col="black",lty=2)
+#   lines(c(10^-3, 10^-2),c(y4, y5),lwd=1.5,col="black",lty=2)
+#   abline(h=y1,lty=2,col="gray50")
+#   
+
+
+```
+
+

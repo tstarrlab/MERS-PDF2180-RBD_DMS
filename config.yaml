@@ -21,6 +21,9 @@ seqdata_source: local
 # list of PacBio sequencing runs linking barcodes to variants
 pacbio_runs: data/PacBio_runs.csv
 
+# table of barcode-variant associations that were established via Sanger sequencing external to this pipeline
+spike_in_barcodes: data/spike-in_barcodes.csv
+
 # list of Illumina sequencing runs of barcodes
 barcode_runs: data/barcode_runs.csv
 
@@ -31,14 +34,304 @@ site_number_offset: 376  # add this to sequential sites to get MERS RBD numberin
 # pdbs for mapping, analysis
 
 # libraries as defined in PacBio_runs.csv that are merged into the pools defined in barcode_runs.csv
-pool1:
- - lib51
+pool1: #MERS-rpk plus pan-merbeco, rep1
+ - lib84
+ - lib82
+pool2:  #MERS-rpk plus pan-merbeco, rep2
+ - lib85
+ - lib83
+pool3: #PDF-2180 plus pan-merbeco, rep1
  - lib53
-pool2:
- - lib52
+ - lib82
+pool4:  #PDF-2180 plus pan-merbeco, rep2
+ - lib54
+ - lib83
+pool5: #MERS-rpk plus PDF-2180 plus pan-merbeco, rep1
+ - lib84
+ - lib82
+ - lib53
+pool6: #MERS-rpk plus PDF-2180 plus pan-merbeco, rep2
+ - lib85
+ - lib83
  - lib54
 
 
+# groups and orders of targets for plotting in heatmaps organized by phylogeny
+
+targets_ordered:
+  - AncMerbeco1_MAP
+  - AncMerbeco1_alt
+  - AncNeoGhEri_MAP
+  - AncNeoGhEri_alt
+  - KW2EF93Gha2010
+  - AncNeoEri_MAP
+  - AncNeoEri_alt
+  - AncEri_MAP
+  - AncEri_alt
+  - EriCoV_Deu174
+  - EriCoV_GB1
+  - EriCoV_Ita5026511
+  - EriCoV_HKU31
+  - EriCoV_Ita5026517
+  - EriCoV_Ita5026515
+  - EriCoV_Ita5026512
+  - EriCoV_Ita1169881
+  - EriCoV_Ita502651
+  - EriCoV_Ita5026519
+  - AncNeo_MAP
+  - AncNeo_alt
+  - PDF2180
+  - NeoCoV
+  - AncMerbeco2_MAP
+  - AncMerbeco2_alt
+  - Russia_MOW1522
+  - PnNL2018B
+  - AncMerbeco3_MAP
+  - AncMerbeco3_alt
+  - AncHKU25HKU5_MAP
+  - AncHKU25HKU5_alt
+  - AncHKU5_MAP
+  - AncHKU5_alt
+  - AncHKU5a_MAP
+  - AncHKU5a_alt
+  - AncHKU5b_MAP
+  - AncHKU5b_alt
+  - HKU5r_21S
+  - HKU5r_19S
+  - HKU5r_YD13403
+  - HKU5
+  - HKU5r_BY140562
+  - HKU5r_31S
+  - HKU5r_30S
+  - HKU5r_A4342005
+  - HKU5r_32S
+  - HKU5r_27S
+  - HKU5r_20S
+  - HKU5r_BY140568
+  - HKU5r_BY140535
+  - HKU5r_33S
+  - HKU5r_2
+  - HKU5r_Wenzhou1
+  - HKU5r_24S
+  - HKU5r_17S
+  - AncHKU25_MAP
+  - AncHKU25_alt
+  - AncHKU25a_MAP
+  - AncHKU25a_alt
+  - AncHKU25b_MAP
+  - AncHKU25b_alt
+  - AncHKU25c_MAP
+  - AncHKU25c_alt
+  - AncHKU25d_MAP
+  - AncHKU25d_alt
+  - AncHKU25e_MAP
+  - AncHKU25e_alt
+  - AncHKU25f_MAP
+  - AncHKU25f_alt
+  - AncHKU25g_MAP
+  - AncHKU25g_alt
+  - AncHKU25h_MAP
+  - AncHKU25h_alt
+  - HKU25_NL140462
+  - NL140455
+  - EjCoV3
+  - NL13892
+  - HKU25_YD131305
+  - VsCoV1
+  - BatCoV_SWI2
+  - BatCoV_SWI1
+  - PaGB01
+  - PkCoV_Ita20664563
+  - HsCoV_Ita20664540
+  - VsCoVa7
+  - VsCoVkj15
+  - SC2013
+  - AncMERSHKU4_MAP
+  - AncMERSHKU4_alt
+  - AncHKU4_MAP
+  - AncHKU4_alt
+  - AncHKU4a_MAP
+  - AncHKU4a_alt
+  - AncHKU4b_MAP
+  - AncHKU4b_alt
+  - AncHKU4c_MAP
+  - AncHKU4c_alt
+  - AncHKU4d_MAP
+  - AncHKU4d_alt
+  - HKU4r_GZ1862
+  - HKU4r_CZ01
+  - HKU4r_GZ160421
+  - HKU4r_BtCoV_1332005
+  - HKU4
+  - HKU4r_161028
+  - HKU4r_JPDB144
+  - HKU4r_162275
+  - HKU4r_panP251T
+  - MjHKU4r1
+  - NL140422
+  - BtCoV_B12080
+  - NL13845
+  - cMERS_ANI69889
+  - cMERS_ALA49374
+  - hMERS_AKM76239
+  - hMERS_AMQ48993
+  - cMERS_ALA49341
+  - hMERS_EMC2012
+  - cMERS_ANI69835
+  - cMERS_AMO03401
+
+
+targets_extant:
+  - KW2EF93Gha2010
+  - EriCoV_Deu174
+  - EriCoV_GB1
+  - EriCoV_Ita5026511
+  - EriCoV_HKU31
+  - EriCoV_Ita5026517
+  - EriCoV_Ita5026515
+  - EriCoV_Ita5026512
+  - EriCoV_Ita1169881
+  - EriCoV_Ita502651
+  - EriCoV_Ita5026519
+  - PDF2180
+  - NeoCoV
+  - Russia_MOW1522
+  - PnNL2018B
+  - HKU5r_21S
+  - HKU5r_19S
+  - HKU5r_YD13403
+  - HKU5
+  - HKU5r_BY140562
+  - HKU5r_31S
+  - HKU5r_30S
+  - HKU5r_A4342005
+  - HKU5r_32S
+  - HKU5r_27S
+  - HKU5r_20S
+  - HKU5r_BY140568
+  - HKU5r_BY140535
+  - HKU5r_33S
+  - HKU5r_2
+  - HKU5r_Wenzhou1
+  - HKU5r_24S
+  - HKU5r_17S
+  - HKU25_NL140462
+  - NL140455
+  - EjCoV3
+  - NL13892
+  - HKU25_YD131305
+  - VsCoV1
+  - BatCoV_SWI2
+  - BatCoV_SWI1
+  - PaGB01
+  - PkCoV_Ita20664563
+  - HsCoV_Ita20664540
+  - VsCoVa7
+  - VsCoVkj15
+  - SC2013
+  - HKU4r_GZ1862
+  - HKU4r_CZ01
+  - HKU4r_GZ160421
+  - HKU4r_BtCoV_1332005
+  - HKU4
+  - HKU4r_161028
+  - HKU4r_JPDB144
+  - HKU4r_162275
+  - HKU4r_panP251T
+  - MjHKU4r1
+  - NL140422
+  - BtCoV_B12080
+  - NL13845
+  - cMERS_ANI69889
+  - cMERS_ALA49374
+  - hMERS_AKM76239
+  - hMERS_AMQ48993
+  - cMERS_ALA49341
+  - hMERS_EMC2012
+  - cMERS_ANI69835
+  - cMERS_AMO03401
+
+ancestors_MAP:
+  - AncMerbeco1_MAP
+  - AncNeoGhEri_MAP
+  - AncNeoEri_MAP
+  - AncNeo_MAP
+  - AncEri_MAP
+  - AncMerbeco2_MAP
+  - AncMerbeco3_MAP
+  - AncHKU25HKU5_MAP
+  - AncHKU5_MAP
+  - AncHKU5a_MAP
+  - AncHKU5b_MAP
+  - AncHKU25_MAP
+  - AncHKU25a_MAP
+  - AncHKU25b_MAP
+  - AncHKU25c_MAP
+  - AncHKU25d_MAP
+  - AncHKU25e_MAP
+  - AncHKU25f_MAP
+  - AncHKU25g_MAP
+  - AncHKU25h_MAP
+  - AncMERSHKU4_MAP
+  - AncHKU4_MAP
+  - AncHKU4a_MAP
+  - AncHKU4b_MAP
+  - AncHKU4c_MAP
+  - AncHKU4d_MAP
+
+ancestors_MAP_v_alt:
+  - AncMerbeco1_MAP
+  - AncMerbeco1_alt
+  - AncNeoGhEri_MAP
+  - AncNeoGhEri_alt
+  - AncNeoEri_MAP
+  - AncNeoEri_alt
+  - AncNeo_MAP
+  - AncNeo_alt
+  - AncEri_MAP
+  - AncEri_alt
+  - AncMerbeco2_MAP
+  - AncMerbeco2_alt
+  - AncMerbeco3_MAP
+  - AncMerbeco3_alt
+  - AncHKU25HKU5_MAP
+  - AncHKU25HKU5_alt
+  - AncHKU5_MAP
+  - AncHKU5_alt
+  - AncHKU5a_MAP
+  - AncHKU5a_alt
+  - AncHKU5b_MAP
+  - AncHKU5b_alt
+  - AncHKU25_MAP
+  - AncHKU25_alt
+  - AncHKU25a_MAP
+  - AncHKU25a_alt
+  - AncHKU25b_MAP
+  - AncHKU25b_alt
+  - AncHKU25c_MAP
+  - AncHKU25c_alt
+  - AncHKU25d_MAP
+  - AncHKU25d_alt
+  - AncHKU25e_MAP
+  - AncHKU25e_alt
+  - AncHKU25f_MAP
+  - AncHKU25f_alt
+  - AncHKU25g_MAP
+  - AncHKU25g_alt
+  - AncHKU25h_MAP
+  - AncHKU25h_alt
+  - AncMERSHKU4_MAP
+  - AncMERSHKU4_alt
+  - AncHKU4_MAP
+  - AncHKU4_alt
+  - AncHKU4a_MAP
+  - AncHKU4a_alt
+  - AncHKU4b_MAP
+  - AncHKU4b_alt
+  - AncHKU4c_MAP
+  - AncHKU4c_alt
+  - AncHKU4d_MAP
+  - AncHKU4d_alt
 
 # URLs from which we download binding & expression of mutants & variants and surveillance count data
 
@@ -67,16 +360,26 @@ codon_variant_table_file_PDF2180: results/variants/codon_variant_table_PDF2180.c
 codon_variant_table_file_pools: results/variants/codon_variant_table_pools.csv
 
 counts_dir: results/counts
-variant_counts_file: results/counts/variant_counts.csv
+variant_counts_file: results/counts/variant_counts.csv.gz
 
 expression_sortseq_dir: results/expression_meanF
 expression_sortseq_file: results/expression_meanF/bc_expression.csv
 
 Titeseq_Kds_dir: results/binding_Kd
 Titeseq_Kds_file_hDPP4: results/binding_Kd/bc_binding_hDPP4.csv
+Titeseq_Kds_file_ApACE2: results/binding_Kd/bc_binding_ApACE2.csv
+
+sera_delta_AUC_dir: results/bc_sera_binding/
+sera_delta_AUC_file: results/bc_sera_binding/bc_sera_binding.csv
+
+mAb_EC50_dir: results/bc_mAb_EC50/
+mAb_EC50_file: results/bc_mAb_EC50/bc_mAb_EC50.csv
 
 final_variant_scores_dir: results/final_variant_scores
-final_variant_scores_mut_file: results/final_variant_scores/final_variant_scores.csv
+final_variant_scores_mut_file_MERS_rpk: results/final_variant_scores/final_variant_scores_MERS_rpk.csv
+final_variant_scores_mut_file_PDF2180: results/final_variant_scores/final_variant_scores_PDF2180.csv
+final_variant_scores_file_panmerbeco: results/final_variant_scores/final_variant_scores_panmerbeco.csv
+
 epistatic_shifts_dir: results/epistatic_shifts
 JSD_v_WH1_file: results/epistatic_shifts/JSD_versus_Wuhan1_by_target.csv
 JSD_v_WH1_expr_file: results/epistatic_shifts/JSD_versus_Wuhan1_EXPRESSION_by_target.csv

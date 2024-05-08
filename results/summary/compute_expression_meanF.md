@@ -73,12 +73,12 @@ sessionInfo()
     ## [17] modelr_0.1.8     readxl_1.3.1     lifecycle_1.0.3  munsell_0.5.0   
     ## [21] gtable_0.3.0     cellranger_1.1.0 rvest_1.0.2      evaluate_0.15   
     ## [25] tzdb_0.2.0       fastmap_1.1.0    fansi_1.0.2      broom_0.7.12    
-    ## [29] Rcpp_1.0.11      backports_1.4.1  scales_1.2.1     jsonlite_1.8.0  
+    ## [29] Rcpp_1.0.11      backports_1.4.1  scales_1.2.1     jsonlite_1.8.7  
     ## [33] fs_1.5.2         hms_1.1.1        digest_0.6.29    stringi_1.7.6   
     ## [37] grid_4.1.3       cli_3.6.0        tools_4.1.3      magrittr_2.0.2  
     ## [41] crayon_1.5.0     pkgconfig_2.0.3  Matrix_1.4-0     ellipsis_0.3.2  
     ## [45] xml2_1.3.3       reprex_2.0.1     lubridate_1.8.0  rstudioapi_0.13 
-    ## [49] assertthat_0.2.1 rmarkdown_2.13   httr_1.4.2       R6_2.5.1        
+    ## [49] assertthat_0.2.1 rmarkdown_2.13   httr_1.4.7       R6_2.5.1        
     ## [53] compiler_4.1.3
 
 ## Setup
@@ -92,13 +92,13 @@ barcode-variant lookup tables, and merge these tables together.
 barcode_runs <- read.csv(file=config$barcode_runs,stringsAsFactors=F); barcode_runs <- subset(barcode_runs, select=-c(R1))
 
 #eliminate rows from barcode_runs that are not from an expression sort-seq experiment
-barcode_runs <- barcode_runs[barcode_runs$sample_type == "SortSeq",]
+barcode_runs <- barcode_runs[barcode_runs$sample_type == "expression",]
 
 #read file giving count of each barcode in each sort partition
 counts <- data.table(read.csv(file=config$variant_counts_file,stringsAsFactors=F))
 
 #eliminate rows from counts that are not part of an expression sort-seq bin
-counts <- subset(counts, sample %in% barcode_runs[barcode_runs$sample_type=="SortSeq","sample"])
+counts <- subset(counts, sample %in% barcode_runs[barcode_runs$sample_type=="expression","sample"])
 
 #read in barcode-variant lookup tables
 dt <- data.table(read.csv(file=config$codon_variant_table_file_pools,stringsAsFactors=F))
@@ -126,27 +126,28 @@ for(i in 1:nrow(barcode_runs)){
 }
 ```
 
-    ## [1] "read:cell ratio for pool1 SortSeq_bin1 is 6.70700436662283"
-    ## [1] "read:cell ratio for pool1 SortSeq_bin2 is 1.96242982611534"
-    ## [1] "read:cell ratio for pool1 SortSeq_bin3 is 1.59652295005213"
-    ## [1] "read:cell ratio for pool1 SortSeq_bin4 is 1.37641598207618"
-    ## [1] "read:cell ratio for pool2 SortSeq_bin1 is 3.96527670788625"
-    ## [1] "read:cell ratio for pool2 SortSeq_bin2 is 1.275156222184"
-    ## [1] "read:cell ratio for pool2 SortSeq_bin3 is 1.5492349200803"
-    ## [1] "read:cell ratio for pool2 SortSeq_bin4 is 1.39937661588829"
+    ## [1] "read:cell ratio for pool5 SortSeq_bin1 is 4.36920898103401"
+    ## [1] "read:cell ratio for pool5 SortSeq_bin2 is 6.06277558836704"
+    ## [1] "read:cell ratio for pool5 SortSeq_bin3 is 6.92747762498296"
+    ## [1] "read:cell ratio for pool5 SortSeq_bin4 is 6.81608351648352"
+    ## [1] "read:cell ratio for pool6 SortSeq_bin1 is 4.33498419140102"
+    ## [1] "read:cell ratio for pool6 SortSeq_bin2 is 4.91881121497295"
+    ## [1] "read:cell ratio for pool6 SortSeq_bin3 is 5.09168355291159"
+    ## [1] "read:cell ratio for pool6 SortSeq_bin4 is 5.70584377488273"
 
 ``` r
 #annotate each barcode as to whether it's a homolog variant, SARS-CoV-2 wildtype, synonymous muts only, stop, nonsynonymous, >1 nonsynonymous mutations
 dt[,variant_class:=as.character(NA)]
-dt[n_codon_substitutions==0, variant_class := "wildtype"]
-dt[n_codon_substitutions > 0 & n_aa_substitutions==0, variant_class := "synonymous"]
-dt[n_aa_substitutions>0 & grepl("*",aa_substitutions,fixed=T), variant_class := "stop"]
-dt[n_aa_substitutions>0 & grepl("-",aa_substitutions,fixed=T), variant_class := "deletion"]
-dt[n_aa_substitutions == 1 & !grepl("*",aa_substitutions,fixed=T) & !grepl("-",aa_substitutions,fixed=T), variant_class := "1 nonsynonymous"]
-dt[n_aa_substitutions > 1 & !grepl("*",aa_substitutions,fixed=T) & !grepl("-",aa_substitutions,fixed=T), variant_class := ">1 nonsynonymous"]
+dt[sublibrary %in% c("lib53","lib54","lib84", "lib85") & n_codon_substitutions==0, variant_class := "wildtype"]
+dt[sublibrary %in% c("lib53","lib54","lib84", "lib85") & n_codon_substitutions > 0 & n_aa_substitutions==0, variant_class := "synonymous"]
+dt[sublibrary %in% c("lib53","lib54","lib84", "lib85") & n_aa_substitutions>0 & grepl("*",aa_substitutions,fixed=T), variant_class := "stop"]
+dt[sublibrary %in% c("lib53","lib54","lib84", "lib85") & n_aa_substitutions == 1 & !grepl("*",aa_substitutions,fixed=T), variant_class := "1 nonsynonymous"]
+dt[sublibrary %in% c("lib53","lib54","lib84", "lib85") & n_aa_substitutions > 1 & !grepl("*",aa_substitutions,fixed=T), variant_class := ">1 nonsynonymous"]
+
+dt[sublibrary %in% c("lib82", "lib83"), variant_class := target]
 
 #cast the data frame into wide format
-dt <- dcast(dt, library + barcode + target + variant_class + aa_substitutions + n_aa_substitutions ~ sample, value.var="count.norm")
+dt <- dcast(dt, library + sublibrary + barcode + target + variant_class + aa_substitutions + n_aa_substitutions ~ sample, value.var="count.norm")
 
 #add total count corresponding to count across the four bins for each barcode
 dt[,expr_count := sum(SortSeq_bin1,SortSeq_bin2,SortSeq_bin3,SortSeq_bin4),by=c("library","barcode")]
@@ -182,12 +183,28 @@ calc.MLmean <- function(b1,b2,b3,b4,min.b1,min.b2,min.b3,min.b4,max.b4,min.count
 }
 
 #fit ML mean and sd fluorescence for each barcode, and calculate total cell count as the sum across the four bins. Multiply cell counts by a factor of 20 to minimize rounding errors since fitdistcens requires rounding to integer inputs
-invisible(dt[,c("expression","ML_sdF") := tryCatch(calc.MLmean(b1=SortSeq_bin1*20,b2=SortSeq_bin2*20,
-                                                                      b3=SortSeq_bin3*20,b4=SortSeq_bin4*20,
-                                                                      min.b1=log(20),min.b2=log(650),min.b3=log(1133),
-                                                                      min.b4=log(2015),max.b4=log(229000)),
+invisible(dt[library=="pool5",c("expression","ML_sdF") := tryCatch(calc.MLmean(b1=SortSeq_bin1*20,
+                                                                               b2=SortSeq_bin2*20,
+                                                                               b3=SortSeq_bin3*20,
+                                                                               b4=SortSeq_bin4*20,
+                                                                               min.b1=log(20),
+                                                                               min.b2=log(197.5),
+                                                                               min.b3=log(420.5),
+                                                                               min.b4=log(1143.5),
+                                                                               max.b4=log(229000)),
                                                           error=function(e){return(list(as.numeric(NA),as.numeric(NA)))}),by=c("library","barcode")])
 
+
+invisible(dt[library=="pool6",c("expression","ML_sdF") := tryCatch(calc.MLmean(b1=SortSeq_bin1*20,
+                                                                               b2=SortSeq_bin2*20,
+                                                                               b3=SortSeq_bin3*20,
+                                                                               b4=SortSeq_bin4*20,
+                                                                               min.b1=log(20),
+                                                                               min.b2=log(197.5),
+                                                                               min.b3=log(358.5),
+                                                                               min.b4=log(933.5),
+                                                                               max.b4=log(229000)),
+                                                          error=function(e){return(list(as.numeric(NA),as.numeric(NA)))}),by=c("library","barcode")])
 
 #save temp data file for downstream troubleshooting since the ML meanF took >1hr to calculate -- don't use these for final anlaysis though for reproducibility!
 save(dt,file=paste(config$expression_sortseq_dir,"/dt.temp.Rda",sep=""))
@@ -214,10 +231,10 @@ bottom.
 ``` r
 #histograms
 par(mfrow=c(2,2))
-hist(log10(dt[library=="pool1",expr_count]+0.1),xlab="cell count (log10, plus 0.1 pseudocount)",main="pool1, all bc",col="gray50")
-hist(log10(dt[library=="pool2",expr_count]+0.1),xlab="cell count (log10, plus 0.1 pseudocount)",main="pool2, all bc",col="gray50")
-hist(log10(dt[library=="pool1" & !is.na(expression),expr_count]+0.1),xlab="cell count (log10, plus 0.1 pseudocount)",main="pool1, determined",col="gray50")
-hist(log10(dt[library=="pool2" & !is.na(expression),expr_count]+0.1),xlab="cell count (log10, plus 0.1 pseudocount)",main="pool2, determined",col="gray50")
+hist(log10(dt[library=="pool5",expr_count]+0.1),xlab="cell count (log10, plus 0.1 pseudocount)",main="pool5, all bc",col="gray50")
+hist(log10(dt[library=="pool6",expr_count]+0.1),xlab="cell count (log10, plus 0.1 pseudocount)",main="pool6, all bc",col="gray50")
+hist(log10(dt[library=="pool5" & !is.na(expression),expr_count]+0.1),xlab="cell count (log10, plus 0.1 pseudocount)",main="pool5, determined",col="gray50")
+hist(log10(dt[library=="pool6" & !is.na(expression),expr_count]+0.1),xlab="cell count (log10, plus 0.1 pseudocount)",main="pool6, determined",col="gray50")
 ```
 
 <img src="compute_expression_meanF_files/figure-gfm/cell_count_coverage-1.png" style="display: block; margin: auto;" />
@@ -249,7 +266,7 @@ grid.arrange(p1,ncol=1)
 invisible(dev.print(pdf, paste(config$expression_sortseq_dir,"/violin-plot_meanF-by-target.pdf",sep="")))
 ```
 
-We have generated expression measurements for 89.9% of the barcodes in
+We have generated expression measurements for 76.66% of the barcodes in
 our libraries.
 
 ## Data Output
@@ -257,7 +274,7 @@ our libraries.
 Finally, let’s output our measurements for downstream analyses.
 
 ``` r
-dt[,.(library,barcode,target,variant_class,aa_substitutions,n_aa_substitutions,
+dt[,.(library,sublibrary,barcode,target,variant_class,aa_substitutions,n_aa_substitutions,
      expr_count,expression)] %>%
   mutate_if(is.numeric, round, digits=6) %>%
   write.csv(file=config$expression_sortseq_file, row.names=F)

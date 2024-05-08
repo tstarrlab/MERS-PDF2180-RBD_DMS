@@ -21,7 +21,8 @@ configfile: 'config.yaml'
 # run "quick" rules locally:
 localrules: make_dag,
             make_summary,
-            save_pinned_env
+            save_pinned_env,
+            get_ccs
 
 # Functions -------------------------------------------------------------------
 def nb_markdown(nb):
@@ -59,12 +60,26 @@ rule make_summary:
         merge_tables='results/summary/merge_pools.md',
         variant_counts_file=config['variant_counts_file'],
         count_variants=nb_markdown('count_variants.ipynb'),
+        
         fit_titrations_hDPP4='results/summary/compute_Kd_hDPP4.md',
         hDPP4_Kds_file=config['Titeseq_Kds_file_hDPP4'],
+        fit_titrations_ApACE2='results/summary/compute_Kd_ApACE2.md',
+        ApACE2_Kds_file=config['Titeseq_Kds_file_ApACE2'],
+
+        fit_AUC_serum='results/summary/compute_serum_AUC.md',
+        serum_AUC_file=config['sera_delta_AUC_file'],
+
+        fit_EC50_mAb='results/summary/compute_mAb_EC50.md',
+        mAb_EC50_file=config['mAb_EC50_file'],
+        
         calculate_expression='results/summary/compute_expression_meanF.md',
         variant_expression_file=config['expression_sortseq_file'],
+        
         collapse_scores='results/summary/collapse_scores.md',
-        mut_phenos_file=config['final_variant_scores_mut_file'],
+        mut_phenos_file_MERS_rpk=config['final_variant_scores_mut_file_MERS_rpk'],
+        mut_phenos_file_PDF2180=config['final_variant_scores_mut_file_PDF2180'],
+        mut_phenos_file_panmerbeco=config['final_variant_scores_file_panmerbeco'],
+        
         heatmap_viz_delta=os.path.join(config['visualization_dir'], "heatmaps_delta.html"),
         heatmap_viz_absolute=os.path.join(config['visualization_dir'], "heatmaps_absolute.html"),
     output:
@@ -99,13 +114,19 @@ rule make_summary:
 
             4. Fit titration curves for RBD binding to [hDPP4]({path(input.fit_titrations_hDPP4)}) to calculate per-barcode K<sub>D</sub>, recorded in these files for [hDPP4]({path(input.hDPP4_Kds_file)}).
             
-            5. [Analyze Sort-seq]({path(input.calculate_expression)}) to calculate per-barcode RBD expression, recorded in [this file]({path(input.variant_expression_file)}).
+            5. Fit titration curves for RBD binding to [ApACE2]({path(input.fit_titrations_ApACE2)}) to calculate per-barcode K<sub>D</sub>, recorded in these files for [ApACE2]({path(input.ApACE2_Kds_file)}).
             
-            6. [Derive final genotype-level phenotypes from replicate barcoded sequences]({path(input.collapse_scores)}).
-               Generates final phenotypes, recorded in [this file]({path(input.mut_phenos_file)}).
+            6. Fit mAb binding curves for RBD binding to  [mAbs]({path(input.fit_EC50_mAb)}) to calculate per-barcode EC<sub>50</sub>, recorded in [this file]({path(input.mAb_EC50_file)}).
+            
+            7. Fit serum binding curves for RBD binding to  [sera]({path(input.fit_AUC_serum)}) to calculate per-barcode AUC, recorded in [this file]({path(input.serum_AUC_file)}).
+            
+            8. [Analyze Sort-seq]({path(input.calculate_expression)}) to calculate per-barcode RBD expression, recorded in [this file]({path(input.variant_expression_file)}).
+            
+            9. [Derive final genotype-level phenotypes from replicate barcoded sequences]({path(input.collapse_scores)}).
+               Generates final phenotypes, recorded in these files for  [MERS_rpk]({path(input.mut_phenos_file_MERS_rpk)}), [PDF2180]({path(input.mut_phenos_file_PDF2180)}), and [pan-merbeco]({path(input.mut_phenos_file_panmerbeco)}).
             
             
-            7. Make interactive data visualizations, available [here](https://jbloomlab.github.io/MERS-PDF2180-RBD_DMS/)
+            10. Make interactive data visualizations, available [here](https://jbloomlab.github.io/MERS-PDF2180-RBD_DMS/)
 
             """
             ).strip())
@@ -134,7 +155,7 @@ rule interactive_heatmap_absolute:
     """ Make the interactive heatmaps for absolute expression and binding phenotypes.
     """
     input: 
-        scores=config['final_variant_scores_mut_file']
+        scores=config['final_variant_scores_mut_file_MERS_rpk']
     params:
         annotations=config['RBD_sites']
     output:
@@ -145,7 +166,7 @@ rule interactive_heatmap_delta:
     """ Make the interactive heatmaps for delta expression and binding phenotypes.
     """
     input: 
-        scores=config['final_variant_scores_mut_file']
+        scores=config['final_variant_scores_mut_file_MERS_rpk']
     params:
         annotations=config['RBD_sites']
     output:
@@ -155,9 +176,14 @@ rule interactive_heatmap_delta:
 rule collapse_scores:
     input:
         config['Titeseq_Kds_file_hDPP4'],
+        config['Titeseq_Kds_file_ApACE2'],
         config['expression_sortseq_file'],
+        config['sera_delta_AUC_file'],
+        config['mAb_EC50_file'],
     output:
-        config['final_variant_scores_mut_file'],
+        config['final_variant_scores_mut_file_MERS_rpk'],
+        config['final_variant_scores_mut_file_PDF2180'],
+        config['final_variant_scores_file_panmerbeco'],
         md='results/summary/collapse_scores.md',
         md_files=directory('results/summary/collapse_scores_files')
     envmodules:
@@ -166,6 +192,69 @@ rule collapse_scores:
         nb='collapse_scores.Rmd',
         md='collapse_scores.md',
         md_files='collapse_scores_files'
+    shell:
+        """
+        R -e \"rmarkdown::render(input=\'{params.nb}\')\";
+        mv {params.md} {output.md};
+        mv {params.md_files} {output.md_files}
+        """
+
+rule fit_EC50_mAbs:
+    input:
+        config['codon_variant_table_file_pools'],
+        config['variant_counts_file']
+    output:
+        config['mAb_EC50_file'],
+        md='results/summary/compute_mAb_EC50.md',
+        md_files=directory('results/summary/compute_mAb_EC50_files')
+    envmodules:
+        'R/4.1.3'
+    params:
+        nb='compute_mAb_EC50.Rmd',
+        md='compute_mAb_EC50.md',
+        md_files='compute_mAb_EC50_files'
+    shell:
+        """
+        R -e \"rmarkdown::render(input=\'{params.nb}\')\";
+        mv {params.md} {output.md};
+        mv {params.md_files} {output.md_files}
+        """
+
+rule fit_AUC_sera:
+    input:
+        config['codon_variant_table_file_pools'],
+        config['variant_counts_file']
+    output:
+        config['sera_delta_AUC_file'],
+        md='results/summary/compute_serum_AUC.md',
+        md_files=directory('results/summary/compute_serum_AUC_files')
+    envmodules:
+        'R/4.1.3'
+    params:
+        nb='compute_serum_AUC.Rmd',
+        md='compute_serum_AUC.md',
+        md_files='compute_serum_AUC_files'
+    shell:
+        """
+        R -e \"rmarkdown::render(input=\'{params.nb}\')\";
+        mv {params.md} {output.md};
+        mv {params.md_files} {output.md_files}
+        """
+
+rule fit_titrations_ApACE2:
+    input:
+        config['codon_variant_table_file_pools'],
+        config['variant_counts_file']
+    output:
+        config['Titeseq_Kds_file_ApACE2'],
+        md='results/summary/compute_Kd_ApACE2.md',
+        md_files=directory('results/summary/compute_Kd_ApACE2_files')
+    envmodules:
+        'R/4.1.3'
+    params:
+        nb='compute_Kd_ApACE2.Rmd',
+        md='compute_Kd_ApACE2.md',
+        md_files='compute_Kd_ApACE2_files'
     shell:
         """
         R -e \"rmarkdown::render(input=\'{params.nb}\')\";
@@ -215,6 +304,9 @@ rule calculate_expression:
         mv {params.md_files} {output.md_files}
         """
 
+
+
+
 rule count_variants:
     """Count codon variants from Illumina barcode runs."""
     input:
@@ -227,6 +319,9 @@ rule count_variants:
         nb='count_variants.ipynb'
     shell:
         "python scripts/run_nb.py {params.nb} {output.nb_markdown}"
+
+
+
 
 rule merge_libs_to_pools:
     input:

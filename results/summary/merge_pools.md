@@ -66,40 +66,55 @@ sessionInfo()
     ## [17] lifecycle_1.0.3   munsell_0.5.0     gtable_0.3.0      cellranger_1.1.0 
     ## [21] rvest_1.0.2       evaluate_0.15     tzdb_0.2.0        fastmap_1.1.0    
     ## [25] fansi_1.0.2       broom_0.7.12      Rcpp_1.0.11       backports_1.4.1  
-    ## [29] scales_1.2.1      jsonlite_1.8.0    fs_1.5.2          hms_1.1.1        
+    ## [29] scales_1.2.1      jsonlite_1.8.7    fs_1.5.2          hms_1.1.1        
     ## [33] digest_0.6.29     stringi_1.7.6     grid_4.1.3        cli_3.6.0        
     ## [37] tools_4.1.3       magrittr_2.0.2    lazyeval_0.2.2    crayon_1.5.0     
     ## [41] pkgconfig_2.0.3   ellipsis_0.3.2    xml2_1.3.3        reprex_2.0.1     
     ## [45] lubridate_1.8.0   rstudioapi_0.13   assertthat_0.2.1  rmarkdown_2.13   
-    ## [49] httr_1.4.2        R6_2.5.1          compiler_4.1.3
+    ## [49] httr_1.4.7        R6_2.5.1          compiler_4.1.3
 
 Read in tables of per-library barcode-variant lookups, and store the
 underlying “library” in a new column called “sublibrary”
 
 ``` r
 #read in barcode-variant lookup tables
-dt_MERS <- data.table(read.csv(file=config$codon_variant_table_file_MERS,stringsAsFactors=F)); dt_MERS[,sublibrary:=library]
+dt_MERS_rpk <- data.table(read.csv(file=config$codon_variant_table_file_MERS_rpk,stringsAsFactors=F)); dt_MERS_rpk[,sublibrary:=library]
 dt_PDF2180 <- data.table(read.csv(file=config$codon_variant_table_file_PDF2180,stringsAsFactors=F)); dt_PDF2180[,sublibrary:=library]
+dt_panmerbeco <- data.table(read.csv(file=config$nt_variant_table_file_panmerbeco,stringsAsFactors=F)); dt_panmerbeco[,sublibrary:=library]
+#remove panmerbeco wts with muts
+dt_panmerbeco <- dt_panmerbeco[has_substitutions=="False",]
 
-dt <- rbind(dt_MERS,dt_PDF2180)
+#for panmerbeco, need to add in the manually associated barcodes, and update column heads to match the codon variant tables
+dt_manual <- data.table(read.csv(file=config$spike_in_barcodes,stringsAsFactors=F)); dt_manual[,sublibrary:=library]
+dt_panmerbeco <- rbind(dt_panmerbeco,dt_manual)
+
+dt_panmerbeco[,codon_substitutions:=""]
+dt_panmerbeco[,aa_substitutions:=""]
+dt_panmerbeco[,n_codon_substitutions:=0]
+dt_panmerbeco[,n_aa_substitutions:=0]
+
+dt <- rbindlist(list(dt_MERS_rpk,
+                     dt_PDF2180,
+                     dt_panmerbeco[,.(target, library, barcode, variant_call_support, codon_substitutions, aa_substitutions, n_codon_substitutions, n_aa_substitutions, sublibrary)]),
+                use.names=T)
 
 head(dt)
 ```
 
-    ##    target library          barcode variant_call_support codon_substitutions
-    ## 1:   MERS   lib51 AAAAAAAAACATTCGT                    1           AAC145TTG
-    ## 2:   MERS   lib51 AAAAAAAAAGACTTTC                    1           GTA158AAA
-    ## 3:   MERS   lib51 AAAAAAAAAGCGATAG                    4           TCC128---
-    ## 4:   MERS   lib51 AAAAAAAAATTGAGGT                    2           CCT139CAA
-    ## 5:   MERS   lib51 AAAAAAAACAATCCCG                    4           ACA188TAT
-    ## 6:   MERS   lib51 AAAAAAAACCCATGGA                    1            CCC54TGG
+    ##      target library          barcode variant_call_support codon_substitutions
+    ## 1: MERS_rpk   lib84 AAAAAAAAAAAACCTG                    1             GAT8AAA
+    ## 2: MERS_rpk   lib84 AAAAAAAAAAGAATTA                    1 GCC106CCC GTT179GGT
+    ## 3: MERS_rpk   lib84 AAAAAAAAAATGTGAA                    5            AGC43TAT
+    ## 4: MERS_rpk   lib84 AAAAAAAAACCCCTGA                   12            TTA41CCA
+    ## 5: MERS_rpk   lib84 AAAAAAAAACTCTAAA                    1            TGC49CAT
+    ## 6: MERS_rpk   lib84 AAAAAAAAATACATAG                    2           CAA192ATG
     ##    aa_substitutions n_codon_substitutions n_aa_substitutions sublibrary
-    ## 1:            N145L                     1                  1      lib51
-    ## 2:            V158K                     1                  1      lib51
-    ## 3:            S128-                     1                  1      lib51
-    ## 4:            P139Q                     1                  1      lib51
-    ## 5:            T188Y                     1                  1      lib51
-    ## 6:             P54W                     1                  1      lib51
+    ## 1:              D8K                     1                  1      lib84
+    ## 2:      A106P V179G                     2                  2      lib84
+    ## 3:             S43Y                     1                  1      lib84
+    ## 4:             L41P                     1                  1      lib84
+    ## 5:             C49H                     1                  1      lib84
+    ## 6:            Q192M                     1                  1      lib84
 
 Make new tables for each pool (better to do ‘by pool’ than ‘by library’,
 since each pool is unique but any library can in theory be part of
@@ -113,20 +128,20 @@ dt_pool1[,library:="pool1"]
 head(dt_pool1)
 ```
 
-    ##    target library          barcode variant_call_support codon_substitutions
-    ## 1:   MERS   pool1 AAAAAAAAACATTCGT                    1           AAC145TTG
-    ## 2:   MERS   pool1 AAAAAAAAAGACTTTC                    1           GTA158AAA
-    ## 3:   MERS   pool1 AAAAAAAAAGCGATAG                    4           TCC128---
-    ## 4:   MERS   pool1 AAAAAAAAATTGAGGT                    2           CCT139CAA
-    ## 5:   MERS   pool1 AAAAAAAACAATCCCG                    4           ACA188TAT
-    ## 6:   MERS   pool1 AAAAAAAACCCATGGA                    1            CCC54TGG
+    ##      target library          barcode variant_call_support codon_substitutions
+    ## 1: MERS_rpk   pool1 AAAAAAAAAAAACCTG                    1             GAT8AAA
+    ## 2: MERS_rpk   pool1 AAAAAAAAAAGAATTA                    1 GCC106CCC GTT179GGT
+    ## 3: MERS_rpk   pool1 AAAAAAAAAATGTGAA                    5            AGC43TAT
+    ## 4: MERS_rpk   pool1 AAAAAAAAACCCCTGA                   12            TTA41CCA
+    ## 5: MERS_rpk   pool1 AAAAAAAAACTCTAAA                    1            TGC49CAT
+    ## 6: MERS_rpk   pool1 AAAAAAAAATACATAG                    2           CAA192ATG
     ##    aa_substitutions n_codon_substitutions n_aa_substitutions sublibrary
-    ## 1:            N145L                     1                  1      lib51
-    ## 2:            V158K                     1                  1      lib51
-    ## 3:            S128-                     1                  1      lib51
-    ## 4:            P139Q                     1                  1      lib51
-    ## 5:            T188Y                     1                  1      lib51
-    ## 6:             P54W                     1                  1      lib51
+    ## 1:              D8K                     1                  1      lib84
+    ## 2:      A106P V179G                     2                  2      lib84
+    ## 3:             S43Y                     1                  1      lib84
+    ## 4:             L41P                     1                  1      lib84
+    ## 5:             C49H                     1                  1      lib84
+    ## 6:            Q192M                     1                  1      lib84
 
 ``` r
 #pool2
@@ -135,20 +150,108 @@ dt_pool2[,library:="pool2"]
 head(dt_pool2)
 ```
 
-    ##    target library          barcode variant_call_support codon_substitutions
-    ## 1:   MERS   pool2 AAAAAAAAAAACTTCC                    2  CCC54GAT ATC153TTT
-    ## 2:   MERS   pool2 AAAAAAAAAACAAGTT                    2            ACG36ATT
-    ## 3:   MERS   pool2 AAAAAAAAACATCGTA                    2   GAT8TAT ATT104TCT
-    ## 4:   MERS   pool2 AAAAAAAAACTTATGT                    1                    
-    ## 5:   MERS   pool2 AAAAAAAAAGTCTTAA                    1            GTA82ATT
-    ## 6:   MERS   pool2 AAAAAAAAATTCACGG                    1           CCT139GCT
+    ##      target library          barcode variant_call_support codon_substitutions
+    ## 1: MERS_rpk   pool2 AAAAAAAAAAAACGAA                    4           ACC113GCT
+    ## 2: MERS_rpk   pool2 AAAAAAAAAAACATAT                    5            ATT66ACT
+    ## 3: MERS_rpk   pool2 AAAAAAAAAAATGCAA                    1           GTT185GAT
+    ## 4: MERS_rpk   pool2 AAAAAAAAAACCACAA                    4           ACA184GAT
+    ## 5: MERS_rpk   pool2 AAAAAAAAACAAATGG                    1                    
+    ## 6: MERS_rpk   pool2 AAAAAAAAACACACAA                    2             GCG2ATG
     ##    aa_substitutions n_codon_substitutions n_aa_substitutions sublibrary
-    ## 1:       P54D I153F                     2                  2      lib52
-    ## 2:             T36I                     1                  1      lib52
-    ## 3:        D8Y I104S                     2                  2      lib52
-    ## 4:                                      0                  0      lib52
-    ## 5:             V82I                     1                  1      lib52
-    ## 6:            P139A                     1                  1      lib52
+    ## 1:            T113A                     1                  1      lib85
+    ## 2:             I66T                     1                  1      lib85
+    ## 3:            V185D                     1                  1      lib85
+    ## 4:            T184D                     1                  1      lib85
+    ## 5:                                      0                  0      lib85
+    ## 6:              A2M                     1                  1      lib85
+
+``` r
+#pool3
+dt_pool3 <- dt[sublibrary %in% config$pool3]
+dt_pool3[,library:="pool3"]
+head(dt_pool3)
+```
+
+    ##     target library          barcode variant_call_support codon_substitutions
+    ## 1: PDF2180   pool3 AAAAAAAAAAGCCTCC                    3           GTT137TTT
+    ## 2: PDF2180   pool3 AAAAAAAAAGTCAAAC                    2           AGC117AAA
+    ## 3: PDF2180   pool3 AAAAAAAAAGTCACCG                    1            CAG95TGT
+    ## 4: PDF2180   pool3 AAAAAAAACGTCCTAG                    1            CTG35GTT
+    ## 5: PDF2180   pool3 AAAAAAAACTACATGT                    7           GCC143GAT
+    ## 6: PDF2180   pool3 AAAAAAAACTAGATTA                    7  GCT58--- AGC111AGT
+    ##    aa_substitutions n_codon_substitutions n_aa_substitutions sublibrary
+    ## 1:            V137F                     1                  1      lib53
+    ## 2:            S117K                     1                  1      lib53
+    ## 3:             Q95C                     1                  1      lib53
+    ## 4:             L35V                     1                  1      lib53
+    ## 5:            A143D                     1                  1      lib53
+    ## 6:             A58-                     2                  1      lib53
+
+``` r
+#pool4
+dt_pool4 <- dt[sublibrary %in% config$pool4]
+dt_pool4[,library:="pool4"]
+head(dt_pool4)
+```
+
+    ##     target library          barcode variant_call_support codon_substitutions
+    ## 1: PDF2180   pool4 AAAAAAAAAATACCGG                    2            GAT50ACT
+    ## 2: PDF2180   pool4 AAAAAAAAAGATAGCC                    2           GAA200AAA
+    ## 3: PDF2180   pool4 AAAAAAAAAGCCCATA                    3            ACT10AGA
+    ## 4: PDF2180   pool4 AAAAAAAAATGTACTA                    2            ACA66TGT
+    ## 5: PDF2180   pool4 AAAAAAAAATTTGAAT                    4           ACC176TGG
+    ## 6: PDF2180   pool4 AAAAAAAACATCGAAC                    5           GCT199CAT
+    ##    aa_substitutions n_codon_substitutions n_aa_substitutions sublibrary
+    ## 1:             D50T                     1                  1      lib54
+    ## 2:            E200K                     1                  1      lib54
+    ## 3:             T10R                     1                  1      lib54
+    ## 4:             T66C                     1                  1      lib54
+    ## 5:            T176W                     1                  1      lib54
+    ## 6:            A199H                     1                  1      lib54
+
+``` r
+#pool5
+dt_pool5 <- dt[sublibrary %in% config$pool5]
+dt_pool5[,library:="pool5"]
+head(dt_pool5)
+```
+
+    ##      target library          barcode variant_call_support codon_substitutions
+    ## 1: MERS_rpk   pool5 AAAAAAAAAAAACCTG                    1             GAT8AAA
+    ## 2: MERS_rpk   pool5 AAAAAAAAAAGAATTA                    1 GCC106CCC GTT179GGT
+    ## 3: MERS_rpk   pool5 AAAAAAAAAATGTGAA                    5            AGC43TAT
+    ## 4: MERS_rpk   pool5 AAAAAAAAACCCCTGA                   12            TTA41CCA
+    ## 5: MERS_rpk   pool5 AAAAAAAAACTCTAAA                    1            TGC49CAT
+    ## 6: MERS_rpk   pool5 AAAAAAAAATACATAG                    2           CAA192ATG
+    ##    aa_substitutions n_codon_substitutions n_aa_substitutions sublibrary
+    ## 1:              D8K                     1                  1      lib84
+    ## 2:      A106P V179G                     2                  2      lib84
+    ## 3:             S43Y                     1                  1      lib84
+    ## 4:             L41P                     1                  1      lib84
+    ## 5:             C49H                     1                  1      lib84
+    ## 6:            Q192M                     1                  1      lib84
+
+``` r
+#pool6
+dt_pool6 <- dt[sublibrary %in% config$pool6]
+dt_pool6[,library:="pool6"]
+head(dt_pool6)
+```
+
+    ##      target library          barcode variant_call_support codon_substitutions
+    ## 1: MERS_rpk   pool6 AAAAAAAAAAAACGAA                    4           ACC113GCT
+    ## 2: MERS_rpk   pool6 AAAAAAAAAAACATAT                    5            ATT66ACT
+    ## 3: MERS_rpk   pool6 AAAAAAAAAAATGCAA                    1           GTT185GAT
+    ## 4: MERS_rpk   pool6 AAAAAAAAAACCACAA                    4           ACA184GAT
+    ## 5: MERS_rpk   pool6 AAAAAAAAACAAATGG                    1                    
+    ## 6: MERS_rpk   pool6 AAAAAAAAACACACAA                    2             GCG2ATG
+    ##    aa_substitutions n_codon_substitutions n_aa_substitutions sublibrary
+    ## 1:            T113A                     1                  1      lib85
+    ## 2:             I66T                     1                  1      lib85
+    ## 3:            V185D                     1                  1      lib85
+    ## 4:            T184D                     1                  1      lib85
+    ## 5:                                      0                  0      lib85
+    ## 6:              A2M                     1                  1      lib85
 
 Eliminate barcodes that are repeated between different variants within a
 single pool.
@@ -166,7 +269,7 @@ dt_pool1 <- dt_pool1[duplicate==FALSE,]; dt_pool1[,duplicate:=NULL]
 print(paste("Removed", nrow(duplicates_pool1), "repeated barcodes from pool1"))
 ```
 
-    ## [1] "Removed 3 repeated barcodes from pool1"
+    ## [1] "Removed 0 repeated barcodes from pool1"
 
 ``` r
 #pool2
@@ -183,11 +286,88 @@ print(paste("Removed", nrow(duplicates_pool2), "repeated barcodes from pool2"))
 
     ## [1] "Removed 1 repeated barcodes from pool2"
 
+``` r
+#pool3
+duplicates_pool3 <- dt_pool3[duplicated(dt_pool3,by=c("barcode","library")),.(library,barcode)] #the data.table duplciates function annoyingly only flags the first of each duplicate so doesn't intrinsically allow removal of both of the entries of the duplicate. So, flag what are duplicates, and then remove
+dt_pool3[,duplicate:=FALSE]
+if(nrow(duplicates_pool3) > 0){
+  for(i in 1:nrow(duplicates_pool3)){
+    dt_pool3[library==duplicates_pool3[i,library] & barcode==duplicates_pool3[i,barcode],duplicate:=TRUE]
+  }
+}
+dt_pool3 <- dt_pool3[duplicate==FALSE,]; dt_pool3[,duplicate:=NULL]
+print(paste("Removed", nrow(duplicates_pool3), "repeated barcodes from pool3"))
+```
+
+    ## [1] "Removed 1 repeated barcodes from pool3"
+
+``` r
+#pool4
+duplicates_pool4 <- dt_pool4[duplicated(dt_pool4,by=c("barcode","library")),.(library,barcode)] #the data.table duplciates function annoyingly only flags the first of each duplicate so doesn't intrinsically allow removal of both of the entries of the duplicate. So, flag what are duplicates, and then remove
+dt_pool4[,duplicate:=FALSE]
+if(nrow(duplicates_pool4) > 0){
+  for(i in 1:nrow(duplicates_pool4)){
+    dt_pool4[library==duplicates_pool4[i,library] & barcode==duplicates_pool4[i,barcode],duplicate:=TRUE]
+  }
+}
+dt_pool4 <- dt_pool4[duplicate==FALSE,]; dt_pool4[,duplicate:=NULL]
+print(paste("Removed", nrow(duplicates_pool4), "repeated barcodes from pool4"))
+```
+
+    ## [1] "Removed 0 repeated barcodes from pool4"
+
+``` r
+#pool5
+duplicates_pool5 <- dt_pool5[duplicated(dt_pool5,by=c("barcode","library")),.(library,barcode)] #the data.table duplciates function annoyingly only flags the first of each duplicate so doesn't intrinsically allow removal of both of the entries of the duplicate. So, flag what are duplicates, and then remove
+dt_pool5[,duplicate:=FALSE]
+if(nrow(duplicates_pool5) > 0){
+  for(i in 1:nrow(duplicates_pool5)){
+    dt_pool5[library==duplicates_pool5[i,library] & barcode==duplicates_pool5[i,barcode],duplicate:=TRUE]
+  }
+}
+dt_pool5 <- dt_pool5[duplicate==FALSE,]; dt_pool5[,duplicate:=NULL]
+print(paste("Removed", nrow(duplicates_pool5), "repeated barcodes from pool5"))
+```
+
+    ## [1] "Removed 4 repeated barcodes from pool5"
+
+``` r
+#pool6
+duplicates_pool6 <- dt_pool6[duplicated(dt_pool6,by=c("barcode","library")),.(library,barcode)] #the data.table duplciates function annoyingly only flags the first of each duplicate so doesn't intrinsically allow removal of both of the entries of the duplicate. So, flag what are duplicates, and then remove
+dt_pool6[,duplicate:=FALSE]
+if(nrow(duplicates_pool6) > 0){
+  for(i in 1:nrow(duplicates_pool6)){
+    dt_pool6[library==duplicates_pool6[i,library] & barcode==duplicates_pool6[i,barcode],duplicate:=TRUE]
+  }
+}
+dt_pool6 <- dt_pool6[duplicate==FALSE,]; dt_pool6[,duplicate:=NULL]
+print(paste("Removed", nrow(duplicates_pool6), "repeated barcodes from pool6"))
+```
+
+    ## [1] "Removed 11 repeated barcodes from pool6"
+
 Merge the per-pool tables back into one aggregate data table and save.
 
 ``` r
-dt_final <- rbind(dt_pool1, dt_pool2)
+dt_final <- rbind(dt_pool1, dt_pool2, dt_pool3, dt_pool4, dt_pool5, dt_pool6)
 
 dt_final %>%
   write.csv(file=config$codon_variant_table_file_pools, row.names=F)
+
+head(dt_final)
 ```
+
+    ##      target library          barcode variant_call_support codon_substitutions
+    ## 1: MERS_rpk   pool1 AAAAAAAAAAAACCTG                    1             GAT8AAA
+    ## 2: MERS_rpk   pool1 AAAAAAAAAAGAATTA                    1 GCC106CCC GTT179GGT
+    ## 3: MERS_rpk   pool1 AAAAAAAAAATGTGAA                    5            AGC43TAT
+    ## 4: MERS_rpk   pool1 AAAAAAAAACCCCTGA                   12            TTA41CCA
+    ## 5: MERS_rpk   pool1 AAAAAAAAACTCTAAA                    1            TGC49CAT
+    ## 6: MERS_rpk   pool1 AAAAAAAAATACATAG                    2           CAA192ATG
+    ##    aa_substitutions n_codon_substitutions n_aa_substitutions sublibrary
+    ## 1:              D8K                     1                  1      lib84
+    ## 2:      A106P V179G                     2                  2      lib84
+    ## 3:             S43Y                     1                  1      lib84
+    ## 4:             L41P                     1                  1      lib84
+    ## 5:             C49H                     1                  1      lib84
+    ## 6:            Q192M                     1                  1      lib84
