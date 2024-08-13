@@ -1,4 +1,4 @@
-alignment_site,amino_acid_MERS,site_MERS_RBD,site_MERS_spike,amino_acid_PDF-2180,site_PDF-2180_RBD,site_PDF-2180_spike
+alignment_site,amino_acid_MERS_rpk,site_MERS_rpk_RBD,site_MERS_rpk_spike,amino_acid_PDF2180,site_PDF2180_RBD,site_PDF2180_spike
 1,Q,1,377,A,1,381
 2,A,2,378,H,2,382
 3,-,NA,NA,-,NA,NA
@@ -37,7 +37,7 @@ alignment_site,amino_acid_MERS,site_MERS_RBD,site_MERS_spike,amino_acid_PDF-2180
 36,L,35,411,L,35,415
 37,T,36,412,T,36,416
 38,K,37,413,L,37,417
-39,L,38,414,L,38,418
+39,F,38,414,L,38,418
 40,L,39,415,L,39,419
 41,S,40,416,S,40,420
 42,L,41,417,L,41,421
@@ -218,7 +218,7 @@ alignment_site,amino_acid_MERS,site_MERS_RBD,site_MERS_spike,amino_acid_PDF-2180
 217,L,191,567,L,185,565
 218,Q,192,568,D,186,566
 219,M,193,569,M,187,567
-220,G,194,570,V,188,568
+220,V,194,570,V,188,568
 221,F,195,571,Y,189,569
 222,G,196,572,V,190,570
 223,I,197,573,I,191,571

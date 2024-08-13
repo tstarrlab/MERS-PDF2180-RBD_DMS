@@ -107,59 +107,59 @@ display(HTML(variants.head().to_html(index=False)))
   </thead>
   <tbody>
     <tr>
-      <td>MERS</td>
+      <td>MERS_rpk</td>
       <td>pool1</td>
-      <td>AAAAAAAAACATTCGT</td>
+      <td>AAAAAAAAAAAACCTG</td>
       <td>1</td>
-      <td>AAC145TTG</td>
-      <td>N145L</td>
+      <td>GAT8AAA</td>
+      <td>D8K</td>
       <td>1</td>
       <td>1</td>
-      <td>lib51</td>
+      <td>lib84</td>
     </tr>
     <tr>
-      <td>MERS</td>
+      <td>MERS_rpk</td>
       <td>pool1</td>
-      <td>AAAAAAAAAGACTTTC</td>
+      <td>AAAAAAAAAAGAATTA</td>
       <td>1</td>
-      <td>GTA158AAA</td>
-      <td>V158K</td>
-      <td>1</td>
-      <td>1</td>
-      <td>lib51</td>
-    </tr>
-    <tr>
-      <td>MERS</td>
-      <td>pool1</td>
-      <td>AAAAAAAAAGCGATAG</td>
-      <td>4</td>
-      <td>TCC128---</td>
-      <td>S128-</td>
-      <td>1</td>
-      <td>1</td>
-      <td>lib51</td>
-    </tr>
-    <tr>
-      <td>MERS</td>
-      <td>pool1</td>
-      <td>AAAAAAAAATTGAGGT</td>
+      <td>GCC106CCC GTT179GGT</td>
+      <td>A106P V179G</td>
       <td>2</td>
-      <td>CCT139CAA</td>
-      <td>P139Q</td>
-      <td>1</td>
-      <td>1</td>
-      <td>lib51</td>
+      <td>2</td>
+      <td>lib84</td>
     </tr>
     <tr>
-      <td>MERS</td>
+      <td>MERS_rpk</td>
       <td>pool1</td>
-      <td>AAAAAAAACAATCCCG</td>
-      <td>4</td>
-      <td>ACA188TAT</td>
-      <td>T188Y</td>
+      <td>AAAAAAAAAATGTGAA</td>
+      <td>5</td>
+      <td>AGC43TAT</td>
+      <td>S43Y</td>
       <td>1</td>
       <td>1</td>
-      <td>lib51</td>
+      <td>lib84</td>
+    </tr>
+    <tr>
+      <td>MERS_rpk</td>
+      <td>pool1</td>
+      <td>AAAAAAAAACCCCTGA</td>
+      <td>12</td>
+      <td>TTA41CCA</td>
+      <td>L41P</td>
+      <td>1</td>
+      <td>1</td>
+      <td>lib84</td>
+    </tr>
+    <tr>
+      <td>MERS_rpk</td>
+      <td>pool1</td>
+      <td>AAAAAAAAACTCTAAA</td>
+      <td>1</td>
+      <td>TGC49CAT</td>
+      <td>C49H</td>
+      <td>1</td>
+      <td>1</td>
+      <td>lib84</td>
     </tr>
   </tbody>
 </table>
@@ -192,11 +192,10 @@ display(HTML(barcode_runs.to_html(index=False)))
   <thead>
     <tr style="text-align: right;">
       <th>library</th>
-      <th>replicate</th>
       <th>sample</th>
       <th>sample_type</th>
-      <th>sort_bin</th>
       <th>concentration</th>
+      <th>sort_bin</th>
       <th>date</th>
       <th>number_cells</th>
       <th>R1</th>
@@ -205,487 +204,2403 @@ display(HTML(barcode_runs.to_html(index=False)))
   <tbody>
     <tr>
       <td>pool1</td>
-      <td>A</td>
+      <td>LCA60_01_bin1</td>
+      <td>LCA60</td>
+      <td>1.0</td>
+      <td>1</td>
+      <td>240314</td>
+      <td>602146</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s1-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>LCA60_01_bin2</td>
+      <td>LCA60</td>
+      <td>1.0</td>
+      <td>2</td>
+      <td>240314</td>
+      <td>269655</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s1-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>LCA60_01_bin3</td>
+      <td>LCA60</td>
+      <td>1.0</td>
+      <td>3</td>
+      <td>240314</td>
+      <td>187525</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s1-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>LCA60_01_bin4</td>
+      <td>LCA60</td>
+      <td>1.0</td>
+      <td>4</td>
+      <td>240314</td>
+      <td>963117</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s1-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>LCA60_02_bin1</td>
+      <td>LCA60</td>
+      <td>2.0</td>
+      <td>1</td>
+      <td>240314</td>
+      <td>723465</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s2-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>LCA60_02_bin2</td>
+      <td>LCA60</td>
+      <td>2.0</td>
+      <td>2</td>
+      <td>240314</td>
+      <td>195243</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s2-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>LCA60_02_bin3</td>
+      <td>LCA60</td>
+      <td>2.0</td>
+      <td>3</td>
+      <td>240314</td>
+      <td>233433</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s2-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>LCA60_02_bin4</td>
+      <td>LCA60</td>
+      <td>2.0</td>
+      <td>4</td>
+      <td>240314</td>
+      <td>931899</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s2-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>LCA60_03_bin1</td>
+      <td>LCA60</td>
+      <td>3.0</td>
+      <td>1</td>
+      <td>240314</td>
+      <td>621781</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s3-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>LCA60_03_bin2</td>
+      <td>LCA60</td>
+      <td>3.0</td>
+      <td>2</td>
+      <td>240314</td>
+      <td>256214</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s3-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>LCA60_03_bin3</td>
+      <td>LCA60</td>
+      <td>3.0</td>
+      <td>3</td>
+      <td>240314</td>
+      <td>1825976</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s3-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>LCA60_03_bin4</td>
+      <td>LCA60</td>
+      <td>3.0</td>
+      <td>4</td>
+      <td>240314</td>
+      <td>69582</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s3-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>LCA60_04_bin1</td>
+      <td>LCA60</td>
+      <td>4.0</td>
+      <td>1</td>
+      <td>240314</td>
+      <td>789944</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s4-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>LCA60_04_bin2</td>
+      <td>LCA60</td>
+      <td>4.0</td>
+      <td>2</td>
+      <td>240314</td>
+      <td>2055882</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s4-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>LCA60_04_bin3</td>
+      <td>LCA60</td>
+      <td>4.0</td>
+      <td>3</td>
+      <td>240314</td>
+      <td>14234</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s4-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>LCA60_04_bin4</td>
+      <td>LCA60</td>
+      <td>4.0</td>
+      <td>4</td>
+      <td>240314</td>
+      <td>20</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s4-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>LCA60_05_bin1</td>
+      <td>LCA60</td>
+      <td>5.0</td>
+      <td>1</td>
+      <td>240314</td>
+      <td>2486124</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s5-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>LCA60_05_bin2</td>
+      <td>LCA60</td>
+      <td>5.0</td>
+      <td>2</td>
+      <td>240314</td>
+      <td>288245</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s5-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>LCA60_05_bin3</td>
+      <td>LCA60</td>
+      <td>5.0</td>
+      <td>3</td>
+      <td>240314</td>
+      <td>148</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s5-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>LCA60_05_bin4</td>
+      <td>LCA60</td>
+      <td>5.0</td>
+      <td>4</td>
+      <td>240314</td>
+      <td>19</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s5-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>LCA60_06_bin1</td>
+      <td>LCA60</td>
+      <td>6.0</td>
+      <td>1</td>
+      <td>240314</td>
+      <td>2122141</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s16-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>LCA60_06_bin2</td>
+      <td>LCA60</td>
+      <td>6.0</td>
+      <td>2</td>
+      <td>240314</td>
+      <td>113177</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s16-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>LCA60_06_bin3</td>
+      <td>LCA60</td>
+      <td>6.0</td>
+      <td>3</td>
+      <td>240314</td>
+      <td>167</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s16-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>LCA60_06_bin4</td>
+      <td>LCA60</td>
+      <td>6.0</td>
+      <td>4</td>
+      <td>240314</td>
+      <td>599</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s16-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>S41_01_bin1</td>
+      <td>S41</td>
+      <td>1.0</td>
+      <td>1</td>
+      <td>240314</td>
+      <td>588509</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s6-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>S41_01_bin2</td>
+      <td>S41</td>
+      <td>1.0</td>
+      <td>2</td>
+      <td>240314</td>
+      <td>302423</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s6-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>S41_01_bin3</td>
+      <td>S41</td>
+      <td>1.0</td>
+      <td>3</td>
+      <td>240314</td>
+      <td>301238</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s6-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>S41_01_bin4</td>
+      <td>S41</td>
+      <td>1.0</td>
+      <td>4</td>
+      <td>240314</td>
+      <td>869558</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s6-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>S41_02_bin1</td>
+      <td>S41</td>
+      <td>2.0</td>
+      <td>1</td>
+      <td>240314</td>
+      <td>813143</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s7-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>S41_02_bin2</td>
+      <td>S41</td>
+      <td>2.0</td>
+      <td>2</td>
+      <td>240314</td>
+      <td>488988</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s7-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>S41_02_bin3</td>
+      <td>S41</td>
+      <td>2.0</td>
+      <td>3</td>
+      <td>240314</td>
+      <td>647328</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s7-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>S41_02_bin4</td>
+      <td>S41</td>
+      <td>2.0</td>
+      <td>4</td>
+      <td>240314</td>
+      <td>755271</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s7-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>S41_03_bin1</td>
+      <td>S41</td>
+      <td>3.0</td>
+      <td>1</td>
+      <td>240314</td>
+      <td>1497490</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s8-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>S41_03_bin2</td>
+      <td>S41</td>
+      <td>3.0</td>
+      <td>2</td>
+      <td>240314</td>
+      <td>859289</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s8-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>S41_03_bin3</td>
+      <td>S41</td>
+      <td>3.0</td>
+      <td>3</td>
+      <td>240314</td>
+      <td>435173</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s8-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>S41_03_bin4</td>
+      <td>S41</td>
+      <td>3.0</td>
+      <td>4</td>
+      <td>240314</td>
+      <td>35220</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s8-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>S41_04_bin1</td>
+      <td>S41</td>
+      <td>4.0</td>
+      <td>1</td>
+      <td>240314</td>
+      <td>2599996</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s36-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>S41_04_bin2</td>
+      <td>S41</td>
+      <td>4.0</td>
+      <td>2</td>
+      <td>240314</td>
+      <td>234708</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s36-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>S41_04_bin3</td>
+      <td>S41</td>
+      <td>4.0</td>
+      <td>3</td>
+      <td>240314</td>
+      <td>5198</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s36-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>S41_04_bin4</td>
+      <td>S41</td>
+      <td>4.0</td>
+      <td>4</td>
+      <td>240314</td>
+      <td>928</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s36-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>S41_05_bin1</td>
+      <td>S41</td>
+      <td>5.0</td>
+      <td>1</td>
+      <td>240314</td>
+      <td>2455349</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s10-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>S41_05_bin2</td>
+      <td>S41</td>
+      <td>5.0</td>
+      <td>2</td>
+      <td>240314</td>
+      <td>291262</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s10-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>S41_05_bin3</td>
+      <td>S41</td>
+      <td>5.0</td>
+      <td>3</td>
+      <td>240314</td>
+      <td>11300</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s10-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>S41_05_bin4</td>
+      <td>S41</td>
+      <td>5.0</td>
+      <td>4</td>
+      <td>240314</td>
+      <td>2127</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s10-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>S41_06_bin1</td>
+      <td>S41</td>
+      <td>6.0</td>
+      <td>1</td>
+      <td>240314</td>
+      <td>2122141</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s16-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>S41_06_bin2</td>
+      <td>S41</td>
+      <td>6.0</td>
+      <td>2</td>
+      <td>240314</td>
+      <td>113177</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s16-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>S41_06_bin3</td>
+      <td>S41</td>
+      <td>6.0</td>
+      <td>3</td>
+      <td>240314</td>
+      <td>167</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s16-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>S41_06_bin4</td>
+      <td>S41</td>
+      <td>6.0</td>
+      <td>4</td>
+      <td>240314</td>
+      <td>599</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s16-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>4C2_01_bin1</td>
+      <td>4C2</td>
+      <td>1.0</td>
+      <td>1</td>
+      <td>240314</td>
+      <td>536470</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s11-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>4C2_01_bin2</td>
+      <td>4C2</td>
+      <td>1.0</td>
+      <td>2</td>
+      <td>240314</td>
+      <td>184301</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s11-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>4C2_01_bin3</td>
+      <td>4C2</td>
+      <td>1.0</td>
+      <td>3</td>
+      <td>240314</td>
+      <td>263370</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s11-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>4C2_01_bin4</td>
+      <td>4C2</td>
+      <td>1.0</td>
+      <td>4</td>
+      <td>240314</td>
+      <td>1105211</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s11-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>4C2_02_bin1</td>
+      <td>4C2</td>
+      <td>2.0</td>
+      <td>1</td>
+      <td>240314</td>
+      <td>666325</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s12-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>4C2_02_bin2</td>
+      <td>4C2</td>
+      <td>2.0</td>
+      <td>2</td>
+      <td>240314</td>
+      <td>233543</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s12-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>4C2_02_bin3</td>
+      <td>4C2</td>
+      <td>2.0</td>
+      <td>3</td>
+      <td>240314</td>
+      <td>312577</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s12-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>4C2_02_bin4</td>
+      <td>4C2</td>
+      <td>2.0</td>
+      <td>4</td>
+      <td>240314</td>
+      <td>1066637</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s12-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>4C2_03_bin1</td>
+      <td>4C2</td>
+      <td>3.0</td>
+      <td>1</td>
+      <td>240314</td>
+      <td>708822</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s13-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>4C2_03_bin2</td>
+      <td>4C2</td>
+      <td>3.0</td>
+      <td>2</td>
+      <td>240314</td>
+      <td>314716</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s13-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>4C2_03_bin3</td>
+      <td>4C2</td>
+      <td>3.0</td>
+      <td>3</td>
+      <td>240314</td>
+      <td>1521239</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s13-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>4C2_03_bin4</td>
+      <td>4C2</td>
+      <td>3.0</td>
+      <td>4</td>
+      <td>240314</td>
+      <td>282522</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s13-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>4C2_04_bin1</td>
+      <td>4C2</td>
+      <td>4.0</td>
+      <td>1</td>
+      <td>240314</td>
+      <td>821565</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s14-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>4C2_04_bin2</td>
+      <td>4C2</td>
+      <td>4.0</td>
+      <td>2</td>
+      <td>240314</td>
+      <td>1484282</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s14-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>4C2_04_bin3</td>
+      <td>4C2</td>
+      <td>4.0</td>
+      <td>3</td>
+      <td>240314</td>
+      <td>447698</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s14-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>4C2_04_bin4</td>
+      <td>4C2</td>
+      <td>4.0</td>
+      <td>4</td>
+      <td>240314</td>
+      <td>19</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s14-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>4C2_05_bin1</td>
+      <td>4C2</td>
+      <td>5.0</td>
+      <td>1</td>
+      <td>240314</td>
+      <td>1399805</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s15-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>4C2_05_bin2</td>
+      <td>4C2</td>
+      <td>5.0</td>
+      <td>2</td>
+      <td>240314</td>
+      <td>1351122</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s15-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>4C2_05_bin3</td>
+      <td>4C2</td>
+      <td>5.0</td>
+      <td>3</td>
+      <td>240314</td>
+      <td>379</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s15-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>4C2_05_bin4</td>
+      <td>4C2</td>
+      <td>5.0</td>
+      <td>4</td>
+      <td>240314</td>
+      <td>23</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s15-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>4C2_06_bin1</td>
+      <td>4C2</td>
+      <td>6.0</td>
+      <td>1</td>
+      <td>240314</td>
+      <td>2122141</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s16-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>4C2_06_bin2</td>
+      <td>4C2</td>
+      <td>6.0</td>
+      <td>2</td>
+      <td>240314</td>
+      <td>113177</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s16-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>4C2_06_bin3</td>
+      <td>4C2</td>
+      <td>6.0</td>
+      <td>3</td>
+      <td>240314</td>
+      <td>167</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s16-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>4C2_06_bin4</td>
+      <td>4C2</td>
+      <td>6.0</td>
+      <td>4</td>
+      <td>240314</td>
+      <td>599</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s16-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>MERS4_01_bin1</td>
+      <td>MERS4</td>
+      <td>1.0</td>
+      <td>1</td>
+      <td>240321</td>
+      <td>420697</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s17-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>MERS4_01_bin2</td>
+      <td>MERS4</td>
+      <td>1.0</td>
+      <td>2</td>
+      <td>240321</td>
+      <td>348674</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s17-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>MERS4_01_bin3</td>
+      <td>MERS4</td>
+      <td>1.0</td>
+      <td>3</td>
+      <td>240321</td>
+      <td>389839</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s17-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>MERS4_01_bin4</td>
+      <td>MERS4</td>
+      <td>1.0</td>
+      <td>4</td>
+      <td>240321</td>
+      <td>1916055</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s17-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>MERS4_02_bin1</td>
+      <td>MERS4</td>
+      <td>2.0</td>
+      <td>1</td>
+      <td>240321</td>
+      <td>594023</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s18-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>MERS4_02_bin2</td>
+      <td>MERS4</td>
+      <td>2.0</td>
+      <td>2</td>
+      <td>240321</td>
+      <td>265392</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s18-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>MERS4_02_bin3</td>
+      <td>MERS4</td>
+      <td>2.0</td>
+      <td>3</td>
+      <td>240321</td>
+      <td>277553</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s18-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>MERS4_02_bin4</td>
+      <td>MERS4</td>
+      <td>2.0</td>
+      <td>4</td>
+      <td>240321</td>
+      <td>1919163</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s18-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>MERS4_03_bin1</td>
+      <td>MERS4</td>
+      <td>3.0</td>
+      <td>1</td>
+      <td>240321</td>
+      <td>671090</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s19-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>MERS4_03_bin2</td>
+      <td>MERS4</td>
+      <td>3.0</td>
+      <td>2</td>
+      <td>240321</td>
+      <td>271725</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s19-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>MERS4_03_bin3</td>
+      <td>MERS4</td>
+      <td>3.0</td>
+      <td>3</td>
+      <td>240321</td>
+      <td>1503907</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s19-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>MERS4_03_bin4</td>
+      <td>MERS4</td>
+      <td>3.0</td>
+      <td>4</td>
+      <td>240321</td>
+      <td>780542</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s19-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>MERS4_04_bin1</td>
+      <td>MERS4</td>
+      <td>4.0</td>
+      <td>1</td>
+      <td>240321</td>
+      <td>794642</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s20-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>MERS4_04_bin2</td>
+      <td>MERS4</td>
+      <td>4.0</td>
+      <td>2</td>
+      <td>240321</td>
+      <td>1696736</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s20-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>MERS4_04_bin3</td>
+      <td>MERS4</td>
+      <td>4.0</td>
+      <td>3</td>
+      <td>240321</td>
+      <td>579665</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s20-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>MERS4_04_bin4</td>
+      <td>MERS4</td>
+      <td>4.0</td>
+      <td>4</td>
+      <td>240321</td>
+      <td>158</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s20-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>MERS4_05_bin1</td>
+      <td>MERS4</td>
+      <td>5.0</td>
+      <td>1</td>
+      <td>240321</td>
+      <td>1679581</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s21-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>MERS4_05_bin2</td>
+      <td>MERS4</td>
+      <td>5.0</td>
+      <td>2</td>
+      <td>240321</td>
+      <td>1524333</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s21-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>MERS4_05_bin3</td>
+      <td>MERS4</td>
+      <td>5.0</td>
+      <td>3</td>
+      <td>240321</td>
+      <td>710</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s21-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>MERS4_05_bin4</td>
+      <td>MERS4</td>
+      <td>5.0</td>
+      <td>4</td>
+      <td>240321</td>
+      <td>121</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s21-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>MERS4_06_bin1</td>
+      <td>MERS4</td>
+      <td>6.0</td>
+      <td>1</td>
+      <td>240321</td>
+      <td>2122141</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s16-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>MERS4_06_bin2</td>
+      <td>MERS4</td>
+      <td>6.0</td>
+      <td>2</td>
+      <td>240321</td>
+      <td>113177</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s16-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>MERS4_06_bin3</td>
+      <td>MERS4</td>
+      <td>6.0</td>
+      <td>3</td>
+      <td>240321</td>
+      <td>167</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s16-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>MERS4_06_bin4</td>
+      <td>MERS4</td>
+      <td>6.0</td>
+      <td>4</td>
+      <td>240321</td>
+      <td>599</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s16-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>MERS4_01_bin1</td>
+      <td>MERS4</td>
+      <td>1.0</td>
+      <td>1</td>
+      <td>240321</td>
+      <td>549364</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s22-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>MERS4_01_bin2</td>
+      <td>MERS4</td>
+      <td>1.0</td>
+      <td>2</td>
+      <td>240321</td>
+      <td>293344</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s22-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>MERS4_01_bin3</td>
+      <td>MERS4</td>
+      <td>1.0</td>
+      <td>3</td>
+      <td>240321</td>
+      <td>306348</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s22-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>MERS4_01_bin4</td>
+      <td>MERS4</td>
+      <td>1.0</td>
+      <td>4</td>
+      <td>240321</td>
+      <td>2016899</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s22-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>MERS4_02_bin1</td>
+      <td>MERS4</td>
+      <td>2.0</td>
+      <td>1</td>
+      <td>240321</td>
+      <td>658864</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s23-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>MERS4_02_bin2</td>
+      <td>MERS4</td>
+      <td>2.0</td>
+      <td>2</td>
+      <td>240321</td>
+      <td>212998</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s23-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>MERS4_02_bin3</td>
+      <td>MERS4</td>
+      <td>2.0</td>
+      <td>3</td>
+      <td>240321</td>
+      <td>215821</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s23-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>MERS4_02_bin4</td>
+      <td>MERS4</td>
+      <td>2.0</td>
+      <td>4</td>
+      <td>240321</td>
+      <td>1950929</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s23-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>MERS4_03_bin1</td>
+      <td>MERS4</td>
+      <td>3.0</td>
+      <td>1</td>
+      <td>240321</td>
+      <td>660041</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s24-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>MERS4_03_bin2</td>
+      <td>MERS4</td>
+      <td>3.0</td>
+      <td>2</td>
+      <td>240321</td>
+      <td>219979</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s24-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>MERS4_03_bin3</td>
+      <td>MERS4</td>
+      <td>3.0</td>
+      <td>3</td>
+      <td>240321</td>
+      <td>1306692</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s24-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>MERS4_03_bin4</td>
+      <td>MERS4</td>
+      <td>3.0</td>
+      <td>4</td>
+      <td>240321</td>
+      <td>841512</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s24-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>MERS4_04_bin1</td>
+      <td>MERS4</td>
+      <td>4.0</td>
+      <td>1</td>
+      <td>240321</td>
+      <td>776009</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s25-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>MERS4_04_bin2</td>
+      <td>MERS4</td>
+      <td>4.0</td>
+      <td>2</td>
+      <td>240321</td>
+      <td>1623595</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s25-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>MERS4_04_bin3</td>
+      <td>MERS4</td>
+      <td>4.0</td>
+      <td>3</td>
+      <td>240321</td>
+      <td>580746</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s25-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>MERS4_04_bin4</td>
+      <td>MERS4</td>
+      <td>4.0</td>
+      <td>4</td>
+      <td>240321</td>
+      <td>134</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s25-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>MERS4_05_bin1</td>
+      <td>MERS4</td>
+      <td>5.0</td>
+      <td>1</td>
+      <td>240321</td>
+      <td>1573636</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s26-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>MERS4_05_bin2</td>
+      <td>MERS4</td>
+      <td>5.0</td>
+      <td>2</td>
+      <td>240321</td>
+      <td>1498037</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s26-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>MERS4_05_bin3</td>
+      <td>MERS4</td>
+      <td>5.0</td>
+      <td>3</td>
+      <td>240321</td>
+      <td>652</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s26-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>MERS4_05_bin4</td>
+      <td>MERS4</td>
+      <td>5.0</td>
+      <td>4</td>
+      <td>240321</td>
+      <td>140</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s26-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>MERS4_06_bin1</td>
+      <td>MERS4</td>
+      <td>6.0</td>
+      <td>1</td>
+      <td>240321</td>
+      <td>2667811</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s35-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>MERS4_06_bin2</td>
+      <td>MERS4</td>
+      <td>6.0</td>
+      <td>2</td>
+      <td>240321</td>
+      <td>249850</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s35-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>MERS4_06_bin3</td>
+      <td>MERS4</td>
+      <td>6.0</td>
+      <td>3</td>
+      <td>240321</td>
+      <td>467</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s35-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>MERS4_06_bin4</td>
+      <td>MERS4</td>
+      <td>6.0</td>
+      <td>4</td>
+      <td>240321</td>
+      <td>156</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s35-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>serum_01_bin1</td>
+      <td>serum</td>
+      <td>1.0</td>
+      <td>1</td>
+      <td>240321</td>
+      <td>165369</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s27-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>serum_01_bin2</td>
+      <td>serum</td>
+      <td>1.0</td>
+      <td>2</td>
+      <td>240321</td>
+      <td>610784</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s27-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>serum_01_bin3</td>
+      <td>serum</td>
+      <td>1.0</td>
+      <td>3</td>
+      <td>240321</td>
+      <td>246348</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s27-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>serum_01_bin4</td>
+      <td>serum</td>
+      <td>1.0</td>
+      <td>4</td>
+      <td>240321</td>
+      <td>1103181</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s27-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>serum_02_bin1</td>
+      <td>serum</td>
+      <td>2.0</td>
+      <td>1</td>
+      <td>240321</td>
+      <td>421712</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s28-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>serum_02_bin2</td>
+      <td>serum</td>
+      <td>2.0</td>
+      <td>2</td>
+      <td>240321</td>
+      <td>430171</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s28-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>serum_02_bin3</td>
+      <td>serum</td>
+      <td>2.0</td>
+      <td>3</td>
+      <td>240321</td>
+      <td>1568572</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s28-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>serum_02_bin4</td>
+      <td>serum</td>
+      <td>2.0</td>
+      <td>4</td>
+      <td>240321</td>
+      <td>422336</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s28-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>serum_03_bin1</td>
+      <td>serum</td>
+      <td>3.0</td>
+      <td>1</td>
+      <td>240321</td>
+      <td>653524</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s29-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>serum_03_bin2</td>
+      <td>serum</td>
+      <td>3.0</td>
+      <td>2</td>
+      <td>240321</td>
+      <td>1787041</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s29-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>serum_03_bin3</td>
+      <td>serum</td>
+      <td>3.0</td>
+      <td>3</td>
+      <td>240321</td>
+      <td>571999</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s29-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>serum_03_bin4</td>
+      <td>serum</td>
+      <td>3.0</td>
+      <td>4</td>
+      <td>240321</td>
+      <td>894</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s29-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>serum_04_bin1</td>
+      <td>serum</td>
+      <td>4.0</td>
+      <td>1</td>
+      <td>240321</td>
+      <td>1973605</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s30-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>serum_04_bin2</td>
+      <td>serum</td>
+      <td>4.0</td>
+      <td>2</td>
+      <td>240321</td>
+      <td>1138743</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s30-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>serum_04_bin3</td>
+      <td>serum</td>
+      <td>4.0</td>
+      <td>3</td>
+      <td>240321</td>
+      <td>1365</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s30-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>serum_04_bin4</td>
+      <td>serum</td>
+      <td>4.0</td>
+      <td>4</td>
+      <td>240321</td>
+      <td>92</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s30-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>serum_05_bin1</td>
+      <td>serum</td>
+      <td>5.0</td>
+      <td>1</td>
+      <td>240321</td>
+      <td>2122141</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s16-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>serum_05_bin2</td>
+      <td>serum</td>
+      <td>5.0</td>
+      <td>2</td>
+      <td>240321</td>
+      <td>113177</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s16-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>serum_05_bin3</td>
+      <td>serum</td>
+      <td>5.0</td>
+      <td>3</td>
+      <td>240321</td>
+      <td>167</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s16-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
+      <td>serum_05_bin4</td>
+      <td>serum</td>
+      <td>5.0</td>
+      <td>4</td>
+      <td>240321</td>
+      <td>599</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240314-exp1-s16-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>serum_01_bin1</td>
+      <td>serum</td>
+      <td>1.0</td>
+      <td>1</td>
+      <td>240321</td>
+      <td>167421</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s31-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>serum_01_bin2</td>
+      <td>serum</td>
+      <td>1.0</td>
+      <td>2</td>
+      <td>240321</td>
+      <td>633082</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s31-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>serum_01_bin3</td>
+      <td>serum</td>
+      <td>1.0</td>
+      <td>3</td>
+      <td>240321</td>
+      <td>226841</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s31-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>serum_01_bin4</td>
+      <td>serum</td>
+      <td>1.0</td>
+      <td>4</td>
+      <td>240321</td>
+      <td>1121207</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s31-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>serum_02_bin1</td>
+      <td>serum</td>
+      <td>2.0</td>
+      <td>1</td>
+      <td>240321</td>
+      <td>450943</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s32-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>serum_02_bin2</td>
+      <td>serum</td>
+      <td>2.0</td>
+      <td>2</td>
+      <td>240321</td>
+      <td>393294</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s32-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>serum_02_bin3</td>
+      <td>serum</td>
+      <td>2.0</td>
+      <td>3</td>
+      <td>240321</td>
+      <td>1500363</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s32-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>serum_02_bin4</td>
+      <td>serum</td>
+      <td>2.0</td>
+      <td>4</td>
+      <td>240321</td>
+      <td>449076</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s32-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>serum_03_bin1</td>
+      <td>serum</td>
+      <td>3.0</td>
+      <td>1</td>
+      <td>240321</td>
+      <td>597871</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s33-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>serum_03_bin2</td>
+      <td>serum</td>
+      <td>3.0</td>
+      <td>2</td>
+      <td>240321</td>
+      <td>1511155</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s33-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>serum_03_bin3</td>
+      <td>serum</td>
+      <td>3.0</td>
+      <td>3</td>
+      <td>240321</td>
+      <td>592611</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s33-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>serum_03_bin4</td>
+      <td>serum</td>
+      <td>3.0</td>
+      <td>4</td>
+      <td>240321</td>
+      <td>821</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s33-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>serum_04_bin1</td>
+      <td>serum</td>
+      <td>4.0</td>
+      <td>1</td>
+      <td>240321</td>
+      <td>1783143</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s34-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>serum_04_bin2</td>
+      <td>serum</td>
+      <td>4.0</td>
+      <td>2</td>
+      <td>240321</td>
+      <td>1132624</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s34-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>serum_04_bin3</td>
+      <td>serum</td>
+      <td>4.0</td>
+      <td>3</td>
+      <td>240321</td>
+      <td>1326</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s34-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>serum_04_bin4</td>
+      <td>serum</td>
+      <td>4.0</td>
+      <td>4</td>
+      <td>240321</td>
+      <td>97</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s34-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>serum_05_bin1</td>
+      <td>serum</td>
+      <td>5.0</td>
+      <td>1</td>
+      <td>240321</td>
+      <td>2667811</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s35-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>serum_05_bin2</td>
+      <td>serum</td>
+      <td>5.0</td>
+      <td>2</td>
+      <td>240321</td>
+      <td>249850</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s35-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>serum_05_bin3</td>
+      <td>serum</td>
+      <td>5.0</td>
+      <td>3</td>
+      <td>240321</td>
+      <td>467</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s35-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool2</td>
+      <td>serum_05_bin4</td>
+      <td>serum</td>
+      <td>5.0</td>
+      <td>4</td>
+      <td>240321</td>
+      <td>156</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240417_Illumina_merbeco-sarbeco-sera-mAbs-breadth/240321-exp2-s35-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool1</td>
       <td>TiteSeq_hDPP4_01_bin1</td>
       <td>TiteSeq_hDPP4</td>
-      <td>1</td>
       <td>1.0</td>
-      <td>221213</td>
-      <td>2979526</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s1_b1_S1_R1_001.fastq.gz]</td>
+      <td>1</td>
+      <td>240208</td>
+      <td>1841350</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s1-b1_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>A</td>
       <td>TiteSeq_hDPP4_01_bin2</td>
       <td>TiteSeq_hDPP4</td>
-      <td>2</td>
       <td>1.0</td>
-      <td>221213</td>
-      <td>1403409</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s1_b2_S2_R1_001.fastq.gz]</td>
+      <td>2</td>
+      <td>240208</td>
+      <td>605336</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s1-b2_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>A</td>
       <td>TiteSeq_hDPP4_01_bin3</td>
       <td>TiteSeq_hDPP4</td>
-      <td>3</td>
       <td>1.0</td>
-      <td>221213</td>
-      <td>1288376</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s1_b3_S3_R1_001.fastq.gz]</td>
+      <td>3</td>
+      <td>240208</td>
+      <td>1052545</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s1-b3_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>A</td>
       <td>TiteSeq_hDPP4_01_bin4</td>
       <td>TiteSeq_hDPP4</td>
-      <td>4</td>
       <td>1.0</td>
-      <td>221213</td>
-      <td>1262113</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s1_b4_S4_R1_001.fastq.gz]</td>
+      <td>4</td>
+      <td>240208</td>
+      <td>925431</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s1-b4_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>A</td>
       <td>TiteSeq_hDPP4_02_bin1</td>
       <td>TiteSeq_hDPP4</td>
-      <td>1</td>
       <td>2.0</td>
-      <td>221213</td>
-      <td>3407489</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s2_b1_S5_R1_001.fastq.gz]</td>
+      <td>1</td>
+      <td>240208</td>
+      <td>1858431</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s2-b1_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>A</td>
       <td>TiteSeq_hDPP4_02_bin2</td>
       <td>TiteSeq_hDPP4</td>
-      <td>2</td>
       <td>2.0</td>
-      <td>221213</td>
-      <td>1526544</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s2_b2_S6_R1_001.fastq.gz]</td>
+      <td>2</td>
+      <td>240208</td>
+      <td>1007820</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s2-b2_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>A</td>
       <td>TiteSeq_hDPP4_02_bin3</td>
       <td>TiteSeq_hDPP4</td>
-      <td>3</td>
       <td>2.0</td>
-      <td>221213</td>
-      <td>1153617</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s2_b3_S7_R1_001.fastq.gz]</td>
+      <td>3</td>
+      <td>240208</td>
+      <td>1176014</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s2-b3_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>A</td>
       <td>TiteSeq_hDPP4_02_bin4</td>
       <td>TiteSeq_hDPP4</td>
-      <td>4</td>
       <td>2.0</td>
-      <td>221213</td>
-      <td>1004697</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s2_b4_S8_R1_001.fastq.gz]</td>
+      <td>4</td>
+      <td>240208</td>
+      <td>670563</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s2-b4_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>A</td>
       <td>TiteSeq_hDPP4_03_bin1</td>
       <td>TiteSeq_hDPP4</td>
-      <td>1</td>
       <td>3.0</td>
-      <td>221213</td>
-      <td>4374876</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s3_b1_S9_R1_001.fastq.gz]</td>
+      <td>1</td>
+      <td>240208</td>
+      <td>1963880</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s3-b1_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>A</td>
       <td>TiteSeq_hDPP4_03_bin2</td>
       <td>TiteSeq_hDPP4</td>
-      <td>2</td>
       <td>3.0</td>
-      <td>221213</td>
-      <td>1178077</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s3_b2_S10_R1_001.fastq.gz]</td>
+      <td>2</td>
+      <td>240208</td>
+      <td>1100059</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s3-b2_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>A</td>
       <td>TiteSeq_hDPP4_03_bin3</td>
       <td>TiteSeq_hDPP4</td>
-      <td>3</td>
       <td>3.0</td>
-      <td>221213</td>
-      <td>1107868</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s3_b3_S11_R1_001.fastq.gz]</td>
+      <td>3</td>
+      <td>240208</td>
+      <td>1117906</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s3-b3_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>A</td>
       <td>TiteSeq_hDPP4_03_bin4</td>
       <td>TiteSeq_hDPP4</td>
-      <td>4</td>
       <td>3.0</td>
-      <td>221213</td>
-      <td>719585</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s3_b4_S12_R1_001.fastq.gz]</td>
+      <td>4</td>
+      <td>240208</td>
+      <td>468408</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s3-b4_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>A</td>
       <td>TiteSeq_hDPP4_04_bin1</td>
       <td>TiteSeq_hDPP4</td>
-      <td>1</td>
       <td>4.0</td>
-      <td>221213</td>
-      <td>4615914</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s4_b1_S13_R1_001.fastq.gz]</td>
+      <td>1</td>
+      <td>240208</td>
+      <td>2341404</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s4-b1_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>A</td>
       <td>TiteSeq_hDPP4_04_bin2</td>
       <td>TiteSeq_hDPP4</td>
-      <td>2</td>
       <td>4.0</td>
-      <td>221213</td>
-      <td>1149682</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s4_b2_S14_R1_001.fastq.gz]</td>
+      <td>2</td>
+      <td>240208</td>
+      <td>1483349</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s4-b2_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>A</td>
       <td>TiteSeq_hDPP4_04_bin3</td>
       <td>TiteSeq_hDPP4</td>
-      <td>3</td>
       <td>4.0</td>
-      <td>221213</td>
-      <td>710331</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s4_b3_S15_R1_001.fastq.gz]</td>
+      <td>3</td>
+      <td>240208</td>
+      <td>873810</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s4-b3_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>A</td>
       <td>TiteSeq_hDPP4_04_bin4</td>
       <td>TiteSeq_hDPP4</td>
-      <td>4</td>
       <td>4.0</td>
-      <td>221213</td>
-      <td>123303</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s4_b4_S16_R1_001.fastq.gz]</td>
+      <td>4</td>
+      <td>240208</td>
+      <td>58346</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s4-b4_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>A</td>
       <td>TiteSeq_hDPP4_05_bin1</td>
       <td>TiteSeq_hDPP4</td>
-      <td>1</td>
       <td>5.0</td>
-      <td>221213</td>
-      <td>5269498</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s5_b1_S17_R1_001.fastq.gz]</td>
+      <td>1</td>
+      <td>240208</td>
+      <td>3244248</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s5-b1_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>A</td>
       <td>TiteSeq_hDPP4_05_bin2</td>
       <td>TiteSeq_hDPP4</td>
-      <td>2</td>
       <td>5.0</td>
-      <td>221213</td>
-      <td>875320</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s5_b2_S18_R1_001.fastq.gz]</td>
+      <td>2</td>
+      <td>240208</td>
+      <td>1094323</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s5-b2_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>A</td>
       <td>TiteSeq_hDPP4_05_bin3</td>
       <td>TiteSeq_hDPP4</td>
-      <td>3</td>
       <td>5.0</td>
-      <td>221213</td>
-      <td>133991</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s5_b3_S19_R1_001.fastq.gz]</td>
+      <td>3</td>
+      <td>240208</td>
+      <td>24732</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s5-b3_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>A</td>
       <td>TiteSeq_hDPP4_05_bin4</td>
       <td>TiteSeq_hDPP4</td>
-      <td>4</td>
       <td>5.0</td>
-      <td>221213</td>
-      <td>4635</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s5_b4_S20_R1_001.fastq.gz]</td>
+      <td>4</td>
+      <td>240208</td>
+      <td>6301</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s5-b4_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>A</td>
       <td>TiteSeq_hDPP4_06_bin1</td>
       <td>TiteSeq_hDPP4</td>
-      <td>1</td>
       <td>6.0</td>
-      <td>221213</td>
-      <td>5868162</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s6_b1_S21_R1_001.fastq.gz]</td>
+      <td>1</td>
+      <td>240208</td>
+      <td>4028824</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s6-b1_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>A</td>
       <td>TiteSeq_hDPP4_06_bin2</td>
       <td>TiteSeq_hDPP4</td>
-      <td>2</td>
       <td>6.0</td>
-      <td>221213</td>
-      <td>311628</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s6_b2_S22_R1_001.fastq.gz]</td>
+      <td>2</td>
+      <td>240208</td>
+      <td>671028</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s6-b2_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>A</td>
       <td>TiteSeq_hDPP4_06_bin3</td>
       <td>TiteSeq_hDPP4</td>
-      <td>3</td>
       <td>6.0</td>
-      <td>221213</td>
-      <td>5760</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s6_b3_S23_R1_001.fastq.gz]</td>
+      <td>3</td>
+      <td>240208</td>
+      <td>1785</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s6-b3_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>A</td>
       <td>TiteSeq_hDPP4_06_bin4</td>
       <td>TiteSeq_hDPP4</td>
-      <td>4</td>
       <td>6.0</td>
-      <td>221213</td>
-      <td>586</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s6_b4_S24_R1_001.fastq.gz]</td>
+      <td>4</td>
+      <td>240208</td>
+      <td>1034</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s6-b4_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>A</td>
       <td>TiteSeq_hDPP4_07_bin1</td>
       <td>TiteSeq_hDPP4</td>
-      <td>1</td>
       <td>7.0</td>
-      <td>221213</td>
-      <td>6185457</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s7_b1_S25_R1_001.fastq.gz]</td>
+      <td>1</td>
+      <td>240208</td>
+      <td>4014190</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s7-b1_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>A</td>
       <td>TiteSeq_hDPP4_07_bin2</td>
       <td>TiteSeq_hDPP4</td>
-      <td>2</td>
       <td>7.0</td>
-      <td>221213</td>
-      <td>182421</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s7_b2_S26_R1_001.fastq.gz]</td>
+      <td>2</td>
+      <td>240208</td>
+      <td>419104</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s7-b2_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>A</td>
       <td>TiteSeq_hDPP4_07_bin3</td>
       <td>TiteSeq_hDPP4</td>
-      <td>3</td>
       <td>7.0</td>
-      <td>221213</td>
-      <td>5522</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s7_b3_S27_R1_001.fastq.gz]</td>
+      <td>3</td>
+      <td>240208</td>
+      <td>951</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s7-b3_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>A</td>
       <td>TiteSeq_hDPP4_07_bin4</td>
       <td>TiteSeq_hDPP4</td>
-      <td>4</td>
       <td>7.0</td>
-      <td>221213</td>
-      <td>303</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s7_b4_S28_R1_001.fastq.gz]</td>
+      <td>4</td>
+      <td>240208</td>
+      <td>341</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s7-b4_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>A</td>
       <td>TiteSeq_hDPP4_08_bin1</td>
       <td>TiteSeq_hDPP4</td>
-      <td>1</td>
       <td>8.0</td>
-      <td>221213</td>
-      <td>6432873</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s8_b1_S29_R1_001.fastq.gz]</td>
+      <td>1</td>
+      <td>240208</td>
+      <td>4004004</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s8-b1_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>A</td>
       <td>TiteSeq_hDPP4_08_bin2</td>
       <td>TiteSeq_hDPP4</td>
-      <td>2</td>
       <td>8.0</td>
-      <td>221213</td>
-      <td>175979</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s8_b2_S30_R1_001.fastq.gz]</td>
+      <td>2</td>
+      <td>240208</td>
+      <td>518476</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s8-b2_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>A</td>
       <td>TiteSeq_hDPP4_08_bin3</td>
       <td>TiteSeq_hDPP4</td>
-      <td>3</td>
       <td>8.0</td>
-      <td>221213</td>
-      <td>2807</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s8_b3_S31_R1_001.fastq.gz]</td>
+      <td>3</td>
+      <td>240208</td>
+      <td>791</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s8-b3_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>A</td>
       <td>TiteSeq_hDPP4_08_bin4</td>
       <td>TiteSeq_hDPP4</td>
-      <td>4</td>
       <td>8.0</td>
-      <td>221213</td>
-      <td>234</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s8_b4_S32_R1_001.fastq.gz]</td>
+      <td>4</td>
+      <td>240208</td>
+      <td>259</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s8-b4_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>A</td>
       <td>TiteSeq_hDPP4_09_bin1</td>
       <td>TiteSeq_hDPP4</td>
-      <td>1</td>
       <td>9.0</td>
-      <td>221213</td>
-      <td>6131811</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s9_b1_S33_R1_001.fastq.gz]</td>
+      <td>1</td>
+      <td>240208</td>
+      <td>4011852</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s9-b1_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>A</td>
       <td>TiteSeq_hDPP4_09_bin2</td>
       <td>TiteSeq_hDPP4</td>
-      <td>2</td>
       <td>9.0</td>
-      <td>221213</td>
-      <td>573092</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s9_b2_S34_R1_001.fastq.gz]</td>
+      <td>2</td>
+      <td>240208</td>
+      <td>340280</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s9-b2_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>A</td>
       <td>TiteSeq_hDPP4_09_bin3</td>
       <td>TiteSeq_hDPP4</td>
-      <td>3</td>
       <td>9.0</td>
-      <td>221213</td>
-      <td>814</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s9_b3_S35_R1_001.fastq.gz]</td>
+      <td>3</td>
+      <td>240208</td>
+      <td>4770</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s9-b3_R1_001.fastq.gz]</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>A</td>
       <td>TiteSeq_hDPP4_09_bin4</td>
       <td>TiteSeq_hDPP4</td>
-      <td>4</td>
       <td>9.0</td>
-      <td>221213</td>
-      <td>119</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_s9_b4_S36_R1_001.fastq.gz]</td>
-    </tr>
-    <tr>
-      <td>pool1</td>
-      <td>A</td>
-      <td>SortSeq_bin1</td>
-      <td>SortSeq</td>
-      <td>1</td>
-      <td>NaN</td>
-      <td>221213</td>
-      <td>11620651</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_lib51-53_bin1_1_S53_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_lib51-53_bin1_2_S54_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_lib51-53_bin1_3_S55_R1_001.fastq.gz]</td>
-    </tr>
-    <tr>
-      <td>pool1</td>
-      <td>A</td>
-      <td>SortSeq_bin2</td>
-      <td>SortSeq</td>
-      <td>2</td>
-      <td>NaN</td>
-      <td>221213</td>
-      <td>4448236</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_lib51-53_bin2_1_S56_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_lib51-53_bin2_2_S57_R1_001.fastq.gz]</td>
-    </tr>
-    <tr>
-      <td>pool1</td>
-      <td>A</td>
-      <td>SortSeq_bin3</td>
-      <td>SortSeq</td>
-      <td>3</td>
-      <td>NaN</td>
-      <td>221213</td>
-      <td>3402367</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_lib51-53_bin3_1_S58_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_lib51-53_bin3_2_S59_R1_001.fastq.gz]</td>
-    </tr>
-    <tr>
-      <td>pool1</td>
-      <td>A</td>
-      <td>SortSeq_bin4</td>
-      <td>SortSeq</td>
       <td>4</td>
-      <td>NaN</td>
-      <td>221213</td>
-      <td>2678000</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_lib51-53_bin4_1_S60_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_lib51-53_bin4_2_S61_R1_001.fastq.gz]</td>
+      <td>240208</td>
+      <td>181</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp1-s9-b4_R1_001.fastq.gz]</td>
     </tr>
     <tr>
-      <td>pool2</td>
-      <td>A</td>
-      <td>SortSeq_bin1</td>
-      <td>SortSeq</td>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_01_bin1</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>1.0</td>
       <td>1</td>
-      <td>NaN</td>
-      <td>221213</td>
-      <td>7023038</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2023/230303_MERS-2180-expr-addl-reads/lib52_54_b1_1_S41_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2023/230303_MERS-2180-expr-addl-reads/lib52_54_b1_2_S42_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2023/230303_MERS-2180-expr-addl-reads/lib52_54_b1_3_S43_R1_001.fastq.gz]</td>
+      <td>240208</td>
+      <td>698277</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s1-b1_R1_001.fastq.gz]</td>
     </tr>
     <tr>
-      <td>pool2</td>
-      <td>A</td>
-      <td>SortSeq_bin2</td>
-      <td>SortSeq</td>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_01_bin2</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>1.0</td>
       <td>2</td>
-      <td>NaN</td>
-      <td>221213</td>
-      <td>3977028</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_lib52-54_bin2_1_S65_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_lib52-54_bin2_2_S66_R1_001.fastq.gz]</td>
+      <td>240208</td>
+      <td>1667681</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s1-b2_R1_001.fastq.gz]</td>
     </tr>
     <tr>
-      <td>pool2</td>
-      <td>A</td>
-      <td>SortSeq_bin3</td>
-      <td>SortSeq</td>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_01_bin3</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>1.0</td>
       <td>3</td>
-      <td>NaN</td>
-      <td>221213</td>
-      <td>3640404</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2023/230303_MERS-2180-expr-addl-reads/lib52_54_b3_1_S44_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2023/230303_MERS-2180-expr-addl-reads/lib52_54_b3_2_S45_R1_001.fastq.gz]</td>
+      <td>240208</td>
+      <td>1172010</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s1-b3_R1_001.fastq.gz]</td>
     </tr>
     <tr>
-      <td>pool2</td>
-      <td>A</td>
-      <td>SortSeq_bin4</td>
-      <td>SortSeq</td>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_01_bin4</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>1.0</td>
       <td>4</td>
+      <td>240208</td>
+      <td>1825852</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s1-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_02_bin1</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>2.0</td>
+      <td>1</td>
+      <td>240208</td>
+      <td>1407615</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s2-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_02_bin2</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>2.0</td>
+      <td>2</td>
+      <td>240208</td>
+      <td>1248751</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s2-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_02_bin3</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>2.0</td>
+      <td>3</td>
+      <td>240208</td>
+      <td>919558</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s2-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_02_bin4</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>2.0</td>
+      <td>4</td>
+      <td>240208</td>
+      <td>1674390</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s2-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_03_bin1</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>3.0</td>
+      <td>1</td>
+      <td>240208</td>
+      <td>2412534</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s3-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_03_bin2</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>3.0</td>
+      <td>2</td>
+      <td>240208</td>
+      <td>817059</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s3-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_03_bin3</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>3.0</td>
+      <td>3</td>
+      <td>240208</td>
+      <td>1040920</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s3-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_03_bin4</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>3.0</td>
+      <td>4</td>
+      <td>240208</td>
+      <td>908933</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s3-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_04_bin1</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>4.0</td>
+      <td>1</td>
+      <td>240208</td>
+      <td>3141964</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s4-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_04_bin2</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>4.0</td>
+      <td>2</td>
+      <td>240208</td>
+      <td>1014404</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s4-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_04_bin3</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>4.0</td>
+      <td>3</td>
+      <td>240208</td>
+      <td>802012</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s4-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_04_bin4</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>4.0</td>
+      <td>4</td>
+      <td>240208</td>
+      <td>198946</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s4-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_05_bin1</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>5.0</td>
+      <td>1</td>
+      <td>240208</td>
+      <td>3737485</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s5-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_05_bin2</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>5.0</td>
+      <td>2</td>
+      <td>240208</td>
+      <td>1409286</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s5-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_05_bin3</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>5.0</td>
+      <td>3</td>
+      <td>240208</td>
+      <td>169791</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s5-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_05_bin4</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>5.0</td>
+      <td>4</td>
+      <td>240208</td>
+      <td>10373</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s5-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_06_bin1</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>6.0</td>
+      <td>1</td>
+      <td>240208</td>
+      <td>3601648</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s6-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_06_bin2</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>6.0</td>
+      <td>2</td>
+      <td>240208</td>
+      <td>722123</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s6-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_06_bin3</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>6.0</td>
+      <td>3</td>
+      <td>240208</td>
+      <td>5036</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s6-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_06_bin4</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>6.0</td>
+      <td>4</td>
+      <td>240208</td>
+      <td>738</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s6-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_07_bin1</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>7.0</td>
+      <td>1</td>
+      <td>240208</td>
+      <td>2508917</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s7-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_07_bin2</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>7.0</td>
+      <td>2</td>
+      <td>240208</td>
+      <td>142178</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s7-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_07_bin3</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>7.0</td>
+      <td>3</td>
+      <td>240208</td>
+      <td>684</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s7-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_07_bin4</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>7.0</td>
+      <td>4</td>
+      <td>240208</td>
+      <td>261</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s7-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_08_bin1</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>8.0</td>
+      <td>1</td>
+      <td>240208</td>
+      <td>3727870</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s8-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_08_bin2</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>8.0</td>
+      <td>2</td>
+      <td>240208</td>
+      <td>429004</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s8-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_08_bin3</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>8.0</td>
+      <td>3</td>
+      <td>240208</td>
+      <td>4144</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s8-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_08_bin4</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>8.0</td>
+      <td>4</td>
+      <td>240208</td>
+      <td>418</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s8-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_09_bin1</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>9.0</td>
+      <td>1</td>
+      <td>240208</td>
+      <td>4192142</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s9-b1_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_09_bin2</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>9.0</td>
+      <td>2</td>
+      <td>240208</td>
+      <td>502850</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s9-b2_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_09_bin3</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>9.0</td>
+      <td>3</td>
+      <td>240208</td>
+      <td>1215</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s9-b3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool3</td>
+      <td>TiteSeq_ApACE2_09_bin4</td>
+      <td>TiteSeq_ApACE2</td>
+      <td>9.0</td>
+      <td>4</td>
+      <td>240208</td>
+      <td>306</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240208-exp2-s9-b4_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool5</td>
+      <td>SortSeq_bin1</td>
+      <td>expression</td>
       <td>NaN</td>
-      <td>221213</td>
-      <td>4523054</td>
-      <td>[/uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_lib52-54_bin4_1_S69_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/starr-group1/sequencing/TNS/2022/221213_MERS-PDF2180_bc-seq/221213_lib52-54_bin4_2_S70_R1_001.fastq.gz]</td>
+      <td>1</td>
+      <td>240229</td>
+      <td>5778711</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240229-exp1-RBD-bin1-1_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240229-exp1-RBD-bin1-2_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240229-exp-1-RBD-bin1-3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool5</td>
+      <td>SortSeq_bin2</td>
+      <td>expression</td>
+      <td>NaN</td>
+      <td>2</td>
+      <td>240229</td>
+      <td>4623517</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240229-exp1-RBD-bin2-1_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240229-exp1-RBD-bin2-2_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240229-exp1-RBD-bin2-3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool5</td>
+      <td>SortSeq_bin3</td>
+      <td>expression</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>240229</td>
+      <td>5860219</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240229-exp1-RBD-bin3-1_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240229-exp1-RBD-bin3-2_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240229-exp1-RBD-bin3-3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool5</td>
+      <td>SortSeq_bin4</td>
+      <td>expression</td>
+      <td>NaN</td>
+      <td>4</td>
+      <td>240229</td>
+      <td>3640000</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240229-exp1-RBD-bin4-1_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240229-exp1-RBD-bin4-2_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240229-exp1-RBD-bin4-3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool6</td>
+      <td>SortSeq_bin1</td>
+      <td>expression</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>240229</td>
+      <td>7159711</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240229-exp2-RBD-bin1-1_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240229-exp2-RBD-bin1-2_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240229-exp2-RBD-bin1-3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool6</td>
+      <td>SortSeq_bin2</td>
+      <td>expression</td>
+      <td>NaN</td>
+      <td>2</td>
+      <td>240229</td>
+      <td>7219741</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240229-exp2-RBD-bin2-1_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240229-exp2-RBD-bin2-2_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240229-exp2-RBD-bin2-3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool6</td>
+      <td>SortSeq_bin3</td>
+      <td>expression</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>240229</td>
+      <td>5110175</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240229-exp2-RBD-bin3-1_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240229-exp2-RBD-bin3-2_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240229-exp2-RBD-bin3-3_R1_001.fastq.gz]</td>
+    </tr>
+    <tr>
+      <td>pool6</td>
+      <td>SortSeq_bin4</td>
+      <td>expression</td>
+      <td>NaN</td>
+      <td>4</td>
+      <td>240229</td>
+      <td>5640207</td>
+      <td>[/uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240229-exp2-RBD-bin4-1_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240229-exp2-RBD-bin4-2_R1_001.fastq.gz, /uufs/chpc.utah.edu/common/home/u6042467/starr-group1/sequencing/TNS/2024/240425_Illumina_merbeco-hDPP4-ApACE2/240229-exp2-RBD-bin4-3_R1_001.fastq.gz]</td>
     </tr>
   </tbody>
 </table>
@@ -695,7 +2610,7 @@ Make sure library / sample combinations are unique:
 
 
 ```python
-assert len(barcode_runs) == len(barcode_runs.groupby(['library', 'replicate', 'sample']))
+assert len(barcode_runs) == len(barcode_runs.groupby(['library', 'sample']))
 ```
 
 Make sure the the libraries for which we have barcode runs are all in our variant table:
@@ -804,11 +2719,27 @@ display(HTML(
   <tbody>
     <tr>
       <td>pool2</td>
-      <td>129149</td>
+      <td>135490</td>
+    </tr>
+    <tr>
+      <td>pool4</td>
+      <td>75635</td>
     </tr>
     <tr>
       <td>pool1</td>
-      <td>108785</td>
+      <td>131567</td>
+    </tr>
+    <tr>
+      <td>pool6</td>
+      <td>193832</td>
+    </tr>
+    <tr>
+      <td>pool5</td>
+      <td>186791</td>
+    </tr>
+    <tr>
+      <td>pool3</td>
+      <td>71854</td>
     </tr>
   </tbody>
 </table>
@@ -834,15 +2765,15 @@ Parse the barcodes in parallel via a [multiprocessing.Pool](https://docs.python.
 
 
 ```python
-def process_func(parser, r1files, library, replicate, sample):
+def process_func(parser, r1files, library, sample):
     """Convenience function to be starmapped to multiprocessing pool."""
-    return parser.parse(r1files, add_cols={'library': library, 'replicate': replicate, 'sample': sample})
+    return parser.parse(r1files, add_cols={'library': library, 'sample': sample})
 
 # parallel computation of list of data frames
 with multiprocessing.pool.Pool(processes=ncpus) as pool:
     bclist = pool.starmap(
                 process_func,
-                [(parsers[run.library], run.R1, run.library, run.replicate, run.sample)
+                [(parsers[run.library], run.R1, run.library, run.sample)
                   for run in barcode_runs.itertuples()],
                 )
 ```
@@ -876,45 +2807,39 @@ display(HTML(fates.head().to_html(index=False)))
       <th>barcode</th>
       <th>count</th>
       <th>library</th>
-      <th>replicate</th>
       <th>sample</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>GAATAAACCGAAAACA</td>
-      <td>2844</td>
+      <td>TTCCACTTTTCCTCAC</td>
+      <td>1826</td>
       <td>pool1</td>
-      <td>A</td>
-      <td>TiteSeq_hDPP4_01_bin1</td>
+      <td>LCA60_01_bin1</td>
     </tr>
     <tr>
-      <td>AGGATGCCACAATCCC</td>
-      <td>2782</td>
+      <td>AGTAATTGAAAAGTAC</td>
+      <td>1683</td>
       <td>pool1</td>
-      <td>A</td>
-      <td>TiteSeq_hDPP4_01_bin1</td>
+      <td>LCA60_01_bin1</td>
     </tr>
     <tr>
-      <td>GTAATTTTCTTTGGCC</td>
-      <td>2703</td>
+      <td>TAGCAAAAGACCTAAT</td>
+      <td>1616</td>
       <td>pool1</td>
-      <td>A</td>
-      <td>TiteSeq_hDPP4_01_bin1</td>
+      <td>LCA60_01_bin1</td>
     </tr>
     <tr>
-      <td>AAGACCGAAAAAAATC</td>
-      <td>2304</td>
+      <td>ACCTAATGGGGAGAGA</td>
+      <td>1581</td>
       <td>pool1</td>
-      <td>A</td>
-      <td>TiteSeq_hDPP4_01_bin1</td>
+      <td>LCA60_01_bin1</td>
     </tr>
     <tr>
-      <td>TTGCGCAATTACAAGA</td>
-      <td>2001</td>
+      <td>CCAAGCCCGATAAACC</td>
+      <td>1574</td>
       <td>pool1</td>
-      <td>A</td>
-      <td>TiteSeq_hDPP4_01_bin1</td>
+      <td>LCA60_01_bin1</td>
     </tr>
   </tbody>
 </table>
@@ -930,45 +2855,39 @@ display(HTML(fates.head().to_html(index=False)))
       <th>fate</th>
       <th>count</th>
       <th>library</th>
-      <th>replicate</th>
       <th>sample</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>valid barcode</td>
-      <td>12125910</td>
+      <td>2270184</td>
       <td>pool1</td>
-      <td>A</td>
-      <td>TiteSeq_hDPP4_01_bin1</td>
-    </tr>
-    <tr>
-      <td>invalid barcode</td>
-      <td>2638727</td>
-      <td>pool1</td>
-      <td>A</td>
-      <td>TiteSeq_hDPP4_01_bin1</td>
+      <td>LCA60_01_bin1</td>
     </tr>
     <tr>
       <td>low quality barcode</td>
-      <td>2431862</td>
+      <td>456537</td>
       <td>pool1</td>
-      <td>A</td>
-      <td>TiteSeq_hDPP4_01_bin1</td>
+      <td>LCA60_01_bin1</td>
+    </tr>
+    <tr>
+      <td>invalid barcode</td>
+      <td>334832</td>
+      <td>pool1</td>
+      <td>LCA60_01_bin1</td>
     </tr>
     <tr>
       <td>unparseable barcode</td>
-      <td>200265</td>
+      <td>54384</td>
       <td>pool1</td>
-      <td>A</td>
-      <td>TiteSeq_hDPP4_01_bin1</td>
+      <td>LCA60_01_bin1</td>
     </tr>
     <tr>
       <td>failed chastity filter</td>
       <td>0</td>
       <td>pool1</td>
-      <td>A</td>
-      <td>TiteSeq_hDPP4_01_bin1</td>
+      <td>LCA60_01_bin1</td>
     </tr>
   </tbody>
 </table>
@@ -1002,7 +2921,7 @@ Next, we tabulate the barcode fates in wide format:
 display(HTML(fates
              .pivot_table(columns='fate',
                           values='count',
-                          index=['library', 'replicate', 'sample'])
+                          index=['library', 'sample'])
              .to_html()
              ))
 ```
@@ -1011,7 +2930,6 @@ display(HTML(fates
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
-      <th></th>
       <th></th>
       <th>fate</th>
       <th>failed chastity filter</th>
@@ -1022,7 +2940,6 @@ display(HTML(fates
     </tr>
     <tr>
       <th>library</th>
-      <th>replicate</th>
       <th>sample</th>
       <th></th>
       <th></th>
@@ -1033,360 +2950,1929 @@ display(HTML(fates
   </thead>
   <tbody>
     <tr>
-      <th rowspan="40" valign="top">pool1</th>
-      <th rowspan="40" valign="top">A</th>
-      <th>SortSeq_bin1</th>
+      <th rowspan="152" valign="top">pool1</th>
+      <th>4C2_01_bin1</th>
       <td>0</td>
-      <td>17993463</td>
-      <td>16397713</td>
-      <td>1316213</td>
-      <td>77939757</td>
+      <td>270501</td>
+      <td>455678</td>
+      <td>42808</td>
+      <td>1795381</td>
     </tr>
     <tr>
-      <th>SortSeq_bin2</th>
+      <th>4C2_01_bin2</th>
       <td>0</td>
-      <td>1912772</td>
-      <td>1785020</td>
-      <td>148965</td>
-      <td>8729351</td>
+      <td>109281</td>
+      <td>155300</td>
+      <td>18021</td>
+      <td>723522</td>
     </tr>
     <tr>
-      <th>SortSeq_bin3</th>
+      <th>4C2_01_bin3</th>
       <td>0</td>
-      <td>1197046</td>
-      <td>1102475</td>
-      <td>89522</td>
-      <td>5431957</td>
+      <td>144554</td>
+      <td>207229</td>
+      <td>23091</td>
+      <td>991901</td>
     </tr>
     <tr>
-      <th>SortSeq_bin4</th>
+      <th>4C2_01_bin4</th>
       <td>0</td>
-      <td>804333</td>
-      <td>768410</td>
-      <td>57834</td>
-      <td>3686042</td>
+      <td>563748</td>
+      <td>871004</td>
+      <td>93138</td>
+      <td>3874625</td>
+    </tr>
+    <tr>
+      <th>4C2_02_bin1</th>
+      <td>0</td>
+      <td>420948</td>
+      <td>538627</td>
+      <td>67795</td>
+      <td>2814592</td>
+    </tr>
+    <tr>
+      <th>4C2_02_bin2</th>
+      <td>0</td>
+      <td>262620</td>
+      <td>259213</td>
+      <td>39016</td>
+      <td>1751141</td>
+    </tr>
+    <tr>
+      <th>4C2_02_bin3</th>
+      <td>0</td>
+      <td>38</td>
+      <td>17</td>
+      <td>331</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>4C2_02_bin4</th>
+      <td>0</td>
+      <td>656489</td>
+      <td>995021</td>
+      <td>103972</td>
+      <td>4507948</td>
+    </tr>
+    <tr>
+      <th>4C2_03_bin1</th>
+      <td>0</td>
+      <td>487902</td>
+      <td>691142</td>
+      <td>78722</td>
+      <td>3236551</td>
+    </tr>
+    <tr>
+      <th>4C2_03_bin2</th>
+      <td>0</td>
+      <td>167726</td>
+      <td>213644</td>
+      <td>27797</td>
+      <td>1147404</td>
+    </tr>
+    <tr>
+      <th>4C2_03_bin3</th>
+      <td>0</td>
+      <td>1027939</td>
+      <td>1470825</td>
+      <td>166743</td>
+      <td>7027454</td>
+    </tr>
+    <tr>
+      <th>4C2_03_bin4</th>
+      <td>0</td>
+      <td>140888</td>
+      <td>218682</td>
+      <td>21969</td>
+      <td>991827</td>
+    </tr>
+    <tr>
+      <th>4C2_04_bin1</th>
+      <td>0</td>
+      <td>596159</td>
+      <td>835711</td>
+      <td>99671</td>
+      <td>3976288</td>
+    </tr>
+    <tr>
+      <th>4C2_04_bin2</th>
+      <td>0</td>
+      <td>1036804</td>
+      <td>1557938</td>
+      <td>169853</td>
+      <td>7069613</td>
+    </tr>
+    <tr>
+      <th>4C2_04_bin3</th>
+      <td>0</td>
+      <td>221325</td>
+      <td>338492</td>
+      <td>34240</td>
+      <td>1582595</td>
+    </tr>
+    <tr>
+      <th>4C2_04_bin4</th>
+      <td>0</td>
+      <td>201</td>
+      <td>43</td>
+      <td>9</td>
+      <td>31</td>
+    </tr>
+    <tr>
+      <th>4C2_05_bin1</th>
+      <td>0</td>
+      <td>820712</td>
+      <td>1226469</td>
+      <td>128451</td>
+      <td>5546372</td>
+    </tr>
+    <tr>
+      <th>4C2_05_bin2</th>
+      <td>0</td>
+      <td>919624</td>
+      <td>1402939</td>
+      <td>147345</td>
+      <td>6393797</td>
+    </tr>
+    <tr>
+      <th>4C2_05_bin3</th>
+      <td>0</td>
+      <td>880</td>
+      <td>431</td>
+      <td>53</td>
+      <td>1513</td>
+    </tr>
+    <tr>
+      <th>4C2_05_bin4</th>
+      <td>0</td>
+      <td>448</td>
+      <td>77</td>
+      <td>37</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th>4C2_06_bin1</th>
+      <td>0</td>
+      <td>1718595</td>
+      <td>2567556</td>
+      <td>286635</td>
+      <td>11704690</td>
+    </tr>
+    <tr>
+      <th>4C2_06_bin2</th>
+      <td>0</td>
+      <td>94969</td>
+      <td>134809</td>
+      <td>15721</td>
+      <td>649472</td>
+    </tr>
+    <tr>
+      <th>4C2_06_bin3</th>
+      <td>0</td>
+      <td>282</td>
+      <td>92</td>
+      <td>30</td>
+      <td>219</td>
+    </tr>
+    <tr>
+      <th>4C2_06_bin4</th>
+      <td>0</td>
+      <td>788</td>
+      <td>391</td>
+      <td>46</td>
+      <td>1326</td>
+    </tr>
+    <tr>
+      <th>LCA60_01_bin1</th>
+      <td>0</td>
+      <td>334832</td>
+      <td>456537</td>
+      <td>54384</td>
+      <td>2270184</td>
+    </tr>
+    <tr>
+      <th>LCA60_01_bin2</th>
+      <td>0</td>
+      <td>182280</td>
+      <td>251717</td>
+      <td>28051</td>
+      <td>1237177</td>
+    </tr>
+    <tr>
+      <th>LCA60_01_bin3</th>
+      <td>0</td>
+      <td>101438</td>
+      <td>132480</td>
+      <td>17249</td>
+      <td>679309</td>
+    </tr>
+    <tr>
+      <th>LCA60_01_bin4</th>
+      <td>0</td>
+      <td>547299</td>
+      <td>809290</td>
+      <td>85304</td>
+      <td>3774959</td>
+    </tr>
+    <tr>
+      <th>LCA60_02_bin1</th>
+      <td>0</td>
+      <td>308170</td>
+      <td>377998</td>
+      <td>52095</td>
+      <td>2061776</td>
+    </tr>
+    <tr>
+      <th>LCA60_02_bin2</th>
+      <td>0</td>
+      <td>120040</td>
+      <td>158066</td>
+      <td>18815</td>
+      <td>771508</td>
+    </tr>
+    <tr>
+      <th>LCA60_02_bin3</th>
+      <td>0</td>
+      <td>105060</td>
+      <td>120120</td>
+      <td>19124</td>
+      <td>695037</td>
+    </tr>
+    <tr>
+      <th>LCA60_02_bin4</th>
+      <td>0</td>
+      <td>580198</td>
+      <td>823885</td>
+      <td>97037</td>
+      <td>4016491</td>
+    </tr>
+    <tr>
+      <th>LCA60_03_bin1</th>
+      <td>0</td>
+      <td>424805</td>
+      <td>538905</td>
+      <td>80670</td>
+      <td>2832544</td>
+    </tr>
+    <tr>
+      <th>LCA60_03_bin2</th>
+      <td>0</td>
+      <td>154124</td>
+      <td>204146</td>
+      <td>25225</td>
+      <td>988392</td>
+    </tr>
+    <tr>
+      <th>LCA60_03_bin3</th>
+      <td>0</td>
+      <td>854974</td>
+      <td>1227565</td>
+      <td>141297</td>
+      <td>5817341</td>
+    </tr>
+    <tr>
+      <th>LCA60_03_bin4</th>
+      <td>0</td>
+      <td>15041</td>
+      <td>19641</td>
+      <td>2386</td>
+      <td>104743</td>
+    </tr>
+    <tr>
+      <th>LCA60_04_bin1</th>
+      <td>0</td>
+      <td>561050</td>
+      <td>800748</td>
+      <td>92464</td>
+      <td>3766209</td>
+    </tr>
+    <tr>
+      <th>LCA60_04_bin2</th>
+      <td>0</td>
+      <td>1200053</td>
+      <td>1791573</td>
+      <td>195331</td>
+      <td>8280391</td>
+    </tr>
+    <tr>
+      <th>LCA60_04_bin3</th>
+      <td>0</td>
+      <td>11853</td>
+      <td>15358</td>
+      <td>1522</td>
+      <td>79682</td>
+    </tr>
+    <tr>
+      <th>LCA60_04_bin4</th>
+      <td>0</td>
+      <td>248</td>
+      <td>105</td>
+      <td>19</td>
+      <td>370</td>
+    </tr>
+    <tr>
+      <th>LCA60_05_bin1</th>
+      <td>0</td>
+      <td>1512357</td>
+      <td>2179236</td>
+      <td>244829</td>
+      <td>10355281</td>
+    </tr>
+    <tr>
+      <th>LCA60_05_bin2</th>
+      <td>0</td>
+      <td>193222</td>
+      <td>284450</td>
+      <td>30639</td>
+      <td>1329048</td>
+    </tr>
+    <tr>
+      <th>LCA60_05_bin3</th>
+      <td>0</td>
+      <td>305</td>
+      <td>101</td>
+      <td>15</td>
+      <td>296</td>
+    </tr>
+    <tr>
+      <th>LCA60_05_bin4</th>
+      <td>0</td>
+      <td>261</td>
+      <td>90</td>
+      <td>596</td>
+      <td>42</td>
+    </tr>
+    <tr>
+      <th>LCA60_06_bin1</th>
+      <td>0</td>
+      <td>1718595</td>
+      <td>2567556</td>
+      <td>286635</td>
+      <td>11704690</td>
+    </tr>
+    <tr>
+      <th>LCA60_06_bin2</th>
+      <td>0</td>
+      <td>94969</td>
+      <td>134809</td>
+      <td>15721</td>
+      <td>649472</td>
+    </tr>
+    <tr>
+      <th>LCA60_06_bin3</th>
+      <td>0</td>
+      <td>282</td>
+      <td>92</td>
+      <td>30</td>
+      <td>219</td>
+    </tr>
+    <tr>
+      <th>LCA60_06_bin4</th>
+      <td>0</td>
+      <td>788</td>
+      <td>391</td>
+      <td>46</td>
+      <td>1326</td>
+    </tr>
+    <tr>
+      <th>MERS4_01_bin1</th>
+      <td>0</td>
+      <td>364617</td>
+      <td>229039</td>
+      <td>36722</td>
+      <td>2437160</td>
+    </tr>
+    <tr>
+      <th>MERS4_01_bin2</th>
+      <td>0</td>
+      <td>253668</td>
+      <td>165288</td>
+      <td>26982</td>
+      <td>1734910</td>
+    </tr>
+    <tr>
+      <th>MERS4_01_bin3</th>
+      <td>0</td>
+      <td>342809</td>
+      <td>234784</td>
+      <td>36052</td>
+      <td>2366478</td>
+    </tr>
+    <tr>
+      <th>MERS4_01_bin4</th>
+      <td>0</td>
+      <td>1399570</td>
+      <td>976335</td>
+      <td>139780</td>
+      <td>9911389</td>
+    </tr>
+    <tr>
+      <th>MERS4_02_bin1</th>
+      <td>0</td>
+      <td>469024</td>
+      <td>306686</td>
+      <td>50336</td>
+      <td>3167270</td>
+    </tr>
+    <tr>
+      <th>MERS4_02_bin2</th>
+      <td>0</td>
+      <td>175473</td>
+      <td>114508</td>
+      <td>19220</td>
+      <td>1191268</td>
+    </tr>
+    <tr>
+      <th>MERS4_02_bin3</th>
+      <td>0</td>
+      <td>213807</td>
+      <td>129084</td>
+      <td>20474</td>
+      <td>1467628</td>
+    </tr>
+    <tr>
+      <th>MERS4_02_bin4</th>
+      <td>0</td>
+      <td>1518882</td>
+      <td>1003988</td>
+      <td>146793</td>
+      <td>10709882</td>
+    </tr>
+    <tr>
+      <th>MERS4_03_bin1</th>
+      <td>0</td>
+      <td>505315</td>
+      <td>346519</td>
+      <td>55201</td>
+      <td>3439457</td>
+    </tr>
+    <tr>
+      <th>MERS4_03_bin2</th>
+      <td>0</td>
+      <td>243757</td>
+      <td>159468</td>
+      <td>409236</td>
+      <td>1661463</td>
+    </tr>
+    <tr>
+      <th>MERS4_03_bin3</th>
+      <td>0</td>
+      <td>1156686</td>
+      <td>837336</td>
+      <td>116242</td>
+      <td>8043922</td>
+    </tr>
+    <tr>
+      <th>MERS4_03_bin4</th>
+      <td>0</td>
+      <td>822221</td>
+      <td>531921</td>
+      <td>78443</td>
+      <td>5804839</td>
+    </tr>
+    <tr>
+      <th>MERS4_04_bin1</th>
+      <td>0</td>
+      <td>666882</td>
+      <td>453450</td>
+      <td>72999</td>
+      <td>4507317</td>
+    </tr>
+    <tr>
+      <th>MERS4_04_bin2</th>
+      <td>0</td>
+      <td>1458065</td>
+      <td>1001595</td>
+      <td>146349</td>
+      <td>10172476</td>
+    </tr>
+    <tr>
+      <th>MERS4_04_bin3</th>
+      <td>0</td>
+      <td>430952</td>
+      <td>310090</td>
+      <td>41257</td>
+      <td>3042328</td>
+    </tr>
+    <tr>
+      <th>MERS4_04_bin4</th>
+      <td>0</td>
+      <td>539</td>
+      <td>91</td>
+      <td>7</td>
+      <td>459</td>
+    </tr>
+    <tr>
+      <th>MERS4_05_bin1</th>
+      <td>0</td>
+      <td>1452325</td>
+      <td>974207</td>
+      <td>146772</td>
+      <td>9921069</td>
+    </tr>
+    <tr>
+      <th>MERS4_05_bin2</th>
+      <td>0</td>
+      <td>1142407</td>
+      <td>779293</td>
+      <td>114002</td>
+      <td>8062717</td>
+    </tr>
+    <tr>
+      <th>MERS4_05_bin3</th>
+      <td>0</td>
+      <td>701</td>
+      <td>141</td>
+      <td>1663</td>
+      <td>728</td>
+    </tr>
+    <tr>
+      <th>MERS4_05_bin4</th>
+      <td>0</td>
+      <td>541</td>
+      <td>50</td>
+      <td>25</td>
+      <td>62</td>
+    </tr>
+    <tr>
+      <th>MERS4_06_bin1</th>
+      <td>0</td>
+      <td>1718595</td>
+      <td>2567556</td>
+      <td>286635</td>
+      <td>11704690</td>
+    </tr>
+    <tr>
+      <th>MERS4_06_bin2</th>
+      <td>0</td>
+      <td>94969</td>
+      <td>134809</td>
+      <td>15721</td>
+      <td>649472</td>
+    </tr>
+    <tr>
+      <th>MERS4_06_bin3</th>
+      <td>0</td>
+      <td>282</td>
+      <td>92</td>
+      <td>30</td>
+      <td>219</td>
+    </tr>
+    <tr>
+      <th>MERS4_06_bin4</th>
+      <td>0</td>
+      <td>788</td>
+      <td>391</td>
+      <td>46</td>
+      <td>1326</td>
+    </tr>
+    <tr>
+      <th>S41_01_bin1</th>
+      <td>0</td>
+      <td>413493</td>
+      <td>610044</td>
+      <td>66997</td>
+      <td>2733251</td>
+    </tr>
+    <tr>
+      <th>S41_01_bin2</th>
+      <td>0</td>
+      <td>212124</td>
+      <td>302045</td>
+      <td>32154</td>
+      <td>1407614</td>
+    </tr>
+    <tr>
+      <th>S41_01_bin3</th>
+      <td>0</td>
+      <td>152712</td>
+      <td>221974</td>
+      <td>26965</td>
+      <td>1036459</td>
+    </tr>
+    <tr>
+      <th>S41_01_bin4</th>
+      <td>0</td>
+      <td>591393</td>
+      <td>895056</td>
+      <td>92220</td>
+      <td>4058379</td>
+    </tr>
+    <tr>
+      <th>S41_02_bin1</th>
+      <td>0</td>
+      <td>560327</td>
+      <td>827421</td>
+      <td>91136</td>
+      <td>3747554</td>
+    </tr>
+    <tr>
+      <th>S41_02_bin2</th>
+      <td>0</td>
+      <td>304287</td>
+      <td>450794</td>
+      <td>47173</td>
+      <td>2028822</td>
+    </tr>
+    <tr>
+      <th>S41_02_bin3</th>
+      <td>0</td>
+      <td>384870</td>
+      <td>527804</td>
+      <td>64356</td>
+      <td>2612558</td>
+    </tr>
+    <tr>
+      <th>S41_02_bin4</th>
+      <td>0</td>
+      <td>444019</td>
+      <td>621680</td>
+      <td>70796</td>
+      <td>3126501</td>
+    </tr>
+    <tr>
+      <th>S41_03_bin1</th>
+      <td>0</td>
+      <td>766875</td>
+      <td>1093087</td>
+      <td>122667</td>
+      <td>5179429</td>
+    </tr>
+    <tr>
+      <th>S41_03_bin2</th>
+      <td>0</td>
+      <td>431067</td>
+      <td>610652</td>
+      <td>68367</td>
+      <td>2980335</td>
+    </tr>
+    <tr>
+      <th>S41_03_bin3</th>
+      <td>0</td>
+      <td>228392</td>
+      <td>341401</td>
+      <td>36090</td>
+      <td>1617232</td>
+    </tr>
+    <tr>
+      <th>S41_03_bin4</th>
+      <td>0</td>
+      <td>30633</td>
+      <td>48583</td>
+      <td>4862</td>
+      <td>228401</td>
+    </tr>
+    <tr>
+      <th>S41_04_bin1</th>
+      <td>0</td>
+      <td>2281788</td>
+      <td>1624711</td>
+      <td>234156</td>
+      <td>15845286</td>
+    </tr>
+    <tr>
+      <th>S41_04_bin2</th>
+      <td>0</td>
+      <td>176573</td>
+      <td>123795</td>
+      <td>17411</td>
+      <td>1257727</td>
+    </tr>
+    <tr>
+      <th>S41_04_bin3</th>
+      <td>0</td>
+      <td>1081</td>
+      <td>542</td>
+      <td>1127</td>
+      <td>4521</td>
+    </tr>
+    <tr>
+      <th>S41_04_bin4</th>
+      <td>0</td>
+      <td>544</td>
+      <td>104</td>
+      <td>6</td>
+      <td>754</td>
+    </tr>
+    <tr>
+      <th>S41_05_bin1</th>
+      <td>0</td>
+      <td>1572254</td>
+      <td>2338344</td>
+      <td>266686</td>
+      <td>10692723</td>
+    </tr>
+    <tr>
+      <th>S41_05_bin2</th>
+      <td>0</td>
+      <td>182385</td>
+      <td>262306</td>
+      <td>29427</td>
+      <td>1250125</td>
+    </tr>
+    <tr>
+      <th>S41_05_bin3</th>
+      <td>0</td>
+      <td>4556</td>
+      <td>5896</td>
+      <td>818</td>
+      <td>32895</td>
+    </tr>
+    <tr>
+      <th>S41_05_bin4</th>
+      <td>0</td>
+      <td>982</td>
+      <td>821</td>
+      <td>85</td>
+      <td>4216</td>
+    </tr>
+    <tr>
+      <th>S41_06_bin1</th>
+      <td>0</td>
+      <td>1718595</td>
+      <td>2567556</td>
+      <td>286635</td>
+      <td>11704690</td>
+    </tr>
+    <tr>
+      <th>S41_06_bin2</th>
+      <td>0</td>
+      <td>94969</td>
+      <td>134809</td>
+      <td>15721</td>
+      <td>649472</td>
+    </tr>
+    <tr>
+      <th>S41_06_bin3</th>
+      <td>0</td>
+      <td>282</td>
+      <td>92</td>
+      <td>30</td>
+      <td>219</td>
+    </tr>
+    <tr>
+      <th>S41_06_bin4</th>
+      <td>0</td>
+      <td>788</td>
+      <td>391</td>
+      <td>46</td>
+      <td>1326</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_01_bin1</th>
       <td>0</td>
-      <td>2638727</td>
-      <td>2431862</td>
-      <td>200265</td>
-      <td>12125910</td>
+      <td>284194</td>
+      <td>254414</td>
+      <td>48820</td>
+      <td>1908165</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_01_bin2</th>
       <td>0</td>
-      <td>728284</td>
-      <td>675814</td>
-      <td>55475</td>
-      <td>3375340</td>
+      <td>195597</td>
+      <td>190384</td>
+      <td>135531</td>
+      <td>1304915</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_01_bin3</th>
       <td>0</td>
-      <td>728251</td>
-      <td>647398</td>
-      <td>50435</td>
-      <td>3093127</td>
+      <td>353217</td>
+      <td>366352</td>
+      <td>64692</td>
+      <td>2435045</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_01_bin4</th>
       <td>0</td>
-      <td>1553679</td>
-      <td>1373487</td>
-      <td>100941</td>
-      <td>6372850</td>
+      <td>304984</td>
+      <td>348171</td>
+      <td>52014</td>
+      <td>2132556</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_02_bin1</th>
       <td>0</td>
-      <td>2566249</td>
-      <td>2394143</td>
-      <td>195357</td>
-      <td>11986014</td>
+      <td>510303</td>
+      <td>501237</td>
+      <td>90777</td>
+      <td>3479630</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_02_bin2</th>
       <td>0</td>
-      <td>1096314</td>
-      <td>1002824</td>
-      <td>83453</td>
-      <td>4975671</td>
+      <td>275834</td>
+      <td>290550</td>
+      <td>48769</td>
+      <td>1915528</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_02_bin3</th>
       <td>0</td>
-      <td>810915</td>
-      <td>679441</td>
-      <td>51852</td>
-      <td>3387864</td>
+      <td>271186</td>
+      <td>251212</td>
+      <td>48623</td>
+      <td>1882807</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_02_bin4</th>
       <td>0</td>
-      <td>694071</td>
-      <td>575371</td>
-      <td>43778</td>
-      <td>2838488</td>
+      <td>217006</td>
+      <td>210028</td>
+      <td>36465</td>
+      <td>1464590</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_03_bin1</th>
       <td>0</td>
-      <td>3530470</td>
-      <td>3298836</td>
-      <td>266659</td>
-      <td>16418570</td>
+      <td>624210</td>
+      <td>590152</td>
+      <td>108199</td>
+      <td>4203198</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_03_bin2</th>
       <td>0</td>
-      <td>651724</td>
-      <td>590142</td>
-      <td>46604</td>
-      <td>2850083</td>
+      <td>215576</td>
+      <td>196254</td>
+      <td>37201</td>
+      <td>1472499</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_03_bin3</th>
       <td>0</td>
-      <td>786265</td>
-      <td>678073</td>
-      <td>52926</td>
-      <td>3297849</td>
+      <td>261100</td>
+      <td>274204</td>
+      <td>44604</td>
+      <td>1797827</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_03_bin4</th>
       <td>0</td>
-      <td>324967</td>
-      <td>269195</td>
-      <td>20380</td>
-      <td>1319852</td>
+      <td>178183</td>
+      <td>188977</td>
+      <td>29990</td>
+      <td>1239425</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_04_bin1</th>
       <td>0</td>
-      <td>3114415</td>
-      <td>3024685</td>
-      <td>239356</td>
-      <td>14372324</td>
+      <td>491606</td>
+      <td>462260</td>
+      <td>81651</td>
+      <td>3071155</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_04_bin2</th>
       <td>0</td>
-      <td>476439</td>
-      <td>427782</td>
-      <td>32812</td>
-      <td>2077010</td>
+      <td>302295</td>
+      <td>306435</td>
+      <td>47783</td>
+      <td>1949451</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_04_bin3</th>
       <td>0</td>
-      <td>469116</td>
-      <td>400236</td>
-      <td>30570</td>
-      <td>1917415</td>
+      <td>115599</td>
+      <td>126688</td>
+      <td>19920</td>
+      <td>817078</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_04_bin4</th>
       <td>0</td>
-      <td>314379</td>
-      <td>265645</td>
-      <td>16812</td>
-      <td>1278534</td>
+      <td>1984</td>
+      <td>2350</td>
+      <td>326</td>
+      <td>13634</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_05_bin1</th>
       <td>0</td>
-      <td>3965813</td>
-      <td>3737872</td>
-      <td>294364</td>
-      <td>18108616</td>
+      <td>711015</td>
+      <td>757765</td>
+      <td>121243</td>
+      <td>4826105</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_05_bin2</th>
       <td>0</td>
-      <td>2884</td>
-      <td>8199</td>
-      <td>253</td>
-      <td>11499</td>
+      <td>249160</td>
+      <td>259794</td>
+      <td>40498</td>
+      <td>1717539</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_05_bin3</th>
       <td>0</td>
-      <td>339193</td>
-      <td>290979</td>
-      <td>19248</td>
-      <td>1387417</td>
+      <td>4467</td>
+      <td>5189</td>
+      <td>781</td>
+      <td>31797</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_05_bin4</th>
       <td>0</td>
-      <td>5290</td>
-      <td>6258</td>
-      <td>241</td>
-      <td>23619</td>
+      <td>45</td>
+      <td>65</td>
+      <td>237</td>
+      <td>211</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_06_bin1</th>
       <td>0</td>
-      <td>3187099</td>
-      <td>3007919</td>
-      <td>231431</td>
-      <td>14375993</td>
+      <td>1161578</td>
+      <td>1265990</td>
+      <td>202903</td>
+      <td>7973465</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_06_bin2</th>
       <td>0</td>
-      <td>322482</td>
-      <td>289093</td>
-      <td>21381</td>
-      <td>1401773</td>
+      <td>408821</td>
+      <td>432734</td>
+      <td>69033</td>
+      <td>2782291</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_06_bin3</th>
       <td>0</td>
-      <td>14790</td>
-      <td>16298</td>
-      <td>1239</td>
-      <td>64357</td>
+      <td>2379</td>
+      <td>2476</td>
+      <td>384</td>
+      <td>15323</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_06_bin4</th>
       <td>0</td>
-      <td>1221</td>
-      <td>2305</td>
-      <td>86</td>
-      <td>5060</td>
+      <td>674</td>
+      <td>801</td>
+      <td>71</td>
+      <td>4691</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_07_bin1</th>
       <td>0</td>
-      <td>1399200</td>
-      <td>1288094</td>
-      <td>108424</td>
-      <td>6284153</td>
+      <td>1393570</td>
+      <td>1613952</td>
+      <td>241666</td>
+      <td>9486575</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_07_bin2</th>
       <td>0</td>
-      <td>210803</td>
-      <td>194369</td>
-      <td>15323</td>
-      <td>945906</td>
+      <td>130053</td>
+      <td>141207</td>
+      <td>21357</td>
+      <td>883182</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_07_bin3</th>
       <td>0</td>
-      <td>6617</td>
-      <td>6534</td>
-      <td>479</td>
-      <td>26683</td>
+      <td>622</td>
+      <td>588</td>
+      <td>100</td>
+      <td>3849</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_07_bin4</th>
       <td>0</td>
-      <td>1016</td>
-      <td>1240</td>
-      <td>111</td>
-      <td>3495</td>
+      <td>128</td>
+      <td>64</td>
+      <td>2004</td>
+      <td>83</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_08_bin1</th>
       <td>0</td>
-      <td>3017076</td>
-      <td>2764395</td>
-      <td>220157</td>
-      <td>13520787</td>
+      <td>992876</td>
+      <td>1064227</td>
+      <td>168341</td>
+      <td>6886577</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_08_bin2</th>
       <td>0</td>
-      <td>259069</td>
-      <td>246283</td>
-      <td>19127</td>
-      <td>1173449</td>
+      <td>48062</td>
+      <td>51176</td>
+      <td>11177</td>
+      <td>333306</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_08_bin3</th>
       <td>0</td>
-      <td>9063</td>
-      <td>8372</td>
-      <td>347</td>
-      <td>39167</td>
+      <td>125</td>
+      <td>110</td>
+      <td>21</td>
+      <td>593</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_08_bin4</th>
       <td>0</td>
-      <td>1000</td>
-      <td>836</td>
-      <td>13</td>
-      <td>916</td>
+      <td>125</td>
+      <td>82</td>
+      <td>18</td>
+      <td>150</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_09_bin1</th>
       <td>0</td>
-      <td>2455028</td>
-      <td>2260485</td>
-      <td>183967</td>
-      <td>11040334</td>
+      <td>1188907</td>
+      <td>1278382</td>
+      <td>204685</td>
+      <td>8195619</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_09_bin2</th>
       <td>0</td>
-      <td>292572</td>
-      <td>270566</td>
-      <td>21532</td>
-      <td>1333683</td>
+      <td>73170</td>
+      <td>71392</td>
+      <td>12767</td>
+      <td>499958</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_09_bin3</th>
       <td>0</td>
-      <td>1922</td>
-      <td>5387</td>
-      <td>144</td>
-      <td>9452</td>
+      <td>767</td>
+      <td>711</td>
+      <td>16440</td>
+      <td>2965</td>
     </tr>
     <tr>
       <th>TiteSeq_hDPP4_09_bin4</th>
       <td>0</td>
-      <td>156</td>
-      <td>1337</td>
-      <td>10</td>
-      <td>749</td>
+      <td>206</td>
+      <td>167</td>
+      <td>398</td>
+      <td>633</td>
     </tr>
     <tr>
-      <th rowspan="4" valign="top">pool2</th>
-      <th rowspan="4" valign="top">A</th>
+      <th>serum_01_bin1</th>
+      <td>0</td>
+      <td>141430</td>
+      <td>101064</td>
+      <td>14419</td>
+      <td>904749</td>
+    </tr>
+    <tr>
+      <th>serum_01_bin2</th>
+      <td>0</td>
+      <td>423348</td>
+      <td>274071</td>
+      <td>42188</td>
+      <td>2839424</td>
+    </tr>
+    <tr>
+      <th>serum_01_bin3</th>
+      <td>0</td>
+      <td>172034</td>
+      <td>116370</td>
+      <td>18703</td>
+      <td>1209319</td>
+    </tr>
+    <tr>
+      <th>serum_01_bin4</th>
+      <td>0</td>
+      <td>751801</td>
+      <td>550345</td>
+      <td>73329</td>
+      <td>5279385</td>
+    </tr>
+    <tr>
+      <th>serum_02_bin1</th>
+      <td>0</td>
+      <td>376107</td>
+      <td>246733</td>
+      <td>35830</td>
+      <td>2502723</td>
+    </tr>
+    <tr>
+      <th>serum_02_bin2</th>
+      <td>0</td>
+      <td>304246</td>
+      <td>199810</td>
+      <td>31047</td>
+      <td>2091109</td>
+    </tr>
+    <tr>
+      <th>serum_02_bin3</th>
+      <td>0</td>
+      <td>1174800</td>
+      <td>790524</td>
+      <td>115352</td>
+      <td>8158175</td>
+    </tr>
+    <tr>
+      <th>serum_02_bin4</th>
+      <td>0</td>
+      <td>390302</td>
+      <td>269887</td>
+      <td>38574</td>
+      <td>2809726</td>
+    </tr>
+    <tr>
+      <th>serum_03_bin1</th>
+      <td>0</td>
+      <td>505431</td>
+      <td>344807</td>
+      <td>53583</td>
+      <td>3429850</td>
+    </tr>
+    <tr>
+      <th>serum_03_bin2</th>
+      <td>0</td>
+      <td>1360089</td>
+      <td>926104</td>
+      <td>135089</td>
+      <td>9418302</td>
+    </tr>
+    <tr>
+      <th>serum_03_bin3</th>
+      <td>0</td>
+      <td>397850</td>
+      <td>278718</td>
+      <td>37635</td>
+      <td>2831046</td>
+    </tr>
+    <tr>
+      <th>serum_03_bin4</th>
+      <td>0</td>
+      <td>1911</td>
+      <td>826</td>
+      <td>116</td>
+      <td>8460</td>
+    </tr>
+    <tr>
+      <th>serum_04_bin1</th>
+      <td>0</td>
+      <td>1416927</td>
+      <td>974983</td>
+      <td>141257</td>
+      <td>9813887</td>
+    </tr>
+    <tr>
+      <th>serum_04_bin2</th>
+      <td>0</td>
+      <td>836214</td>
+      <td>600847</td>
+      <td>80969</td>
+      <td>5836540</td>
+    </tr>
+    <tr>
+      <th>serum_04_bin3</th>
+      <td>0</td>
+      <td>746</td>
+      <td>151</td>
+      <td>60</td>
+      <td>820</td>
+    </tr>
+    <tr>
+      <th>serum_04_bin4</th>
+      <td>0</td>
+      <td>844</td>
+      <td>64</td>
+      <td>3</td>
+      <td>48</td>
+    </tr>
+    <tr>
+      <th>serum_05_bin1</th>
+      <td>0</td>
+      <td>1718595</td>
+      <td>2567556</td>
+      <td>286635</td>
+      <td>11704690</td>
+    </tr>
+    <tr>
+      <th>serum_05_bin2</th>
+      <td>0</td>
+      <td>94969</td>
+      <td>134809</td>
+      <td>15721</td>
+      <td>649472</td>
+    </tr>
+    <tr>
+      <th>serum_05_bin3</th>
+      <td>0</td>
+      <td>282</td>
+      <td>92</td>
+      <td>30</td>
+      <td>219</td>
+    </tr>
+    <tr>
+      <th>serum_05_bin4</th>
+      <td>0</td>
+      <td>788</td>
+      <td>391</td>
+      <td>46</td>
+      <td>1326</td>
+    </tr>
+    <tr>
+      <th rowspan="44" valign="top">pool2</th>
+      <th>MERS4_01_bin1</th>
+      <td>0</td>
+      <td>635811</td>
+      <td>266609</td>
+      <td>34334</td>
+      <td>2444063</td>
+    </tr>
+    <tr>
+      <th>MERS4_01_bin2</th>
+      <td>0</td>
+      <td>331784</td>
+      <td>137110</td>
+      <td>17552</td>
+      <td>1225496</td>
+    </tr>
+    <tr>
+      <th>MERS4_01_bin3</th>
+      <td>0</td>
+      <td>564578</td>
+      <td>173035</td>
+      <td>24828</td>
+      <td>1460379</td>
+    </tr>
+    <tr>
+      <th>MERS4_01_bin4</th>
+      <td>0</td>
+      <td>4893030</td>
+      <td>1453743</td>
+      <td>199507</td>
+      <td>11518848</td>
+    </tr>
+    <tr>
+      <th>MERS4_02_bin1</th>
+      <td>0</td>
+      <td>799441</td>
+      <td>352344</td>
+      <td>45675</td>
+      <td>3143181</td>
+    </tr>
+    <tr>
+      <th>MERS4_02_bin2</th>
+      <td>0</td>
+      <td>326316</td>
+      <td>129298</td>
+      <td>17733</td>
+      <td>1136002</td>
+    </tr>
+    <tr>
+      <th>MERS4_02_bin3</th>
+      <td>0</td>
+      <td>605194</td>
+      <td>174934</td>
+      <td>24967</td>
+      <td>1447083</td>
+    </tr>
+    <tr>
+      <th>MERS4_02_bin4</th>
+      <td>0</td>
+      <td>3854767</td>
+      <td>1080747</td>
+      <td>152511</td>
+      <td>9009350</td>
+    </tr>
+    <tr>
+      <th>MERS4_03_bin1</th>
+      <td>0</td>
+      <td>774319</td>
+      <td>301695</td>
+      <td>41066</td>
+      <td>2926096</td>
+    </tr>
+    <tr>
+      <th>MERS4_03_bin2</th>
+      <td>0</td>
+      <td>382877</td>
+      <td>129160</td>
+      <td>17499</td>
+      <td>1120260</td>
+    </tr>
+    <tr>
+      <th>MERS4_03_bin3</th>
+      <td>0</td>
+      <td>2362116</td>
+      <td>679295</td>
+      <td>96569</td>
+      <td>5510102</td>
+    </tr>
+    <tr>
+      <th>MERS4_03_bin4</th>
+      <td>0</td>
+      <td>1665172</td>
+      <td>488591</td>
+      <td>68085</td>
+      <td>3947350</td>
+    </tr>
+    <tr>
+      <th>MERS4_04_bin1</th>
+      <td>0</td>
+      <td>960924</td>
+      <td>374527</td>
+      <td>51190</td>
+      <td>3348996</td>
+    </tr>
+    <tr>
+      <th>MERS4_04_bin2</th>
+      <td>0</td>
+      <td>2982765</td>
+      <td>872834</td>
+      <td>122900</td>
+      <td>7160187</td>
+    </tr>
+    <tr>
+      <th>MERS4_04_bin3</th>
+      <td>0</td>
+      <td>1162725</td>
+      <td>335789</td>
+      <td>50105</td>
+      <td>2767345</td>
+    </tr>
+    <tr>
+      <th>MERS4_04_bin4</th>
+      <td>0</td>
+      <td>932</td>
+      <td>101</td>
+      <td>2</td>
+      <td>107</td>
+    </tr>
+    <tr>
+      <th>MERS4_05_bin1</th>
+      <td>0</td>
+      <td>2354628</td>
+      <td>809796</td>
+      <td>107137</td>
+      <td>6758735</td>
+    </tr>
+    <tr>
+      <th>MERS4_05_bin2</th>
+      <td>0</td>
+      <td>2581058</td>
+      <td>759055</td>
+      <td>105105</td>
+      <td>6172078</td>
+    </tr>
+    <tr>
+      <th>MERS4_05_bin3</th>
+      <td>0</td>
+      <td>1021</td>
+      <td>137</td>
+      <td>23</td>
+      <td>538</td>
+    </tr>
+    <tr>
+      <th>MERS4_05_bin4</th>
+      <td>0</td>
+      <td>476</td>
+      <td>50</td>
+      <td>251</td>
+      <td>42</td>
+    </tr>
+    <tr>
+      <th>MERS4_06_bin1</th>
+      <td>0</td>
+      <td>4544056</td>
+      <td>1388628</td>
+      <td>191513</td>
+      <td>11859783</td>
+    </tr>
+    <tr>
+      <th>MERS4_06_bin2</th>
+      <td>0</td>
+      <td>447679</td>
+      <td>156786</td>
+      <td>19500</td>
+      <td>1159238</td>
+    </tr>
+    <tr>
+      <th>MERS4_06_bin3</th>
+      <td>0</td>
+      <td>2126</td>
+      <td>243</td>
+      <td>53</td>
+      <td>423</td>
+    </tr>
+    <tr>
+      <th>MERS4_06_bin4</th>
+      <td>0</td>
+      <td>1442</td>
+      <td>125</td>
+      <td>13</td>
+      <td>83</td>
+    </tr>
+    <tr>
+      <th>serum_01_bin1</th>
+      <td>0</td>
+      <td>214594</td>
+      <td>96859</td>
+      <td>13754</td>
+      <td>918003</td>
+    </tr>
+    <tr>
+      <th>serum_01_bin2</th>
+      <td>0</td>
+      <td>818129</td>
+      <td>363208</td>
+      <td>45841</td>
+      <td>3277898</td>
+    </tr>
+    <tr>
+      <th>serum_01_bin3</th>
+      <td>0</td>
+      <td>352923</td>
+      <td>117995</td>
+      <td>15572</td>
+      <td>1053985</td>
+    </tr>
+    <tr>
+      <th>serum_01_bin4</th>
+      <td>0</td>
+      <td>2540828</td>
+      <td>695780</td>
+      <td>102510</td>
+      <td>5891011</td>
+    </tr>
+    <tr>
+      <th>serum_02_bin1</th>
+      <td>0</td>
+      <td>618970</td>
+      <td>274888</td>
+      <td>36806</td>
+      <td>2573018</td>
+    </tr>
+    <tr>
+      <th>serum_02_bin2</th>
+      <td>0</td>
+      <td>658845</td>
+      <td>244468</td>
+      <td>33081</td>
+      <td>2153860</td>
+    </tr>
+    <tr>
+      <th>serum_02_bin3</th>
+      <td>0</td>
+      <td>2426540</td>
+      <td>896605</td>
+      <td>98979</td>
+      <td>5606253</td>
+    </tr>
+    <tr>
+      <th>serum_02_bin4</th>
+      <td>0</td>
+      <td>1053641</td>
+      <td>309244</td>
+      <td>42225</td>
+      <td>2492383</td>
+    </tr>
+    <tr>
+      <th>serum_03_bin1</th>
+      <td>0</td>
+      <td>823012</td>
+      <td>336390</td>
+      <td>44152</td>
+      <td>2984851</td>
+    </tr>
+    <tr>
+      <th>serum_03_bin2</th>
+      <td>0</td>
+      <td>2109933</td>
+      <td>650528</td>
+      <td>89820</td>
+      <td>5116975</td>
+    </tr>
+    <tr>
+      <th>serum_03_bin3</th>
+      <td>0</td>
+      <td>948719</td>
+      <td>274849</td>
+      <td>41604</td>
+      <td>2261173</td>
+    </tr>
+    <tr>
+      <th>serum_03_bin4</th>
+      <td>0</td>
+      <td>987</td>
+      <td>107</td>
+      <td>44</td>
+      <td>321</td>
+    </tr>
+    <tr>
+      <th>serum_04_bin1</th>
+      <td>0</td>
+      <td>2928086</td>
+      <td>1177973</td>
+      <td>133662</td>
+      <td>8101936</td>
+    </tr>
+    <tr>
+      <th>serum_04_bin2</th>
+      <td>0</td>
+      <td>2586589</td>
+      <td>761486</td>
+      <td>109371</td>
+      <td>6303205</td>
+    </tr>
+    <tr>
+      <th>serum_04_bin3</th>
+      <td>0</td>
+      <td>2091</td>
+      <td>297</td>
+      <td>32</td>
+      <td>1050</td>
+    </tr>
+    <tr>
+      <th>serum_04_bin4</th>
+      <td>0</td>
+      <td>1530</td>
+      <td>140</td>
+      <td>29</td>
+      <td>59</td>
+    </tr>
+    <tr>
+      <th>serum_05_bin1</th>
+      <td>0</td>
+      <td>4544056</td>
+      <td>1388628</td>
+      <td>191513</td>
+      <td>11859783</td>
+    </tr>
+    <tr>
+      <th>serum_05_bin2</th>
+      <td>0</td>
+      <td>447679</td>
+      <td>156786</td>
+      <td>19500</td>
+      <td>1159238</td>
+    </tr>
+    <tr>
+      <th>serum_05_bin3</th>
+      <td>0</td>
+      <td>2126</td>
+      <td>243</td>
+      <td>53</td>
+      <td>423</td>
+    </tr>
+    <tr>
+      <th>serum_05_bin4</th>
+      <td>0</td>
+      <td>1442</td>
+      <td>125</td>
+      <td>13</td>
+      <td>83</td>
+    </tr>
+    <tr>
+      <th rowspan="36" valign="top">pool3</th>
+      <th>TiteSeq_ApACE2_01_bin1</th>
+      <td>0</td>
+      <td>258270</td>
+      <td>256681</td>
+      <td>44859</td>
+      <td>1653547</td>
+    </tr>
+    <tr>
+      <th>TiteSeq_ApACE2_01_bin2</th>
+      <td>0</td>
+      <td>737544</td>
+      <td>653510</td>
+      <td>119490</td>
+      <td>4340280</td>
+    </tr>
+    <tr>
+      <th>TiteSeq_ApACE2_01_bin3</th>
+      <td>0</td>
+      <td>419509</td>
+      <td>316218</td>
+      <td>59965</td>
+      <td>2232372</td>
+    </tr>
+    <tr>
+      <th>TiteSeq_ApACE2_01_bin4</th>
+      <td>0</td>
+      <td>704664</td>
+      <td>559959</td>
+      <td>95743</td>
+      <td>3720151</td>
+    </tr>
+    <tr>
+      <th>TiteSeq_ApACE2_02_bin1</th>
+      <td>0</td>
+      <td>420097</td>
+      <td>491896</td>
+      <td>64947</td>
+      <td>2597991</td>
+    </tr>
+    <tr>
+      <th>TiteSeq_ApACE2_02_bin2</th>
+      <td>0</td>
+      <td>495630</td>
+      <td>434130</td>
+      <td>76237</td>
+      <td>2743768</td>
+    </tr>
+    <tr>
+      <th>TiteSeq_ApACE2_02_bin3</th>
+      <td>0</td>
+      <td>12</td>
+      <td>13</td>
+      <td>28</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th>TiteSeq_ApACE2_02_bin4</th>
+      <td>0</td>
+      <td>862839</td>
+      <td>738383</td>
+      <td>116425</td>
+      <td>4499720</td>
+    </tr>
+    <tr>
+      <th>TiteSeq_ApACE2_03_bin1</th>
+      <td>0</td>
+      <td>147581</td>
+      <td>127123</td>
+      <td>22582</td>
+      <td>858028</td>
+    </tr>
+    <tr>
+      <th>TiteSeq_ApACE2_03_bin2</th>
+      <td>0</td>
+      <td>265009</td>
+      <td>171469</td>
+      <td>37423</td>
+      <td>1400628</td>
+    </tr>
+    <tr>
+      <th>TiteSeq_ApACE2_03_bin3</th>
+      <td>0</td>
+      <td>438346</td>
+      <td>323787</td>
+      <td>59078</td>
+      <td>2329966</td>
+    </tr>
+    <tr>
+      <th>TiteSeq_ApACE2_03_bin4</th>
+      <td>0</td>
+      <td>252498</td>
+      <td>208910</td>
+      <td>33515</td>
+      <td>1311162</td>
+    </tr>
+    <tr>
+      <th>TiteSeq_ApACE2_04_bin1</th>
+      <td>0</td>
+      <td>1826208</td>
+      <td>1655083</td>
+      <td>271822</td>
+      <td>10218080</td>
+    </tr>
+    <tr>
+      <th>TiteSeq_ApACE2_04_bin2</th>
+      <td>0</td>
+      <td>503924</td>
+      <td>414745</td>
+      <td>65069</td>
+      <td>2693246</td>
+    </tr>
+    <tr>
+      <th>TiteSeq_ApACE2_04_bin3</th>
+      <td>0</td>
+      <td>278977</td>
+      <td>213210</td>
+      <td>36852</td>
+      <td>1464081</td>
+    </tr>
+    <tr>
+      <th>TiteSeq_ApACE2_04_bin4</th>
+      <td>0</td>
+      <td>49013</td>
+      <td>42360</td>
+      <td>7043</td>
+      <td>267647</td>
+    </tr>
+    <tr>
+      <th>TiteSeq_ApACE2_05_bin1</th>
+      <td>0</td>
+      <td>1693420</td>
+      <td>1346665</td>
+      <td>236786</td>
+      <td>9309469</td>
+    </tr>
+    <tr>
+      <th>TiteSeq_ApACE2_05_bin2</th>
+      <td>0</td>
+      <td>745506</td>
+      <td>657460</td>
+      <td>100304</td>
+      <td>3947207</td>
+    </tr>
+    <tr>
+      <th>TiteSeq_ApACE2_05_bin3</th>
+      <td>0</td>
+      <td>194590</td>
+      <td>181838</td>
+      <td>27718</td>
+      <td>1037626</td>
+    </tr>
+    <tr>
+      <th>TiteSeq_ApACE2_05_bin4</th>
+      <td>0</td>
+      <td>2796</td>
+      <td>3240</td>
+      <td>3315</td>
+      <td>19656</td>
+    </tr>
+    <tr>
+      <th>TiteSeq_ApACE2_06_bin1</th>
+      <td>0</td>
+      <td>1487951</td>
+      <td>1341485</td>
+      <td>202036</td>
+      <td>8196160</td>
+    </tr>
+    <tr>
+      <th>TiteSeq_ApACE2_06_bin2</th>
+      <td>0</td>
+      <td>270493</td>
+      <td>237972</td>
+      <td>38708</td>
+      <td>1457709</td>
+    </tr>
+    <tr>
+      <th>TiteSeq_ApACE2_06_bin3</th>
+      <td>0</td>
+      <td>3137</td>
+      <td>2764</td>
+      <td>783</td>
+      <td>19393</td>
+    </tr>
+    <tr>
+      <th>TiteSeq_ApACE2_06_bin4</th>
+      <td>0</td>
+      <td>204</td>
+      <td>119</td>
+      <td>23</td>
+      <td>674</td>
+    </tr>
+    <tr>
+      <th>TiteSeq_ApACE2_07_bin1</th>
+      <td>0</td>
+      <td>1457167</td>
+      <td>1286030</td>
+      <td>205472</td>
+      <td>7897506</td>
+    </tr>
+    <tr>
+      <th>TiteSeq_ApACE2_07_bin2</th>
+      <td>0</td>
+      <td>112681</td>
+      <td>83817</td>
+      <td>16657</td>
+      <td>597587</td>
+    </tr>
+    <tr>
+      <th>TiteSeq_ApACE2_07_bin3</th>
+      <td>0</td>
+      <td>578</td>
+      <td>460</td>
+      <td>60</td>
+      <td>2312</td>
+    </tr>
+    <tr>
+      <th>TiteSeq_ApACE2_07_bin4</th>
+      <td>0</td>
+      <td>290</td>
+      <td>125</td>
+      <td>1071</td>
+      <td>376</td>
+    </tr>
+    <tr>
+      <th>TiteSeq_ApACE2_08_bin1</th>
+      <td>0</td>
+      <td>2706568</td>
+      <td>2390357</td>
+      <td>388252</td>
+      <td>14743462</td>
+    </tr>
+    <tr>
+      <th>TiteSeq_ApACE2_08_bin2</th>
+      <td>0</td>
+      <td>248844</td>
+      <td>228078</td>
+      <td>36168</td>
+      <td>1322496</td>
+    </tr>
+    <tr>
+      <th>TiteSeq_ApACE2_08_bin3</th>
+      <td>0</td>
+      <td>3078</td>
+      <td>2476</td>
+      <td>423</td>
+      <td>14928</td>
+    </tr>
+    <tr>
+      <th>TiteSeq_ApACE2_08_bin4</th>
+      <td>0</td>
+      <td>237</td>
+      <td>243</td>
+      <td>138</td>
+      <td>1250</td>
+    </tr>
+    <tr>
+      <th>TiteSeq_ApACE2_09_bin1</th>
+      <td>0</td>
+      <td>1566522</td>
+      <td>1500227</td>
+      <td>238344</td>
+      <td>8641479</td>
+    </tr>
+    <tr>
+      <th>TiteSeq_ApACE2_09_bin2</th>
+      <td>0</td>
+      <td>321093</td>
+      <td>270789</td>
+      <td>46593</td>
+      <td>1749888</td>
+    </tr>
+    <tr>
+      <th>TiteSeq_ApACE2_09_bin3</th>
+      <td>0</td>
+      <td>1046</td>
+      <td>936</td>
+      <td>158</td>
+      <td>6557</td>
+    </tr>
+    <tr>
+      <th>TiteSeq_ApACE2_09_bin4</th>
+      <td>0</td>
+      <td>91</td>
+      <td>64</td>
+      <td>212</td>
+      <td>314</td>
+    </tr>
+    <tr>
+      <th rowspan="4" valign="top">pool5</th>
       <th>SortSeq_bin1</th>
       <td>0</td>
-      <td>11701280</td>
-      <td>7046891</td>
-      <td>527493</td>
-      <td>27848289</td>
+      <td>7216377</td>
+      <td>4350928</td>
+      <td>722320</td>
+      <td>25248396</td>
     </tr>
     <tr>
       <th>SortSeq_bin2</th>
       <td>0</td>
-      <td>2075192</td>
-      <td>1187040</td>
-      <td>95742</td>
-      <td>5071332</td>
+      <td>5704310</td>
+      <td>4196517</td>
+      <td>780951</td>
+      <td>28031346</td>
     </tr>
     <tr>
       <th>SortSeq_bin3</th>
       <td>0</td>
-      <td>2298203</td>
-      <td>1415562</td>
-      <td>101423</td>
-      <td>5639841</td>
+      <td>6923305</td>
+      <td>6319138</td>
+      <td>1084768</td>
+      <td>40596536</td>
     </tr>
     <tr>
       <th>SortSeq_bin4</th>
       <td>0</td>
-      <td>2622007</td>
-      <td>1591440</td>
-      <td>114237</td>
-      <td>6329456</td>
+      <td>3931799</td>
+      <td>3665242</td>
+      <td>661083</td>
+      <td>24810544</td>
+    </tr>
+    <tr>
+      <th rowspan="4" valign="top">pool6</th>
+      <th>SortSeq_bin1</th>
+      <td>0</td>
+      <td>16513153</td>
+      <td>5937908</td>
+      <td>1062345</td>
+      <td>31037234</td>
+    </tr>
+    <tr>
+      <th>SortSeq_bin2</th>
+      <td>0</td>
+      <td>16890873</td>
+      <td>6430401</td>
+      <td>1177793</td>
+      <td>35512543</td>
+    </tr>
+    <tr>
+      <th>SortSeq_bin3</th>
+      <td>0</td>
+      <td>11439907</td>
+      <td>5055834</td>
+      <td>777736</td>
+      <td>26019394</td>
+    </tr>
+    <tr>
+      <th>SortSeq_bin4</th>
+      <td>0</td>
+      <td>13852662</td>
+      <td>6185779</td>
+      <td>939734</td>
+      <td>32182140</td>
     </tr>
   </tbody>
 </table>
@@ -1410,10 +4896,10 @@ barcode_fate_plot = (
                 ), 
         aes('fate', 'count', fill='is_valid')) +
     geom_bar(stat='identity') +
-    facet_grid('sample ~ library + replicate') +
-    facet_grid('sample ~ library + replicate') +
+    facet_grid('sample ~ library') +
+    facet_grid('sample ~ library') +
     scale_fill_manual(CBPALETTE, guide=False) +
-    theme(figure_size=(1.4 * (1 + fates['library'].nunique() + fates['replicate'].nunique()),
+    theme(figure_size=(1.4 * (1 + fates['library'].nunique()),
                        1.7 * (1.2 + fates['sample'].nunique())),
           axis_text_x=element_text(angle=90),
           panel_grid_major_x=element_blank()
@@ -1436,10 +4922,10 @@ _ = barcode_fate_plot.draw()
 
 ```python
 print(f"Writing variant counts to {config['variant_counts_file']}")
-counts.to_csv(config['variant_counts_file'], index=False)
+counts.to_csv(config['variant_counts_file'], index=False, compression='gzip')
 ```
 
-    Writing variant counts to results/counts/variant_counts.csv
+    Writing variant counts to results/counts/variant_counts.csv.gz
 
 
 The [CodonVariantTable](https://jbloomlab.github.io/dms_variants/dms_variants.codonvarianttable.html#dms_variants.codonvarianttable.CodonVariantTable) has lots of nice functions that can be used to analyze the counts it contains.

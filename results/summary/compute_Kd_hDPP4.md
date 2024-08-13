@@ -70,12 +70,12 @@ sessionInfo()
     ## [17] lifecycle_1.0.3  munsell_0.5.0    gtable_0.3.0     cellranger_1.1.0
     ## [21] rvest_1.0.2      evaluate_0.15    knitr_1.37       tzdb_0.2.0      
     ## [25] fastmap_1.1.0    fansi_1.0.2      broom_0.7.12     Rcpp_1.0.11     
-    ## [29] backports_1.4.1  scales_1.2.1     jsonlite_1.8.0   fs_1.5.2        
+    ## [29] backports_1.4.1  scales_1.2.1     jsonlite_1.8.7   fs_1.5.2        
     ## [33] hms_1.1.1        digest_0.6.29    stringi_1.7.6    grid_4.1.3      
     ## [37] cli_3.6.0        tools_4.1.3      magrittr_2.0.2   crayon_1.5.0    
     ## [41] pkgconfig_2.0.3  ellipsis_0.3.2   xml2_1.3.3       reprex_2.0.1    
     ## [45] lubridate_1.8.0  rstudioapi_0.13  assertthat_0.2.1 rmarkdown_2.13  
-    ## [49] httr_1.4.2       R6_2.5.1         compiler_4.1.3
+    ## [49] httr_1.4.7       R6_2.5.1         compiler_4.1.3
 
 ## Setup
 
@@ -101,9 +101,6 @@ dt <- data.table(read.csv(file=config$codon_variant_table_file_pools,stringsAsFa
 
 dt <- merge(counts, dt, by=c("library","barcode"));rm(counts)
 
-#append replicate identifier to the library name
-dt[,library:=paste(library,replicate,sep=""),by=c("library","replicate")];dt[,replicate:=NULL]
-
 #make tables giving names of Titeseq samples and the corresponding hDPP4 incubation concentrations
 samples_TiteSeq <- data.frame(sample=unique(paste(barcode_runs[barcode_runs$sample_type=="TiteSeq_hDPP4","sample_type"],formatC(barcode_runs[barcode_runs$sample_type=="TiteSeq_hDPP4","concentration"], width=2,flag="0"),sep="_")),conc=c(10^-6, 10^-7, 10^-8, 10^-9, 10^-10, 10^-11, 10^-12, 10^-13,0))
 ```
@@ -115,7 +112,7 @@ our data frame.
 ``` r
 #for each bin, normalize the read counts to the observed ratio of cell recovery among bins
 for(i in 1:nrow(barcode_runs)){
-  lib <- paste(as.character(barcode_runs$library[i]), as.character(barcode_runs$replicate[i]), sep="")
+  lib <- as.character(barcode_runs$library[i])
   bin <- as.character(barcode_runs$sample[i])
   ratio <- sum(dt[library==lib & sample==bin,"count"])/barcode_runs$number_cells[i]
   if(ratio<1){ #if there are fewer reads from a FACS bin than cells sorted
@@ -128,56 +125,57 @@ for(i in 1:nrow(barcode_runs)){
 }
 ```
 
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_01_bin1 is 4.0697446506592"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_01_bin2 is 2.40510072259762"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_01_bin3 is 2.40079526473638"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_01_bin4 is 5.04934978088333"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_02_bin1 is 3.51755031344195"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_02_bin2 is 3.25943503757507"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_02_bin3 is 2.93673203498215"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_02_bin4 is 2.82521795128282"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_03_bin1 is 3.75292236854256"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_03_bin2 is 2.41926716165412"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_03_bin3 is 2.97675264562204"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_03_bin4 is 1.83418498162135"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_04_bin1 is 3.11364639809147"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_04_bin2 is 1.80659521502468"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_04_bin3 is 2.69932608882338"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_04_bin4 is 10.3690421157636"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_05_bin1 is 3.43649736654232"
-    ## [1] "reads < cells for pool1A TiteSeq_hDPP4_05_bin2 , un-normalized (ratio 0.0131369099300827 )"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_05_bin3 is 10.3545536640521"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_05_bin4 is 5.0957928802589"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_06_bin1 is 2.44982892428668"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_06_bin2 is 4.49822544829091"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_06_bin3 is 11.1730902777778"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_06_bin4 is 8.63481228668942"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_07_bin1 is 1.01595613711323"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_07_bin2 is 5.18529116713536"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_07_bin3 is 4.83212604128939"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_07_bin4 is 11.5346534653465"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_08_bin1 is 2.10182713073925"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_08_bin2 is 6.66811949153024"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_08_bin3 is 13.9533309583185"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_08_bin4 is 3.91452991452991"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_09_bin1 is 1.80050135269988"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_09_bin2 is 2.32717085563923"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_09_bin3 is 11.6117936117936"
-    ## [1] "read:cell ratio for pool1A TiteSeq_hDPP4_09_bin4 is 6.29411764705882"
+    ## [1] "read:cell ratio for pool1 TiteSeq_hDPP4_01_bin1 is 1.03628587720966"
+    ## [1] "read:cell ratio for pool1 TiteSeq_hDPP4_01_bin2 is 2.15568708948419"
+    ## [1] "read:cell ratio for pool1 TiteSeq_hDPP4_01_bin3 is 2.31348303397954"
+    ## [1] "read:cell ratio for pool1 TiteSeq_hDPP4_01_bin4 is 2.30439222373143"
+    ## [1] "read:cell ratio for pool1 TiteSeq_hDPP4_02_bin1 is 1.87234823353678"
+    ## [1] "read:cell ratio for pool1 TiteSeq_hDPP4_02_bin2 is 1.90066480125419"
+    ## [1] "read:cell ratio for pool1 TiteSeq_hDPP4_02_bin3 is 1.60100730093349"
+    ## [1] "read:cell ratio for pool1 TiteSeq_hDPP4_02_bin4 is 2.18411991117911"
+    ## [1] "read:cell ratio for pool1 TiteSeq_hDPP4_03_bin1 is 2.14025195022099"
+    ## [1] "read:cell ratio for pool1 TiteSeq_hDPP4_03_bin2 is 1.3385636588583"
+    ## [1] "read:cell ratio for pool1 TiteSeq_hDPP4_03_bin3 is 1.60820945589343"
+    ## [1] "read:cell ratio for pool1 TiteSeq_hDPP4_03_bin4 is 2.64603721541904"
+    ## [1] "read:cell ratio for pool1 TiteSeq_hDPP4_04_bin1 is 1.31167239827044"
+    ## [1] "read:cell ratio for pool1 TiteSeq_hDPP4_04_bin2 is 1.31422274865861"
+    ## [1] "reads < cells for pool1 TiteSeq_hDPP4_04_bin3 , un-normalized (ratio 0.935075130749248 )"
+    ## [1] "reads < cells for pool1 TiteSeq_hDPP4_04_bin4 , un-normalized (ratio 0.23367497343434 )"
+    ## [1] "read:cell ratio for pool1 TiteSeq_hDPP4_05_bin1 is 1.48758818684638"
+    ## [1] "read:cell ratio for pool1 TiteSeq_hDPP4_05_bin2 is 1.56949913325408"
+    ## [1] "read:cell ratio for pool1 TiteSeq_hDPP4_05_bin3 is 1.28566229985444"
+    ## [1] "reads < cells for pool1 TiteSeq_hDPP4_05_bin4 , un-normalized (ratio 0.0334867481352166 )"
+    ## [1] "read:cell ratio for pool1 TiteSeq_hDPP4_06_bin1 is 1.97910482066231"
+    ## [1] "read:cell ratio for pool1 TiteSeq_hDPP4_06_bin2 is 4.14631133127083"
+    ## [1] "read:cell ratio for pool1 TiteSeq_hDPP4_06_bin3 is 8.5843137254902"
+    ## [1] "read:cell ratio for pool1 TiteSeq_hDPP4_06_bin4 is 4.53675048355899"
+    ## [1] "read:cell ratio for pool1 TiteSeq_hDPP4_07_bin1 is 2.363260084849"
+    ## [1] "read:cell ratio for pool1 TiteSeq_hDPP4_07_bin2 is 2.10730988012522"
+    ## [1] "read:cell ratio for pool1 TiteSeq_hDPP4_07_bin3 is 4.04731861198738"
+    ## [1] "reads < cells for pool1 TiteSeq_hDPP4_07_bin4 , un-normalized (ratio 0.243401759530792 )"
+    ## [1] "read:cell ratio for pool1 TiteSeq_hDPP4_08_bin1 is 1.71992260746992"
+    ## [1] "reads < cells for pool1 TiteSeq_hDPP4_08_bin2 , un-normalized (ratio 0.642857142857143 )"
+    ## [1] "reads < cells for pool1 TiteSeq_hDPP4_08_bin3 , un-normalized (ratio 0.74968394437421 )"
+    ## [1] "reads < cells for pool1 TiteSeq_hDPP4_08_bin4 , un-normalized (ratio 0.579150579150579 )"
+    ## [1] "read:cell ratio for pool1 TiteSeq_hDPP4_09_bin1 is 2.04285178017534"
+    ## [1] "read:cell ratio for pool1 TiteSeq_hDPP4_09_bin2 is 1.46925473139767"
+    ## [1] "reads < cells for pool1 TiteSeq_hDPP4_09_bin3 , un-normalized (ratio 0.621593291404612 )"
+    ## [1] "read:cell ratio for pool1 TiteSeq_hDPP4_09_bin4 is 3.49723756906077"
 
 ``` r
 #annotate each barcode as to whether it's a homolog variant, SARS-CoV-2 wildtype, synonymous muts only, stop, nonsynonymous, >1 nonsynonymous mutations
 dt[,variant_class:=as.character(NA)]
-dt[n_codon_substitutions==0, variant_class := "wildtype"]
-dt[n_codon_substitutions > 0 & n_aa_substitutions==0, variant_class := "synonymous"]
-dt[n_aa_substitutions>0 & grepl("*",aa_substitutions,fixed=T), variant_class := "stop"]
-dt[n_aa_substitutions>0 & grepl("-",aa_substitutions,fixed=T), variant_class := "deletion"]
-dt[n_aa_substitutions == 1 & !grepl("*",aa_substitutions,fixed=T) & !grepl("-",aa_substitutions,fixed=T), variant_class := "1 nonsynonymous"]
-dt[n_aa_substitutions > 1 & !grepl("*",aa_substitutions,fixed=T) & !grepl("-",aa_substitutions,fixed=T), variant_class := ">1 nonsynonymous"]
+dt[sublibrary %in% c("lib53","lib54","lib84", "lib85") & n_codon_substitutions==0, variant_class := "wildtype"]
+dt[sublibrary %in% c("lib53","lib54","lib84", "lib85") & n_codon_substitutions > 0 & n_aa_substitutions==0, variant_class := "synonymous"]
+dt[sublibrary %in% c("lib53","lib54","lib84", "lib85") & n_aa_substitutions>0 & grepl("*",aa_substitutions,fixed=T), variant_class := "stop"]
+dt[sublibrary %in% c("lib53","lib54","lib84", "lib85") & n_aa_substitutions == 1 & !grepl("*",aa_substitutions,fixed=T), variant_class := "1 nonsynonymous"]
+dt[sublibrary %in% c("lib53","lib54","lib84", "lib85") & n_aa_substitutions > 1 & !grepl("*",aa_substitutions,fixed=T), variant_class := ">1 nonsynonymous"]
+
+dt[sublibrary %in% c("lib82", "lib83"), variant_class := target]
 
 
 #cast the data frame into wide format
-dt <- dcast(dt, library + barcode + target + variant_class + aa_substitutions + n_aa_substitutions ~ sample, value.var="count.norm")
+dt <- dcast(dt, library + sublibrary + barcode + target + variant_class + aa_substitutions + n_aa_substitutions ~ sample, value.var="count.norm")
 ```
 
 ## Calculating mean bin for each barcode at each sample concentration
@@ -281,6 +279,10 @@ dt[,c("Kd_hDPP4","Kd_SE_hDPP4","response_hDPP4","baseline_hDPP4","nMSR_hDPP4") :
                             count.vals=c(TiteSeq_hDPP4_01_totalcount,TiteSeq_hDPP4_02_totalcount,TiteSeq_hDPP4_03_totalcount,TiteSeq_hDPP4_04_totalcount,
                                          TiteSeq_hDPP4_05_totalcount,TiteSeq_hDPP4_06_totalcount,TiteSeq_hDPP4_07_totalcount,TiteSeq_hDPP4_08_totalcount,TiteSeq_hDPP4_09_totalcount)),
               error=function(e){list(as.numeric(NA),as.numeric(NA),as.numeric(NA),as.numeric(NA),as.numeric(NA))}),by=c("library","barcode")]
+
+save(dt, file=paste(config$Titeseq_Kds_dir,"/Kd_temp_hDPP4.Rda",sep=""))
+
+#load(file=paste(config$Titeseq_Kds_dir,"/Kd_temp_hDPP4.Rda",sep=""))
 ```
 
 ## QC and sanity checks
@@ -290,8 +292,8 @@ our library barcodes. We will also spot check titration curves from
 across our measurement range, and spot check curves whose fit parameters
 hit the different boundary conditions of the fit variables.
 
-We successfully generated *K*<sub>D</sub> estimates for 85811 of our
-pool1A barcodes (78.88%), and 0 of our pool2A barcodes (NaN%).
+We successfully generated *K*<sub>D</sub> estimates for 96465 of our
+pool1 barcodes (73.32%), and 0 of our pool2 barcodes (NaN%).
 
 Why were estimates not returned for some barcodes? The histograms below
 show that many barcodes with unsuccessful titration fits have lower
@@ -303,17 +305,17 @@ issues such as nls convergence.
 
 ``` r
 par(mfrow=c(2,2))
-hist(log10(dt[library=="pool1A" & !is.na(Kd_hDPP4),TiteSeq_hDPP4_avgcount]+0.5),breaks=20,xlim=c(0,5),main="pool1A",col="gray50",xlab="average cell count across concentration samples")
-hist(log10(dt[library=="pool1A" & is.na(Kd_hDPP4),TiteSeq_hDPP4_avgcount]+0.5),breaks=20,add=T,col="red")
+hist(log10(dt[library=="pool1" & !is.na(Kd_hDPP4),TiteSeq_hDPP4_avgcount]+0.5),breaks=20,xlim=c(0,5),main="pool1",col="gray50",xlab="average cell count across concentration samples")
+hist(log10(dt[library=="pool1" & is.na(Kd_hDPP4),TiteSeq_hDPP4_avgcount]+0.5),breaks=20,add=T,col="red")
 
-# hist(log10(dt[library=="pool2A" & !is.na(Kd_hDPP4),TiteSeq_hDPP4_avgcount]+0.5),breaks=20,xlim=c(0,5),main="pool2A",col="gray50",xlab="average cell count across concentration samples")
-# hist(log10(dt[library=="pool2A" & is.na(Kd_hDPP4),TiteSeq_hDPP4_avgcount]+0.5),breaks=20,add=T,col="red")
+# hist(log10(dt[library=="pool2" & !is.na(Kd_hDPP4),TiteSeq_hDPP4_avgcount]+0.5),breaks=20,xlim=c(0,5),main="pool2",col="gray50",xlab="average cell count across concentration samples")
+# hist(log10(dt[library=="pool2" & is.na(Kd_hDPP4),TiteSeq_hDPP4_avgcount]+0.5),breaks=20,add=T,col="red")
 
-hist(dt[library=="pool1A" & !is.na(Kd_hDPP4),TiteSeq_hDPP4_min_cell_filtered],breaks=5,main="pool1A",col="gray50",xlab="number of sample concentrations below cutoff cell number",xlim=c(0,10))
-hist(dt[library=="pool1A" & is.na(Kd_hDPP4),TiteSeq_hDPP4_min_cell_filtered],breaks=16,add=T,col="red")
+hist(dt[library=="pool1" & !is.na(Kd_hDPP4),TiteSeq_hDPP4_min_cell_filtered],breaks=5,main="pool1",col="gray50",xlab="number of sample concentrations below cutoff cell number",xlim=c(0,10))
+hist(dt[library=="pool1" & is.na(Kd_hDPP4),TiteSeq_hDPP4_min_cell_filtered],breaks=16,add=T,col="red")
 
-# hist(dt[library=="pool2A" & !is.na(Kd_hDPP4),TiteSeq_hDPP4_min_cell_filtered],breaks=5,main="pool2A",col="gray50",xlab="number of sample concentrations below cutoff cell number",xlim=c(0,10))
-# hist(dt[library=="pool2A" & is.na(Kd_hDPP4),TiteSeq_hDPP4_min_cell_filtered],breaks=16,add=T,col="red")
+# hist(dt[library=="pool2" & !is.na(Kd_hDPP4),TiteSeq_hDPP4_min_cell_filtered],breaks=5,main="pool2",col="gray50",xlab="number of sample concentrations below cutoff cell number",xlim=c(0,10))
+# hist(dt[library=="pool2" & is.na(Kd_hDPP4),TiteSeq_hDPP4_min_cell_filtered],breaks=16,add=T,col="red")
 ```
 
 <img src="compute_Kd_hDPP4_files/figure-gfm/avgcount-1.png" style="display: block; margin: auto;" />
@@ -376,10 +378,9 @@ Distribution of Kd estimates, with wt/syn barcodes in purple:
 
 ``` r
 par(mfrow=c(2,1))
-hist(log10(dt[target=="MERS",Kd_hDPP4]),col="gray40",breaks=60,xlab="log10(KD), hDPP4 (M)",main="MERS",xlim=c(-13,-5))
-hist(log10(dt[target=="MERS" & variant_class %in% (c("synonymous","MERS")),Kd_hDPP4]),col="#92278F",add=T,breaks=60)
-hist(log10(dt[target=="PDF2180",Kd_hDPP4]),col="gray40",breaks=60,xlab="log10(KD), hDPP4 (M)",main="PDF2180",xlim=c(-13,-5))
-hist(log10(dt[target=="PDF2180" & variant_class %in% (c("synonymous","wildtype")),Kd_hDPP4]),col="#92278F",add=T,breaks=60)
+hist(log10(dt[target=="MERS_rpk",Kd_hDPP4]),col="gray40",breaks=60,xlab="log10(KD), hDPP4 (M)",main="MERS_rpk",xlim=c(-13,-5))
+hist(log10(dt[target=="MERS_rpk" & variant_class %in% (c("synonymous","wildtype")),Kd_hDPP4]),col="#92278F",add=T,breaks=60)
+hist(log10(dt[sublibrary %in% c("lib82","lib83"),Kd_hDPP4]),col="gray40",breaks=60,xlab="log10(KD), hDPP4 (M)",main="pan-merbeco pool",xlim=c(-13,-5))
 ```
 
 <img src="compute_Kd_hDPP4_files/figure-gfm/Kd_distribution-1.png" style="display: block; margin: auto;" />
@@ -408,10 +409,10 @@ maximum. We can see these are all flat-lined curves with no response.
 
 ``` r
 par(mfrow=c(2,2))
-plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 9e-6)[1])
-plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 9e-6)[2])
-plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 9e-6)[3])
-plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 9e-6)[4])
+plot.titration(which(dt$library=="pool1" & dt$Kd_hDPP4 > 9e-6)[1])
+plot.titration(which(dt$library=="pool1" & dt$Kd_hDPP4 > 9e-6)[2])
+plot.titration(which(dt$library=="pool1" & dt$Kd_hDPP4 > 9e-6)[3])
+plot.titration(which(dt$library=="pool1" & dt$Kd_hDPP4 > 9e-6)[4])
 ```
 
 <img src="compute_Kd_hDPP4_files/figure-gfm/1e-5_Kd-1.png" style="display: block; margin: auto;" />
@@ -420,10 +421,10 @@ Next, with *K*<sub>D,app</sub> around 10<sup>-6</sup>
 
 ``` r
 par(mfrow=c(2,2))
-plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-6 & dt$Kd_hDPP4 < 1.2e-6)[1])
-plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-6 & dt$Kd_hDPP4 < 1.2e-6)[2])
-plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-6 & dt$Kd_hDPP4 < 1.2e-6)[3])
-plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-6 & dt$Kd_hDPP4 < 1.2e-6)[4])
+plot.titration(which(dt$library=="pool1" & dt$Kd_hDPP4 > 1e-6 & dt$Kd_hDPP4 < 1.2e-6)[1])
+plot.titration(which(dt$library=="pool1" & dt$Kd_hDPP4 > 1e-6 & dt$Kd_hDPP4 < 1.2e-6)[2])
+plot.titration(which(dt$library=="pool1" & dt$Kd_hDPP4 > 1e-6 & dt$Kd_hDPP4 < 1.2e-6)[3])
+plot.titration(which(dt$library=="pool1" & dt$Kd_hDPP4 > 1e-6 & dt$Kd_hDPP4 < 1.2e-6)[4])
 ```
 
 <img src="compute_Kd_hDPP4_files/figure-gfm/1e-6_Kd-1.png" style="display: block; margin: auto;" />
@@ -433,10 +434,10 @@ up more consistent binding signals, though there are some noisy curves.
 
 ``` r
 par(mfrow=c(2,2))
-plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-7 & dt$Kd_hDPP4 < 1.2e-7)[1])
-plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-7 & dt$Kd_hDPP4 < 1.2e-7)[2])
-plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-7 & dt$Kd_hDPP4 < 1.2e-7)[3])
-plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-7 & dt$Kd_hDPP4 < 1.2e-7)[4])
+plot.titration(which(dt$library=="pool1" & dt$Kd_hDPP4 > 1e-7 & dt$Kd_hDPP4 < 1.2e-7)[1])
+plot.titration(which(dt$library=="pool1" & dt$Kd_hDPP4 > 1e-7 & dt$Kd_hDPP4 < 1.2e-7)[2])
+plot.titration(which(dt$library=="pool1" & dt$Kd_hDPP4 > 1e-7 & dt$Kd_hDPP4 < 1.2e-7)[3])
+plot.titration(which(dt$library=="pool1" & dt$Kd_hDPP4 > 1e-7 & dt$Kd_hDPP4 < 1.2e-7)[4])
 ```
 
 <img src="compute_Kd_hDPP4_files/figure-gfm/1e-7_Kd-1.png" style="display: block; margin: auto;" />
@@ -445,10 +446,10 @@ At *K*<sub>D,app</sub> of 10<sup>-8</sup>, curves still sort of noisy
 
 ``` r
 par(mfrow=c(2,2))
-plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-8 & dt$Kd_hDPP4 < 1.2e-8)[1])
-plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-8 & dt$Kd_hDPP4 < 1.2e-8)[2])
-plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-8 & dt$Kd_hDPP4 < 1.2e-8)[3])
-plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-8 & dt$Kd_hDPP4 < 1.2e-8)[4])
+plot.titration(which(dt$library=="pool1" & dt$Kd_hDPP4 > 1e-8 & dt$Kd_hDPP4 < 1.2e-8)[1])
+plot.titration(which(dt$library=="pool1" & dt$Kd_hDPP4 > 1e-8 & dt$Kd_hDPP4 < 1.2e-8)[2])
+plot.titration(which(dt$library=="pool1" & dt$Kd_hDPP4 > 1e-8 & dt$Kd_hDPP4 < 1.2e-8)[3])
+plot.titration(which(dt$library=="pool1" & dt$Kd_hDPP4 > 1e-8 & dt$Kd_hDPP4 < 1.2e-8)[4])
 ```
 
 <img src="compute_Kd_hDPP4_files/figure-gfm/1e-8_Kd-1.png" style="display: block; margin: auto;" />
@@ -457,10 +458,10 @@ At *K*<sub>D,app</sub> of 10<sup>-9</sup>, curves look okay
 
 ``` r
 par(mfrow=c(2,2))
-plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-9 & dt$Kd_hDPP4 < 1.2e-9)[1])
-plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-9 & dt$Kd_hDPP4 < 1.2e-9)[2])
-plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-9 & dt$Kd_hDPP4 < 1.2e-9)[3])
-plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-9 & dt$Kd_hDPP4 < 1.2e-9)[4])
+plot.titration(which(dt$library=="pool1" & dt$Kd_hDPP4 > 1e-9 & dt$Kd_hDPP4 < 1.2e-9)[1])
+plot.titration(which(dt$library=="pool1" & dt$Kd_hDPP4 > 1e-9 & dt$Kd_hDPP4 < 1.2e-9)[2])
+plot.titration(which(dt$library=="pool1" & dt$Kd_hDPP4 > 1e-9 & dt$Kd_hDPP4 < 1.2e-9)[3])
+plot.titration(which(dt$library=="pool1" & dt$Kd_hDPP4 > 1e-9 & dt$Kd_hDPP4 < 1.2e-9)[4])
 ```
 
 <img src="compute_Kd_hDPP4_files/figure-gfm/1e-9_Kd-1.png" style="display: block; margin: auto;" />
@@ -469,13 +470,21 @@ plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-9 & dt$Kd_hDPP4 < 1
 
 ``` r
 par(mfrow=c(2,2))
-plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-10 & dt$Kd_hDPP4 < 1.2e-10)[1])
-plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-10 & dt$Kd_hDPP4 < 1.2e-10)[2])
-plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-10 & dt$Kd_hDPP4 < 1.2e-10)[3])
-plot.titration(which(dt$library=="pool1A" & dt$Kd_hDPP4 > 1e-10 & dt$Kd_hDPP4 < 1.2e-10)[4])
+plot.titration(which(dt$library=="pool1" & dt$Kd_hDPP4 > 1e-10 & dt$Kd_hDPP4 < 1.2e-10)[1])
+plot.titration(which(dt$library=="pool1" & dt$Kd_hDPP4 > 1e-10 & dt$Kd_hDPP4 < 1.2e-10)[2])
+plot.titration(which(dt$library=="pool1" & dt$Kd_hDPP4 > 1e-10 & dt$Kd_hDPP4 < 1.2e-10)[3])
+plot.titration(which(dt$library=="pool1" & dt$Kd_hDPP4 > 1e-10 & dt$Kd_hDPP4 < 1.2e-10)[4])
 ```
 
 <img src="compute_Kd_hDPP4_files/figure-gfm/1e-10_Kd-1.png" style="display: block; margin: auto;" />
+
+``` r
+par(mfrow=c(2,2))
+plot.titration(which(dt$library=="pool1" & dt$Kd_hDPP4 > 1e-11 & dt$Kd_hDPP4 < 1.2e-11)[1])
+plot.titration(which(dt$library=="pool1" & dt$Kd_hDPP4 > 1e-11 & dt$Kd_hDPP4 < 1.2e-11)[2])
+```
+
+<img src="compute_Kd_hDPP4_files/figure-gfm/1e-11_Kd-1.png" style="display: block; margin: auto;" />
 
 ## Data filtering by fit quality
 
@@ -493,18 +502,20 @@ each background). Filter to NA fits with nMSR above this cutoff
 
 ``` r
 median.nMSR <- median(dt$nMSR_hDPP4,na.rm=T)
-threshold <- 15
-par(mfrow=c(2,2))
-for(bg in c("MERS","PDF2180")){
-  plot(log10(dt[target==bg,TiteSeq_hDPP4_avgcount]),dt[target==bg,nMSR_hDPP4],main=bg,pch=19,col="#00000010",xlab="average cell count (log10)",ylab="nMSR",xlim=c(0,6),ylim=c(0,0.5))
+threshold <- 25
+par(mfrow=c(1,2))
+for(sublib in c("lib84","lib82")){
+  plot(log10(dt[sublibrary==sublib,TiteSeq_hDPP4_avgcount]),dt[sublibrary==sublib,nMSR_hDPP4],main=sublib,pch=19,col="#00000010",xlab="average cell count (log10)",ylab="nMSR",xlim=c(0,6),ylim=c(0,0.5))
   abline(h=threshold*median.nMSR,col="red",lty=2)
-  legend("topleft",bty="n",cex=1,legend=paste(format(100*nrow(dt[target==bg & nMSR_hDPP4 > threshold*median.nMSR & !is.na(nMSR_hDPP4),])/nrow(dt[target==bg & !is.na(nMSR_hDPP4),]),digits=3),"%"))
+  legend("topleft",bty="n",cex=1,legend=paste(format(100*nrow(dt[sublibrary==sublib & nMSR_hDPP4 > threshold*median.nMSR & !is.na(nMSR_hDPP4),])/nrow(dt[sublibrary==sublib & !is.na(nMSR_hDPP4),]),digits=3),"%"))
 }
-
-dt[nMSR_hDPP4 > threshold*median.nMSR,c("Kd_hDPP4","Kd_SE_hDPP4","response_hDPP4","baseline_hDPP4") := list(as.numeric(NA),as.numeric(NA),as.numeric(NA),as.numeric(NA))]
 ```
 
 <img src="compute_Kd_hDPP4_files/figure-gfm/nMSR_v_cell_count-1.png" style="display: block; margin: auto;" />
+
+``` r
+dt[nMSR_hDPP4 > threshold*median.nMSR,c("Kd_hDPP4","Kd_SE_hDPP4","response_hDPP4","baseline_hDPP4") := list(as.numeric(NA),as.numeric(NA),as.numeric(NA),as.numeric(NA))]
+```
 
 Last, convert our *K*<sub>D,app</sub> to 1) a log<sub>10</sub>-scale,
 and 2) *K*<sub>A,app</sub>, the inverse of *K*<sub>D,app</sub>, such
@@ -525,22 +536,38 @@ and possibly apply further filtering to remove low-count expression
 estimates
 
 ``` r
-p1 <- ggplot(dt[!is.na(log10Ka_hDPP4),],aes(x=variant_class,y=log10Ka_hDPP4))+
+p1 <- ggplot(dt[sublibrary %in% c("lib84","lib85") & !is.na(log10Ka_hDPP4),],aes(x=variant_class,y=log10Ka_hDPP4))+
   geom_violin(scale="width")+stat_summary(fun=median,geom="point",size=1)+
   ggtitle("huhDPP4, log10(Ka)")+xlab("variant class")+theme(axis.text.x=element_text(angle=-90,hjust=0))+
-  facet_wrap(~target,nrow=2)
+  facet_wrap(~target,nrow=1)
 
 grid.arrange(p1,ncol=1)
 ```
 
-<img src="compute_Kd_hDPP4_files/figure-gfm/binding_distribution_vioplot-1.png" style="display: block; margin: auto;" />
+<img src="compute_Kd_hDPP4_files/figure-gfm/binding_distribution_vioplo_DMS-1.png" style="display: block; margin: auto;" />
 
 ``` r
 #save pdf
-invisible(dev.print(pdf, paste(config$Titeseq_Kds_dir,"/violin-plot_log10Ka-by-target_hDPP4.pdf",sep="")))
+invisible(dev.print(pdf, paste(config$Titeseq_Kds_dir,"/violin-plot_log10Ka-by-target_hDPP4_MERS_rpk.pdf",sep="")))
 ```
 
-We have generated binding measurements for 77.64% of the barcodes in our
+``` r
+p1 <- ggplot(dt[sublibrary %in% c("lib82","lib83") & !is.na(log10Ka_hDPP4),],aes(x=variant_class,y=log10Ka_hDPP4))+
+  geom_violin(scale="width")+stat_summary(fun=median,geom="point",size=1)+
+  ggtitle("huhDPP4, log10(Ka)")+xlab("variant class")+theme(axis.text.x=element_text(angle=-90,hjust=0))+
+  facet_wrap(~target,nrow=1)
+
+grid.arrange(p1,ncol=1)
+```
+
+<img src="compute_Kd_hDPP4_files/figure-gfm/binding_distribution_vioplot_panmerbeco-1.png" style="display: block; margin: auto;" />
+
+``` r
+#save pdf
+invisible(dev.print(pdf, paste(config$Titeseq_Kds_dir,"/violin-plot_log10Ka-by-target_hDPP4_panmerbeco.pdf",sep="")))
+```
+
+We have generated binding measurements for 73.03% of the barcodes in our
 libraries.
 
 ## Data Output
@@ -548,7 +575,7 @@ libraries.
 Finally, let’s output our measurements for downstream analyses.
 
 ``` r
-dt[,.(library,barcode,target,variant_class,aa_substitutions,n_aa_substitutions,
+dt[,.(library,sublibrary,barcode,target,variant_class,aa_substitutions,n_aa_substitutions,
      TiteSeq_hDPP4_avgcount,log10Ka_hDPP4)] %>%
   mutate_if(is.numeric, round, digits=6) %>%
   write.csv(file=config$Titeseq_Kds_file_hDPP4, row.names=F)
